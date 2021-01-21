@@ -87,7 +87,7 @@ body {
   width: 100%;
   height: 150px;
   left: 0px;
-  top: 40%;
+  top: 43%;
 
   background: #f2acb6;
 }
@@ -104,6 +104,7 @@ body {
 }
 
 .userLogin {
+  margin-top: 10px;
   color: #8f4061;
   font-weight: bold;
   text-align: center;
@@ -155,4 +156,23 @@ body {
 
 .reg-form {
   margin-top: 20px;
+}
+
+.aboutUs-header {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.aboutUs-body {
+  font-size: 2em;
+  text-align: center;
+  margin: 0px 15%;
+  line-height: 2em;
+}
+
+.card {
+  margin: 50px;
 }

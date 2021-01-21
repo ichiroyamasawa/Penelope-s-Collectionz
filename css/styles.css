@@ -1,8 +1,5 @@
-html {
-  font-family: "Poppins", sans-serif;
-}
-
 body {
+  font-family: "Poppins", sans-serif;
   background: #ffe6f0;
 }
 
@@ -119,10 +116,43 @@ body {
 .btn-login {
   margin-top: 70px;
   padding: 5px 50px;
+  background-color: #e77b8a;
+  border-color: #e77b8a;
+}
+
+.btn-login:hover {
+  background-color: #ce5c6c;
+  border-color: #ce5c6c;
 }
 
 .forgotPwd {
   text-decoration: none;
   font-weight: bold;
   text-align: end;
+}
+
+.register-rect {
+  position: absolute;
+  width: 80%;
+  height: 520px;
+  left: 10%;
+  top: 17%;
+  padding: 40px 70px;
+  background: #e8bdcf;
+  border-radius: 100px;
+}
+
+.register-rect button {
+  margin-top: 20px;
+}
+
+.gettingStarted {
+  color: #8f4061;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reg-form {
+  margin-top: 20px;
 }

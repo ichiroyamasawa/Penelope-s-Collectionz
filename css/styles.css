@@ -72,7 +72,9 @@ body {
 }
 
 .pc-logo-1 {
-  width: 200px;
+  width: 180px;
+  height: 60px;
+  margin-top: 10px;
   margin-left: 30px;
 }
 
@@ -104,6 +106,8 @@ body {
 }
 
 .userLogin {
+  font-family: "Sacramento", cursive;
+  font-size: 3em;
   margin-top: 10px;
   color: #8f4061;
   font-weight: bold;
@@ -115,7 +119,7 @@ body {
 }
 
 .btn-login {
-  margin-top: 70px;
+  margin-top: 50px;
   padding: 5px 50px;
   background-color: #e77b8a;
   border-color: #e77b8a;
@@ -175,4 +179,71 @@ body {
 
 .card {
   margin: 50px;
+}
+
+.contactUs-header {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.contactUs-rect {
+  position: relative;
+  width: 80%;
+  height: 520px;
+  left: 10%;
+  top: 17%;
+  padding: 40px 70px;
+  background: #e8bdcf;
+  border-radius: 100px;
+  margin-bottom: 50px;
+  line-height: 2.5em;
+}
+
+.contactUs-content {
+  color: #8f4061;
+  font-size: 1.3em;
+}
+
+.btn-shopee {
+  background-color: #e65305;
+  border-color: #e65305;
+}
+
+.btn-shopee:hover {
+  background-color: #c44805;
+  border-color: #c44805;
+}
+
+.btn-shopee:active,
+.btn-shopee:focus {
+  background-color: #e65305 !important;
+  border-color: #e65305 !important;
+}
+
+.shopee-logo {
+  width: 1em;
+}
+
+.btn-instagram {
+  background-image: linear-gradient(to right, mediumvioletred, royalblue);
+  border-color: none;
+  border-width: 0px;
+}
+
+.btn-instagram:hover {
+  filter: brightness(80%);
+}
+
+.followUs {
+  width: 350px;
+}
+
+.map {
+  border-radius: 40px;
+  float: right;
+  width: 500px;
+  position: relative;
 }

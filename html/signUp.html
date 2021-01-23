@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,74 +17,107 @@
 
     <!-- FontAwesome - Icons -->
     <script src="https://kit.fontawesome.com/21d7603b0d.js" crossorigin="anonymous"></script>
-    
-    <title>Sign Up</title>
-    
-</head>
-<body>
-    <!-- Bootstrap - JS -->
-    <script src="/js/bootstrap.min.js"></script>
 
+    <title>Sign Up</title>
+
+</head>
+
+<body>
     <div class="container-fluid">
         <!-- Header -->
         <header id="mainHeader" class="row">
-            <div class="row col-md-4">
-                <img class="pc-logo-1" src="/Images/pc-logo1.jpg" alt="Penelope's Collectionz">
+            <div class="col-md-4 col-sm-12 col-12 text-md-start">
+                <img class="pc-logo-1" src="/Images/pc-logo1.png" alt="Penelope's Collectionz">
             </div>
-            <div id="mainNav" class="row col-md-8">
-                <ul>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="aboutUs.html">About Us</a></li>
-                    <li><a href="contactUs.html">Contact Us</a></li>
-                    <li><a href="index.html"><button class="btn btn-primary btn-signup">Login</button></a></li>
-                </ul>
+            <div id="mainNav" class="col-md-4 col-sm-6 col-6 text-center">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="products.html">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="aboutUs.html">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contactUs.html">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="mainNav" class="col-md-4 col-sm-6 col-6 text-end">
+                <a href="index.html"><button class="btn btn-primary btn-signup">Login</button></a>
             </div>
         </header>
 
         <!-- Contents -->
-        <div class="rect-bg"></div>
-        <div class="register-rect">
-            <h1 class="gettingStarted">Getting Started</h1>
+        <main>
+            <div class="rect-bg"></div>
+            <div class="register-rect">
+                <h1 class="gettingStarted">Getting Started</h1>
 
-            <form action="#" method="get">
-                <div class="row">
-                    <div class="form-group col-md-6 reg-form">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <label for="firstName">First Name:</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Juan">
+                <form action="#" method="get">
+                    <div class="row">
+                        <div class="form-group col-md-6 reg-form">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <label for="firstName">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Juan">
+                        </div>
+                        <div class="form-group col-md-6 reg-form">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Dela Cruz">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6 reg-form">
-                        <label for="lastName">Last Name:</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Dela Cruz">
+                    <div class="form-group reg-form">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="09XX-XXX-XXXX">
                     </div>
-                </div>                
-                <div class="form-group reg-form">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="09XX-XXX-XXXX">
-                  </div>
-                  <div class="form-group reg-form">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="example@email.com">
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-md-6 reg-form">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Password">
-                      </div>
-                      <div class="form-group col-md-6 reg-form">
-                        <label for="pwd">Confirm Password:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Password">
-                      </div>
-                  </div>
-                  <div class="row">
-                    <button type="reset" class="btn btn-outline-danger btn-lg horizontal-center col-2">Reset</button>
-                    <button type="submit" class="btn btn-success btn-lg btn-login horizontal-center col-2">Sign Up</button>
-                  </div>
+                    <div class="form-group reg-form">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="example@email.com">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 reg-form">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                        </div>
+                        <div class="form-group col-md-6 reg-form">
+                            <label for="pwd">Confirm Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <button type="reset" class="btn btn-outline-danger">Reset</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success btn-login">Sign Up</button>
+                        </div>
+                    </div>
                 </form>
-        </div>
+            </div>
+        </main>
     </div>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap - JS -->
+    <script src="/js/bootstrap.min.js"></script>
 </body>
+
 </html>

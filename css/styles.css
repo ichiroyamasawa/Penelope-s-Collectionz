@@ -1,26 +1,27 @@
 body {
   font-family: "Poppins", sans-serif;
   background: #ffe6f0;
+  overflow-x: hidden;
 }
 
 #mainHeader {
-  text-align: right;
+  text-align: center;
   background-color: #ffffff;
   left: 0px;
   top: 0px;
 }
 
 #mainNav ul {
+  text-align: left;
   color: #000000;
   padding: 0;
-  margin: 20px 0px;
+  margin: 10px 0px;
   list-style: none;
 }
 
 #mainNav li {
   display: inline;
-  padding: 5px 10px;
-  padding-top: 20px;
+  padding: 2px 10px;
 }
 
 #mainNav a {
@@ -29,9 +30,11 @@ body {
   font-size: 1em;
 }
 
-#mainNav a:hover {
-  color: #8f4061;
-  font-weight: 600;
+#mainNav a:hover,
+#mainNav a:active,
+#mainNav .active {
+  color: #8f4061 !important;
+  font-weight: bold !important;
 }
 
 .btn-signup {
@@ -40,7 +43,7 @@ body {
   color: #8f4061 !important;
   background-color: #e8bdcf !important;
   border-color: #e8bdcf !important;
-  margin: 2px;
+  margin: 20px 10px;
 }
 
 .btn-signup:hover {
@@ -72,15 +75,16 @@ body {
 }
 
 .pc-logo-1 {
-  width: 180px;
+  width: auto;
   height: 60px;
-  margin-top: 10px;
+  margin-top: 7px;
   margin-left: 30px;
 }
 
 .pc-logo-2 {
   margin-top: 20px;
-  height: 70%;
+  width: auto;
+  height: 120px;
   margin-left: 18%;
 }
 
@@ -119,8 +123,7 @@ body {
 }
 
 .btn-login {
-  margin-top: 50px;
-  padding: 5px 50px;
+  margin-top: 30px;
   background-color: #e77b8a;
   border-color: #e77b8a;
 }
@@ -134,6 +137,11 @@ body {
   text-decoration: none;
   font-weight: bold;
   text-align: end;
+  color: #8f4061;
+}
+
+.forgotPwd:hover {
+  color: #ce246b;
 }
 
 .register-rect {
@@ -162,7 +170,7 @@ body {
   margin-top: 20px;
 }
 
-.aboutUs-header {
+.aboutUs-sectiontitle {
   font-family: "Sacramento", cursive;
   color: #8f4061;
   font-size: 5em;
@@ -181,7 +189,7 @@ body {
   margin: 50px;
 }
 
-.contactUs-header {
+.contactUs-sectiontitle {
   font-family: "Sacramento", cursive;
   color: #8f4061;
   font-size: 5em;
@@ -241,9 +249,143 @@ body {
   width: 350px;
 }
 
+.followMe {
+  background-color: #ce5c6c;
+  border-color: #8f4061;
+}
+
+.followMe:hover,
+.followMe:active {
+  background-color: #8f4061;
+  border-color: #8f4061;
+}
+
 .map {
   border-radius: 40px;
   float: right;
   width: 500px;
   position: relative;
+}
+
+.products-sectiontitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.products-subtitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 2.5em;
+  text-align: start;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+.promo {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  border-radius: 2rem;
+}
+
+.site-slider {
+  position: relative;
+}
+
+.hr {
+  position: relative;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.position-top {
+  position: absolute;
+  top: 50%;
+}
+
+.site-slider .slider-btn .prev,
+.site-slider .slider-btn .next {
+  background-color: #f2acb6;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  color: #8f4061;
+  margin: 0 5rem;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.site-slider:hover .slider-btn .prev,
+.site-slider:hover .slider-btn .next {
+  opacity: 1;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 1rem 0;
+  list-style-type: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.slick-dots li {
+  margin: 0 0.6rem;
+}
+
+.slick-dots button {
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: none;
+  background-color: white;
+  text-indent: -9999px;
+  border-radius: 100%;
+}
+
+.slick-dots li.slick-active button {
+  transform: scale(2.5);
+  border-color: white;
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.205);
+}
+
+.site-slider-two {
+  position: relative;
+  height: 35%;
+}
+
+.site-slider-two .product {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.site-slider-two .product img {
+  width: 250px;
+  height: 400px;
+  margin: auto;
+}
+
+.site-btn.btn-span {
+  padding: 0.8rem 1.9rem;
+  border-radius: 4rem;
+  border: 1px solid black;
+  background-color: white;
+  color: lightgray;
+}
+
+.slider-two .slick-track .product:hover span {
+  background-color: #8f4061;
 }

@@ -301,7 +301,15 @@ body {
   height: auto;
   display: block;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background-color: #8f4061;
+  color: #ffffff;
+  padding: 0.5em 0;
+  text-align: center;
 }
 
 .position-top {
@@ -388,4 +396,9 @@ body {
 
 .slider-two .slick-track .product:hover span {
   background-color: #8f4061;
+}
+
+.item {
+  width: auto;
+  margin-top: 1em;
 }

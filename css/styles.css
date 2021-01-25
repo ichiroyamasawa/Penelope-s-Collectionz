@@ -101,11 +101,11 @@ body {
 .rect-login {
   position: relative;
   width: 32rem;
-  height: 35rem;
+  height: 30rem;
   padding: 20px;
   background: #e8bdcf;
   border-radius: 100px;
-  margin-top: 7rem;
+  margin-top: 5rem;
 }
 
 .userLogin {

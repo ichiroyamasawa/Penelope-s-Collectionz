@@ -62,23 +62,25 @@
             <div class="rect-bg">
                 <img class="pc-logo-2" src="/Images/pc-logo2.png" alt="Penelope's Collectionz">
             </div>
-            <div class="rect-login">
-                <div>
-                    <h1 class="userLogin"><i class="fa fa-heart" aria-hidden="true"></i></h1>
-                    <h2 class="userLogin">Welcome!</h2>
+            <div class="row">
+                <div class="rect-login col-md-6 offset-md-7">
+                    <div>
+                        <h1 class="userLogin"><i class="fa fa-heart" aria-hidden="true"></i></h1>
+                        <h2 class="userLogin">Welcome!</h2>
+                    </div>
+                    <form action="#" method="get">
+                        <div class="form-group login-credentials">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group login-credentials">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                            <p class="forgotPwd"><a class="forgotPwd" href="#">Forgot Password?</a></p>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg btn-login horizontal-center">Login</button>
+                    </form>
                 </div>
-                <form action="#" method="get">
-                    <div class="form-group login-credentials">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group login-credentials">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Password">
-                        <p class="forgotPwd"><a class="forgotPwd" href="#">Forgot Password?</a></p>
-                    </div>
-                    <button type="submit" class="btn btn-success btn-lg btn-login horizontal-center">Login</button>
-                </form>
             </div>
         </main>
     </div>

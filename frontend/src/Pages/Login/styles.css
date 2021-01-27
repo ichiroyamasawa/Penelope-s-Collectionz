@@ -23,3 +23,13 @@
   -moz-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+@media screen and (max-width: 638px) {
+  .pc-logo-2 {
+    display: none;
+  }
+
+  .rect-bg {
+    display: none;
+  }
+}

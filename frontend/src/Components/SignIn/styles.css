@@ -63,14 +63,6 @@ Form {
 }
 
 @media screen and (max-width: 638px) {
-  .pc-logo-2 {
-    display: none;
-  }
-
-  .rect-bg {
-    display: none;
-  }
-
   form {
     line-height: 3rem;
   }

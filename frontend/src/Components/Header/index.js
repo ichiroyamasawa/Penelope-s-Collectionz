@@ -29,7 +29,9 @@ const Header = (props) => {
           {currentUser && (
             <ul>
               <li>
-                <BtnPink onClick={() => auth.signOut()}>Logout</BtnPink>
+                <BtnPink type="submit" onClick={() => auth.signOut()}>
+                  Logout
+                </BtnPink>
               </li>
             </ul>
           )}
@@ -38,12 +40,12 @@ const Header = (props) => {
             <ul>
               <li>
                 <Link to="/registration">
-                  <BtnPink>Register</BtnPink>
+                  <BtnPink type="submit">Register</BtnPink>
                 </Link>
               </li>
               <li>
                 <Link to="/login">
-                  <BtnPink>Login</BtnPink>
+                  <BtnPink type="submit">Login</BtnPink>
                 </Link>
               </li>
             </ul>

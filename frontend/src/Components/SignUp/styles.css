@@ -1,0 +1,54 @@
+.signup {
+  display: block;
+  height: 100%;
+}
+
+.wrap {
+  padding: 0;
+  width: 50%;
+}
+
+.col {
+  width: 50px;
+}
+
+.register-rect {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  padding: 20px;
+  margin: 0;
+  background: #e8bdcf;
+  border-radius: 100px;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.register-rect button {
+  margin-top: 10px;
+}
+
+.gettingStarted {
+  font-family: "Sacramento", cursive;
+  font-size: 4.5rem;
+  margin-top: 5px;
+  color: #8f4061;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 638px) {
+  form {
+    line-height: 3rem;
+  }
+
+  .signup {
+    overflow-x: hidden;
+  }
+
+  .register-rect {
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,81 @@
+.signin {
+  display: block;
+  height: 100%;
+  line-height: 3rem;
+}
+
+.wrap {
+  padding: 0;
+  width: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+.rect-login {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  margin: 0;
+  top: 50%;
+  background: #e8bdcf;
+  border-radius: 100px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* INSIDE THE LOGIN BOX */
+.userLogin {
+  font-family: "Sacramento", cursive;
+  font-size: 4.5rem;
+  margin-top: 10px;
+  color: #8f4061;
+  font-weight: bold;
+  text-align: center;
+}
+
+Form {
+  margin: 30px;
+  font-size: 1.5rem;
+}
+
+.forgotPwd {
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-align: end;
+  color: #8f4061;
+}
+
+.forgotPwd:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(129, 34, 74);
+}
+
+.buttons {
+  margin-top: 3rem;
+}
+
+#email {
+  margin-top: 20rem;
+}
+
+@media screen and (max-width: 638px) {
+  .pc-logo-2 {
+    display: none;
+  }
+
+  .rect-bg {
+    display: none;
+  }
+
+  form {
+    line-height: 3rem;
+  }
+
+  .signin {
+    overflow-x: hidden;
+  }
+}

@@ -1,0 +1,13 @@
+.btn-coral {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 5;
+  background-color: #e77b8a;
+  border-color: #e77b8a;
+  text-transform: uppercase;
+}
+
+.btn-coral:hover {
+  background-color: #ce5c6c;
+  border-color: #ce5c6c;
+}

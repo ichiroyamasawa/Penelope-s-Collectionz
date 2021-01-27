@@ -36,8 +36,8 @@ Technologies Used:
 4. Bootstrap 5 / React-Bootstrap
 5. Node.JS (npm)
 6. React.JS
-
-7. Firebase
+7. React Router = Page Navigation
+8. Firebase
 
 **To install React.js**
 
@@ -47,6 +47,8 @@ Technologies Used:
 4. cd appname
 5. npm start
 6. to install react-bootstrap: npm install bootstrap react-bootstrap
+7. to install react router: npm install react-router-dom
+8. to install firebase: npm install firebase
 
 Files:
 -Assets: Media such as images or videos

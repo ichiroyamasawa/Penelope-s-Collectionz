@@ -60,6 +60,7 @@ class SignIn extends Component {
                 <h2 className="userLogin">Welcome!</h2>
                 <Form className="formWrap" onSubmit={this.handleSubmit}>
                   <FormInput
+                    label="Email"
                     type="email"
                     name="email"
                     value={email}
@@ -69,6 +70,7 @@ class SignIn extends Component {
                   />
 
                   <FormInput
+                    label="Password"
                     type="password"
                     name="password"
                     value={password}

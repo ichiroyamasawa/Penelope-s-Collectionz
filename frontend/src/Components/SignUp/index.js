@@ -105,6 +105,7 @@ class Signup extends Component {
                   <Form.Row>
                     <Col md={6} sm={12}>
                       <FormInput
+                        label="First Name"
                         type="text"
                         placeholder="Enter first name"
                         name="fName"
@@ -115,6 +116,7 @@ class Signup extends Component {
 
                     <Col md={6} sm={12}>
                       <FormInput
+                        label="Last Name"
                         type="text"
                         placeholder="Enter last name"
                         name="lName"
@@ -125,15 +127,17 @@ class Signup extends Component {
                   </Form.Row>
 
                   <FormInput
+                    label="Contact Number"
                     type="tel"
-                    placeholder="XXXX-XXX-XXXX"
+                    placeholder="Enter your current Contact Number"
+                    subText="Format: XXXX-XXX-XXXX"
                     name="contactNo"
                     value={contactNo}
                     pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
                     onChange={this.handleChange}
                   />
-
                   <FormInput
+                    label="Email"
                     type="email"
                     placeholder="example@email.com"
                     name="email"
@@ -144,6 +148,7 @@ class Signup extends Component {
                   <Form.Row>
                     <Col md={6} sm={12}>
                       <FormInput
+                        label="Password"
                         type="password"
                         placeholder="Enter password"
                         name="password"
@@ -154,6 +159,7 @@ class Signup extends Component {
 
                     <Col md={6} sm={12}>
                       <FormInput
+                        label="Confirm Password"
                         type="password"
                         placeholder="Confirm password"
                         name="confirmPassword"

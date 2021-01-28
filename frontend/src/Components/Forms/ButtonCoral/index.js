@@ -8,7 +8,7 @@ import { Button, Form } from "react-bootstrap";
 const BtnCoral = ({ children, ...otherProps }) => {
   return (
     <Button
-      className="btn-coral btn-lg"
+      className="btn-coral btn-lg shadow-none"
       type="submit"
       size="lg"
       {...otherProps}

@@ -7,12 +7,7 @@ import { Button, Form } from "react-bootstrap";
 
 const BtnPink = ({ children, ...otherProps }) => {
   return (
-    <Button
-      className="btn-pink btn-lg shadow-none"
-      type="submit"
-      size="lg"
-      {...otherProps}
-    >
+    <Button className="btn-pink btn-lg shadow-none" size="lg" {...otherProps}>
       {children}
     </Button>
   );

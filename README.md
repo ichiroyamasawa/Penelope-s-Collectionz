@@ -49,6 +49,12 @@ Technologies Used:
 6. to install react-bootstrap: npm install bootstrap react-bootstrap
 7. to install react router: npm install react-router-dom
 8. to install firebase: npm install firebase
+9. to install react-fontawesome:
+   npm i --save @fortawesome/fontawesome-svg-core
+   npm install --save @fortawesome/free-solid-svg-icons
+   npm install --save @fortawesome/react-fontawesome
+   npm install --save @fortawesome/free-brands-svg-icons
+   npm install --save @fortawesome/free-regular-svg-icons
 
 Files:
 -Assets: Media such as images or videos

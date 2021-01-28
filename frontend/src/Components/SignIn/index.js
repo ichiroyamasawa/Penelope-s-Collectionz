@@ -8,6 +8,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Col, Row, Container, Form } from "react-bootstrap";
 
 import FormInput from "./../Forms/FormInput";
+import AuthWrapper from "./../AuthWrapper";
+
+import { Link } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -48,16 +51,17 @@ class SignIn extends Component {
   render() {
     const { email, password } = this.state;
 
+    const configAuthWrapper = {
+      headline: "Getting Started",
+      icon: <i class="fa fa-heart" aria-hidden="true"></i>,
+    };
+
     return (
       <Container fluid className="signin">
         <div className="wrap">
           <Row>
             <Col md={{ span: 4, offset: 7 }} sm={{ span: 12, offset: 12 }}>
-              <div className="rect-login">
-                <h1 className="userLogin">
-                  <i className="fa fa-heart" aria-hidden="true"></i>
-                </h1>
-                <h2 className="userLogin">Welcome!</h2>
+              <AuthWrapper {...configAuthWrapper}>
                 <Form className="formWrap" onSubmit={this.handleSubmit}>
                   <FormInput
                     label="Email"
@@ -78,24 +82,22 @@ class SignIn extends Component {
                     size="lg"
                     handleChange={this.handleChange}
                   />
-                  <p className="forgotPwd">
-                    <a className="forgotPwd" href="#">
-                      Forgot Password?
-                    </a>
-                  </p>
+                  <Link to="/recovery" className="forgotPwd">
+                    Forgot Password?
+                  </Link>
                   <Row className="buttons">
-                    <Col>
-                      <BtnCoral>LOGIN</BtnCoral>
-                    </Col>
                     <Col>
                       <BtnCoral onClick={signInWithGoogle}>
                         <i className="fa fa-google" aria-hidden="true"></i>{" "}
                         Google Sign In
                       </BtnCoral>
                     </Col>
+                    <Col>
+                      <BtnCoral>LOGIN</BtnCoral>
+                    </Col>
                   </Row>
                 </Form>
-              </div>
+              </AuthWrapper>
             </Col>
           </Row>
         </div>

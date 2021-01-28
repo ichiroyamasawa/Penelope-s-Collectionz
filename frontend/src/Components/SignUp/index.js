@@ -4,10 +4,12 @@ import BtnCoral from "../Forms/ButtonCoral";
 
 //bootstrap imports
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Col, Row, Container, Form } from "react-bootstrap";
+import { Button, Col, Row, Container, Form, Alert } from "react-bootstrap";
 
 import BtnPink from "../Forms/ButtonPink";
 import FormInput from "./../Forms/FormInput";
+import AuthWrapper from "./../AuthWrapper";
+import AlertError from "./../AlertError";
 
 import { auth, handleUserProfile } from "./../../Firebase/utils";
 
@@ -51,7 +53,7 @@ class Signup extends Component {
     } = this.state;
 
     if (password !== confirmPassword) {
-      const err = ["Oops! Password Don't Match."];
+      const err = ["Passwords don't match."];
       this.setState({
         errors: err,
       });
@@ -85,18 +87,20 @@ class Signup extends Component {
       errors,
     } = this.state;
 
+    const configAuthWrapper = {
+      headline: "Getting Started",
+    };
+
     return (
       <Container fluid className="signup">
         <div className="wrap">
           <Row>
             <Col>
-              <div className="register-rect">
-                <h1 class="gettingStarted">Getting Started</h1>
-
+              <AuthWrapper {...configAuthWrapper}>
                 {errors.length > 0 && (
                   <ul>
-                    {errors.map((err, index) => {
-                      return <li key={index}>{err}</li>;
+                    {errors.map((e, index) => {
+                      return <AlertError keyIndex={index} error={e} />;
                     })}
                   </ul>
                 )}
@@ -105,7 +109,10 @@ class Signup extends Component {
                   <Form.Row>
                     <Col md={6} sm={12}>
                       <FormInput
-                        label="First Name"
+                        label={[
+                          <i class="fa fa-user" aria-hidden="true"></i>,
+                          " First Name",
+                        ]}
                         type="text"
                         placeholder="Enter first name"
                         name="fName"
@@ -127,17 +134,23 @@ class Signup extends Component {
                   </Form.Row>
 
                   <FormInput
-                    label="Contact Number"
+                    label={[
+                      <i class="fa fa-phone" aria-hidden="true"></i>,
+                      " Contact Number",
+                    ]}
                     type="tel"
                     placeholder="Enter your current Contact Number"
-                    subText="Format: XXXX-XXX-XXXX"
+                    subText="Format: 09XXXXXXXXX"
                     name="contactNo"
                     value={contactNo}
-                    pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
+                    pattern="[0-9]{11}"
                     onChange={this.handleChange}
                   />
                   <FormInput
-                    label="Email"
+                    label={[
+                      <i class="fa fa-envelope" aria-hidden="true"></i>,
+                      " Email",
+                    ]}
                     type="email"
                     placeholder="example@email.com"
                     name="email"
@@ -148,7 +161,10 @@ class Signup extends Component {
                   <Form.Row>
                     <Col md={6} sm={12}>
                       <FormInput
-                        label="Password"
+                        label={[
+                          <i class="fa fa-lock" aria-hidden="true"></i>,
+                          " Password",
+                        ]}
                         type="password"
                         placeholder="Enter password"
                         name="password"
@@ -177,7 +193,7 @@ class Signup extends Component {
                     </Col>
                   </Row>
                 </Form>
-              </div>
+              </AuthWrapper>
             </Col>
           </Row>
         </div>

@@ -9,7 +9,7 @@ const FormInput = ({ handleChange, label, subText, ...otherProps }) => {
   return (
     <div className="formRow">
       <Form.Group>
-        {label && <Form.Label> {label}</Form.Label>}
+        {label && <Form.Label>{label}</Form.Label>}
         <Form.Control
           size="lg"
           className="formInput"

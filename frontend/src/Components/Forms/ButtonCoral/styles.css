@@ -1,9 +1,10 @@
 .btn-coral {
   width: 100%;
+  margin: 0;
   height: 100%;
   padding: 1rem 5;
-  background-color: #e77b8a;
-  border-color: #e77b8a;
+  background-color: #e0838f;
+  border-color: #e0838f;
   text-transform: uppercase;
 }
 

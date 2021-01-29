@@ -1,0 +1,22 @@
+.btn-transparent {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0;
+  text-transform: uppercase;
+  color: #e8bdcf !important;
+  background-color: #ffffff00 !important;
+  border-color: #ffffff00 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-transparent:hover,
+.btn-transparent:active,
+.btn-transparent:focus {
+  color: #8f4061 !important;
+  background-color: #ffffff00 !important;
+  border-color: #ffffff00 !important;
+  box-shadow: #ffffff00;
+}

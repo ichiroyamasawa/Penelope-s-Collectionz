@@ -2,19 +2,30 @@ import React from "react";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BtnPink from "./../Forms/ButtonPink";
+import BtnIcons from "../Forms/ButtonIcons/BtnIcons";
+
+import { useSelector, useDispatch } from "react-redux";
+import { signOutUserStart } from "./../../Redux/User/user.actions";
 
 import { Link } from "react-router-dom";
 
-import { auth } from "./../../Firebase/utils";
-
 // Bootstrap Imports
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 // Media Imports
 import Logo from "./../../Assets/PC-logo1.png";
 
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const Header = (props) => {
-  const { currentUser } = props;
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector(mapState);
+
+  const signOut = () => {
+    dispatch(signOutUserStart());
+  };
 
   return (
     <header className="header">
@@ -29,7 +40,28 @@ const Header = (props) => {
           {currentUser && (
             <ul>
               <li>
-                <BtnPink type="submit" onClick={() => auth.signOut()}>
+                <Link to="/">
+                  <BtnIcons type="submit">
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                  </BtnIcons>
+                </Link>
+              </li>
+              <li>
+                <Link to="/">
+                  <BtnIcons type="submit">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                  </BtnIcons>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard">
+                  <BtnIcons type="submit">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                  </BtnIcons>
+                </Link>
+              </li>
+              <li>
+                <BtnPink type="submit" onClick={() => signOut()}>
                   Logout
                 </BtnPink>
               </li>

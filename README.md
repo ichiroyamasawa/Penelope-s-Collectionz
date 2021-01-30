@@ -49,12 +49,18 @@ Technologies Used:
 6. to install react-bootstrap: npm install bootstrap react-bootstrap
 7. to install react router: npm install react-router-dom
 8. to install firebase: npm install firebase
-9. to install react-fontawesome:
-   npm i --save @fortawesome/fontawesome-svg-core
-   npm install --save @fortawesome/free-solid-svg-icons
-   npm install --save @fortawesome/react-fontawesome
-   npm install --save @fortawesome/free-brands-svg-icons
-   npm install --save @fortawesome/free-regular-svg-icons
+9. to install redux-thunk: npm install redux-thunk
+10. to install redux: npm install react-redux redux-logger
+11. to install redux-saga: npm install react-saga
+
+React-hooks:
+
+1. useState
+2. useEffect
+
+Redux-hooks:
+
+1.useSelector
 
 Files:
 -Assets: Media such as images or videos

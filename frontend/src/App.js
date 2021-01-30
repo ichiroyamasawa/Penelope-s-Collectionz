@@ -8,10 +8,9 @@ import React, { useEffect } from "react";
 import WithAuth from "./hoc/withAuth";
 
 //imports
-import { Switch, Route, Redirect } from "react-router-dom";
-import { auth, handleUserProfile } from "./Firebase/utils";
-import { setCurrentUser } from "./Redux/User/user.actions";
-import { useSelector, useDispatch } from "react-redux";
+import { Switch, Route } from "react-router-dom";
+import { checkUserSession } from "./Redux/User/user.actions";
+import { useDispatch } from "react-redux";
 
 //layouts
 import MainLayout from "./Layouts/MainLayout";
@@ -28,25 +27,7 @@ const App = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          dispatch(
-            setCurrentUser({
-              id: snapshot.id,
-              ...snapshot.data(),
-            })
-          );
-        });
-      }
-
-      dispatch(setCurrentUser(userAuth));
-    });
-
-    return () => {
-      authListener();
-    };
+    dispatch(checkUserSession());
   }, []);
 
   return (

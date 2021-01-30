@@ -4,14 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import BtnPink from "./../Forms/ButtonPink";
 import BtnIcons from "../Forms/ButtonIcons/BtnIcons";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOutUserStart } from "./../../Redux/User/user.actions";
 
 import { Link } from "react-router-dom";
 
-import { auth } from "./../../Firebase/utils";
-
 // Bootstrap Imports
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 // Media Imports
 import Logo from "./../../Assets/PC-logo1.png";
@@ -21,7 +20,12 @@ const mapState = ({ user }) => ({
 });
 
 const Header = (props) => {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
+
+  const signOut = () => {
+    dispatch(signOutUserStart());
+  };
 
   return (
     <header className="header">
@@ -57,7 +61,7 @@ const Header = (props) => {
                 </Link>
               </li>
               <li>
-                <BtnPink type="submit" onClick={() => auth.signOut()}>
+                <BtnPink type="submit" onClick={() => signOut()}>
                   Logout
                 </BtnPink>
               </li>

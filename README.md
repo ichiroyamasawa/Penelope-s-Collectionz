@@ -51,6 +51,7 @@ Technologies Used:
 8. to install firebase: npm install firebase
 9. to install redux-thunk: npm install redux-thunk
 10. to install redux: npm install react-redux redux-logger
+11. to install redux-saga: npm install react-saga
 
 React-hooks:
 

@@ -4,7 +4,7 @@ import BtnCoral from "../Forms/ButtonCoral";
 
 //bootstrap imports
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Col, Row, Container, Form, Alert } from "react-bootstrap";
+import { Col, Row, Container, Form, Alert } from "react-bootstrap";
 
 import BtnPink from "../Forms/ButtonPink";
 import FormInput from "./../Forms/FormInput";
@@ -12,17 +12,18 @@ import AuthWrapper from "./../AuthWrapper";
 import AlertError from "./../AlertError";
 
 import { useDispatch, useSelector } from "react-redux";
-import { signUpUser, resetAllAuthForms } from "./../../Redux/User/user.actions";
-import { withRouter } from "react-router-dom";
+import { signUpUserStart } from "./../../Redux/User/user.actions";
+import { useHistory } from "react-router-dom";
 
 const mapState = ({ user }) => ({
-  signUpSuccess: user.signUpSuccess,
-  signUpError: user.signUpError,
+  currentUser: user.currentUser,
+  userErr: user.userErr,
 });
 
 const Signup = (props) => {
-  const { signUpSuccess, signUpError } = useSelector(mapState);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { currentUser, userErr } = useSelector(mapState);
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [contactNo, setContactNo] = useState("");
@@ -32,18 +33,17 @@ const Signup = (props) => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    if (signUpSuccess) {
+    if (currentUser) {
       reset();
-      dispatch(resetAllAuthForms());
-      props.history.push("/");
+      history.push("/");
     }
-  }, [signUpSuccess]);
+  }, [currentUser]);
 
   useEffect(() => {
-    if (Array.isArray(signUpError) && signUpError.length > 0) {
-      setErrors(signUpError);
+    if (Array.isArray(userErr) && userErr.length > 0) {
+      setErrors(userErr);
     }
-  }, [signUpError]);
+  }, [userErr]);
 
   const reset = () => {
     setFName("");
@@ -58,7 +58,7 @@ const Signup = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(
-      signUpUser({
+      signUpUserStart({
         fName,
         lName,
         contactNo,
@@ -185,4 +185,4 @@ const Signup = (props) => {
   );
 };
 
-export default withRouter(Signup);
+export default Signup;

@@ -4,36 +4,35 @@ import BtnCoral from "../Forms/ButtonCoral";
 
 //bootstrap imports
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Col, Row, Container, Form } from "react-bootstrap";
+import { Col, Row, Container, Form } from "react-bootstrap";
 
 import FormInput from "./../Forms/FormInput";
 import AuthWrapper from "./../AuthWrapper";
 
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  signInUser,
-  signInWithGoogle,
-  resetAllAuthForms,
+  emailSignInStart,
+  googleSignInStart,
 } from "./../../Redux/User/user.actions";
 
 const mapState = ({ user }) => ({
-  signInSuccess: user.signInSuccess,
+  currentUser: user.currentUser,
 });
 
 const SignIn = (props) => {
-  const { signInSuccess } = useSelector(mapState);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { currentUser } = useSelector(mapState);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (signInSuccess) {
+    if (currentUser) {
       resetForm();
-      dispatch(resetAllAuthForms());
-      props.history.push("/");
+      history.push("/");
     }
-  }, [signInSuccess]);
+  }, [currentUser]);
 
   const resetForm = () => {
     setEmail("");
@@ -42,11 +41,11 @@ const SignIn = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signInUser({ email, password }));
+    dispatch(emailSignInStart({ email, password }));
   };
 
   const handleGoogleSignIn = () => {
-    dispatch(signInWithGoogle());
+    dispatch(googleSignInStart());
   };
 
   const configAuthWrapper = {
@@ -103,4 +102,4 @@ const SignIn = (props) => {
   );
 };
 
-export default withRouter(SignIn);
+export default SignIn;

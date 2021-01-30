@@ -1,0 +1,48 @@
+.toolbar {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+.adminToolbar {
+  background-color: black;
+}
+
+.clientToolbar {
+  background-color: #f2acb6;
+}
+
+.toolbar ul,
+.toolbar ul li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toolbar ul {
+  float: right;
+}
+
+.toolbar li {
+  display: inline-block;
+}
+
+.toolbar ul li a {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.adminToolbar ul li a:hover {
+  color: #f2acb6;
+  text-decoration: none;
+}
+
+.clientToolbar ul li a:hover {
+  color: #8f4061;
+  text-decoration: none;
+}

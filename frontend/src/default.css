@@ -12,8 +12,7 @@ body {
 html,
 body,
 #root,
-.App,
-.fullHeight {
+.App {
   min-height: 100% !important;
   height: 100% !important;
 }
@@ -37,12 +36,12 @@ a {
   text-decoration: none;
 }
 
-/* a,
+a,
 a:hover {
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-} */
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
 
 .App {
   width: 100%;
@@ -52,8 +51,21 @@ a:hover {
 
 .main {
   width: 100%;
-  height: calc(100% - 7rem - 3rem);
+  height: calc(100vh - 7rem - 2.4rem);
   padding: 0;
   margin: 0;
   background: #ffe6f0;
+  overflow: auto;
+}
+
+.adminClientLayout {
+  height: calc(100vh - 7rem - 2.4rem - 2rem);
+  background: #ffe6f0;
+  overflow: auto;
+}
+
+.dashboardLayout {
+  height: calc(100% - 6.5rem - 5.8rem);
+  background: #ffe6f0;
+  overflow: auto;
 }

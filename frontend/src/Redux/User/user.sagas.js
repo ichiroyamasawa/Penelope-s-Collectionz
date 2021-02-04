@@ -21,7 +21,12 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
       additionalData,
     });
     const snapshot = yield userRef.get();
-    yield put(signInSuccess({ id: snapshot.id, ...snapshot.data() }));
+    yield put(
+      signInSuccess({
+        id: snapshot.id,
+        ...snapshot.data(),
+      })
+    );
   } catch (err) {
     console.log(err);
   }
@@ -32,8 +37,13 @@ export function* emailSignIn({ payload: { email, password } }) {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
   } catch (err) {
-    console.log(err);
+    const error = ["Bad Email and Password Combination."];
+    yield put(userError(error));
   }
+}
+
+export function* onEmailSignInStart() {
+  yield takeLatest(userTypes.EMAIL_SIGN_IN_START, emailSignIn);
 }
 
 export function* isUserAuthenticated() {
@@ -44,10 +54,6 @@ export function* isUserAuthenticated() {
   } catch (err) {
     console.log(err);
   }
-}
-
-export function* onEmailSignInStart() {
-  yield takeLatest(userTypes.EMAIL_SIGN_IN_START, emailSignIn);
 }
 
 export function* onCheckUserSession() {
@@ -68,17 +74,17 @@ export function* onSignOutUserStart() {
 }
 
 export function* signUpUser({
-  payload: { fName, lName, contactNo, email, password, confirmPassword },
+  payload: { displayName, email, password, confirmPassword },
 }) {
   if (password !== confirmPassword) {
-    const err = ["Passwords don't match."];
+    const err = ["Password Don't match"];
     yield put(userError(err));
     return;
   }
 
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-    const additionalData = { fName, lName, contactNo };
+    const additionalData = { displayName };
     yield getSnapshotFromUserAuth(user, additionalData);
   } catch (err) {
     console.log(err);
@@ -94,7 +100,6 @@ export function* resetPassword({ payload: { email } }) {
     yield call(handleResetPasswordAPI, email);
     yield put(resetPasswordSuccess());
   } catch (err) {
-    console.log(err);
     yield put(userError(err));
   }
 }

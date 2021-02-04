@@ -53,6 +53,15 @@ Technologies Used:
 10. to install redux: npm install react-redux redux-logger
 11. to install redux-saga: npm install react-saga
 
+**When cloning this repository from github**
+
+1. Clone from VS code or download zipline from the repository
+2. open the folder in VS code
+3. ctrl + `
+4. cd frontend
+5. npm install
+6. npm start
+
 React-hooks:
 
 1. useState

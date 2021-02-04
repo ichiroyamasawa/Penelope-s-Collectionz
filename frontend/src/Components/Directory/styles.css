@@ -1,0 +1,50 @@
+.products {
+  display: block;
+  width: 100%;
+  padding: 5rem;
+}
+
+@media screen and (max-width: 638px) {
+  .products {
+    padding: 1rem;
+    margin: 0 10px;
+  }
+}
+
+.products-sectionTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.products-subtitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 2.5em;
+  text-align: start;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+.hr {
+  position: relative;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.decker {
+  margin: auto;
+
+  padding: 0 18.7rem;
+}
+
+/* @media screen and (max-width: 638px) {
+  .products {
+    padding: 0;
+  }
+} */

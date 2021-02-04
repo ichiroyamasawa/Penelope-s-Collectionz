@@ -1,0 +1,20 @@
+.btn-side {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  font-weight: bold;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  color: #fff !important;
+  background-color: #8f4061 !important;
+  border-color: #8f4061 !important;
+}
+
+.btn-side:hover,
+.btn-side:active,
+.btn-side:focus {
+  color: #8f4061 !important;
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: #ffffff;
+}

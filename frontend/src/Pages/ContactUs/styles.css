@@ -1,0 +1,11 @@
+.contactUs {
+  height: 100%;
+  padding: 5rem 0;
+}
+
+.contactUs-sectionTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}

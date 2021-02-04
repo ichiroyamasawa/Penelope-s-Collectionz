@@ -18,7 +18,14 @@ export const ClientToolbar = (props) => {
     <div className="toolbar clientToolbar">
       <ul>
         <li>
-          <Link to="/client">Manage Store</Link>
+          <Link to="/client">
+            <i class="fa fa-tags" aria-hidden="true"></i> Manage Products
+          </Link>
+        </li>
+        <li>
+          <Link to="/client">
+            <i class="fas fa-receipt    "></i> Manage Orders
+          </Link>
         </li>
       </ul>
     </div>
@@ -35,7 +42,14 @@ export const AdminToolbar = (props) => {
     <div className="toolbar adminToolbar">
       <ul>
         <li>
-          <Link to="/admin">Manage Users</Link>
+          <Link to="/admin">
+            <i class="fas fa-users-cog    "></i> Manage Users
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin">
+            <i class="fas fa-receipt    "></i> Manage Orders
+          </Link>
         </li>
       </ul>
     </div>

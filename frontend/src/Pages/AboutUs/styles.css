@@ -1,0 +1,54 @@
+.aboutUs {
+  padding: 5rem 0;
+  height: 100%;
+}
+
+.aboutUs-sectiontitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.aboutUs-body {
+  font-size: 2em;
+  text-align: center;
+  margin: 0px 15%;
+  line-height: 2em;
+}
+
+.card {
+  margin: 50px;
+}
+
+.contactUs-sectiontitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.contactUs-rect {
+  position: relative;
+  width: 80%;
+  height: 520px;
+  left: 10%;
+  top: 17%;
+  padding: 40px 70px;
+  background: #e8bdcf;
+  border-radius: 100px;
+  margin-bottom: 50px;
+  line-height: 2.5em;
+}
+
+.followMe {
+  background-color: #ce5c6c;
+  border-color: #8f4061;
+}
+
+.followMe:hover,
+.followMe:active {
+  background-color: #8f4061;
+  border-color: #8f4061;
+}

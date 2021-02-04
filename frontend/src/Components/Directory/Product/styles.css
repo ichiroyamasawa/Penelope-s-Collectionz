@@ -1,0 +1,18 @@
+.productDetails {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.product {
+  width: 25%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+@media screen and (max-width: 638px) {
+  .product {
+    width: 30rem;
+  }
+}

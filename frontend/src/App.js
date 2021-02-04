@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 //layouts
 import MainLayout from "./Layouts/MainLayout";
 import HomepageLayout from "./Layouts/HomepageLayout";
+import AdminClientLayout from "./Layouts/AdminClientLayout";
 
 //pages
 import Homepage from "./Pages/Homepage";
@@ -25,6 +26,8 @@ import Recovery from "./Pages/Recovery";
 import Dashboard from "./Pages/Dashboard";
 import Client from "./Pages/Client";
 import Admin from "./Pages/Admin";
+import AboutUs from "./Pages/AboutUs";
+import ContactUs from "./Pages/ContactUs";
 
 //Components
 import { ClientToolbar, AdminToolbar } from "./Components/Toolbar";
@@ -67,6 +70,22 @@ const App = (props) => {
           )}
         />
         <Route
+          path="/aboutUs"
+          render={() => (
+            <MainLayout>
+              <AboutUs />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/contactUs"
+          render={() => (
+            <MainLayout>
+              <ContactUs />
+            </MainLayout>
+          )}
+        />
+        <Route
           path="/recovery"
           render={() => (
             <MainLayout>
@@ -88,9 +107,9 @@ const App = (props) => {
           path="/client"
           render={() => (
             <WithClientAuth>
-              <MainLayout>
+              <AdminClientLayout>
                 <Client />
-              </MainLayout>
+              </AdminClientLayout>
             </WithClientAuth>
           )}
         />
@@ -98,9 +117,9 @@ const App = (props) => {
           path="/admin"
           render={() => (
             <WithAdminAuth>
-              <MainLayout>
+              <AdminClientLayout>
                 <Admin />
-              </MainLayout>
+              </AdminClientLayout>
             </WithAdminAuth>
           )}
         />

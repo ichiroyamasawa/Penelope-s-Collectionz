@@ -1,0 +1,19 @@
+.btn-sec {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  font-weight: bold;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  color: #fff !important;
+  background-color: #6c757dc0 !important;
+  border-color: #6c757dc0 !important;
+}
+
+.btn-sec:hover,
+.btn-sec:active,
+.btn-sec:focus {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  box-shadow: #6c757d;
+}

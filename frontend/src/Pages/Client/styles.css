@@ -1,0 +1,67 @@
+.manageProducts {
+  height: auto;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.manageProductsTable {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  font-size: 1.3rem;
+  border-color: #8f4061;
+  border: 10px;
+}
+
+.manageProductsTable td {
+  padding: 10px 30px;
+  vertical-align: middle;
+}
+
+.manageProductsTable img {
+  margin: auto;
+  vertical-align: middle;
+}
+
+.manageProducts-sectionTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.btnContainer {
+  position: relative;
+  height: 50px;
+  width: 300px;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin: 20px 0;
+}
+
+.addBtnContainer {
+  margin: 0 15px;
+  padding: 0;
+  height: 50px;
+  width: 40%;
+  display: inline-block;
+}
+
+.modalButtons {
+  text-align: center;
+}
+
+.modal {
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.productImg {
+  height: auto;
+  width: 100px;
+  margin: 0;
+}

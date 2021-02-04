@@ -6,7 +6,7 @@ import Directory from "../../Components/Directory";
 
 const Homepage = (props) => {
   return (
-    <section className="homepage">
+    <section className="main">
       <Directory />
     </section>
   );

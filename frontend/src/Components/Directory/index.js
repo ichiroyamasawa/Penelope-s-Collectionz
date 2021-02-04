@@ -25,7 +25,7 @@ const Directory = ({}) => {
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/${nextFilter}`);
+    history.push(`/products/${nextFilter}`);
   };
 
   if (!Array.isArray(products)) return null;

@@ -54,6 +54,15 @@ const App = (props) => {
           )}
         />
         <Route
+          path="/:filterType"
+          render={() => (
+            <HomepageLayout>
+              <Homepage />
+            </HomepageLayout>
+          )}
+        />
+        <Route
+          exact
           path="/registration"
           render={() => (
             <MainLayout>
@@ -62,6 +71,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/login"
           render={() => (
             <MainLayout>
@@ -70,6 +80,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/aboutUs"
           render={() => (
             <MainLayout>
@@ -78,6 +89,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/contactUs"
           render={() => (
             <MainLayout>
@@ -86,6 +98,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/recovery"
           render={() => (
             <MainLayout>
@@ -94,6 +107,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/dashboard"
           render={() => (
             <WithAuth>
@@ -104,6 +118,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/client"
           render={() => (
             <WithClientAuth>
@@ -114,6 +129,7 @@ const App = (props) => {
           )}
         />
         <Route
+          exact
           path="/admin"
           render={() => (
             <WithAdminAuth>

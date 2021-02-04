@@ -11,6 +11,11 @@
   }
 }
 
+.products .alert {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .products-sectionTitle {
   font-family: "Sacramento", cursive;
   color: #8f4061;
@@ -21,7 +26,7 @@
 .products-subtitle {
   font-family: "Sacramento", cursive;
   color: #8f4061;
-  font-size: 2.5em;
+  font-size: 3em;
   text-align: start;
   margin-left: 10%;
   margin-top: 20px;
@@ -48,3 +53,27 @@
     padding: 0;
   }
 } */
+
+.searchFilters {
+  display: inline-block;
+  vertical-align: center;
+  margin: auto 0;
+}
+
+.searchFilters ul {
+  padding: auto 0;
+}
+
+.searchFilters ul li {
+  padding: 0 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+li .formRow select {
+  margin: 0;
+}
+
+span {
+  margin: auto 0;
+}

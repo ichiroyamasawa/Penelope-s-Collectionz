@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 
 //hoc
 import WithAuth from "./hoc/withAuth";
+import { WithClientAuth, WithAdminAuth } from "./hoc/withManageAuth";
 
 //imports
 import { Switch, Route } from "react-router-dom";
@@ -22,6 +23,11 @@ import Registration from "./Pages/Registration";
 import Login from "./Pages/Login";
 import Recovery from "./Pages/Recovery";
 import Dashboard from "./Pages/Dashboard";
+import Client from "./Pages/Client";
+import Admin from "./Pages/Admin";
+
+//Components
+import { ClientToolbar, AdminToolbar } from "./Components/Toolbar";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -32,6 +38,8 @@ const App = (props) => {
 
   return (
     <div className="App">
+      <AdminToolbar />
+      <ClientToolbar />
       <Switch>
         <Route
           exact
@@ -74,6 +82,26 @@ const App = (props) => {
                 <Dashboard />
               </MainLayout>
             </WithAuth>
+          )}
+        />
+        <Route
+          path="/client"
+          render={() => (
+            <WithClientAuth>
+              <MainLayout>
+                <Client />
+              </MainLayout>
+            </WithClientAuth>
+          )}
+        />
+        <Route
+          path="/admin"
+          render={() => (
+            <WithAdminAuth>
+              <MainLayout>
+                <Admin />
+              </MainLayout>
+            </WithAdminAuth>
           )}
         />
       </Switch>

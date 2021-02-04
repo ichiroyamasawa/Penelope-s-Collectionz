@@ -8,7 +8,6 @@ import {
 import userTypes from "./user.types";
 import {
   signInSuccess,
-  signOutUserStart,
   signOutUserSuccess,
   resetPasswordSuccess,
   userError,
@@ -17,7 +16,10 @@ import { handleResetPasswordAPI } from "./user.helpers";
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
-    const userRef = yield call(handleUserProfile, { userAuth: user });
+    const userRef = yield call(handleUserProfile, {
+      userAuth: user,
+      additionalData,
+    });
     const snapshot = yield userRef.get();
     yield put(signInSuccess({ id: snapshot.id, ...snapshot.data() }));
   } catch (err) {

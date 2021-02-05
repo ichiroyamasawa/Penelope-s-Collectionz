@@ -9,6 +9,7 @@ import { Col, Row, Container, Form } from "react-bootstrap";
 import FormInput from "./../Forms/FormInput";
 import AuthWrapper from "./../AuthWrapper";
 import AlertError from "./../AlertError";
+import { resetUserState } from "./../../Redux/User/user.actions";
 
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,6 +48,10 @@ const SignIn = (props) => {
     setEmail("");
     setPassword("");
     setErrors([]);
+  };
+
+  const reset = () => {
+    dispatch(resetUserState());
   };
 
   const handleSubmit = (e) => {
@@ -96,7 +101,7 @@ const SignIn = (props) => {
                   size="lg"
                   handleChange={(e) => setPassword(e.target.value)}
                 />
-                <Link to="/recovery" className="forgotPwd">
+                <Link to="/recovery" className="forgotPwd" onClick={reset}>
                   Forgot Password?
                 </Link>
                 <Row className="buttons">

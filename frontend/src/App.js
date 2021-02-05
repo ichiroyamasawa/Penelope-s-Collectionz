@@ -53,17 +53,9 @@ const App = (props) => {
             </HomepageLayout>
           )}
         />
+
         <Route
-          exact
-          path="/products"
-          render={() => (
-            <HomepageLayout>
-              <Homepage />
-            </HomepageLayout>
-          )}
-        />
-        <Route
-          path="/products/:filterType"
+          path="/products_:filterType"
           render={() => (
             <HomepageLayout>
               <Homepage />

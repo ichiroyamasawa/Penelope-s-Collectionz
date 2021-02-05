@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Table } from "react-bootstrap";
 import FormInput from "./../../Components/Forms/FormInput";
 import FormSelect from "./../../Components/Forms/FormSelect";
+import Pagination from "./../../Components/Pagination";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -31,6 +32,8 @@ const Client = (props) => {
   const [Prod_Size, setProd_Size] = useState("");
   const [Prod_Stock, setProd_Stock] = useState(0);
   const [Prod_Description, setProd_Description] = useState("");
+
+  const { data, queryDoc, isLastPage } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart());
@@ -68,6 +71,19 @@ const Client = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleLoadMore = () => {
+    dispatch(
+      fetchProductsStart({
+        startAfterDoc: queryDoc,
+        persistProducts: data,
+      })
+    );
+  };
+
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
+  };
+
   return (
     <div className="manageProducts">
       <Table responsive="sm" borderless className="manageProductsTable">
@@ -93,43 +109,59 @@ const Client = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product, index) => {
-                    const {
-                      Prod_Name,
-                      Prod_Color,
-                      Prod_Image,
-                      Prod_Price,
-                      Prod_Size,
-                      Prod_Stock,
-                      Prod_Description,
-                      Prod_Code,
-                    } = product;
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <img src={Prod_Image} className="productImg" />
-                        </td>
-                        <td>{Prod_Name}</td>
-                        <td>{Prod_Color}</td>
-                        <td>{Prod_Size}</td>
-                        <td>{Prod_Description}</td>
-                        <td>{Prod_Stock}</td>
-                        <td>&#8369; {Prod_Price}</td>
-                        <td>
-                          <Button
-                            variant="danger"
-                            onClick={() =>
-                              dispatch(deleteProductStart(Prod_Code))
-                            }
-                          >
-                            Delete
-                          </Button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {Array.isArray(data) &&
+                    data.length > 0 &&
+                    data.map((product, index) => {
+                      const {
+                        Prod_Name,
+                        Prod_Color,
+                        Prod_Image,
+                        Prod_Price,
+                        Prod_Size,
+                        Prod_Stock,
+                        Prod_Description,
+                        Prod_Code,
+                      } = product;
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <img src={Prod_Image} className="productImg" />
+                          </td>
+                          <td>{Prod_Name}</td>
+                          <td>{Prod_Color}</td>
+                          <td>{Prod_Size}</td>
+                          <td>{Prod_Description}</td>
+                          <td>{Prod_Stock}</td>
+                          <td>&#8369; {Prod_Price}</td>
+                          <td>
+                            <Button
+                              variant="danger"
+                              onClick={() =>
+                                dispatch(deleteProductStart(Prod_Code))
+                              }
+                            >
+                              Delete
+                            </Button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </Table>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <table border="0" cellSpacing="0" cellPadding="0">
+                <tbody>
+                  <tr>
+                    <td>{!isLastPage && <Pagination {...configLoadMore} />}</td>
+                  </tr>
+                </tbody>
+              </table>
             </td>
           </tr>
         </tbody>
@@ -159,8 +191,8 @@ const Client = (props) => {
                   name: "Earrings",
                 },
                 {
-                  value: "category2",
-                  name: "Category 2",
+                  value: "hairclips",
+                  name: "Hairclips",
                 },
                 {
                   value: "category3",

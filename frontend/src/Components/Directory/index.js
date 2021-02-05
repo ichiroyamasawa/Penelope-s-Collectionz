@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Row, Container } from "react-bootstrap";
 import FormSelect from "./../Forms/FormSelect";
 import AlertError from "./../AlertError";
+import Pagination from "./../Pagination";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -19,16 +20,21 @@ const Directory = ({}) => {
   const { filterType } = useParams();
   const { products } = useSelector(mapState);
 
+  const { data, queryDoc, isLastPage } = products;
+
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
   }, [filterType]);
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/products/${nextFilter}`);
+    if (nextFilter != "") {
+      const newFilter = "products_" + nextFilter;
+      history.push(`/${newFilter}`);
+    } else {
+      history.push(`/${nextFilter}`);
+    }
   };
-
-  if (!Array.isArray(products)) return null;
 
   const configFilters = {
     defaultValue: filterType,
@@ -42,8 +48,8 @@ const Directory = ({}) => {
         value: "earrings",
       },
       {
-        name: "Category 2",
-        value: "category2",
+        name: "Hairclips",
+        value: "hairclips",
       },
       {
         name: "Category 3",
@@ -53,7 +59,22 @@ const Directory = ({}) => {
     handleChange: handleFilter,
   };
 
-  if (products.length < 1) {
+  const handleLoadMore = () => {
+    dispatch(
+      fetchProductsStart({
+        filterType,
+        startAfterDoc: queryDoc,
+        persistProducts: data, //infinite Scroll
+      })
+    );
+  };
+
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
+  };
+
+  if (!Array.isArray(data)) return null;
+  if (data.length < 1) {
     return (
       <div className="products">
         <h1 className="products-sectionTitle">Our Products</h1>
@@ -99,7 +120,7 @@ const Directory = ({}) => {
         </Col>
       </Row>
 
-      {products.map((product, pos) => {
+      {data.map((product, pos) => {
         const { Prod_Image, Prod_Name, Prod_Price } = product;
         if (!Prod_Image || !Prod_Name || typeof Prod_Price === "undefined")
           return null;
@@ -112,6 +133,7 @@ const Directory = ({}) => {
 
         return <Product {...configProduct} />;
       })}
+      {!isLastPage && <Pagination {...configLoadMore} />}
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.profileCard {
+  width: 25%;
+  min-width: 300px;
+  margin: 50px;
+}
+
+.profileImg {
+  width: 75%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.clientName {
+  text-align: center;
+  font-weight: 700;
+  color: #8f4061;
+  font-size: 1.6rem;
+}
+
+.clientDesc {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.followClient {
+  margin: 1.3rem 3rem;
+}
+.card-body p {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 767px) {
+  .profileCard {
+    width: 75%;
+  }
+}

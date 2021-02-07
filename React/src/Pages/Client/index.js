@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Table } from "react-bootstrap";
 import FormInput from "./../../Components/Forms/FormInput";
 import FormSelect from "./../../Components/Forms/FormSelect";
-import Pagination from "./../../Components/Pagination";
+import { PaginationNext } from "./../../Components/Pagination";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -95,6 +95,15 @@ const Client = (props) => {
           </tr>
           <tr>
             <td>
+              <div className="btnContainer">
+                <BtnPink onClick={handleShow}>
+                  <i class="fa fa-plus" aria-hidden="true"></i> Add New Products
+                </BtnPink>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <Table borderless className="manageProductsTable">
                 <thead>
                   <tr>
@@ -151,26 +160,16 @@ const Client = (props) => {
             </td>
           </tr>
           <tr>
-            <td></td>
-          </tr>
-          <tr>
             <td>
-              <table border="0" cellSpacing="0" cellPadding="0">
-                <tbody>
-                  <tr>
-                    <td>{!isLastPage && <Pagination {...configLoadMore} />}</td>
-                  </tr>
-                </tbody>
-              </table>
+              {!isLastPage && (
+                <div className="clientPagination">
+                  <PaginationNext {...configLoadMore} />
+                </div>
+              )}
             </td>
           </tr>
         </tbody>
       </Table>
-      <div className="btnContainer">
-        <BtnPink onClick={handleShow}>
-          <i class="fa fa-plus" aria-hidden="true"></i> Add New Products
-        </BtnPink>
-      </div>
 
       <Modal
         className="modal"

@@ -15,7 +15,7 @@ const Product = ({ Prod_Image, Prod_Name, Prod_Price }) => {
   return (
     <div className="product">
       <Card>
-        <Card.Img variant="top" src={Prod_Image} />
+        <Card.Img className="prodImg" variant="top" src={Prod_Image} />
         <Card.Body>
           <Card.Title className="productDetails">{Prod_Name}</Card.Title>
         </Card.Body>

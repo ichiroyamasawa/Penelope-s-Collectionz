@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsStart } from "../../Redux/Products/products.actions";
 import Product from "./Product";
@@ -8,7 +8,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Row, Container } from "react-bootstrap";
 import FormSelect from "./../Forms/FormSelect";
 import AlertError from "./../AlertError";
-import Pagination from "./../Pagination";
+import { PaginationNext } from "./../Pagination";
+//import { PaginationBack, PaginationNext } from "./../Pagination";
+
+import WhatsNew from "./../whatsNew";
+import BestSellers from "./../bestSellers";
+import HotDeals from "./../hotDeals";
+import HR from "./../HR";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -20,7 +26,7 @@ const Directory = ({}) => {
   const { filterType } = useParams();
   const { products } = useSelector(mapState);
 
-  const { data, queryDoc, isLastPage } = products;
+  const { data, queryDoc, queryBeforeDoc, isLastPage, isFirstPage } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
@@ -69,15 +75,49 @@ const Directory = ({}) => {
     );
   };
 
+  // const handleLoadLess = () => {
+  //   dispatch(
+  //     fetchProductsStart({
+  //       filterType,
+  //       startBeforeDoc: queryBeforeDoc,
+  //     })
+  //   );
+  // };
+
   const configLoadMore = {
     onLoadMoreEvt: handleLoadMore,
   };
+
+  // const configLoadLess = {
+  //   onLoadBackEvt: handleLoadLess,
+  // };
 
   if (!Array.isArray(data)) return null;
   if (data.length < 1) {
     return (
       <div className="products">
         <h1 className="products-sectionTitle">Our Products</h1>
+
+        <div id="whatsNewSection">
+          <h2 className="products-subtitle">What's New?</h2>
+          <WhatsNew />
+        </div>
+
+        <HR />
+
+        <div id="bestSellersSection">
+          <h2 className="products-subtitle">Best Sellers</h2>
+          <BestSellers />
+        </div>
+
+        <HR />
+
+        <div id="hotDealsSection">
+          <h2 className="products-subtitle">Hot Deals</h2>
+          <HotDeals />
+        </div>
+
+        <HR />
 
         <Row>
           <Col>
@@ -106,34 +146,67 @@ const Directory = ({}) => {
     <div className="products">
       <h1 className="products-sectionTitle">Our Products</h1>
 
-      <Row>
-        <Col>
-          <h2 className="products-subtitle">Products</h2>
-        </Col>
-        <Col className="searchFilters text-right">
-          <ul>
-            <li>Shop by Category:</li>
-            <li>
-              <FormSelect {...configFilters} />
-            </li>
-          </ul>
-        </Col>
-      </Row>
+      <div id="whatsNewSection">
+        <h2 className="products-subtitle">What's New?</h2>
+        <WhatsNew />
+      </div>
 
-      {data.map((product, pos) => {
-        const { Prod_Image, Prod_Name, Prod_Price } = product;
-        if (!Prod_Image || !Prod_Name || typeof Prod_Price === "undefined")
-          return null;
+      <HR />
 
-        const configProduct = {
-          Prod_Image,
-          Prod_Name,
-          Prod_Price,
-        };
+      <div id="bestSellersSection">
+        <h2 className="products-subtitle">Best Sellers</h2>
+        <BestSellers />
+      </div>
 
-        return <Product {...configProduct} />;
-      })}
-      {!isLastPage && <Pagination {...configLoadMore} />}
+      <HR />
+
+      <div id="hotDealsSection">
+        <h2 className="products-subtitle">Hot Deals</h2>
+        <HotDeals />
+      </div>
+
+      <HR />
+
+      <div id="prodSection">
+        <Row>
+          <Col>
+            <h2 className="products-subtitle">Products</h2>
+          </Col>
+          <Col className="searchFilters text-right ">
+            <ul>
+              <li>Shop by Category:</li>
+              <li>
+                <FormSelect {...configFilters} />
+              </li>
+            </ul>
+          </Col>
+        </Row>
+
+        <div className="prds">
+          {data.map((product, pos) => {
+            const { Prod_Image, Prod_Name, Prod_Price } = product;
+            if (!Prod_Image || !Prod_Name || typeof Prod_Price === "undefined")
+              return null;
+
+            const configProduct = {
+              Prod_Image,
+              Prod_Name,
+              Prod_Price,
+            };
+
+            return <Product {...configProduct} />;
+          })}
+        </div>
+        <Row>
+          {/* <Col>
+            <PaginationBack {...configLoadLess} />
+          </Col>
+          <Col>
+            <h1>{pageNum}</h1>
+          </Col> */}
+          <Col>{!isLastPage && <PaginationNext {...configLoadMore} />}</Col>
+        </Row>
+      </div>
     </div>
   );
 };

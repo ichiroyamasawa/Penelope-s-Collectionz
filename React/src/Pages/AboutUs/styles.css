@@ -12,34 +12,13 @@
 
 .aboutUs-body {
   font-size: 2em;
-  text-align: center;
-  margin: 0px 15%;
+  text-align: justify;
+  margin: 50px 10%;
   line-height: 2em;
 }
 
 .card {
-  margin: 50px;
-}
-
-.contactUs-sectiontitle {
-  font-family: "Sacramento", cursive;
-  color: #8f4061;
-  font-size: 5em;
-  text-align: center;
-  margin-top: 50px;
-}
-
-.contactUs-rect {
-  position: relative;
-  width: 80%;
-  height: 520px;
-  left: 10%;
-  top: 17%;
-  padding: 40px 70px;
-  background: #e8bdcf;
-  border-radius: 100px;
-  margin-bottom: 50px;
-  line-height: 2.5em;
+  margin: 20px;
 }
 
 .followMe {

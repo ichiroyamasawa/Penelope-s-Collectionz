@@ -19,9 +19,10 @@ export const handleFetchProducts = ({
   filterType,
   startAfterDoc,
   persistProducts = [], //infinite Scroll
+  //startBeforeDoc,
 }) => {
   return new Promise((resolve, reject) => {
-    const pageSize = 8;
+    const pageSize = 5;
     let ref = firestore
       .collection("products")
       .orderBy("Prod_CreatedDate")
@@ -29,6 +30,8 @@ export const handleFetchProducts = ({
 
     if (filterType) ref = ref.where("Prod_Category", "==", filterType);
     if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
+    // if (startBeforeDoc)
+    //   ref = ref.limitToLast(pageSize).endBefore(startBeforeDoc);
 
     ref
       .get()
@@ -46,6 +49,7 @@ export const handleFetchProducts = ({
         resolve({
           data,
           queryDoc: snapshot.docs[totalCount - 1],
+          //queryBeforeDoc: snapshot.docs[totalCount - pageSize],
           isLastPage: totalCount < pageSize,
         });
       })

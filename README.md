@@ -52,6 +52,8 @@ Technologies Used:
 9. to install redux-thunk: npm install redux-thunk
 10. to install redux: npm install react-redux redux-logger
 11. to install redux-saga: npm install react-saga
+12. to install react-router-hash-link: npm install --save react-router-hash-link
+13. to install slider: npm install --save react-awesome-slider / npm install react-slick --save
 
 **When cloning this repository from github**
 

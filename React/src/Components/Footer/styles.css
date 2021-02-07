@@ -3,6 +3,7 @@
   bottom: 0;
   width: 100%;
   position: absolute;
+  z-index: 200;
 }
 
 .footer .wrap {

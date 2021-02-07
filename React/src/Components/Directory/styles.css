@@ -1,13 +1,17 @@
 .products {
   display: block;
   width: 100%;
-  padding: 5rem;
+  padding: 3.5rem 5rem;
+}
+
+.prds {
+  display: inline-block;
 }
 
 @media screen and (max-width: 638px) {
   .products {
     padding: 1rem;
-    margin: 0 10px;
+    margin: 0;
   }
 }
 
@@ -28,7 +32,7 @@
   color: #8f4061;
   font-size: 3em;
   text-align: start;
-  margin-left: 10%;
+  margin-left: 20px;
   margin-top: 20px;
 }
 
@@ -48,11 +52,15 @@
   padding: 0 18.7rem;
 }
 
-/* @media screen and (max-width: 638px) {
+@media screen and (max-width: 638px) {
   .products {
-    padding: 0;
+    padding: 2rem 0;
   }
-} */
+
+  .products row {
+    padding: 0 10px;
+  }
+}
 
 .searchFilters {
   display: inline-block;

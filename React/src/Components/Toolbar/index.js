@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { checkUserIsClient, checkUserIsAdmin } from "./../../Utils";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button, Table } from "react-bootstrap";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -17,6 +19,12 @@ export const ClientToolbar = (props) => {
   return (
     <div className="toolbar clientToolbar">
       <ul>
+        <li>
+          <Link to="/client">
+            <i class="fa fa-pencil" aria-hidden="true"></i> Manage Promos & Hot
+            Deals
+          </Link>
+        </li>
         <li>
           <Link to="/client">
             <i class="fa fa-tags" aria-hidden="true"></i> Manage Products

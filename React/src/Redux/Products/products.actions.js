@@ -19,3 +19,8 @@ export const deleteProductStart = (Prod_Code) => ({
   type: productsTypes.DELETE_PRODUCT_START,
   payload: Prod_Code,
 });
+
+export const editProductStart = (products) => ({
+  type: productsTypes.EDIT_PRODUCT_START,
+  payload: products,
+});

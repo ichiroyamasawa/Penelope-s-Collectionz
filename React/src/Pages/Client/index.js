@@ -5,6 +5,7 @@ import {
   addProductStart,
   fetchProductsStart,
   deleteProductStart,
+  editProductStart,
 } from "./../../Redux/Products/products.actions";
 import BtnPink from "./../../Components/Forms/ButtonPink";
 import BtnSec from "./../../Components/Forms/ButtonSecondary";
@@ -24,6 +25,9 @@ const Client = (props) => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [editProdShow, setEditProdShow] = useState(false);
+  const [Prod_CurrentProduct, setCurrentProduct] = useState([]);
+  const [Item, setItem] = useState(Prod_CurrentProduct);
   const [Prod_Category, setProd_Category] = useState("earrings");
   const [Prod_Name, setProd_Name] = useState("");
   const [Prod_Color, setProd_Color] = useState("");
@@ -35,12 +39,38 @@ const Client = (props) => {
 
   const { data, queryDoc, isLastPage } = products;
 
+  const editItem = (item) => {
+    setCurrentProduct({
+      Prod_Code: item.Prod_Code,
+      Prod_Name: item.Prod_Name,
+      Prod_Category: item.Prod_Category,
+      Prod_Color: item.Prod_Color,
+      Prod_Image: item.Prod_Image,
+      Prod_Price: item.Prod_Price,
+      Prod_Size: item.Prod_Size,
+      Prod_Stock: item.Prod_Stock,
+      Prod_Description: item.Prod_Description,
+    });
+  };
+
   useEffect(() => {
     dispatch(fetchProductsStart());
   }, []);
 
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setItem({ ...Item, [name]: value });
+  };
+
+  useEffect(() => {
+    setItem(Prod_CurrentProduct);
+    //Added console.log to show what the current item is and that it has passed
+    console.log("useEffect passes the current code: ", Prod_CurrentProduct);
+  }, [Prod_CurrentProduct]);
+
   const resetForm = () => {
     setShow(false);
+    setEditProdShow(false);
     setProd_Category("earrings");
     setProd_Name("");
     setProd_Color("");
@@ -68,8 +98,21 @@ const Client = (props) => {
     resetForm();
   };
 
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(editProductStart(Item));
+    resetForm();
+  };
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleEditProdClose = () => setEditProdShow(false);
+  const handleEditProdShow = (props) => {
+    editItem(props);
+    //dispatch(editProductStart(props));
+    setEditProdShow(true);
+  };
 
   const handleLoadMore = () => {
     dispatch(
@@ -86,7 +129,12 @@ const Client = (props) => {
 
   return (
     <div className="manageProducts">
-      <Table responsive="sm" borderless className="manageProductsTable">
+      <Table
+        responsive="sm"
+        borderless
+        className="manageProductsTable"
+        id="manageProductsSection"
+      >
         <tbody>
           <tr>
             <th>
@@ -114,7 +162,8 @@ const Client = (props) => {
                     <th>Description</th>
                     <th>Stocks left</th>
                     <th>Price</th>
-                    <th>Remove this item?</th>
+                    <th>Edit?</th>
+                    <th>Delete?</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,11 +193,24 @@ const Client = (props) => {
                           <td>&#8369; {Prod_Price}</td>
                           <td>
                             <Button
+                              variant="secondary"
+                              onClick={() => {
+                                handleEditProdShow(product);
+                              }}
+                            >
+                              <i class="fa fa-pencil" aria-hidden="true"></i>{" "}
+                              Edit
+                            </Button>
+                          </td>
+
+                          <td>
+                            <Button
                               variant="danger"
                               onClick={() =>
                                 dispatch(deleteProductStart(Prod_Code))
                               }
                             >
+                              <i class="fa fa-trash" aria-hidden="true"></i>{" "}
                               Delete
                             </Button>
                           </td>
@@ -170,7 +232,7 @@ const Client = (props) => {
           </tr>
         </tbody>
       </Table>
-
+      //Modal for adding products
       <Modal
         className="modal"
         show={show}
@@ -271,6 +333,112 @@ const Client = (props) => {
               </div>
               <div className="addBtnContainer">
                 <BtnPink type="submit">Add this Product</BtnPink>
+              </div>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
+      //Modal for Edditing products
+      <Modal
+        className="modal"
+        show={editProdShow}
+        onHide={handleEditProdClose}
+        backdrop="static"
+      >
+        {console.log(Prod_CurrentProduct)}
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Product</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={handleEditSubmit}>
+            <FormSelect
+              label="Category"
+              options={[
+                {
+                  value: "earrings",
+                  name: "Earrings",
+                },
+                {
+                  value: "hairclips",
+                  name: "Hairclips",
+                },
+                {
+                  value: "category3",
+                  name: "Category 3",
+                },
+              ]}
+            />
+            <FormInput
+              label="Product Name:"
+              type="text"
+              name="Prod_Name"
+              value={Item.Prod_Name}
+              placeholder="Product Name"
+              handleChange={onChange}
+            />
+            <FormInput
+              label="Color:"
+              type="text"
+              name="Prod_Color"
+              value={Item.Prod_Color}
+              placeholder="Color"
+              handleChange={onChange}
+            />
+            <FormInput
+              label="Size:"
+              type="String"
+              name="Prod_Size"
+              value={Item.Prod_Size}
+              placeholder="Size"
+              handleChange={onChange}
+            />
+            <FormInput
+              label="Stock"
+              type="number"
+              min="0"
+              max="10000"
+              step="1"
+              name="Prod_Stock"
+              value={Item.Prod_Stock}
+              placeholder="Stocks"
+              handleChange={onChange}
+            />
+            <FormInput
+              type="url"
+              name="Prod_Image"
+              label="Product Image URL"
+              placeholder="Product Image URL"
+              value={Item.Prod_Image}
+              handleChange={onChange}
+            />
+            <FormInput
+              label="Price"
+              type="number"
+              min="0.00"
+              max="10000.00"
+              step="0.01"
+              name="Prod_Price"
+              value={Item.Prod_Price}
+              placeholder="Price"
+              handleChange={onChange}
+            />
+            <p>Product Description:</p>
+            <FormInput
+              as="textarea"
+              type="text"
+              Label="Description"
+              rows="3"
+              placeholder="Type the product description here..."
+              name="Prod_Description"
+              value={Item.Prod_Description}
+              handleChange={onChange}
+            />
+            <div className="modalButtons">
+              <div className="addBtnContainer">
+                <BtnSec onClick={handleEditProdClose}>Cancel</BtnSec>
+              </div>
+              <div className="addBtnContainer">
+                <BtnPink type="submit">Update Product</BtnPink>
               </div>
             </div>
           </form>

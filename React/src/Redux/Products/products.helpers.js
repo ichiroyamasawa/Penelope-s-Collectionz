@@ -75,3 +75,21 @@ export const handleDeleteProduct = (Prod_Code) => {
       });
   });
 };
+
+export const handleEditProduct = (products) => {
+  console.log(products, 1);
+  console.log("Malapit na maag alas tres ", products.Prod_Code);
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("products")
+      .doc(products.Prod_Code)
+      .update(products)
+      .then(() => {
+        console.log(products, 2);
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

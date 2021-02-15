@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Font - Poppins, Sacramento -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap" rel="stylesheet">  
+
+    <!-- FontAwesome - Icons -->
+    <script src="https://kit.fontawesome.com/21d7603b0d.js" crossorigin="anonymous"></script>
+    
+    <title>Penelope's Collectionz</title>
+    
+</head>
+<body>
+
+<div class="container-fluid">
+
+          <!-- Header -->
+          <header id="mainHeader" class="row">
+            <div class="col-md-4 col-sm-12 col-12 text-md-start">
+                <img class="pc-logo-1" src="/Images/pc-logo1.png" alt="Penelope's Collectionz">
+            </div>
+            <div id="mainNav" class="col-md-4 col-sm-6 col-6">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                            <ul class="navbar-nav nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="products.html">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="aboutUs.html">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contactUs.html">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="mainNav" class="col-md-4 col-sm-6 col-6 text-end">
+                <a href="index.html"><button class="btn btn-primary btn-signup">Login</button></a>
+            </div>
+        </header>
+     
+    <!-- Contents -->
+    <main>
+        <div class="manageRect">   <!-- Background -->
+            <h4 class="manageUsers-Title">Manage Users</h4>   <!-- Header -->
+        </div>
+
+        <div class=innerManageRect>
+               <!-- USER ID -->
+               <div class="row">
+                    <div class="col-md-1 reg-form">  
+                         <i class="fa fa-id-badge" aria-hidden="true"></i>
+                        <label for="userID" class = "col-sm-2 col-form-label col-form-label-lg">UserID:</label>              
+                    </div>       
+
+                    <div class="col-md-4 reg-form">
+                         <input type="text" readonly class="form-control" id="userID" value="0909090909">
+                    </div>
+               </div>
+
+            <!-- USER LAST NAME AND FIRST NAME -->
+            <div class="row">
+                <div class="form-group col-md-6 reg-form">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <label for="firstName" class = "col-sm-6 col-form-label col-form-label-lg">First Name:</label>
+                    <input type="text" readonly class="form-control" id="firstName" value="Juan">
+                </div>    
+
+                <div class="form-group col-md-6 reg-form">
+                    <label for="lastName" class = "col-sm-6 col-form-label col-form-label-lg">Last Name:</label>
+                    <input type="text" readonly class="form-control" id="lastName" value="de la Cruz">
+                </div>                
+            </div>
+
+            <!-- USER CONTACT NO. AND EMAIL ADDRESS-->
+            <div class = "row">
+                <div class = "form-group col-md 6 reg-form">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <label for="contactNo" class = "col-sm-6 col-form-label col-form-label-lg">Contact Number:</label>
+                    <input type="text" readonly class="form-control" id="contactNo" value="0908-XXX-XXXX">
+                </div>
+
+                <div class = "form-group col-md 6 reg-form">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <label for="emailAdd" class = "col-sm-6 col-form-label col-form-label-lg">Email Address:</label>
+                    <input type="text" readonly class="form-control" id="emailAdd" value="juandelacruz1@ahay.com">
+                </div>
+            </div>
+            
+            <!-- DELETE USER BUTTON -->
+            <div class="row text-end">
+                <div class="col-md-11">
+                    <button type="button" class="btn btn-warning btn-deleteUser btn-lg">Delete User</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECOND USER PROFILE -->
+        <div class="innerManageRect2">
+            <!-- USER ID -->
+            <div class="row">
+                <div class="col-md-1 reg-form">  
+                     <i class="fa fa-id-badge" aria-hidden="true"></i>
+                    <label for="userID" class = "col-sm-2 col-form-label col-form-label-lg">UserID:</label>              
+                </div>       
+
+                <div class="col-md-4 reg-form">
+                     <input type="text" readonly class="form-control" id="userID" value="0909090909">
+                </div>
+           </div>
+
+        <!-- USER LAST NAME AND FIRST NAME -->
+        <div class="row">
+            <div class="form-group col-md-6 reg-form">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <label for="firstName" class = "col-sm-6 col-form-label col-form-label-lg">First Name:</label>
+                <input type="text" readonly class="form-control" id="firstName" value="Juan">
+            </div>    
+
+            <div class="form-group col-md-6 reg-form">
+                <label for="lastName" class = "col-sm-6 col-form-label col-form-label-lg">Last Name:</label>
+                <input type="text" readonly class="form-control" id="lastName" value="de la Cruz">
+            </div>                
+        </div>
+
+        <!-- USER CONTACT NO. AND EMAIL ADDRESS-->
+        <div class = "row">
+            <div class = "form-group col-md 6 reg-form">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <label for="contactNo" class = "col-sm-6 col-form-label col-form-label-lg">Contact Number:</label>
+                <input type="text" readonly class="form-control" id="contactNo" value="0908-XXX-XXXX">
+            </div>
+
+            <div class = "form-group col-md 6 reg-form">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <label for="emailAdd" class = "col-sm-6 col-form-label col-form-label-lg">Email Address:</label>
+                <input type="text" readonly class="form-control" id="emailAdd" value="juandelacruz1@ahay.com">
+            </div>
+        </div>
+        
+        <!-- DELETE USER BUTTON -->
+        <div class="row text-end">
+            <div class="col-md-11">
+                <button type="button" class="btn btn-warning btn-deleteUser btn-lg">Delete User</button>
+            </div>
+        </div>
+       </div>
+        
+        <!-- THIRD USER -->
+        <div class = "innerManageRect3">
+            <!-- USER ID -->
+            <div class="row">
+                <div class="col-md-1 reg-form">  
+                     <i class="fa fa-id-badge" aria-hidden="true"></i>
+                    <label for="userID" class = "col-sm-2 col-form-label col-form-label-lg">UserID:</label>              
+                </div>       
+
+                <div class="col-md-4 reg-form">
+                     <input type="text" readonly class="form-control" id="userID" value="0909090909">
+                </div>
+           </div>
+
+        <!-- USER LAST NAME AND FIRST NAME -->
+        <div class="row">
+            <div class="form-group col-md-6 reg-form">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <label for="firstName" class = "col-sm-6 col-form-label col-form-label-lg">First Name:</label>
+                <input type="text" readonly class="form-control" id="firstName" value="Juan">
+            </div>    
+
+            <div class="form-group col-md-6 reg-form">
+                <label for="lastName" class = "col-sm-6 col-form-label col-form-label-lg">Last Name:</label>
+                <input type="text" readonly class="form-control" id="lastName" value="de la Cruz">
+            </div>                
+        </div>
+
+        <!-- USER CONTACT NO. AND EMAIL ADDRESS-->
+        <div class = "row">
+            <div class = "form-group col-md 6 reg-form">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <label for="contactNo" class = "col-sm-6 col-form-label col-form-label-lg">Contact Number:</label>
+                <input type="text" readonly class="form-control" id="contactNo" value="0908-XXX-XXXX">
+            </div>
+
+            <div class = "form-group col-md 6 reg-form">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <label for="emailAdd" class = "col-sm-6 col-form-label col-form-label-lg">Email Address:</label>
+                <input type="text" readonly class="form-control" id="emailAdd" value="juandelacruz1@ahay.com">
+            </div>
+        </div>
+        
+        <!-- DELETE USER BUTTON -->
+        <div class="row text-end">
+            <div class="col-md-11">
+                <button type="button" class="btn btn-warning btn-deleteUser btn-lg">Delete User</button>
+            </div>
+        </div>
+    </div>
+        </div>
+
+        <!-- FOURTH USER -->
+        <div class = "innerManageRect4">
+             <!-- USER ID -->
+             <div class="row">
+                <div class="col-md-1 reg-form">  
+                     <i class="fa fa-id-badge" aria-hidden="true"></i>
+                    <label for="userID" class = "col-sm-2 col-form-label col-form-label-lg">UserID:</label>              
+                </div>       
+
+                <div class="col-md-4 reg-form">
+                     <input type="text" readonly class="form-control" id="userID" value="0909090909">
+                </div>
+           </div>
+
+        <!-- USER LAST NAME AND FIRST NAME -->
+        <div class="row">
+            <div class="form-group col-md-6 reg-form">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <label for="firstName" class = "col-sm-6 col-form-label col-form-label-lg">First Name:</label>
+                <input type="text" readonly class="form-control" id="firstName" value="Juan">
+            </div>    
+
+            <div class="form-group col-md-6 reg-form">
+                <label for="lastName" class = "col-sm-6 col-form-label col-form-label-lg">Last Name:</label>
+                <input type="text" readonly class="form-control" id="lastName" value="de la Cruz">
+            </div>                
+        </div>
+
+        <!-- USER CONTACT NO. AND EMAIL ADDRESS-->
+        <div class = "row">
+            <div class = "form-group col-md 6 reg-form">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <label for="contactNo" class = "col-sm-6 col-form-label col-form-label-lg">Contact Number:</label>
+                <input type="text" readonly class="form-control" id="contactNo" value="0908-XXX-XXXX">
+            </div>
+
+            <div class = "form-group col-md 6 reg-form">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <label for="emailAdd" class = "col-sm-6 col-form-label col-form-label-lg">Email Address:</label>
+                <input type="text" readonly class="form-control" id="emailAdd" value="juandelacruz1@ahay.com">
+            </div>
+        </div>
+        
+        <!-- DELETE USER BUTTON -->
+        <div class="row text-end">
+            <div class="col-md-11">
+                <button type="button" class="btn btn-warning btn-deleteUser btn-lg">Delete User</button>
+            </div>
+        </div>
+    </div>
+        </div>
+    </main>
+</div>
+     
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap - JS -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

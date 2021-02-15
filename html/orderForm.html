@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Font - Poppins, Sacramento -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap" rel="stylesheet">  
+
+    <!-- FontAwesome - Icons -->
+    <script src="https://kit.fontawesome.com/21d7603b0d.js" crossorigin="anonymous"></script>
+    
+    <title>Penelope's Collectionz</title>
+    
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="mainHeader" class="row">
+        <div class="col-md-4 col-sm-12 col-12 text-md-start">
+            <img class="pc-logo-1" src="/Images/pc-logo1.png" alt="Penelope's Collectionz">
+        </div>
+        <div id="mainNav" class="col-md-4 col-sm-6 col-6">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="aboutUs.html">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contactUs.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="mainNav" class="col-md-4 col-sm-6 col-6 text-end">
+            <a href="index.html"><button class="btn btn-primary btn-signup">Login</button></a>
+        </div>
+    </header>
+
+    <!-- CONTENTS -->
+
+    <!-- LEFT TOOLBAR -->>
+    <div class = "orderForm-leftToolbar">
+        <nav class = "navbar navbar-expand-lg navbar-light">
+            <div class = "container-fluid">
+                    <div class = "collapse navbar-collapse justify-content-left">
+                        <ul class = "d-flex flex-column navbar-nav nav" id = "firstSet">
+
+                            <!-- WHAT'S NEW AND ETC -->
+                            <li class = "nav-item">
+                                <a class = "nav-link" href = "#">What's New?</a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link" href = "#">Best Sellers</a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link" href = "#">Hot Deals</a>
+                            </li>
+                            
+                            <!-- ITEM CATEGORIES -->
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block" id="firstCategory">Item Category 1</button>
+                                </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block">Item Category 2</button>
+                                </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block">Item Category 3</button>
+                                </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block">Item Category 4</button>
+                                </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block">Item Category 5</button>
+                                </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block">Item Category 6</button>
+                                </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a class = "nav-link">
+                                    <button class = "btn btn-primary btn-itemCategory btn-block">Item Category 7</button>
+                                </a>
+                            </li>
+                        </ul>
+                    </div> 
+            </div>
+        </nav>
+    </div>
+    
+    <!-- PHOTO SLIDER AND BIG BOI PICTURE-->
+    <div class = "pictureContainer">
+        <div class = "container-fluid">
+            <img id = "mainPicture" img src="/Images/Products/Sample1.jpg">
+            
+            <div class = "slide-wrapper">
+                <img id = "left-arrow" class = "arrow" src = "/Images/left-arrow.png">
+
+                <div id = "slider">
+                    <img class = "slidePicture active" img src="/Images/Products/Sample1.jpg">
+                    <img class = "slidePicture" img src="/Images/Products/Sample2.jpg">
+                    <img class = "slidePicture" img src="/Images/Products/Sample3.jpg">
+                    <img class = "slidePicture" img src="/Images/Products/Sample4.jpg">
+                    <img class = "slidePicture" img src="/Images/Products/Sample5.jpg">
+                    <img class = "slidePicture" img src="/Images/Products/Sample6.jpg">
+                    <img class = "slidePicture" img src="/Images/Products/Sample7.jpg">
+                </div>
+
+                <img id = "right-arrow" class = "arrow" src = "/Images/right-arrow.png">
+            </div>
+
+            <!-- JAVASCRIPT FOR THE PICTURE SLIDER -->
+            <script type ="text/javascript">
+               let slidePictures = document.getElementsByClassName('slidePicture')
+               let activePictures = document.getElementsByClassName('active')
+
+               for (var i=0; i<slidePictures.length; i++) //check all pictures throught the class slidePicture
+               {
+                   slidePictures[i].addEventListener('mouseover', //mouseover is basically just a hover for html 
+                   function()
+                   {
+                       if (activePictures.length>0) //if there is another active pic, remove the active before (so bale stuck lang dapat ung length sa 0)
+                       {
+                           activePictures[0].classList.remove('active') //remove ACTIVE STATE to another as we hover on it
+                       }
+
+                       this.classList.add('active') //puts the picture from slidePicture into active state
+                       document.getElementById('mainPicture').src = this.src //transfer the picture from slidePicture to mainPicture
+                   })
+               }
+               
+               //ARROWS JAVASCRIPT
+               let leftArrow = document.getElementById('left-arrow');  //CALL THE IDs
+               let rightArrow = document.getElementById('right-arrow');
+
+               leftArrow.addEventListener('click', 
+               function()
+               {
+                   document.getElementById('slider').scrollLeft -= 180   //Click the left arrow to scroll left by 180px
+               })
+
+               rightArrow.addEventListener('click', 
+               function()
+               {
+                   document.getElementById('slider').scrollLeft += 180 //Click the right arrow to right left by 180px
+               })
+            </script>
+        </div>
+    </div>
+
+
+    <!-- RIGHT SIDE (PRODUCT NAME, SIZE, QUANTITY, BUY NOW, ADD TO CART)-->
+    
+    <!-- COLOR BUTTON -->
+    <div class = "right-side">
+        <div class = "container">
+            <h8 class = "product-name">Product Name</h8>
+
+        <div class = "row color-button-set">
+            <div class="col-md-2">  
+               <label for="btn-firstColor" class = "col-sm-2 col-form-label col-form-label-lg" id = "label-color">Color:</label>              
+           </div>       
+
+           <div class="col-md-2">
+               <button type = "checkbox" class = "btn btn-color" id= "btn-firstColor" checked autocomplete="no" value = "75.00">COLOR 1</button>
+           </div>
+
+           <div class="col-md-2">
+               <button type = "button" class = "btn btn-color" id = "btn-secondColor" checked autocomplete="off" value = "80.50">COLOR 2</button>
+           </div>
+
+           <div class="col-md-2">
+               <button type = "button" class = "btn btn-color" id = "btn-thirdColor"  checked autocomplete="off"value = "89.78">COLOR 3</button>
+           </div>
+
+           <div class="col-md-2">
+            <button type = "button" class = "btn btn-color" id = "btn-fourthColor" checked autocomplete="off" value = "69.69">COLOR 4</button>
+          </div>
+        </div>
+
+    <!-- SIZE RADIO BOXES-->
+        <div class = "row sizes-wrapper">
+            <div class = "col-md-2">
+                <label for = "radio-firstLabel" class = "col-sm-2 col-form-label col-form-label-lg" id = "label-size">Size:</label> 
+            </div>
+            <div class = "col-md-2">
+                <input type="radio" class = "radio-Size" id="size-1" name = "size" value="175.00" onclick="sizePrice_assign();">
+                <label for = "size-1" class = "col-md-5 col-form-label-lg" id = "radio-firstLabel">SIZE 1</label> 
+            </div>
+            <div class = "col-md-2">
+                <input type="radio" class = "radio-Size"  id="size-2" name = "size" value="180.25" onclick="sizePrice_assign();">
+                <label for = "size-2" class = "col-md-6 col-form-label-lg" id = "radio-firstLabel">SIZE 2</label> 
+            </div>
+            <div class = "col-md-2">
+                <input type="radio" class = "radio-Size" id="size-3" name = "size"  value="187.691" onclick="sizePrice_assign();">
+                <label for = "size-3" class = "col-md-6 col-form-label-lg" id = "radio-firstLabel">SIZE 3</label> 
+            </div>
+            <div class = "col-md-2">
+                <input type="radio" class = "radio-Size" id="size-4" name = "size" value="169.6945" onclick="sizePrice_assign();">
+                <label for = "size-4" class = "col-md-6 col-form-label-lg" id = "radio-firstLabel">SIZE 4</label> 
+            </div>
+        </div>
+
+    <!-- QUANTITY COUNTER -->
+      <div class = "row quantity-wrapper">
+        <div class = "col-sm-2">
+            <label for = "quantity" class = "col-sm2 col-form-label col-form-label-lg" id = "label-quantity">Quantity:</label>
+        </div>
+        <div class = "quantity-Counter col-sm-8">
+            <button class = "btn minus-btn disabled" type = "button">-</button>
+            <input type = "text" id = "quantity" value = "0">
+            <button class = "btn plus-btn" type = "button">+</button>
+        </div>
+
+        <div class = "col-sm-2">
+            <label for = "totalPrice" class = "col-sm-2 col-form-label col-form-label-lg" id = "label-totalPrice">Total:</label>
+        </div>
+        <div class = "col-sm-2">
+            <input type="text" readonly class="form-control" id="totalPrice" value="0.00">
+        </div>
+        </div>
+     </div>
+        
+        
+        <script> 
+
+            //ASSIGNS THE VALUE OF THE BUTTONS TO THE VARIABLES THAT WILL BE USED ON THE TOTAL FUNCTION
+            
+            let colorClass = document.getElementsByClassName('btn-color'); //class of the buttons
+            let activeColor = document.getElementsByClassName('active'); //class to put the buttons on active
+
+            let sizeClass  = document.getElementsByClassName('radio-Size');
+            let activeSize = document.getElementsByClassName('active');
+            
+            var colorPrice = 0;
+            var sizePrice = 0;
+            
+        
+            for (var i=0; i<colorClass.length; i++) //check all the buttons
+               {
+                 colorClass[i].addEventListener('click', //onclick
+                   function()
+                   {
+                       if (activeColor.length>0) //if there is another active button, remove the active before (so bale stuck lang dapat ung length sa 0)
+                       {
+                           activeColor[0].classList.remove('active') //remove ACTIVE STATE to another as we click on it
+                       }
+
+                       this.classList.add('active') //puts the pictures from colorClass into active state ONCE A BUTTON IS PRESSED
+                       colorPrice= this.value //transfer the value of the current active button into colorPrice
+                       Total() //total the price
+                   })
+               }
+        
+            /*
+             var size_1 = document.getElementById("size-1");
+             var size_2 = document.getElementById("size-2");
+             var size_3 = document.getElementById("size-3");
+             var size_4 = document.getElementById("size-4");
+            
+             if (size_1.checked)
+             {
+                 sizePrice  = document.getElementById("size-1").value
+                 Total()
+             }
+             if (size_2.checked)
+             {
+                 sizePrice  = document.getElementById("size-2").value
+                 Total()
+             }
+             if (size_3.checked)
+             {
+                 sizePrice  = document.getElementById("size-3").value
+                 Total()
+             }
+             if (size_4.checked)
+             {
+                 sizePrice  = document.getElementById("size-4").value
+                 Total()
+             }
+             */
+             var size_1 = document.getElementById("size-1");
+             var size_2 = document.getElementById("size-2");
+             var size_3 = document.getElementById("size-3");
+             var size_4 = document.getElementById("size-4");
+
+           function sizePrice_assign()
+           {
+             if(size_1.checked)
+             {
+                 sizePrice = size_1.value;
+                 awit();
+                 Total();
+             }
+
+             else if(size_2.checked)
+             {
+                 sizePrice = size_2.value;
+                 awit();
+                 Total();
+             }
+
+             else if(size_3.checked)
+             {
+                 sizePrice = size_3.value;
+                 awit();
+                 Total();
+             }
+
+             else if(size_4.checked)
+             {
+                 sizePrice = size_4.value;
+                 awit();
+                 Total();
+             }
+           }
+           
+            
+           //CREATES THE TOTAL PRICE
+           function Total() 
+            {
+
+                var addTotal = colorPrice + sizePrice;
+                var totalPrice = addTotal * valueCount;
+                var roundedTotal = totalPrice.toFixed(2);
+
+                document.getElementById("totalPrice").value = roundedTotal;
+
+                
+            }
+            //set the attribute of minus-btn
+            document.querySelector(".minus-btn").setAttribute("disabled", "disabled");
+            
+            //valueCount will be used to increment quantity
+            var valueCount
+
+            //plus button onclick function
+            document.querySelector(".plus-btn").addEventListener("click", function()
+            {
+                //getting the value of quantity into valueCount
+                valueCount = document.getElementById("quantity").value;
+
+                //increment the value by one every click
+                valueCount++;
+
+                //insert the value to quantity
+                document.getElementById("quantity").value = valueCount;
+
+                //if quantity is greater than 0, minus button can be pressed
+                if(valueCount > 0)
+                {
+                    document.querySelector(".minus-btn").removeAttribute("disabled");
+                    document.querySelector(".minus-btn").classList.remove("disabled");
+                }   
+                //call Total function
+                Total() 
+            })
+
+            //minus button onclick function
+            document.querySelector(".minus-btn").addEventListener("click", function()
+            {
+                //getting the value of quantity
+                valueCount = document.getElementById("quantity").value;
+
+                //DEcrement the value by one every click
+                valueCount--;
+
+                document.getElementById("quantity").value = valueCount;
+                
+                //if quantity is equal to 0, minus button is disabled and cannot be pressed
+                if(valueCount == 0)
+                {
+                    document.querySelector(".minus-btn").setAttribute("disabled", "disabled");
+                }
+                //call Total function
+                Total()
+            })    
+        
+        </script>
+
+        <div class = "row buy-wrapper">
+            <div class = "col-sm-4 ">
+                <button class = "btn cart-button" type = "button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart</button>
+            </div>
+            
+            <div class = "col-sm-4 ">
+                <button class = "btn buy-button" type = "button">Buy Now</button>
+            </div>
+        </div>
+
+    
+        </div>
+    </div>
+    <!--  BUY NOW AND ADD TO CART -->
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap - JS -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

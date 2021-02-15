@@ -42,6 +42,15 @@ export const resetPasswordSuccess = () => ({
   payload: true,
 });
 
+export const emailVerificationStart = () => ({
+  type: userTypes.EMAIL_VERIFICATION_START,
+});
+
+export const emailVerificationSuccess = () => ({
+  type: userTypes.EMAIL_VERIFICATION_SUCCESS,
+  payload: true,
+});
+
 export const resetUserState = () => ({
   type: userTypes.RESET_USER_STATE,
 });

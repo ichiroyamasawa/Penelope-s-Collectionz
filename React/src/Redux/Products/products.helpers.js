@@ -1,4 +1,13 @@
 import { firestore } from "./../../Firebase/utils";
+import { storage } from "./../../Firebase/utils";
+
+// export const handleAddProductImage = (Prod_Image) => {
+//   return new Promise((resolve, reject) => {
+//     const uploadTask = storage.ref(`Prod_Images/${Prod_Image.name}`).put(Prod_Image);
+//       uploadTask.on()
+
+//     })
+// };
 
 export const handleAddProduct = (product) => {
   return new Promise((resolve, reject) => {
@@ -17,6 +26,7 @@ export const handleAddProduct = (product) => {
 
 export const handleFetchProducts = ({
   filterType,
+  sorterType,
   startAfterDoc,
   persistProducts = [], //infinite Scroll
   //startBeforeDoc,
@@ -25,8 +35,18 @@ export const handleFetchProducts = ({
     const pageSize = 5;
     let ref = firestore
       .collection("products")
-      .orderBy("Prod_CreatedDate")
-      .limit(pageSize);
+      .limit(pageSize)
+      .orderBy("Prod_CreatedDate", "desc");
+
+    // console.log(ref);
+    // if (sorterType) {
+    //   console.log("sorterType:" + sorterType);
+    //   ref = ref.orderBy(sorterType);
+    //   console.log(ref);
+    //   // } else if (!sorterType) {
+    //   //   console.log("sorterType: latest");
+    //   //   ref = ref.orderBy("Prod_CreatedDate", "desc");
+    // }
 
     if (filterType) ref = ref.where("Prod_Category", "==", filterType);
     if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
@@ -78,7 +98,6 @@ export const handleDeleteProduct = (Prod_Code) => {
 
 export const handleEditProduct = (products) => {
   console.log(products, 1);
-  console.log("Malapit na maag alas tres ", products.Prod_Code);
   return new Promise((resolve, reject) => {
     firestore
       .collection("products")

@@ -3,6 +3,7 @@ import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addProductStart,
+  // addProductImage,
   fetchProductsStart,
   deleteProductStart,
   editProductStart,
@@ -10,12 +11,18 @@ import {
 import BtnPink from "./../../Components/Forms/ButtonPink";
 import BtnSec from "./../../Components/Forms/ButtonSecondary";
 import BtnIcons from "./../../Components/Forms/ButtonIcons/BtnIcons";
+import { useHistory, useParams } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal, Button, Table } from "react-bootstrap";
+import { Modal, Button, Table, Col, Row, Form } from "react-bootstrap";
 import FormInput from "./../../Components/Forms/FormInput";
 import FormSelect from "./../../Components/Forms/FormSelect";
 import { PaginationNext } from "./../../Components/Pagination";
+
+import { storage } from "./../../Firebase/utils";
+
+// Media Imports
+import ImagePlaceholder from "./../../Assets/ImagePlaceholder.png";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -31,11 +38,18 @@ const Client = (props) => {
   const [Prod_Category, setProd_Category] = useState("earrings");
   const [Prod_Name, setProd_Name] = useState("");
   const [Prod_Color, setProd_Color] = useState("");
-  const [Prod_Image, setProd_Image] = useState("");
+  const [Prod_Image, setProd_Image] = useState(null);
+  const [NewProd_Image, setNewProd_Image] = useState(null);
+  // const [Prod_ImageURL, setProd_ImageURL] = useState("");
+  const [Prod_Sales, setProd_Sales] = useState(0);
   const [Prod_Price, setProd_Price] = useState(0);
   const [Prod_Size, setProd_Size] = useState("");
   const [Prod_Stock, setProd_Stock] = useState(0);
   const [Prod_Description, setProd_Description] = useState("");
+  const history = useHistory();
+  // const [filter, setFilter] = useState("");
+  // const [sorter, setSorter] = useState("");
+  const { filterType, sorterType } = useParams();
 
   const { data, queryDoc, isLastPage } = products;
 
@@ -62,6 +76,28 @@ const Client = (props) => {
     setItem({ ...Item, [name]: value });
   };
 
+  const handleProductImage = (e) => {
+    const imgFile = e.target.files[0];
+    const fileStorage = storage.ref(`Prod_Images/${imgFile.name}`).put(imgFile);
+    fileStorage.then(() => {
+      console.log("File uploaded successfully");
+      storage
+        .ref("Prod_Images")
+        .child(imgFile.name)
+        .getDownloadURL()
+        .then((url) => {
+          setProd_Image(url);
+
+          console.log(url);
+        });
+    });
+  };
+
+  // const updateProductImage = (e) => {
+  //   handleProductImage();
+  //   onChange();
+  // };
+
   useEffect(() => {
     setItem(Prod_CurrentProduct);
     //Added console.log to show what the current item is and that it has passed
@@ -74,7 +110,7 @@ const Client = (props) => {
     setProd_Category("earrings");
     setProd_Name("");
     setProd_Color("");
-    setProd_Image("");
+    setProd_Image(null);
     setProd_Price(0);
     setProd_Stock(0);
     setProd_Size("");
@@ -91,12 +127,115 @@ const Client = (props) => {
         Prod_Image,
         Prod_Price,
         Prod_Size,
+        Prod_Price,
+        Prod_Sales,
         Prod_Stock,
         Prod_Description,
       })
     );
+    console.log("149 " + Prod_Sales);
     resetForm();
   };
+
+  // const handleAddProductImage = (e) => {
+  //   e.preventDefault();
+  //   dispatch(addProductImage(Prod_Image));
+  // };
+
+  useEffect(() => {
+    dispatch(fetchProductsStart({ filterType }));
+  }, [filterType]);
+
+  // useEffect(() => {
+  //   dispatch(fetchProductsStart({ sorterType }));
+  // }, [sorterType]);
+
+  const handleFilter = (e) => {
+    const nextFilter = e.target.value;
+    // setFilter(nextFilter);
+    console.log(nextFilter);
+
+    history.push(`/client/${nextFilter}`);
+    // if (nextFilter == "") {
+    //   if (sorter != "") {
+    //     history.push(`/client/all/${sorter}`);
+    //   } else {
+    //     history.push(`/client`);
+    //   }
+    // } else {
+    //   if (sorter != "") {
+    //     history.push(`/client/${nextFilter}/${sorter}`);
+    //   } else {
+    //     history.push(`/client/${nextFilter}`);
+    //   }
+    // }
+  };
+
+  // const handleSorter = (e) => {
+  //   //const nextFilter = e.target.value;
+  //   const nextSorter = e.target.value;
+  //   console.log(nextSorter);
+  //   setSorter(nextSorter);
+  //   if (nextSorter == "") {
+  //     if (filter != "") {
+  //       history.push(`/client/${filter}`);
+  //     } else {
+  //       history.push(`/client`);
+  //     }
+  //   } else {
+  //     if (filter != "") {
+  //       history.push(`/client/${filter}/${nextSorter}`);
+  //     } else {
+  //       history.push(`/client/all/${nextSorter}`);
+  //     }
+  //   }
+  // };
+
+  const configFilters = {
+    defaultValue: filterType,
+    options: [
+      {
+        name: "Show All",
+        value: "",
+      },
+      {
+        name: "Earrings",
+        value: "earrings",
+      },
+      {
+        name: "Hairclips",
+        value: "hairclips",
+      },
+      {
+        name: "Category 3",
+        value: "category3",
+      },
+    ],
+    handleChange: handleFilter,
+  };
+
+  // const configSorters = {
+  //   defaultValue: sorterType,
+  //   options: [
+  //     {
+  //       name: "Latest",
+  //       value: "",
+  //     },
+  //     {
+  //       name: "Sales",
+  //       value: "Prod_Sales",
+  //     },
+  //     {
+  //       name: "Price: Low to High",
+  //       value: "Prod_Price",
+  //     },
+  //     {
+  //       name: "Price: High to Low",
+  //       value: "Prod_Price",
+  //     },
+  //   ],
+  //   handleChange: handleSorter,
+  // };
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
@@ -105,7 +244,10 @@ const Client = (props) => {
     resetForm();
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    resetForm();
+  };
   const handleShow = () => setShow(true);
   const handleEditProdClose = () => setEditProdShow(false);
   const handleEditProdShow = (props) => {
@@ -151,6 +293,29 @@ const Client = (props) => {
             </td>
           </tr>
           <tr>
+            <Row>
+              <Col className="clientSearchFilters text-start" md={3}>
+                <ul>
+                  <li>Manage by Categories:</li>
+                  <li>
+                    <FormSelect {...configFilters} />
+                  </li>
+                </ul>
+              </Col>
+              {/* <Col className="clientSearchFilters text-start" md={3}>
+                <ul>
+                  <li>Sort by:</li>
+                  <li>
+                    <FormSelect {...configSorters} />
+                  </li>
+                </ul>
+              </Col> */}
+            </Row>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+          <tr>
             <td>
               <Table borderless className="manageProductsTable">
                 <thead>
@@ -159,7 +324,7 @@ const Client = (props) => {
                     <th>Name</th>
                     <th>Color</th>
                     <th>Size</th>
-                    <th>Description</th>
+                    <th>Sales</th>
                     <th>Stocks left</th>
                     <th>Price</th>
                     <th>Edit?</th>
@@ -177,7 +342,7 @@ const Client = (props) => {
                         Prod_Price,
                         Prod_Size,
                         Prod_Stock,
-                        Prod_Description,
+                        Prod_Sales,
                         Prod_Code,
                       } = product;
                       return (
@@ -188,7 +353,7 @@ const Client = (props) => {
                           <td>{Prod_Name}</td>
                           <td>{Prod_Color}</td>
                           <td>{Prod_Size}</td>
-                          <td>{Prod_Description}</td>
+                          <td>{Prod_Sales}</td>
                           <td>{Prod_Stock}</td>
                           <td>&#8369; {Prod_Price}</td>
                           <td>
@@ -232,7 +397,7 @@ const Client = (props) => {
           </tr>
         </tbody>
       </Table>
-      //Modal for adding products
+      {/* Modal for adding products */}
       <Modal
         className="modal"
         show={show}
@@ -244,6 +409,27 @@ const Client = (props) => {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
+            <div className="imgUpload">
+              <FormInput
+                type="file"
+                id="uploadImg"
+                name="Prod_Image"
+                label={[
+                  "Upload product image here ",
+                  <i class="far fa-hand-point-down    "></i>,
+                ]}
+                placeholder="Product Image URL"
+                accept="image/*"
+                handleChange={handleProductImage}
+              />
+              <label htmlFor="uploadImg">
+                <img
+                  className="imgPlaceholder"
+                  src={Prod_Image || ImagePlaceholder}
+                  alt="Product Image"
+                />
+              </label>
+            </div>
             <FormSelect
               label="Category"
               options={[
@@ -298,14 +484,6 @@ const Client = (props) => {
               handleChange={(e) => setProd_Stock(e.target.value)}
             />
             <FormInput
-              type="url"
-              name="Prod_Image"
-              label="Product Image URL"
-              placeholder="Product Image URL"
-              value={Prod_Image}
-              handleChange={(e) => setProd_Image(e.target.value)}
-            />
-            <FormInput
               label="Price"
               type="number"
               min="0.00"
@@ -338,7 +516,7 @@ const Client = (props) => {
           </form>
         </Modal.Body>
       </Modal>
-      //Modal for Edditing products
+      {/* Modal for Editing products */}
       <Modal
         className="modal"
         show={editProdShow}
@@ -351,23 +529,39 @@ const Client = (props) => {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleEditSubmit}>
-            <FormSelect
-              label="Category"
-              options={[
-                {
-                  value: "earrings",
-                  name: "Earrings",
-                },
-                {
-                  value: "hairclips",
-                  name: "Hairclips",
-                },
-                {
-                  value: "category3",
-                  name: "Category 3",
-                },
-              ]}
-            />
+            <div className="imgUpload">
+              <label>
+                "Upload product image here "
+                <i class="far fa-hand-point-down    "></i>
+              </label>
+              <input
+                type="file"
+                id="uploadImg"
+                name="Prod_Image"
+                label={[]}
+                size="lg"
+                className="formInput"
+                placeholder="Product Image URL"
+                accept="image/*"
+                onChange={(e) => {
+                  handleProductImage(e);
+                }}
+              />
+              <label htmlFor="uploadImg">
+                <img
+                  className="imgPlaceholder"
+                  name="Prod_Image"
+                  src={Prod_Image || Item.Prod_Image}
+                  alt="Product Image"
+                  value={Item.Prod_Image}
+                  onChange={onChange}
+                />
+              </label>
+              <div className="imgChanger">
+                {Prod_Image && (Item.Prod_Image = Prod_Image)}
+              </div>
+            </div>
+            <div className="categoryDisp"> Category: {Item.Prod_Category}</div>
             <FormInput
               label="Product Name:"
               type="text"
@@ -401,14 +595,6 @@ const Client = (props) => {
               name="Prod_Stock"
               value={Item.Prod_Stock}
               placeholder="Stocks"
-              handleChange={onChange}
-            />
-            <FormInput
-              type="url"
-              name="Prod_Image"
-              label="Product Image URL"
-              placeholder="Product Image URL"
-              value={Item.Prod_Image}
               handleChange={onChange}
             />
             <FormInput

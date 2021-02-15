@@ -1,11 +1,13 @@
 import firebase from "firebase/app"; //firebase utilities
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage";
 
 import { firebaseConfig } from "./config";
 
 firebase.initializeApp(firebaseConfig);
 
+export const storage = firebase.storage();
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -18,15 +20,15 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
 
   const userRef = firestore.doc(`users/${uid}`);
   const snapshot = await userRef.get();
+  const { displayName, email, emailVerified } = userAuth;
 
   if (!snapshot.exists) {
-    const { displayName, email } = userAuth;
     const timestamp = new Date();
     const userRoles = ["customer"];
-
     try {
       await userRef.set({
         email,
+        emailVerified,
         createdDate: timestamp,
         userRoles,
         ...additionalData,
@@ -34,6 +36,11 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
     } catch (e) {
       console.log(e);
     }
+  }
+  try {
+    await userRef.update({ emailVerified });
+  } catch (e) {
+    console.log(e);
   }
   return userRef;
 };

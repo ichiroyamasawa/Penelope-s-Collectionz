@@ -4,6 +4,7 @@ import userTypes from "./user.types";
 const INITIAL_STATE = {
   currentUser: null,
   resetPasswordSuccess: false,
+  emailVerificationSuccess: false,
   userErr: [],
 };
 
@@ -19,6 +20,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         resetPasswordSuccess: action.payload,
+      };
+    case userTypes.EMAIL_VERIFICATION_SUCCESS:
+      return {
+        ...state,
+        emailVerificationSuccess: action.payload,
       };
     case userTypes.USER_ERROR:
       return {

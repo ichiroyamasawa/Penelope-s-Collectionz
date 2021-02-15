@@ -5,6 +5,11 @@ export const addProductStart = (productData) => ({
   payload: productData,
 });
 
+// export const addProductImage = (Prod_Image) => ({
+//   type: productsTypes.ADD_NEW_PRODUCT_IMAGE,
+//   payload: Prod_Image,
+// });
+
 export const fetchProductsStart = (filters = {}) => ({
   type: productsTypes.FETCH_PRODUCTS_START,
   payload: filters,

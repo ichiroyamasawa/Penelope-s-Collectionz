@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal } from "react-bootstrap";
 import BtnPink from "./../Forms/ButtonPink";
 import BtnIcons from "../Forms/ButtonIcons/BtnIcons";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
+  emailVerificationStart,
   signOutUserStart,
   resetUserState,
 } from "./../../Redux/User/user.actions";
@@ -34,6 +36,11 @@ const mapState = ({ user }) => ({
 });
 
 const Header = (props) => {
+  const [show, setShow] = useState(false);
+
+  const history = useHistory();
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
 
@@ -43,6 +50,13 @@ const Header = (props) => {
 
   const reset = () => {
     dispatch(resetUserState());
+  };
+
+  const onVerification = (e) => {
+    e.preventDefault();
+    setShow(true);
+    dispatch(emailVerificationStart());
+    console.log(currentUser.emailVerified);
   };
 
   return (
@@ -90,6 +104,55 @@ const Header = (props) => {
             <div className="callToActions">
               {currentUser && (
                 <ul>
+                  {!currentUser.emailVerified && (
+                    <>
+                      <Overlay desc="Click me to verify your account!">
+                        <li>
+                          <Nav.Item>
+                            <BtnIcons type="submit" onClick={onVerification}>
+                              <i class="fas fa-exclamation-triangle"></i>
+                            </BtnIcons>
+                          </Nav.Item>
+                        </li>
+                      </Overlay>
+                      <Modal
+                        show={show}
+                        onHide={handleClose}
+                        backdrop="static"
+                        keyboard={false}
+                        centered
+                      >
+                        <Modal.Header closeButton>
+                          <Modal.Title>Verification Email Sent!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="modalDesc">
+                          We have sent an email to{" "}
+                          <span className="emailToVerify">
+                            {currentUser.email}
+                          </span>
+                          .
+                          <p className="modalDescEmailText">
+                            Verifying your email allows you to chat with us,
+                            order your desired products, and manage your
+                            profile.
+                          </p>
+                          <p className="modalDescEmailText">
+                            After verifying your email, please reload the page
+                            or click the button below.
+                          </p>
+                          <p className="modalDescEmailTextNote">
+                            Note: If you have not received the verification
+                            email, please check your "Spam" folder.
+                          </p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <BtnPink onClick={() => window.location.reload()}>
+                            Reload this page
+                          </BtnPink>
+                        </Modal.Footer>
+                      </Modal>
+                    </>
+                  )}
                   <Overlay desc="Chat with Penelope's Collectionz!">
                     <li>
                       <Nav.Item>
@@ -128,9 +191,11 @@ const Header = (props) => {
                   </Overlay>
                   <li>
                     <Nav.Item>
-                      <BtnPink type="submit" onClick={() => signOut()}>
-                        Logout
-                      </BtnPink>
+                      <Link to="/">
+                        <BtnPink type="submit" onClick={() => signOut()}>
+                          Logout
+                        </BtnPink>
+                      </Link>
                     </Nav.Item>
                   </li>
                 </ul>

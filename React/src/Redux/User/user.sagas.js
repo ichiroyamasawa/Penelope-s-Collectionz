@@ -10,6 +10,7 @@ import {
   signInSuccess,
   signOutUserSuccess,
   resetPasswordSuccess,
+  emailVerificationSuccess,
   userError,
 } from "./user.actions";
 import { handleResetPasswordAPI } from "./user.helpers";
@@ -35,9 +36,10 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
 export function* emailSignIn({ payload: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    console.log(user);
     yield getSnapshotFromUserAuth(user);
   } catch (err) {
-    const error = ["Bad Email and Password Combination."];
+    const error = ["Invalid Username or Password."];
     yield put(userError(error));
   }
 }
@@ -74,7 +76,7 @@ export function* onSignOutUserStart() {
 }
 
 export function* signUpUser({
-  payload: { displayName, email, password, confirmPassword },
+  payload: { fName, lName, contactNo, email, password, confirmPassword },
 }) {
   if (password !== confirmPassword) {
     const err = ["Password Don't match"];
@@ -84,15 +86,44 @@ export function* signUpUser({
 
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-    const additionalData = { displayName };
+    console.log(user);
+    const additionalData = { fName, lName, contactNo };
     yield getSnapshotFromUserAuth(user, additionalData);
   } catch (err) {
-    console.log(err);
+    yield put(userError([err.message]));
   }
 }
 
 export function* onSignUpUserStart() {
   yield takeLatest(userTypes.SIGN_UP_USER_START, signUpUser);
+}
+
+export function* emailVerification() {
+  try {
+    yield auth.onAuthStateChanged((user) => {
+      user.sendEmailVerification().then(() => {
+        user.reload();
+        console.log("reloaded");
+      });
+    });
+
+    yield auth.onAuthStateChanged((user) => {
+      if (user.emailVerified) {
+        console.log("Email is verified");
+        user.reload();
+      } else {
+        console.log("Email is not verified");
+      }
+    });
+
+    yield put(emailVerificationSuccess());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* onEmailVerificationStart() {
+  yield takeLatest(userTypes.EMAIL_VERIFICATION_START, emailVerification);
 }
 
 export function* resetPassword({ payload: { email } }) {
@@ -129,5 +160,6 @@ export default function* userSagas() {
     call(onSignUpUserStart),
     call(onResetPasswordStart),
     call(onGoogleSignInStart),
+    call(onEmailVerificationStart),
   ]);
 }

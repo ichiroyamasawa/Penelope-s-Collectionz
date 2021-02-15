@@ -11,6 +11,7 @@ const FormInput = ({ handleChange, label, subText, ...otherProps }) => {
       <Form.Group>
         {label && <Form.Label>{label}</Form.Label>}
         <Form.Control
+          required
           size="lg"
           className="formInput"
           onChange={handleChange}

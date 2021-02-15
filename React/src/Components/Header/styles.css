@@ -61,6 +61,26 @@ li {
   background-color: #fff;
 }
 
+.modalDesc {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.modalDescEmailText {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+.modalDescEmailTextNote {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.emailToVerify {
+  font-weight: 700;
+  color: #8f4061;
+}
+
 @media (max-width: 767px) {
   .xs-only-text-left {
     text-align: left !important;

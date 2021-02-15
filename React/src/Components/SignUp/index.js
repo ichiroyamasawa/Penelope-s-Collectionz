@@ -97,6 +97,8 @@ const Signup = (props) => {
                       ]}
                       type="text"
                       placeholder="Enter first name"
+                      pattern="[a-zA-Z]*"
+                      title="Names should not contain numbers and special characters."
                       name="fName"
                       value={fName}
                       handleChange={(e) => setFName(e.target.value)}
@@ -107,6 +109,8 @@ const Signup = (props) => {
                     <FormInput
                       label="Last Name"
                       type="text"
+                      pattern="[a-zA-Z]*"
+                      title="Names should not contain numbers and special characters."
                       placeholder="Enter last name"
                       name="lName"
                       value={lName}
@@ -149,7 +153,10 @@ const Signup = (props) => {
                       ]}
                       type="password"
                       placeholder="Enter password"
+                      subText="Password must be at least 6 characters"
                       name="password"
+                      pattern=".{6,}"
+                      title="Must be at least 6 characters"
                       value={password}
                       handleChange={(e) => setPassword(e.target.value)}
                     />
@@ -161,6 +168,8 @@ const Signup = (props) => {
                       type="password"
                       placeholder="Confirm password"
                       name="confirmPassword"
+                      pattern=".{6,}"
+                      title="Must be at least 6 characters"
                       value={confirmPassword}
                       handleChange={(e) => setConfirmPassword(e.target.value)}
                     />

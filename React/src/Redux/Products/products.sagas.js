@@ -1,10 +1,11 @@
-import { takeLatest, put, all, call } from "redux-saga/effects";
+import { takeLatest, put, all, call, take } from "redux-saga/effects";
 import { setProducts, fetchProductsStart } from "./products.actions";
 import productsTypes from "./products.types";
 import productTypes from "./products.types";
 import { auth } from "./../../Firebase/utils";
 import {
   handleAddProduct,
+  // handleAddProductImage,
   handleFetchProducts,
   handleDeleteProduct,
   handleEditProduct,
@@ -18,6 +19,7 @@ export function* addProduct({
     Prod_Image,
     Prod_Price,
     Prod_Size,
+    Prod_Sales,
     Prod_Stock,
     Prod_Description,
   },
@@ -31,6 +33,7 @@ export function* addProduct({
       Prod_Image,
       Prod_Price,
       Prod_Size,
+      Prod_Sales,
       Prod_Stock,
       Prod_Description,
       Prod_CreatedDate: timestamp,
@@ -40,9 +43,23 @@ export function* addProduct({
     console.log(err);
   }
 }
+
 export function* onAddProductStart() {
   yield takeLatest(productsTypes.ADD_NEW_PRODUCT_START, addProduct);
 }
+
+// export function* addProductImage({payload}){
+//   try{
+//     yield handleAddProductImage(payload);
+//   }
+//   catch(err){
+//     console.log(err)
+//   }
+// }
+
+// export function* onAddProductImage() {
+//   yield takeLatest(productsTypes.ADD_NEW_PRODUCT_IMAGE, addProductImage);
+// }
 
 export function* fetchProducts({ payload }) {
   try {

@@ -131,6 +131,28 @@ const App = (props) => {
         />
         <Route
           exact
+          path="/client/:filterType"
+          render={() => (
+            <WithClientAuth>
+              <AdminClientLayout>
+                <Client />
+              </AdminClientLayout>
+            </WithClientAuth>
+          )}
+        />
+        <Route
+          exact
+          path="/client/:filterType/:sorterType"
+          render={() => (
+            <WithClientAuth>
+              <AdminClientLayout>
+                <Client />
+              </AdminClientLayout>
+            </WithClientAuth>
+          )}
+        />
+        <Route
+          exact
           path="/admin"
           render={() => (
             <WithAdminAuth>

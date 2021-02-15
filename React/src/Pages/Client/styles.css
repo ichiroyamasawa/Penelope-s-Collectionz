@@ -41,6 +41,59 @@
   margin: 20px 0;
 }
 
+.clientSearchFilters {
+  vertical-align: center;
+  margin: auto 0;
+}
+
+.clientSearchFilters ul {
+  padding: 0 auto;
+}
+
+.clientSearchFilters ul li {
+  padding: 0 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.imgPlaceholder {
+  width: 75%;
+  height: auto;
+  margin: 15px auto;
+  border-radius: 15px;
+}
+
+.imgPlaceholder:hover {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
+.imgUpload input {
+  cursor: pointer;
+}
+
+.imgChanger {
+  display: none;
+}
+
+tr .row {
+  width: 100%;
+}
+
+.clientFormSelect {
+  top: 50%;
+}
+
+.categoryDisp {
+  margin-bottom: 1rem;
+}
+
+.formLabel {
+  text-align: end;
+  margin: auto 0;
+  display: inline;
+}
+
 .addBtnContainer {
   margin: 0 15px;
   padding: 0;

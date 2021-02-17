@@ -16,3 +16,11 @@
     width: 30rem;
   }
 }
+
+.product a {
+  color: black;
+}
+
+.product a:hover {
+  text-decoration: none;
+}

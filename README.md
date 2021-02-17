@@ -54,6 +54,7 @@ Technologies Used:
 11. to install redux-saga: npm install react-saga
 12. to install react-router-hash-link: npm install --save react-router-hash-link
 13. to install slider: npm install --save react-awesome-slider / npm install react-slick --save
+14. to install ckeditor:npm i ckeditor4-react *or* npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
 
 **When cloning this repository from github**
 
@@ -69,9 +70,11 @@ React-hooks:
 1. useState
 2. useEffect
 
-Redux-hooks:
-
-1.useSelector
+Saga:
+1.types
+2.action
+3.sagas
+4.helper
 
 Files:
 -Assets: Media such as images or videos

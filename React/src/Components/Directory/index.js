@@ -189,9 +189,7 @@ const Directory = ({}) => {
               return null;
 
             const configProduct = {
-              Prod_Image,
-              Prod_Name,
-              Prod_Price,
+              ...product,
             };
 
             return <Product {...configProduct} />;

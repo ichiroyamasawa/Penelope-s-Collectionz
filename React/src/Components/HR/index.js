@@ -4,7 +4,7 @@ import "./styles.css";
 
 const HR = () => {
   return (
-    <div>
+    <div className="hr">
       <img src={hr} />
     </div>
   );

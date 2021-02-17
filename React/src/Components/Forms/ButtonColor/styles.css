@@ -1,0 +1,34 @@
+.buttonColor {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  padding: 1rem 5;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.buttonColor:hover,
+.buttonColor:active {
+  filter: brightness(90%);
+}
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.colorDisp {
+  width: 50px;
+  height: 50px;
+  border: 1px dashed black;
+  border-radius: 1px;
+}
+
+.buttonColor input[type="radio"] + label {
+  transition: 500ms all;
+}
+
+.buttonColor input[type="radio"]:checked + label {
+  transform: rotateZ(-10deg) rotateX(10deg);
+  box-shadow: 0 0 5px 1px #8f4061;
+}

@@ -1,0 +1,7 @@
+.hr {
+  position: relative;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 30px auto;
+}

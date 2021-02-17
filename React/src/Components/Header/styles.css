@@ -29,14 +29,14 @@ img {
   right: 2rem;
 }
 
-ul,
-li {
+.callToActions ul,
+.callToActions li {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-li {
+.callToActions li {
   list-style-type: none;
   display: inline-block;
   padding: 15px 10px;

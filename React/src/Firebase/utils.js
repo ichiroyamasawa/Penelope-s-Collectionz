@@ -2,8 +2,12 @@ import firebase from "firebase/app"; //firebase utilities
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
-
+import "firebase-admin";
 import { firebaseConfig } from "./config";
+
+// Initialize the default app
+export const admin = require("firebase-admin");
+var app = admin.initializeApp();
 
 firebase.initializeApp(firebaseConfig);
 

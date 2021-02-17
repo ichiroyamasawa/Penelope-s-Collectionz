@@ -29,3 +29,13 @@ export const editProductStart = (products) => ({
   type: productsTypes.EDIT_PRODUCT_START,
   payload: products,
 });
+
+export const fetchProductStart = (Prod_Code) => ({
+  type: productsTypes.FETCH_PRODUCT_START,
+  payload: Prod_Code,
+});
+
+export const setProduct = (product) => ({
+  type: productsTypes.SET_PRODUCT,
+  payload: product,
+});

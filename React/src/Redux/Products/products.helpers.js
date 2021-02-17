@@ -112,3 +112,21 @@ export const handleEditProduct = (products) => {
       });
   });
 };
+
+export const handleFetchProduct = (Prod_Code) => {
+  return new Promise((resolve, reject) => {
+    console.log(Prod_Code, 1);
+    firestore
+      .collection("products")
+      .doc(Prod_Code)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists) {
+          resolve(snapshot.data());
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

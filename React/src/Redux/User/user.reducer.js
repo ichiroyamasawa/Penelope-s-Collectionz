@@ -26,6 +26,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         emailVerificationSuccess: action.payload,
       };
+    case userTypes.FETCH_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
     case userTypes.USER_ERROR:
       return {
         ...state,

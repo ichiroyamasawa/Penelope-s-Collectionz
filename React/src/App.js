@@ -28,6 +28,7 @@ import Client from "./Pages/Client";
 import Admin from "./Pages/Admin";
 import AboutUs from "./Pages/AboutUs";
 import ContactUs from "./Pages/ContactUs";
+import ProductOrder from "./Pages/ProductOrder";
 
 //Components
 import { ClientToolbar, AdminToolbar } from "./Components/Toolbar";
@@ -62,6 +63,15 @@ const App = (props) => {
             </HomepageLayout>
           )}
         />
+        <Route
+          path="/product/:Prod_Code"
+          render={() => (
+            <HomepageLayout>
+              <ProductOrder />
+            </HomepageLayout>
+          )}
+        />
+
         <Route
           exact
           path="/registration"
@@ -140,7 +150,7 @@ const App = (props) => {
             </WithClientAuth>
           )}
         />
-        <Route
+        {/* <Route
           exact
           path="/client/:filterType/:sorterType"
           render={() => (
@@ -150,7 +160,7 @@ const App = (props) => {
               </AdminClientLayout>
             </WithClientAuth>
           )}
-        />
+        /> */}
         <Route
           exact
           path="/admin"

@@ -20,6 +20,8 @@ import FormSelect from "./../../Components/Forms/FormSelect";
 import { PaginationNext } from "./../../Components/Pagination";
 
 import { storage } from "./../../Firebase/utils";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 // Media Imports
 import ImagePlaceholder from "./../../Assets/ImagePlaceholder.png";
@@ -495,16 +497,14 @@ const Client = (props) => {
               handleChange={(e) => setProd_Price(e.target.value)}
             />
             <p>Product Description:</p>
-            <FormInput
-              as="textarea"
-              type="text"
-              Label="Description"
-              rows="3"
-              placeholder="Type the product description here..."
-              name="Prod_Description"
-              value={Prod_Description}
-              handleChange={(e) => setProd_Description(e.target.value)}
+            <CKEditor
+              editor={ClassicEditor}
+              onChange={(event, editor) => {
+                setProd_Description(editor.getData());
+                console.log({ event, editor, data });
+              }}
             />
+            <br />
             <div className="modalButtons">
               <div className="addBtnContainer">
                 <BtnSec onClick={handleClose}>Cancel</BtnSec>

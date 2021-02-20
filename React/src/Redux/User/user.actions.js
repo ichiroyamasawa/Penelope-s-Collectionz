@@ -59,12 +59,16 @@ export const googleSignInStart = () => ({
   type: userTypes.GOOGLE_SIGN_IN_START,
 });
 
-export const fetchUsers = (userPayload) => ({
-  type: userTypes.FETCH_USERS,
-  payload: userPayload,
+export const fetchUsersStart = () => ({
+  type: userTypes.FETCH_USERS_START,
 });
 
 export const setUsers = (users) => ({
   type: userTypes.SET_USERS,
   payload: users,
+});
+
+export const deleteUserStart = (UserID) => ({
+  type: userTypes.DELETE_USER_START,
+  payload: UserID,
 });

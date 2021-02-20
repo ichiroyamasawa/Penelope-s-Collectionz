@@ -19,38 +19,45 @@ export const handleResetPasswordAPI = (email) => {
   });
 };
 
-export const handleFetchUsers = ({
-  startAfterDoc,
-  persistUsers = [], //infinite Scroll
-  //startBeforeDoc,
-}) => {
-  return new Promise((resolve, reject) => {
-    const pageSize = 5;
-    let ref = firestore
-      .collection("users")
-      .limit(pageSize)
-      .orderBy("createdDate", "desc");
-
-    if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
-
-    ref
-      .get()
-      .then((snapshot) => {
-        const totalCount = snapshot.size;
-        const data = [
-          ...persistUsers, //infinite Scroll
-          ...snapshot.docs.map((doc) => {
+export const handleFetchUsers = () =>
+  //   {
+  //   // startAfterDoc,
+  //   persistUsers = [], //infinite Scroll
+  //   //startBeforeDoc,
+  // }
+  {
+    return new Promise((resolve, reject) => {
+      // const pageSize = 5;
+      console.log("helloooo", 7);
+      // let ref =
+      firestore
+        .collection("users")
+        .get()
+        .then((snapshot) => {
+          const usersArray = snapshot.docs.map((doc) => {
             return {
               ...doc.data(),
               UserID: doc.id,
             };
-          }),
-        ];
-        resolve({
-          data,
-          queryDoc: snapshot.docs[totalCount - 1],
-          isLastPage: totalCount < pageSize,
+          });
+          resolve(usersArray);
+        })
+        .catch((err) => {
+          reject(err);
         });
+    });
+  };
+
+export const handleDeleteUser = (UserID) => {
+  console.log(UserID, 1);
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(UserID)
+      .delete()
+      .then(() => {
+        console.log(UserID, 2);
+        resolve();
       })
       .catch((err) => {
         reject(err);

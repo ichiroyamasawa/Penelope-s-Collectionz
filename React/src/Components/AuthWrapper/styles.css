@@ -78,3 +78,16 @@ button {
 .alert {
   margin-top: 2rem;
 }
+
+.authWrapper ul,
+.authWrapper li {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.authWrapper li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 15px 10px;
+}

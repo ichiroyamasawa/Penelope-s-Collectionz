@@ -29,3 +29,8 @@
   font-weight: 700;
   border-radius: 15px;
 }
+
+.userDetails {
+  font-size: 1.6rem !important;
+  font-weight: 700;
+}

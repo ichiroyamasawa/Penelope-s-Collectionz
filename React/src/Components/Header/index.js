@@ -109,7 +109,11 @@ const Header = (props) => {
                       <Overlay desc="Click me to verify your account!">
                         <li>
                           <Nav.Item>
-                            <BtnIcons type="submit" onClick={onVerification}>
+                            <BtnIcons
+                              className="caution shadow-none"
+                              type="submit"
+                              onClick={onVerification}
+                            >
                               <i class="fas fa-exclamation-triangle"></i>
                             </BtnIcons>
                           </Nav.Item>

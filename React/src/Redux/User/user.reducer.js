@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   resetPasswordSuccess: false,
   emailVerificationSuccess: false,
   userErr: [],
+  users: [],
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -26,7 +27,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         emailVerificationSuccess: action.payload,
       };
-    case userTypes.FETCH_USERS:
+    case userTypes.SET_USERS:
       return {
         ...state,
         users: action.payload,

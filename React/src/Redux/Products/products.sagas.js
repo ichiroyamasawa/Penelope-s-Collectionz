@@ -61,6 +61,7 @@ export function* onFetchProductsStart() {
 
 export function* deleteProduct({ payload }) {
   try {
+    console.log("deleting");
     yield handleDeleteProduct(payload);
     yield put(fetchProductsStart());
   } catch (err) {

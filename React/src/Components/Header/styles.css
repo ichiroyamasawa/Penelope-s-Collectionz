@@ -81,6 +81,27 @@ img {
   color: #8f4061;
 }
 
+.caution {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: bold;
+  padding: 0;
+  text-transform: uppercase;
+  color: #ffc104 !important;
+  background-color: #ffffff00 !important;
+  border-color: #ffffff00 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.caution:hover,
+.caution:active,
+.caution:focus {
+  color: #cf9c03 !important;
+  background-color: #ffffff00 !important;
+  border-color: #ffffff00 !important;
+  box-shadow: #ffffff00;
+}
+
 @media (max-width: 767px) {
   .xs-only-text-left {
     text-align: left !important;

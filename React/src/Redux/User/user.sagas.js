@@ -1,4 +1,4 @@
-import { takeLatest, call, all, put } from "redux-saga/effects";
+import { takeLatest, call, all, put, take } from "redux-saga/effects";
 import {
   auth,
   handleUserProfile,
@@ -13,8 +13,14 @@ import {
   emailVerificationSuccess,
   userError,
   setUsers,
+  fetchUsersStart,
+  deleteUserStart,
 } from "./user.actions";
-import { handleResetPasswordAPI, handleFetchUsers } from "./user.helpers";
+import {
+  handleResetPasswordAPI,
+  handleFetchUsers,
+  handleDeleteUser,
+} from "./user.helpers";
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
@@ -153,9 +159,8 @@ export function* onGoogleSignInStart() {
   yield takeLatest(userTypes.GOOGLE_SIGN_IN_START, googleSignIn);
 }
 
-export function* onFetchUsers({ payload }) {
+export function* fetchUsers({ payload }) {
   try {
-    console.log("fetch users");
     const users = yield handleFetchUsers(payload);
     yield put(setUsers(users));
   } catch (err) {
@@ -164,7 +169,22 @@ export function* onFetchUsers({ payload }) {
 }
 
 export function* onFetchUsersStart() {
-  yield takeLatest(userTypes.FETCH_USERS, onFetchUsers);
+  yield takeLatest(userTypes.FETCH_USERS_START, fetchUsers);
+}
+
+export function* deleteUser({ payload }) {
+  try {
+    console.log("holla");
+    yield handleDeleteUser(payload);
+    yield put(fetchUsersStart());
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* onDeleteUserStart() {
+  yield takeLatest(userTypes.DELETE_USER_START, deleteUser);
+  console.log("hi");
 }
 
 export default function* userSagas() {
@@ -177,5 +197,6 @@ export default function* userSagas() {
     call(onGoogleSignInStart),
     call(onEmailVerificationStart),
     call(onFetchUsersStart),
+    call(onDeleteUserStart),
   ]);
 }

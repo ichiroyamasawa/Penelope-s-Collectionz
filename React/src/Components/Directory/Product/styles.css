@@ -1,6 +1,12 @@
 .productDetails {
   text-align: center;
-  font-size: 1.3rem;
+  margin: auto 0;
+}
+
+.productPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8f4061;
 }
 
 .product {

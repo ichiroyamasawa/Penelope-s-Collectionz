@@ -2,6 +2,10 @@
   margin-bottom: 30px;
 }
 
+.bestSellerImgWrapper {
+  margin: 0 10px;
+}
+
 .bestSellerImg {
   border-radius: 10px;
 }

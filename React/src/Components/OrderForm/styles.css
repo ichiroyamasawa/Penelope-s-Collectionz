@@ -6,7 +6,8 @@
 .productName {
   font-family: "Sacramento", cursive;
   color: #8f4061;
-  font-size: 6rem;
+  font-size: 4rem;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 2.5rem;
 }
@@ -123,6 +124,18 @@
   background-color: #8f4061 !important;
   border: none;
   box-shadow: none !important;
+}
+
+.modalBtns {
+  width: 75%;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.addToCartImg {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 638px) {

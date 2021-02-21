@@ -54,7 +54,8 @@ Technologies Used:
 11. to install redux-saga: npm install react-saga
 12. to install react-router-hash-link: npm install --save react-router-hash-link
 13. to install slider: npm install --save react-awesome-slider / npm install react-slick --save
-14. to install ckeditor:npm i ckeditor4-react *or* npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
+14. to install ckeditor:npm i ckeditor4-react _or_ npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
+15. to install fit-text: npm install --save use-fit-text
 
 **When cloning this repository from github**
 

@@ -2,6 +2,10 @@
   margin-bottom: 30px;
 }
 
+.hotDealsImgWrapper {
+  margin: 0 10px;
+}
+
 .hotDealsImg {
   border-radius: 10px;
 }

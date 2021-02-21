@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductStart,
   setProduct,
 } from "./../../Redux/Products/products.actions";
+import { addProduct } from "./../../Redux/Cart/cart.actions";
 import "./styles.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Container, Form, Button } from "react-bootstrap";
+import { Row, Col, Container, Form, Button, Modal } from "react-bootstrap";
 import ButtonColor from "./../Forms/ButtonColor";
 import HR from "./../HR";
 
+import addToCartGIF from "./../../Assets/addToCart.gif";
+
 const mapState = (state) => ({
   product: state.productsData.product,
+  cart: state.cartData.cart,
 });
 
 const OrderForm = ({}) => {
@@ -30,27 +34,31 @@ const OrderForm = ({}) => {
     Prod_Description,
   } = product;
 
-  const [counter, setCounter] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const [total, setTotal] = useState(0);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const add = () => {
-    setCounter(counter + 1);
+    setQuantity(quantity + 1);
   };
 
   const sub = () => {
-    setCounter(counter - 1);
-    if (counter <= 0) {
-      setCounter(0);
+    setQuantity(quantity - 1);
+    if (quantity <= 0) {
+      setQuantity(0);
     }
   };
 
   useEffect(() => {
     if (Prod_Price) {
-      setTotal((Prod_Price * counter).toFixed(2));
+      setTotal(Number(Prod_Price * quantity));
     }
 
     console.log(total, 1);
-  }, [counter]);
+  }, [quantity]);
 
   useEffect(() => {
     dispatch(fetchProductStart(Prod_Code));
@@ -62,6 +70,16 @@ const OrderForm = ({}) => {
 
   const configAddToCartBtn = {
     type: "button",
+  };
+
+  const configBuyNowBtn = {
+    type: "button",
+  };
+
+  const handleAddToCartBtn = (product) => {
+    if (!product) return;
+    handleShow();
+    dispatch(addProduct(product));
   };
 
   return (
@@ -137,7 +155,7 @@ const OrderForm = ({}) => {
                           </Button>
                         </Col>
                         <Col>
-                          <h2 class="counterNum">{counter}</h2>
+                          <h2 class="counterNum">{quantity}</h2>
                         </Col>
                         <Col>
                           <Button onClick={add} className="addBtn shadow-none">
@@ -152,13 +170,13 @@ const OrderForm = ({}) => {
               <Row>
                 <Col>
                   <div className="productTotalPrice">
-                    TOTAL: &#8369; {total}
+                    TOTAL: &#8369; {total.toFixed(2)}
                   </div>
                 </Col>
               </Row>
               <Row className="text-center">
                 <Col>
-                  <Button className="orderBtns buyBtn">
+                  <Button className="orderBtns buyBtn" {...configBuyNowBtn}>
                     {" "}
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy
                     Now
@@ -168,9 +186,13 @@ const OrderForm = ({}) => {
                   <Button
                     className="orderBtns addToBtn"
                     {...configAddToCartBtn}
+                    onClick={() =>
+                      handleAddToCartBtn({ product, quantity, total })
+                    }
                   >
                     {" "}
-                    <i class=" fas fa-shopping-cart    "></i> Add to Cart
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to
+                    Cart
                   </Button>
                 </Col>
               </Row>
@@ -188,6 +210,46 @@ const OrderForm = ({}) => {
             </div>
           </Col>
         </Row>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>
+              Yay! {Prod_Name} was successfully added to your cart!
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img src={addToCartGIF} />
+          </Modal.Body>
+          <Modal.Body>
+            <Row className="text-center">
+              <Col>
+                <Link to="/">
+                  <Button className="buyBtn modalBtns" {...configBuyNowBtn}>
+                    Continue Shopping
+                  </Button>
+                </Link>
+              </Col>
+              <Col>
+                <Button
+                  className=" addToBtn modalBtns"
+                  {...configAddToCartBtn}
+                  onClick={() =>
+                    handleAddToCartBtn({ product, quantity, total })
+                  }
+                >
+                  {" "}
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> View
+                  your cart{" "}
+                </Button>
+              </Col>
+            </Row>
+          </Modal.Body>
+        </Modal>
       </Container>
     </div>
   );

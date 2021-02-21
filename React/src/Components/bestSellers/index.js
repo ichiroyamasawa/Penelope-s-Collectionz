@@ -35,34 +35,34 @@ const BestSellers = () => {
       responsive={responsive}
       className="bestSeller"
     >
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
-      <div>
+      <div className="bestSellerImgWrapper">
         <img className="bestSellerImg" src={prod1} />
       </div>
     </Carousel>

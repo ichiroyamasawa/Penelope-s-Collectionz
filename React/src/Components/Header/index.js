@@ -12,6 +12,8 @@ import {
   resetUserState,
 } from "./../../Redux/User/user.actions";
 
+import { selectCartItemsCount } from "./../../Redux/Cart/cart.selectors";
+
 import { Link, useHistory } from "react-router-dom";
 
 import Overlay from "./../Overlay";
@@ -22,7 +24,7 @@ import {
   Row,
   Col,
   OverlayTrigger,
-  Tooltip,
+  Popover,
   Nav,
   Navbar,
   NavDropdown,
@@ -31,8 +33,9 @@ import {
 // Media Imports
 import Logo from "./../../Assets/PC-logo1.png";
 
-const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapState = (state) => ({
+  currentUser: state.user.currentUser,
+  totalNumCartItems: selectCartItemsCount(state),
 });
 
 const Header = (props) => {
@@ -42,7 +45,7 @@ const Header = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(mapState);
+  const { currentUser, totalNumCartItems } = useSelector(mapState);
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -157,8 +160,20 @@ const Header = (props) => {
                       </Modal>
                     </>
                   )}
-                  <Overlay desc="Chat with Penelope's Collectionz!">
-                    <li>
+
+                  <li>
+                    <OverlayTrigger
+                      trigger="hover"
+                      placement="bottom"
+                      overlay={
+                        <Popover>
+                          <Popover.Title as="h3">Chat with Us!</Popover.Title>
+                          <Popover.Content>
+                            Click here and let's talk about your inquiries!
+                          </Popover.Content>
+                        </Popover>
+                      }
+                    >
                       <Nav.Item>
                         <Link to="/">
                           <BtnIcons type="submit">
@@ -166,24 +181,49 @@ const Header = (props) => {
                           </BtnIcons>
                         </Link>
                       </Nav.Item>
-                    </li>
-                  </Overlay>
-                  <Overlay desc="My Cart">
-                    <li>
+                    </OverlayTrigger>
+                  </li>
+
+                  <li>
+                    <OverlayTrigger
+                      trigger="hover"
+                      placement="bottom"
+                      overlay={
+                        <Popover>
+                          <Popover.Title as="h3">My Cart</Popover.Title>
+                          <Popover.Content>
+                            Your cart has{" "}
+                            <strong>{totalNumCartItems} items</strong>!
+                          </Popover.Content>
+                        </Popover>
+                      }
+                    >
                       <Nav.Item>
                         <Link to="/">
                           <BtnIcons type="submit">
                             <i
-                              class="fa fa-shopping-bag"
+                              class="fa fa-shopping-cart"
                               aria-hidden="true"
                             ></i>
                           </BtnIcons>
                         </Link>
                       </Nav.Item>
-                    </li>
-                  </Overlay>
-                  <Overlay desc="My Profile">
-                    <li>
+                    </OverlayTrigger>
+                  </li>
+
+                  <li>
+                    <OverlayTrigger
+                      trigger="hover"
+                      placement="bottom"
+                      overlay={
+                        <Popover>
+                          <Popover.Title as="h3">My Profile</Popover.Title>
+                          <Popover.Content>
+                            Click here to customize your profile!
+                          </Popover.Content>
+                        </Popover>
+                      }
+                    >
                       <Nav.Item>
                         <Link to="/dashboard">
                           <BtnIcons type="submit">
@@ -191,8 +231,8 @@ const Header = (props) => {
                           </BtnIcons>
                         </Link>
                       </Nav.Item>
-                    </li>
-                  </Overlay>
+                    </OverlayTrigger>
+                  </li>
                   <li>
                     <Nav.Item>
                       <Link to="/">

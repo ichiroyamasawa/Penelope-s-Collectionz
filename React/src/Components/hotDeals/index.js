@@ -35,13 +35,13 @@ const HotDeals = () => {
       responsive={responsive}
       className="hotDeals"
     >
-      <div>
+      <div className="hotDealsImgWrapper">
         <img className="hotDealsImg" src={promo1} />
       </div>
-      <div>
+      <div className="hotDealsImgWrapper">
         <img className="hotDealsImg" src={promo2} />
       </div>
-      <div>
+      <div className="hotDealsImgWrapper">
         <img className="hotDealsImg" src={promo3} />
       </div>
     </Carousel>

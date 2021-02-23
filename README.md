@@ -182,7 +182,7 @@ Others:
 	- Validating Email Address
 				- Sends an email to the user's email address to verify their account
 				- A Caution button is displayed in the header if the user is not verified yet but logged in
-				- Allows the users to:
+				- Allows the users to: 
 					- Order a product
 					- Chat with the owners for inquiries
 					- Edit Profile

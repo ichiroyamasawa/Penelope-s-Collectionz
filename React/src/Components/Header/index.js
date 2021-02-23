@@ -109,8 +109,24 @@ const Header = (props) => {
                 <ul>
                   {!currentUser.emailVerified && (
                     <>
-                      <Overlay desc="Click me to verify your account!">
-                        <li>
+                      <li>
+                        <OverlayTrigger
+                          trigger={["hover", "focus"]}
+                          placement="bottom"
+                          overlay={
+                            <Popover>
+                              <Popover.Title as="h3">
+                                Verify your account now!
+                              </Popover.Title>
+                              <Popover.Content>
+                                Verifying your email allows you to{" "}
+                                <strong>chat with us</strong>,{" "}
+                                <strong>order your desired products</strong>,{" "}
+                                and <strong>manage your profile.</strong>
+                              </Popover.Content>
+                            </Popover>
+                          }
+                        >
                           <Nav.Item>
                             <BtnIcons
                               className="caution shadow-none"
@@ -120,8 +136,9 @@ const Header = (props) => {
                               <i class="fas fa-exclamation-triangle"></i>
                             </BtnIcons>
                           </Nav.Item>
-                        </li>
-                      </Overlay>
+                        </OverlayTrigger>
+                      </li>
+
                       <Modal
                         show={show}
                         onHide={handleClose}
@@ -163,7 +180,7 @@ const Header = (props) => {
 
                   <li>
                     <OverlayTrigger
-                      trigger="hover"
+                      trigger={["hover", "focus"]}
                       placement="bottom"
                       overlay={
                         <Popover>
@@ -186,7 +203,7 @@ const Header = (props) => {
 
                   <li>
                     <OverlayTrigger
-                      trigger="hover"
+                      trigger={["hover", "focus"]}
                       placement="bottom"
                       overlay={
                         <Popover>
@@ -213,7 +230,7 @@ const Header = (props) => {
 
                   <li>
                     <OverlayTrigger
-                      trigger="hover"
+                      trigger={["hover", "focus"]}
                       placement="bottom"
                       overlay={
                         <Popover>

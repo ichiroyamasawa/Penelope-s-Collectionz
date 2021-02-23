@@ -105,12 +105,12 @@ const SignIn = (props) => {
                   Forgot Password?
                 </Link>
                 <Row className="buttons">
-                  <Col>
+                  {/* <Col>
                     <BtnCoral onClick={handleGoogleSignIn}>
                       <i className="fa fa-google" aria-hidden="true"></i> Google
                       Sign In
                     </BtnCoral>
-                  </Col>
+                  </Col> */}
                   <Col>
                     <BtnCoral>LOGIN</BtnCoral>
                   </Col>

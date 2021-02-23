@@ -14,8 +14,11 @@ import ButtonColor from "./../Forms/ButtonColor";
 import HR from "./../HR";
 
 import addToCartGIF from "./../../Assets/addToCart.gif";
+import BtnPink from "../Forms/ButtonPink";
+import BtnCoral from "../Forms/ButtonCoral";
 
 const mapState = (state) => ({
+  currentUser: state.user.currentUser,
   product: state.productsData.product,
   cart: state.cartData.cart,
 });
@@ -23,7 +26,7 @@ const mapState = (state) => ({
 const OrderForm = ({}) => {
   const dispatch = useDispatch();
   const { Prod_Code } = useParams();
-  const { product } = useSelector(mapState);
+  const { product, currentUser } = useSelector(mapState);
 
   const {
     Prod_Name,
@@ -37,9 +40,18 @@ const OrderForm = ({}) => {
   const [quantity, setQuantity] = useState(0);
   const [total, setTotal] = useState(0);
   const [show, setShow] = useState(false);
+  const [showEmpty, setShowEmpty] = useState(false);
+  const [showConstraint, setShowConstraint] = useState(true);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [btnDisable, setBtnDisable] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleCloseEmpty = () => setShowEmpty(false);
+  const handleShowEmpty = () => setShowEmpty(true);
+  const handleCloseConstraint = () => setShowConstraint(false);
+  const handleShowConstraint = () => setShowConstraint(true);
 
   const add = () => {
     setQuantity(quantity + 1);
@@ -62,6 +74,9 @@ const OrderForm = ({}) => {
 
   useEffect(() => {
     dispatch(fetchProductStart(Prod_Code));
+    if (!currentUser || !currentUser.emailVerified) {
+      setBtnDisable(true);
+    }
 
     return () => {
       dispatch(setProduct({}));
@@ -105,41 +120,46 @@ const OrderForm = ({}) => {
                   <div className="productLabels">Color:</div>
                 </Col>
                 {/* map color */}
-                <Col md="auto">
-                  <ButtonColor name="color" id="{Prod_Color}" color="red" />
-                </Col>
-                <Col md="auto">
-                  <ButtonColor
-                    name="color"
-                    id={Prod_Color}
-                    color={Prod_Color}
-                  />
-                </Col>
+                {Prod_Color &&
+                  Prod_Color.map((colorVal, index) => {
+                    const { color } = colorVal;
+                    return (
+                      <Col md="auto" key={index}>
+                        <ButtonColor
+                          name="color"
+                          btnColor={color}
+                          id={color}
+                          handleChange={() => setSelectedColor(color)}
+                        />
+                      </Col>
+                    );
+                  })}
               </Row>
               <Row className="align-items-center">
                 <Col md="auto">
                   <div className="productLabels">Size:</div>
                 </Col>
+
                 {/* map size */}
-                <Col md="auto">
-                  <Form.Check
-                    className="productSize"
-                    style={{ fontSize: 25 }}
-                    inline
-                    type="radio"
-                    label={Prod_Size}
-                    name="productSizes"
-                    id={Prod_Size}
-                  />
-                  <Form.Check
-                    style={{ fontSize: 25 }}
-                    inline
-                    type="radio"
-                    label="Size 2"
-                    name="productSizes"
-                    id="Size 2"
-                  />
-                </Col>
+
+                {Prod_Size &&
+                  Prod_Size.map((sizeVal, index) => {
+                    const { size } = sizeVal;
+                    return (
+                      <Col md="auto" key={index}>
+                        <Form.Check
+                          className="productSize"
+                          style={{ fontSize: 20 }}
+                          inline
+                          type="radio"
+                          label={size}
+                          name="size"
+                          id={size}
+                          onChange={() => setSelectedSize(size)}
+                        />
+                      </Col>
+                    );
+                  })}
               </Row>
               <Row className="align-items-center">
                 <Col md="auto">
@@ -176,7 +196,11 @@ const OrderForm = ({}) => {
               </Row>
               <Row className="text-center">
                 <Col>
-                  <Button className="orderBtns buyBtn" {...configBuyNowBtn}>
+                  <Button
+                    className="orderBtns buyBtn"
+                    disabled={btnDisable}
+                    {...configBuyNowBtn}
+                  >
                     {" "}
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy
                     Now
@@ -186,9 +210,26 @@ const OrderForm = ({}) => {
                   <Button
                     className="orderBtns addToBtn"
                     {...configAddToCartBtn}
-                    onClick={() =>
-                      handleAddToCartBtn({ product, quantity, total })
-                    }
+                    disabled={btnDisable}
+                    onClick={() => {
+                      if (
+                        // currentUser &&
+                        // currentUser.emailVerified &&
+                        selectedColor !== "" &&
+                        selectedSize !== "" &&
+                        quantity !== 0
+                      ) {
+                        handleAddToCartBtn({
+                          product,
+                          quantity,
+                          total,
+                          selectedColor,
+                          selectedSize,
+                        });
+                      } else {
+                        handleShowEmpty();
+                      }
+                    }}
                   >
                     {" "}
                     <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to
@@ -235,17 +276,98 @@ const OrderForm = ({}) => {
                 </Link>
               </Col>
               <Col>
-                <Button
-                  className=" addToBtn modalBtns"
-                  {...configAddToCartBtn}
-                  onClick={() =>
-                    handleAddToCartBtn({ product, quantity, total })
-                  }
-                >
+                <Button className="addToBtn modalBtns">
                   {" "}
                   <i class="fa fa-shopping-cart" aria-hidden="true"></i> View
                   your cart{" "}
                 </Button>
+              </Col>
+            </Row>
+          </Modal.Body>
+        </Modal>
+
+        {/* Order Restraints  */}
+        {currentUser ? (
+          <>
+            {!currentUser.emailVerified && (
+              <>
+                <Modal
+                  show={showConstraint}
+                  onHide={handleCloseConstraint}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Oops! Before you order...</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    {" "}
+                    Please make sure that you have your{" "}
+                    <strong>email verified</strong> first by clicking the
+                    caution icon {"("}
+                    <span className="cautionConstraints">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    {")"} in your header above.
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <BtnPink onClick={handleCloseConstraint}>Close</BtnPink>
+                  </Modal.Footer>
+                </Modal>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <Modal
+              show={showConstraint}
+              onHide={handleCloseConstraint}
+              backdrop="static"
+              keyboard={false}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>Oops! Before you order...</Modal.Title>
+              </Modal.Header>
+              <Modal.Body className="text-center">
+                {" "}
+                Please make sure that you are{" "}
+                <strong>registered and logged in</strong> first.
+              </Modal.Body>
+              <Modal.Body>
+                <Row className="text-center">
+                  <Col>
+                    <Link to="/registration">
+                      <Button className="buyBtn modalBtns"> Register</Button>
+                    </Link>
+                  </Col>
+                  <Col>
+                    <Link to="/login">
+                      <Button
+                        className="addToBtn modalBtns"
+                        {...configBuyNowBtn}
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                  </Col>
+                </Row>
+              </Modal.Body>
+            </Modal>
+          </>
+        )}
+        <Modal show={showEmpty} onHide={handleCloseEmpty}>
+          <Modal.Header closeButton>
+            <Modal.Title>Oops!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            It looks like you forgot to select your desired{" "}
+            <strong>Color</strong>, <strong>Size</strong>, and{" "}
+            <strong>Quantity</strong>
+          </Modal.Body>
+          <Modal.Body>
+            <Row className="text-center">
+              <Col>
+                <BtnPink onClick={handleCloseEmpty}>Close</BtnPink>
               </Col>
             </Row>
           </Modal.Body>

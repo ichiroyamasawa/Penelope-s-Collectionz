@@ -44,6 +44,7 @@
 .clientSearchFilters {
   vertical-align: center;
   margin: auto 0;
+  padding: 0;
 }
 
 .clientSearchFilters ul {
@@ -121,4 +122,8 @@ tr .row {
 
 .clientPagination {
   width: 100%;
+}
+
+.colorWrapper {
+  padding-bottom: 10px;
 }

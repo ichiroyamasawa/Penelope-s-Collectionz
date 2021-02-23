@@ -41,21 +41,20 @@
 .productTotalPrice {
   text-align: center;
   padding: 2rem 5px;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bolder;
   color: #8f4061 !important;
 }
 
 .colorsBtn {
-  padding: 0 3rem;
+  padding: 0 1rem;
 }
 
 .productSize {
-  margin: 0 2rem;
 }
 
 .counter {
-  width: 300px;
+  width: 200px;
 }
 
 .counterWrapper {
@@ -64,7 +63,7 @@
 
 .counterNum {
   text-align: center !important;
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
   color: #000 !important;
 }
@@ -72,11 +71,11 @@
 .subBtn,
 .addBtn {
   width: 100%;
-  height: 50px;
+  height: 40px;
+  margin-top: 0 !important;
   border: none;
-  margin: 0;
-  transition: all 0.4s;
-  font-size: 2rem;
+  transition: all 0.3s;
+  font-size: 1.3rem;
 }
 
 .subBtn,
@@ -89,9 +88,12 @@
   background-color: #8f4061 !important;
 }
 
-.subBtn:hover,
+.subBtn:hover {
+  background-color: #be5563 !important;
+}
+
 .addBtn:hover {
-  filter: brightness(90%);
+  background-color: #682b44 !important;
 }
 
 .addBtn:active,
@@ -118,12 +120,29 @@
   box-shadow: none !important;
   background-color: #e77b8a !important;
   border: none;
+  font-weight: 700;
+  transition: all 0.3s;
 }
 
 .addToBtn {
   background-color: #8f4061 !important;
   border: none;
   box-shadow: none !important;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.buyBtn:hover {
+  background-color: #be5563 !important;
+}
+
+.addToBtn:hover {
+  background-color: #682b44 !important;
+}
+
+.addToBtn:disabled,
+.buyBtn:disabled {
+  filter: brightness(50%);
 }
 
 .modalBtns {
@@ -136,6 +155,10 @@
   width: 50%;
   height: auto;
   margin: 0 auto;
+}
+
+.cautionConstraints {
+  color: #ffc104;
 }
 
 @media screen and (max-width: 638px) {

@@ -48,7 +48,7 @@ const PasswordRecovery = (props) => {
   };
 
   const configAuthWrapper = {
-    headline: "Password Recovery",
+    headline: "Reset Password",
   };
   return (
     <AuthWrapper {...configAuthWrapper}>

@@ -80,4 +80,44 @@ Saga:
 Files:
 -Assets: Media such as images or videos
 -Components: Components of website such as headers, , etc.
+-Layouts: Main layouts / structures of pages.
 -Pages: Pages like Homepage, ,etc.
+
+Features:
+Note: \* - not yet completed
+
+1. Login
+   Components
+   a. Login button
+   - Throws an error when an invalid email and password is submitted
+   - Redirects the user to the homepage / products page when logged in successfully.
+     b. Registration button
+     Components:
+     i. Input Fields
+     Throws an error when:
+     - a field is blank
+     - the names submitted contains numbers
+     - the contact number does not match the requested format
+     - the submitted email address exists already - the password is below 6 characters
+     - the password and the confirm password doesn't match
+       ii. Reset button - resets the page
+       iii. Signup button - redirects the user to the homepage/products page when the registration is complete
+       c. Forget Password link
+       i. Input Fields
+       Throws an error when - a field is blank - the submitted email is not registered yet / does not exist in the database.
+       ii. Submit button - sends an email to the submitted Email Address and then when the password has been reset
+2. View the Application
+   Components:
+   1. Products Page  
+      Components
+      a. Hamburger menu - floats in the upper left corner below the header - enables the user to navigate through the products page
+      b. What's New Section - Contains a large carousel (editable)\*
+      c. Best Sellers Section - displays top 5 products with highest sales count in a carousel*
+      d. Hot Deals Section - displays 3 promos / deals in a carousel (editable)* - this will be clickable redirecting the user to the product page of the selected item\*
+      e. Products Section - has an inifinite scroll pagination - has a category button - displays the latest products first - products are contained within a card and displays image, name, and price
+   2. About Us Page
+      - contains information about the business and the owners (editable)\*
+      - both owners has their own card which will be linked with their social media accounts
+   3. Contact Us Page\*
+      - contains contact information about the business and the owners (editable)\*
+      - has social media/ecommerce platform buttons which will redirect to the shop's facebook page, instagram account, and shopee account

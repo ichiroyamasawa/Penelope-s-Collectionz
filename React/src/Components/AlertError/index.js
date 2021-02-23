@@ -1,7 +1,7 @@
 import React from "react";
 //bootstrap imports
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Col, Row, Container, Form, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 const AlertError = ({ keyIndex, error }) => {
   return (

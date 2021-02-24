@@ -177,7 +177,7 @@ Note: \* - not yet completed
 					- Users may edit and update their information
 				b. Collecting Order Form
 				c. Collecting user information (admin)
-					- Displays users from which they can remove
+					- Displays users from which they can remove. Redirects to Firebase Authentication
 Others:
 	- Validating Email Address
 				- Sends an email to the user's email address to verify their account

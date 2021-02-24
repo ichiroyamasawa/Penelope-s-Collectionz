@@ -120,7 +120,7 @@ Note: \* - not yet completed
       iv. 	Hot Deals Section 
 				- displays 3 promos / deals in a carousel (editable)* 
 				- this will be clickable redirecting the user to the product page of the selected item\*
-      i. Products Section 
+      v. 	Products Section 
 				- has an inifinite scroll pagination 
 				- has a category button - displays the latest products first 
 				- products are contained within a card and displays image, name, and price

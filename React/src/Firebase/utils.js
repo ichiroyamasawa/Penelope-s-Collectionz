@@ -7,6 +7,8 @@ import { firebaseConfig } from "./config";
 
 // Initialize the default app
 export const admin = require("firebase-admin");
+var serviceAccount = require("./../serviceAccountKey.json");
+
 var app = admin.initializeApp();
 
 firebase.initializeApp(firebaseConfig);

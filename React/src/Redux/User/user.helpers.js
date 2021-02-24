@@ -64,3 +64,32 @@ export const handleDeleteUser = (UserID) => {
       });
   });
 };
+
+export const handleDeleteUserAdmin = (UserID) => {
+  return new Promise((resolve, reject) => {
+    admin
+      .auth()
+      .deleteUser(UserID)
+      .then(() => {
+        resolve();
+        console.log("Successfully deleted user");
+      })
+      .catch((error) => {
+        reject(error);
+        console.log("Error deleting user:", error);
+      });
+  });
+};
+
+// export const handleDeleteUserAuth = (UserID) => {
+//   return new Promise((resolve, reject) => {
+//     auth.createUserWithEmailAndPassword
+//       .delete()
+//       .then(function () {
+//         resolve();
+//       })
+//       .catch(function (error) {
+//         reject(error);
+//       });
+//   });
+// };

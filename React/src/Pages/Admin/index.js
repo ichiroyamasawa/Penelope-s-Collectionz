@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 import UserManager from "./../../Components/UserManager";
@@ -6,9 +6,6 @@ import {
   fetchUsersStart,
   deleteUserStart,
 } from "./../../Redux/User/user.actions";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Container } from "react-bootstrap";
 
 const mapState = ({ user }) => ({
   users: user.users,
@@ -53,9 +50,6 @@ const Admin = (props) => {
             contactNum={contactNo}
             email={email}
             // userRoles={userRoles}
-            handleClick={() => {
-              dispatch(deleteUserStart(UserID));
-            }}
           />
         );
       })}

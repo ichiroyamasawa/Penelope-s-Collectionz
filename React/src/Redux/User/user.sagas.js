@@ -1,5 +1,6 @@
 import { takeLatest, call, all, put, take } from "redux-saga/effects";
 import {
+  admin,
   auth,
   handleUserProfile,
   getCurrentUser,
@@ -20,6 +21,7 @@ import {
   handleResetPasswordAPI,
   handleFetchUsers,
   handleDeleteUser,
+  handleDeleteUserAdmin,
 } from "./user.helpers";
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
@@ -176,6 +178,7 @@ export function* deleteUser({ payload }) {
   try {
     console.log("holla");
     yield handleDeleteUser(payload);
+    //yield handleDeleteUserAdmin(payload);
     yield put(fetchUsersStart());
   } catch (err) {
     console.log(err);

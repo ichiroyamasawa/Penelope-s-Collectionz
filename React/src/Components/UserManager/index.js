@@ -79,8 +79,8 @@ const UserManager = ({
           </p>
           <br />
           For security reasons, you will be redirected to Firebase where you
-          have to sign in as an admin. Kindly delete the user above to complete
-          the user deletion.
+          have to sign in as an admin. While in the Firebase Authentication,
+          kindly delete the user mentioned above to complete the user deletion.
         </Modal.Body>
 
         {click ? (

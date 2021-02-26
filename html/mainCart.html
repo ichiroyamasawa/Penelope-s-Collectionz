@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Font - Poppins, Sacramento -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap" rel="stylesheet">  
+
+    <!-- FontAwesome - Icons -->
+    <script src="https://kit.fontawesome.com/21d7603b0d.js" crossorigin="anonymous"></script>
+    
+    <title>Penelope's Collectionz</title>
+    
+</head>
+
+<body>
+     <!-- Header -->
+     <header id="mainHeader" class="row">
+        <div class="col-md-4 col-sm-12 col-12 text-md-start">
+            <img class="pc-logo-1" src="/Images/pc-logo1.png" alt="Penelope's Collectionz">
+        </div>
+        <div id="mainNav" class="col-md-4 col-sm-6 col-6">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="aboutUs.html">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contactUs.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="mainNav" class="col-md-4 col-sm-6 col-6 text-end">
+            <a href="index.html"><button class="btn btn-primary btn-signup">Login</button></a>
+        </div>
+    </header>
+    
+    <main>
+        <div class = "container-fluid">
+            <div class = "col-md-12 cartBackground">
+                <h4 class="cart-Title">Your Cart</h4>   <!-- Header -->
+                <div class = "col-md-6 col-sm-4 scrollBackground">
+                    <div class = "scrollBar">
+                        <div class = "scrollInputs">
+                        <div class = "container">
+                           <div class = "row">
+                               <div class = "col-3 cartPicture-wrapper">
+                                <img class = "cartPicture" img src="/Images/Products/Sample1.jpg">
+                               </div>
+
+                               <div class = "col-9 cartText-wrapper">
+                                   <h1 class = "productName-cart">PRODUCT NAME</h1>
+                                   <!-- COLOR -->
+                                   <div class = "row">
+                                       <div class = "col-md-2">
+                                           <label for = "colorSelected" class = "col-md-6 selectedLabels" id = "color-ReceiptLabel">Color:</label>
+                                        </div>
+                                       <div class = "col-md-6 col-sm-1">
+                                           <input type="text" readonly class="col-md-6 form-control-plaintext selectedInputs" id="colorSelected" value="Black">
+                                       </div>            
+                                   </div>
+                                   <!-- PRICE -->
+                                   <div class = "row">
+                                    <div class = "col-md-2">
+                                        <label for = "priceSelected" class = "col-md-6 selectedLabels" id = "price-ReceiptLabel">Price:</label>
+                                     </div>
+                                    <div class = "col-md-6 col-sm-1">
+                                        <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="priceSelected" value="69.69">
+                                    </div>            
+                                   </div>
+                                   <!-- QUANTITY -->
+                                   <div class = "row">
+                                    <div class = "col-md-2">
+                                        <label for = "quantitySelected" class = "col-md-6 selectedLabels" id = "quantity-ReceiptLabel">Quantity:</label>
+                                     </div>
+                                    <div class = "col-md-6 col-sm-1">
+                                        <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="quantitySelected" value="3">
+                                    </div>            
+                                   </div>
+                                   <h2>------------------</h2>
+                                   <!-- TOTAL PRICE -->
+                                   <div class = "row">
+                                    <div class = "col-md-2">
+                                        <label for = "totalSelected" class = "col-md-6 selectedLabels" id = "total-ReceiptLabel">Total Price:</label>
+                                     </div>
+                                    <div class = "col-md-6 col-sm-1">
+                                        <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="totalSelected" value="669.669">
+                                    </div>            
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class = "row">
+                            <div class = "col-3 cartPicture-wrapper">
+                             <img class = "cartPicture" img src="/Images/Products/Sample2.jpg">
+                            </div>
+
+                            <div class = "col-9 cartText-wrapper">
+                                <h1 class = "productName-cart">PRODUCT NAME</h1>
+                                <!-- COLOR -->
+                                <div class = "row">
+                                    <div class = "col-md-2">
+                                        <label for = "colorSelected" class = "col-md-6 selectedLabels" id = "color-ReceiptLabel">Color:</label>
+                                     </div>
+                                    <div class = "col-md-6 col-sm-1">
+                                        <input type="text" readonly class="col-md-6 form-control-plaintext selectedInputs" id="colorSelected" value="Black">
+                                    </div>            
+                                </div>
+                                <!-- PRICE -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "priceSelected" class = "col-md-6 selectedLabels" id = "price-ReceiptLabel">Price:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="priceSelected" value="69.69">
+                                 </div>            
+                                </div>
+                                <!-- QUANTITY -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "quantitySelected" class = "col-md-6 selectedLabels" id = "quantity-ReceiptLabel">Quantity:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="quantitySelected" value="3">
+                                 </div>            
+                                </div>
+                                <h2>------------------</h2>
+                                <!-- TOTAL PRICE -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "totalSelected" class = "col-md-6 selectedLabels" id = "total-ReceiptLabel">Total Price:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="totalSelected" value="669.669">
+                                 </div>            
+                                </div>
+                            </div>
+                           </div>
+
+                           <div class = "row">
+                            <div class = "col-3 cartPicture-wrapper">
+                             <img class = "cartPicture" img src="/Images/Products/Sample3.jpg">
+                            </div>
+
+                            <div class = "col-9 cartText-wrapper">
+                                <h1 class = "productName-cart">PRODUCT NAME</h1>
+                                <!-- COLOR -->
+                                <div class = "row">
+                                    <div class = "col-md-2">
+                                        <label for = "colorSelected" class = "col-md-6 selectedLabels" id = "color-ReceiptLabel">Color:</label>
+                                     </div>
+                                    <div class = "col-md-6 col-sm-1">
+                                        <input type="text" readonly class="col-md-6 form-control-plaintext selectedInputs" id="colorSelected" value="Black">
+                                    </div>            
+                                </div>
+                                <!-- PRICE -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "priceSelected" class = "col-md-6 selectedLabels" id = "price-ReceiptLabel">Price:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="priceSelected" value="69.69">
+                                 </div>            
+                                </div>
+                                <!-- QUANTITY -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "quantitySelected" class = "col-md-6 selectedLabels" id = "quantity-ReceiptLabel">Quantity:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="quantitySelected" value="3">
+                                 </div>            
+                                </div>
+                                <h2>------------------</h2>
+                                <!-- TOTAL PRICE -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "totalSelected" class = "col-md-6 selectedLabels" id = "total-ReceiptLabel">Total Price:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="totalSelected" value="669.669">
+                                 </div>            
+                                </div>
+                            </div>
+                           </div>
+
+                           <div class = "row">
+                            <div class = "col-3 cartPicture-wrapper">
+                             <img class = "cartPicture" img src="/Images/Products/Sample4.jpg">
+                            </div>
+                            <div class = "col-9 cartText-wrapper">
+                                <h1 class = "productName-cart">PRODUCT NAME</h1>
+                                <!-- COLOR -->
+                                <div class = "row">
+                                    <div class = "col-md-2">
+                                        <label for = "colorSelected" class = "col-md-6 selectedLabels" id = "color-ReceiptLabel">Color:</label>
+                                     </div>
+                                    <div class = "col-md-6 col-sm-1">
+                                        <input type="text" readonly class="col-md-6 form-control-plaintext selectedInputs" id="colorSelected" value="Black">
+                                    </div>            
+                                </div>
+                                <!-- PRICE -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "priceSelected" class = "col-md-6 selectedLabels" id = "price-ReceiptLabel">Price:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="priceSelected" value="69.69">
+                                 </div>            
+                                </div>
+                                <!-- QUANTITY -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "quantitySelected" class = "col-md-6 selectedLabels" id = "quantity-ReceiptLabel">Quantity:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="quantitySelected" value="3">
+                                 </div>            
+                                </div>
+                                <h2>------------------</h2>
+                                <!-- TOTAL PRICE -->
+                                <div class = "row">
+                                 <div class = "col-md-2">
+                                     <label for = "totalSelected" class = "col-md-6 selectedLabels" id = "total-ReceiptLabel">Total Price:</label>
+                                  </div>
+                                 <div class = "col-md-6 col-sm-1">
+                                     <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="totalSelected" value="669.669">
+                                 </div>            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = "row">
+                         <div class = "col-3 cartPicture-wrapper">
+                          <img class = "cartPicture" img src="/Images/Products/Sample5.jpg">
+                         </div>
+
+                         <div class = "col-9 cartText-wrapper">
+                            <h1 class = "productName-cart">PRODUCT NAME</h1>
+                            <!-- COLOR -->
+                            <div class = "row">
+                                <div class = "col-md-2">
+                                    <label for = "colorSelected" class = "col-md-6 selectedLabels" id = "color-ReceiptLabel">Color:</label>
+                                 </div>
+                                <div class = "col-md-6 col-sm-1">
+                                    <input type="text" readonly class="col-md-6 form-control-plaintext selectedInputs" id="colorSelected" value="Black">
+                                </div>            
+                            </div>
+                            <!-- PRICE -->
+                            <div class = "row">
+                             <div class = "col-md-2">
+                                 <label for = "priceSelected" class = "col-md-6 selectedLabels" id = "price-ReceiptLabel">Price:</label>
+                              </div>
+                             <div class = "col-md-6 col-sm-1">
+                                 <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="priceSelected" value="69.69">
+                             </div>            
+                            </div>
+                            <!-- QUANTITY -->
+                            <div class = "row">
+                             <div class = "col-md-2">
+                                 <label for = "quantitySelected" class = "col-md-6 selectedLabels" id = "quantity-ReceiptLabel">Quantity:</label>
+                              </div>
+                             <div class = "col-md-6 col-sm-1">
+                                 <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="quantitySelected" value="3">
+                             </div>            
+                            </div>
+                            <h2>------------------</h2>
+                            <!-- TOTAL PRICE -->
+                            <div class = "row">
+                             <div class = "col-md-2">
+                                 <label for = "totalSelected" class = "col-md-6 selectedLabels" id = "total-ReceiptLabel">Total Price:</label>
+                              </div>
+                             <div class = "col-md-6 col-sm-1">
+                                 <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="totalSelected" value="669.669">
+                             </div>            
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class = "row">
+                         <div class = "col-3 cartPicture-wrapper">
+                          <img class = "cartPicture" img src="/Images/Products/Sample6.jpg">
+                         </div>
+
+                         <div class = "col-9 cartText-wrapper">
+                            <h1 class = "productName-cart">PRODUCT NAME</h1>
+                            <!-- COLOR -->
+                            <div class = "row">
+                                <div class = "col-md-2">
+                                    <label for = "colorSelected" class = "col-md-6 selectedLabels" id = "color-ReceiptLabel">Color:</label>
+                                 </div>
+                                <div class = "col-md-6 col-sm-1">
+                                    <input type="text" readonly class="col-md-6 form-control-plaintext selectedInputs" id="colorSelected" value="Black">
+                                </div>            
+                            </div>
+                            <!-- PRICE -->
+                            <div class = "row">
+                             <div class = "col-md-2">
+                                 <label for = "priceSelected" class = "col-md-6 selectedLabels" id = "price-ReceiptLabel">Price:</label>
+                              </div>
+                             <div class = "col-md-6 col-sm-1">
+                                 <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="priceSelected" value="69.69">
+                             </div>            
+                            </div>
+                            <!-- QUANTITY -->
+                            <div class = "row">
+                             <div class = "col-md-2">
+                                 <label for = "quantitySelected" class = "col-md-6 selectedLabels" id = "quantity-ReceiptLabel">Quantity:</label>
+                              </div>
+                             <div class = "col-md-6 col-sm-1">
+                                 <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="quantitySelected" value="3">
+                             </div>            
+                            </div>
+                            <h2>------------------</h2>
+                            <!-- TOTAL PRICE -->
+                            <div class = "row">
+                             <div class = "col-md-2">
+                                 <label for = "totalSelected" class = "col-md-6 selectedLabels" id = "total-ReceiptLabel">Total Price:</label>
+                              </div>
+                             <div class = "col-md-6 col-sm-1">
+                                 <input type="number" readonly class="col-md-6 form-control-plaintext selectedInputs" id="totalSelected" value="669.669">
+                             </div>            
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHECKOUT HTML -->
+                <div class  = "col-md-4 checkoutBackground">
+                    <div class = "container-fluid">
+                        <button type = "button" class = "btn btn-checkout" id = "btn-checkout-id">CHECKOUT</button>
+
+                    <!--FINAL QUANTITY -->
+                    <div class = "row">
+                        <div class = "col-md-8">
+                            <label for = "quantity-final-selected" class = "col-md-7 checkoutLabels" id = "quantity-final-checkout-label">No. of items ordered:</label>
+                         </div>
+                         <div class = "col-md-4">
+                            <input type="number" readonly class="col-md-6 form-control-plaintext selected-finalInputs" id="quantity-final-selected" value="3.69">
+                        </div>    
+                    </div>
+
+                     <!--TOTAL PRICE -->
+                    <div class = "row">
+                        <div class = "col-md-8">
+                            <label for = "total-final-selected" class = "col-md-7 checkoutLabels" id = "total-final-checkout-label">Total Price (No ship):</label>
+                         </div>
+                         <div class = "col-md-4">
+                            <input type="number" readonly class="col-md-6 form-control-plaintext selected-finalInputs" id="total-final-selected" value="3.69">
+                        </div>    
+                    </div>
+
+                     <!-- SHIPPING PRICE -->
+                    <div class = "row">
+                        <div class = "col-md-8">
+                            <label for = "shipping-final-selected" class = "col-md-7 checkoutLabels" id = "shipping-final-checkout-label">Shipping :</label>
+                         </div>
+                         <div class = "col-md-4">
+                            <input type="number" readonly class="col-md-6 form-control-plaintext selected-finalInputs" id="shipping-final-selected" value="3.69">
+                        </div>    
+                    </div>
+
+                     <!--FINAL PRICE -->
+                    <div class = "row">
+                        <div class = "col-md-8">
+                            <label for = "final-selected" class = "col-md-7 checkoutLabels" id = "final-checkout-label">Final Price:</label>
+                         </div>
+                         <div class = "col-md-4">
+                            <input type="number" readonly class="col-md-6 form-control-plaintext selected-finalInputs" id="final-selected" value="3.69">
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap - JS -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

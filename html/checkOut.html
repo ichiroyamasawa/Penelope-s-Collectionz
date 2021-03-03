@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <!-- Font - Poppins, Sacramento -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome - Icons -->
+    <script
+      src="https://kit.fontawesome.com/21d7603b0d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Penelope's Collectionz</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="mainHeader" class="row">
+      <div class="col-lg-4 col-sm-12 col-12 text-md-start">
+        <img
+          class="pc-logo-1"
+          src="/Images/pc-logo1.png"
+          alt="Penelope's Collectionz"
+        />
+      </div>
+      <div id="mainNav" class="col-lg-4 col-sm-6 col-6">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <button
+              class="navbar-toggler mt-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-center"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="aboutUs.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contactUs.html">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="mainNav" class="col-lg-4 col-sm-6 col-6 text-end">
+        <a href="index.html"
+          ><button class="btn btn-primary btn-signup">Login</button></a
+        >
+      </div>
+    </header>
+
+    <!-- CONTENTS -->
+    <div class="container-fluid">
+      <main>
+        <h4 class="manageUsers-Title" id="checkOut-title">Checkout</h4>
+        <!-- Header -->
+
+        <!-- FIRST ROW-->
+        <div class="row">
+          <!-- BILLING INFORMATION -->
+          <div class="col-lg-6">
+            <div class="first-row-checkout-bg">
+              <!-- HEADER -->
+              <div class="info-head">
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                <label for="#" class="info-header">Billing Information</label>
+              </div>
+              <div class="lower-info">
+                <div class="bill-info-input">
+                  <!-- FIRST NAME -->
+                  <div class="form-group reg-form">
+                    <label
+                      for="checkout-inputFN"
+                      class="checkout-labels"
+                      id="FN-label"
+                      >First Name:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-inputFN"
+                      placeholder="Stella"
+                    />
+                  </div>
+                </div>
+                <div class="bill-info-input">
+                  <!-- LAST NAME -->
+                  <div class="form-group reg-form">
+                    <label
+                      for="checkout-inputLN"
+                      class="checkout-labels"
+                      id="LN-label"
+                      >Last Name:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-inputLN"
+                      placeholder="Dela Cruz"
+                    />
+                  </div>
+                </div>
+                <div class="bill-info-input">
+                  <!-- CONTACT NUMBER -->
+                  <div class="form-group reg-form">
+                    <label
+                      for="checkout-inputCN"
+                      class="checkout-labels"
+                      id="CN-label"
+                      >Contact#:</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-inputCN"
+                      placeholder="09XX-XXX-XXXX"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="first-row-checkout-bg">
+              <!-- HEADER -->
+              <div class="info-head">
+                <i class="fa fa-credit-card fa-2x"></i>
+                <label class="info-header">Payment Method:</label>
+              </div>
+
+              <div class="photos-arrange">
+                <img
+                  src="/Images/PaymentMethods/bdo.png"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+
+                <img
+                  src="/Images/PaymentMethods/bpi.png"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+
+                <img
+                  src="/Images/PaymentMethods/cebuana.jpg"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+
+                <img
+                  src="/Images/PaymentMethods/gcash.png"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+
+                <img
+                  src="/Images/PaymentMethods/palawan.png"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+
+                <img
+                  src="/Images/PaymentMethods/paymaya.png"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+
+                <img
+                  src="/Images/PaymentMethods/securitybank.png"
+                  alt=""
+                  class="img-fluid payment-logos"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECOND ROW -->
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="first-row-checkout-bg">
+              <div class="info-head">
+                <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                <label for="#" class="info-header">Exact Billing Address</label>
+              </div>
+              <div class="content-info">
+                <div class="form-group">
+                  <div class="form-label">
+                    <label
+                      for="checkout-billing-address-1"
+                      class="checkout-labels"
+                      id="CN-label"
+                      >Unit/House Number:</label
+                    >
+                  </div>
+                  <div class="form-input">
+                    <input
+                      type="text"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-billing-address-1"
+                      placeholder="1234-A"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-label">
+                    <label
+                      for="checkout-billing-address-2"
+                      class="checkout-labels"
+                      id="CN-label"
+                      >Building, Street Name:</label
+                    >
+                  </div>
+                  <div class="form-input">
+                    <input
+                      type="text"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-billing-address-2"
+                      placeholder="Zamora St."
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-label">
+                    <label
+                      for="checkout-billing-address-brgy"
+                      class="checkout-labels"
+                      id="CN-label"
+                      >Barangay, District:</label
+                    >
+                  </div>
+                  <div class="form-input">
+                    <input
+                      type="text"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-billing-address-brgy"
+                      placeholder="Santa Ana"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-label">
+                    <label
+                      for="checkout-billing-address-city"
+                      class="checkout-labels"
+                      id="CN-label"
+                      >City:</label
+                    >
+                  </div>
+                  <div class="form-input">
+                    <input
+                      type="text"
+                      class="form-control form-control-lg checkout-inputBL"
+                      id="checkout-billing-address-city"
+                      placeholder="Manila"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 table-container">
+            <div class="first-row-checkout-bg">
+              <div class="info-head">
+                <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                <label class="info-header">Order Summary</label>
+              </div>
+              <div class="order-table">
+                <table class="table table-striped">
+                  <thead>
+                    <th scope="col">Item</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Qty.</th>
+                    <th scope="col">Subtotal</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">
+                        <img
+                          class="img-thumbnail table-img"
+                          src="../Images/hearts.png"
+                        />
+                      </th>
+                      <td>Xavi...</td>
+                      <td>PHP 300.00</td>
+                      <td>Blue</td>
+                      <td>Large</td>
+                      <td>3</td>
+                      <td>PHP 900.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 btn-container">
+            <button type="button" class="btn action-btn cancel-button">
+              <i class="fa fa-times"></i> Cancel
+            </button>
+          </div>
+          <div class="col-lg-4 btn-container">
+            <button type="button" class="btn action-btn confirm-button">
+              <i class="fa fa-check"></i> Confirm Order
+            </button>
+          </div>
+          <div class="col-lg-4">
+            <div class="first-row-checkout-bg total-container">
+              <span class="price-header"
+                ><i class="fa fa-money"></i> Total Price</span
+              >
+              <span class="price">PHP 703.50</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Popper JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap - JS -->
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

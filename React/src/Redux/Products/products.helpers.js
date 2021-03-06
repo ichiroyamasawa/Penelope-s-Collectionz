@@ -122,7 +122,10 @@ export const handleFetchProduct = (Prod_Code) => {
       .get()
       .then((snapshot) => {
         if (snapshot.exists) {
-          resolve(snapshot.data());
+          resolve({
+            ...snapshot.data(),
+            Prod_Code: Prod_Code,
+          });
         }
       })
       .catch((err) => {

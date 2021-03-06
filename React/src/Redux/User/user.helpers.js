@@ -80,16 +80,3 @@ export const handleDeleteUserAdmin = (UserID) => {
       });
   });
 };
-
-// export const handleDeleteUserAuth = (UserID) => {
-//   return new Promise((resolve, reject) => {
-//     auth.createUserWithEmailAndPassword
-//       .delete()
-//       .then(function () {
-//         resolve();
-//       })
-//       .catch(function (error) {
-//         reject(error);
-//       });
-//   });
-// };

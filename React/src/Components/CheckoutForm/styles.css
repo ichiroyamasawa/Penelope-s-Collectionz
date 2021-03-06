@@ -1,0 +1,100 @@
+.checkout {
+  padding: 5rem 0;
+}
+
+.checkout-sectionTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.checkout-subTitle {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.checkoutForm,
+.checkoutFormLeft,
+.checkoutFormRight {
+  background-color: #e8bdcf;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.checkoutFormLeft {
+  margin: 10px 0;
+  margin-left: 50px;
+}
+
+.checkoutFormRight {
+  margin: 10px 0;
+  margin-right: 50px;
+}
+
+.checkoutCancel {
+  margin: 10px 0;
+  margin-left: 50px;
+}
+
+.checkoutSubmit {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.checkoutInput {
+  font-size: 1.5rem;
+}
+
+.overflow {
+  padding: 10px 0;
+  height: 150px;
+  overflow-y: scroll;
+}
+
+.orderSummaryWrapper {
+  height: 324px;
+  overflow-y: auto;
+}
+
+.orderSummaryHeader,
+.orderSummaryWrapper {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.orderSummaryHeader th,
+.orderSummaryHeader td,
+.orderSummaryWrapper th,
+.orderSummaryWrapper td {
+  max-width: 100px;
+  width: 14.2857%;
+}
+
+.orderSummaryWrapper table {
+  width: 100%;
+}
+
+.checkoutGIF {
+  border-radius: 50px;
+}
+
+.paymentMethodDetails {
+  margin: 20px 0px;
+  padding: 0;
+}
+
+.photos-arrange {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 150px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

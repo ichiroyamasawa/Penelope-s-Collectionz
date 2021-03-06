@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductStart,
@@ -24,6 +24,7 @@ const mapState = (state) => ({
 });
 
 const OrderForm = ({}) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { Prod_Code } = useParams();
   const { product, currentUser } = useSelector(mapState);
@@ -74,14 +75,19 @@ const OrderForm = ({}) => {
 
   useEffect(() => {
     dispatch(fetchProductStart(Prod_Code));
-    if (!currentUser || !currentUser.emailVerified) {
-      setBtnDisable(true);
-    }
 
     return () => {
       dispatch(setProduct({}));
     };
   }, []);
+
+  useEffect(() => {
+    if (!currentUser || !currentUser.emailVerified) {
+      setBtnDisable(true);
+    } else {
+      setBtnDisable(false);
+    }
+  }, [currentUser]);
 
   const configAddToCartBtn = {
     type: "button",
@@ -97,11 +103,17 @@ const OrderForm = ({}) => {
     dispatch(addProduct(product));
   };
 
+  const handleBuyNowBtn = (product) => {
+    if (!product) return;
+    dispatch(addProduct(product));
+    history.push("/checkout");
+  };
+
   return (
     <div className="orderForm">
       <h1 className="productName">{Prod_Name}</h1>
       <Container fluid className="p-0">
-        <Row className="p-0 mb-5">
+        <Row className="p-0 mb-5 align-items-center">
           <Col className="productImageContainer text-center">
             <img className="productImage" src={Prod_Image} alt={Prod_Name} />
           </Col>
@@ -109,16 +121,19 @@ const OrderForm = ({}) => {
             <Container>
               <Row className="align-items-center">
                 <Col md="auto">
-                  <div className="productLabels">
-                    Price: &#8369; {Prod_Price}
-                  </div>
+                  <div className="productLabels">Price:</div>
+                </Col>
+                <Col>
+                  <div className="productLabels"> &#8369; {Prod_Price}</div>
                 </Col>
               </Row>
 
-              <Row className="align-items-center">
+              <Row>
                 <Col md="auto">
                   <div className="productLabels">Color:</div>
                 </Col>
+              </Row>
+              <Row className="d-flex justify-content-center orderFormSelect">
                 {/* map color */}
                 {Prod_Color &&
                   Prod_Color.map((colorVal, index) => {
@@ -141,7 +156,8 @@ const OrderForm = ({}) => {
                 </Col>
 
                 {/* map size */}
-
+              </Row>
+              <Row className="d-flex justify-content-center orderFormSelect">
                 {Prod_Size &&
                   Prod_Size.map((sizeVal, index) => {
                     const { size } = sizeVal;
@@ -149,7 +165,7 @@ const OrderForm = ({}) => {
                       <Col md="auto" key={index}>
                         <Form.Check
                           className="productSize"
-                          style={{ fontSize: 20 }}
+                          style={{ fontSize: 16 }}
                           inline
                           type="radio"
                           label={size}
@@ -161,7 +177,7 @@ const OrderForm = ({}) => {
                     );
                   })}
               </Row>
-              <Row className="align-items-center">
+              <Row className="align-items-center mt-5">
                 <Col md="auto">
                   <div className="productLabels">Quantity:</div>
                 </Col>
@@ -200,6 +216,23 @@ const OrderForm = ({}) => {
                     className="orderBtns buyBtn"
                     disabled={btnDisable}
                     {...configBuyNowBtn}
+                    onClick={() => {
+                      if (
+                        selectedColor !== "" &&
+                        selectedSize !== "" &&
+                        quantity !== 0
+                      ) {
+                        handleBuyNowBtn({
+                          product,
+                          quantity,
+                          total,
+                          selectedColor,
+                          selectedSize,
+                        });
+                      } else {
+                        handleShowEmpty();
+                      }
+                    }}
                   >
                     {" "}
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy
@@ -213,8 +246,6 @@ const OrderForm = ({}) => {
                     disabled={btnDisable}
                     onClick={() => {
                       if (
-                        // currentUser &&
-                        // currentUser.emailVerified &&
                         selectedColor !== "" &&
                         selectedSize !== "" &&
                         quantity !== 0
@@ -276,11 +307,13 @@ const OrderForm = ({}) => {
                 </Link>
               </Col>
               <Col>
-                <Button className="addToBtn modalBtns">
-                  {" "}
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> View
-                  your cart{" "}
-                </Button>
+                <Link to="/cart">
+                  <Button className="addToBtn modalBtns">
+                    {" "}
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> View
+                    your cart{" "}
+                  </Button>
+                </Link>
               </Col>
             </Row>
           </Modal.Body>

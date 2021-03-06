@@ -1,0 +1,31 @@
+.cartItem {
+  margin: 20px 0;
+}
+
+.cartImage {
+  position: relative;
+  height: 170px;
+  width: 170px;
+}
+
+.cartItemDetails {
+  background-color: #e8bdcf;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.cartItemName,
+.subtotal {
+  font-weight: 700;
+}
+
+.cartQuanti {
+  cursor: pointer;
+  color: #8f4061;
+  transition: 0.4s all;
+  font-weight: 700;
+}
+
+.cartQuanti:active {
+  color: #fff;
+}

@@ -1,0 +1,9 @@
+.orderSummaryImg {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto;
+}
+
+.orderSumSubtotal {
+  font-weight: 700;
+}

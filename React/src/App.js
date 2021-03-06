@@ -29,6 +29,11 @@ import Admin from "./Pages/Admin";
 import AboutUs from "./Pages/AboutUs";
 import ContactUs from "./Pages/ContactUs";
 import ProductOrder from "./Pages/ProductOrder";
+import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
+import ClientOrders from "./Pages/ClientOrders";
+import ClientOrderDetails from "./Pages/ClientOrderDetails";
+import CustomerOrderDetails from "./Pages/CustomerOrderDetails";
 
 //Components
 import { ClientToolbar, AdminToolbar } from "./Components/Toolbar";
@@ -71,7 +76,28 @@ const App = (props) => {
             </HomepageLayout>
           )}
         />
-
+        <Route
+          path="/cart"
+          exact
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <Cart />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
+        <Route
+          path="/checkout"
+          exact
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <Checkout />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
         <Route
           exact
           path="/registration"
@@ -130,11 +156,44 @@ const App = (props) => {
         />
         <Route
           exact
+          path="/dashboard/orders/:orderID"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <CustomerOrderDetails />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
+        <Route
+          exact
           path="/client"
           render={() => (
             <WithClientAuth>
               <AdminClientLayout>
                 <Client />
+              </AdminClientLayout>
+            </WithClientAuth>
+          )}
+        />
+        <Route
+          exact
+          path="/client/orders"
+          render={() => (
+            <WithClientAuth>
+              <AdminClientLayout>
+                <ClientOrders />
+              </AdminClientLayout>
+            </WithClientAuth>
+          )}
+        />
+        <Route
+          exact
+          path="/client/orders/:orderID"
+          render={() => (
+            <WithClientAuth>
+              <AdminClientLayout>
+                <ClientOrderDetails />
               </AdminClientLayout>
             </WithClientAuth>
           )}

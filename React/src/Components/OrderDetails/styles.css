@@ -1,0 +1,21 @@
+.orderDetailsPaymentMethodImg {
+  width: 125px;
+  height: 125px;
+}
+
+.orderPaymentMethodDetails {
+  margin: 13px 0px;
+  padding: 0;
+}
+
+.orderDetails,
+.orderDetailsLeft,
+.orderDetailsRight {
+  background-color: #e8bdcf;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.orderDetailsCheckoutForm {
+}

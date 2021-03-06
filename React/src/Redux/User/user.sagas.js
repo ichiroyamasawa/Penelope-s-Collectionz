@@ -176,9 +176,7 @@ export function* onFetchUsersStart() {
 
 export function* deleteUser({ payload }) {
   try {
-    console.log("holla");
     yield handleDeleteUser(payload);
-    //yield handleDeleteUserAdmin(payload);
     yield put(fetchUsersStart());
   } catch (err) {
     console.log(err);

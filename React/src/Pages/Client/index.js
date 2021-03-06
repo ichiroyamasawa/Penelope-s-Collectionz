@@ -82,7 +82,9 @@ const Client = (props) => {
 
   const onEdit = (e) => {
     const { name, value } = e.target;
-    setItem({ ...Item, [name]: value });
+    if (name == "Prod_Stock") {
+      setItem({ ...Item, [name]: parseInt(value) });
+    } else setItem({ ...Item, [name]: value });
   };
 
   const handleColorChange = (e, index) => {
@@ -197,11 +199,11 @@ const Client = (props) => {
     setEditProdShow(false);
     setProd_Category("earrings");
     setProd_Name("");
-    setProd_Color([""]);
+    setProd_Color([{ color: "" }]);
     setProd_Image(null);
     setProd_Price(0);
     setProd_Stock(0);
-    setProd_Size([""]);
+    setProd_Size([{ size: "" }]);
     setProd_Description("");
   };
   const handleSubmit = (e) => {
@@ -328,6 +330,7 @@ const Client = (props) => {
 
   const handleClose = () => {
     setShow(false);
+    resetForm();
   };
   const handleShow = () => setShow(true);
   const handleEditProdClose = () => {
@@ -610,10 +613,10 @@ const Client = (props) => {
               name="Prod_Stock"
               value={Prod_Stock}
               placeholder="Stocks"
-              handleChange={(e) => setProd_Stock(e.target.value)}
+              handleChange={(e) => setProd_Stock(parseInt(e.target.value))}
             />
             <FormInput
-              label="Price"
+              label="Price:"
               type="number"
               min="0.00"
               max="10000.00"
@@ -750,7 +753,6 @@ const Client = (props) => {
                     <Col>
                       <FormInput
                         type="text"
-                        w
                         name="size"
                         value={sizeVal.size}
                         placeholder="Size"
@@ -782,7 +784,7 @@ const Client = (props) => {
               handleChange={onEdit}
             />
             <FormInput
-              label="Price"
+              label="Price:"
               type="number"
               min="0.00"
               max="10000.00"

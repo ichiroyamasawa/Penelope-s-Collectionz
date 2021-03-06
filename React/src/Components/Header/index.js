@@ -216,7 +216,7 @@ const Header = (props) => {
                       }
                     >
                       <Nav.Item>
-                        <Link to="/">
+                        <Link to="/cart">
                           <BtnIcons type="submit">
                             <i
                               class="fa fa-shopping-cart"

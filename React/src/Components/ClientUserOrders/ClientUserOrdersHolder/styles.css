@@ -1,0 +1,16 @@
+.clientUserOrdersHolder {
+  background-color: #e8bdcf;
+  width: 80%;
+  height: auto;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.clientUserOrdersHolderDetails {
+  margin-top: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}

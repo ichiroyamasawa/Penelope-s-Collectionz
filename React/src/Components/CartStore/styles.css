@@ -1,0 +1,37 @@
+.cartStore {
+  padding: 5rem 0;
+}
+.cart-sectionTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.cart-subtitle {
+  color: #8f4061;
+  font-size: 1.6em;
+  font-weight: 700;
+  text-align: start;
+  margin-left: 20px;
+}
+
+.cartItemWrapper {
+  margin-top: 20px;
+  margin-left: 50px;
+  height: 350px;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.checkoutSidebar {
+  margin-top: 20px;
+  padding: 20px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.tPrice {
+  font-weight: 700;
+}

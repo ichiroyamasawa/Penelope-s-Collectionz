@@ -1,10 +1,10 @@
 .header {
-  height: 7rem;
+  height: 5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .headerIcons {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .wrap {
@@ -15,7 +15,7 @@
 
 .logo1 {
   margin: 0;
-  width: 10rem;
+  width: 8rem;
   display: inline-block;
 }
 
@@ -39,17 +39,17 @@ img {
 .callToActions li {
   list-style-type: none;
   display: inline-block;
-  padding: 15px 10px;
+  padding: 8px 10px;
 }
 
 .nav-link a {
   color: #8f4061;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .nav-link a:hover,
 .nav-link a:active {
-  font-weight: 700;
+  font-size: 1.4rem;
   text-decoration: none;
 }
 

@@ -9,3 +9,64 @@
   font-size: 6rem;
   text-align: center;
 }
+
+.contactUsWrapper {
+  background-color: #e8bdcf;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.contactUsDetails {
+  color: #8f4061;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+.contactUsMap {
+  border-radius: 10px;
+}
+
+.shopee-logo {
+  display: inline !important;
+  height: 20px;
+  width: auto;
+}
+
+.btn-shopee {
+  background-color: #e65305;
+  border-color: #e65305;
+}
+
+.btn-shopee:hover {
+  background-color: #c44805;
+  border-color: #c44805;
+}
+
+.btn-shopee:active,
+.btn-shopee:focus {
+  background-color: #e65305 !important;
+  border-color: #e65305 !important;
+}
+
+.btn-instagram {
+  background-image: linear-gradient(to right, mediumvioletred, royalblue);
+  border-color: none;
+  border-width: 0px;
+}
+
+.btn-instagram:hover {
+  filter: brightness(80%);
+}
+
+.followUsBtnLinks {
+  padding: 0 30px;
+}
+
+.followUsBtnLinks a {
+  text-emphasis: none;
+  text-decoration: none;
+}
+
+.followUsBtnLinks button {
+  margin: 20px 0;
+}

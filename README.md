@@ -109,7 +109,7 @@ Note: \* - not yet completed
    ii. What's New Section - Contains a large carousel (editable)_
    iii. Best Sellers Section - displays top 5 products with highest sales count in a carousel_
    iv. Hot Deals Section - displays 3 promos / deals in a carousel (editable)_ - this will be clickable redirecting the user to the product page of the selected item\*
-   i. Products Section - has an inifinite scroll pagination - has a category button - displays the latest products first - products are contained within a card and displays image, name, and price
+   v. Products Section - has an inifinite scroll pagination - has a category button - displays the latest products first - products are contained within a card and displays image, name, and price
    b. About Us Page - contains information about the business and the owners (editable)_ - both owners has their own card which will be linked with their social media accounts
    c. Contact Us Page* - contains contact information about the business and the owners (editable)* - has social media/ecommerce platform buttons which will redirect to the shop's facebook page, instagram account, and shopee account\*
 3. Purchase Product

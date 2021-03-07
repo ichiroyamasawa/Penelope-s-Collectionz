@@ -39,3 +39,12 @@ export const setProduct = (product) => ({
   type: productsTypes.SET_PRODUCT,
   payload: product,
 });
+
+export const fetchBestSellers = () => ({
+  type: productsTypes.FETCH_BEST_SELLERS,
+});
+
+export const setBestSellers = (products) => ({
+  type: productsTypes.SET_BEST_SELLERS,
+  payload: products,
+});

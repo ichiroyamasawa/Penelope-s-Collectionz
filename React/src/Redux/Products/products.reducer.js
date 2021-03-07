@@ -4,6 +4,7 @@ import productsTypes from "./products.types";
 const INITIAL_STATE = {
   products: [],
   product: {},
+  bestSellers: [],
 };
 
 const productsReducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +18,11 @@ const productsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         product: action.payload,
+      };
+    case productTypes.SET_BEST_SELLERS:
+      return {
+        ...state,
+        bestSellers: action.payload,
       };
     default:
       return state;

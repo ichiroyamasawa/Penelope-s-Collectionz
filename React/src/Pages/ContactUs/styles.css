@@ -70,3 +70,9 @@
 .followUsBtnLinks button {
   margin: 20px 0;
 }
+
+.contactUsDetails a,
+.contactUsDetails a:hover {
+  text-decoration: underline;
+  color: #8f4061;
+}

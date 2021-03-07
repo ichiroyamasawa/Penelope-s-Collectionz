@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect, useS } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./styles.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { fetchBestSellers } from "./../../Redux/Products/products.actions";
 
-import prod1 from "./../../Assets/Products/Sample1.jpg";
+const mapState = ({ productsData }) => ({
+  bestSellers: productsData.bestSellers,
+});
 
 const BestSellers = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { bestSellers } = useSelector(mapState);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -14,7 +22,7 @@ const BestSellers = () => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5,
+      items: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -25,6 +33,11 @@ const BestSellers = () => {
       items: 1,
     },
   };
+
+  useEffect(() => {
+    dispatch(fetchBestSellers());
+  }, []);
+
   return (
     <Carousel
       swipeable={true}
@@ -35,36 +48,36 @@ const BestSellers = () => {
       responsive={responsive}
       className="bestSeller"
     >
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
-      <div className="bestSellerImgWrapper">
-        <img className="bestSellerImg" src={prod1} />
-      </div>
+      {/* {Array.isArray(bestSellers) && bestSellers.length > 0
+        ? bestSellers.map((item, index) => {
+            return (
+              <div className="bestSellerImgWrapper" key={index}>
+                <img
+                  className="bestSellerImg"
+                  src={item.Prod_Image}
+                  alt={item.Prod_Name}
+                />
+              </div>
+            );
+          })
+        : {}} */}
+
+      {Array.isArray(bestSellers) &&
+        bestSellers.length > 0 &&
+        bestSellers.map((item, index) => {
+          return (
+            <div className="bestSellerImgWrapper" key={index}>
+              <img
+                className="bestSellerImg"
+                src={item.Prod_Image}
+                alt={item.Prod_Name}
+                onClick={() => {
+                  history.push(`./product/${item.Prod_Code}`);
+                }}
+              />
+            </div>
+          );
+        })}
     </Carousel>
   );
 };

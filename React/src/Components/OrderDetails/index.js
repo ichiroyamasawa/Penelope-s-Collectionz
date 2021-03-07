@@ -117,7 +117,7 @@ const OrderDetails = ({ order }) => {
             <Col md={{ span: 6, offset: 1 }}>
               <div className="orderDetailsLeft">
                 <h2 className="checkout-subTitle">
-                  <i class="fa fa-user" aria-hidden="true"></i> Customer's
+                  <i class="fa fa-user" aria-hidden="true"></i>
                   Billing Information
                 </h2>
 

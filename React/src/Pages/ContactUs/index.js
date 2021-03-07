@@ -24,13 +24,18 @@ const ContactUs = (props) => {
               <Row>
                 <Col>
                   <h4 className="contactUsDetails">
-                    <i class="fa fa-envelope" aria-hidden="true"></i> Email:
-                    penelopescollectionz@gmail.com
+                    <i class="fa fa-envelope" aria-hidden="true"></i> Email:{" "}
+                    <a
+                      href="mailto:penelopescollectionz@gmail.com"
+                      className="contactUsEmail"
+                    >
+                      penelopescollectionz@gmail.com
+                    </a>
                   </h4>
                 </Col>
               </Row>
               <Row>
-                <Col>
+                <Col className="mt-2">
                   <h4 className="contactUsDetails">Follow us on:</h4>
                 </Col>
               </Row>

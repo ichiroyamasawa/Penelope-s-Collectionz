@@ -3,6 +3,7 @@ import {
   setProducts,
   setProduct,
   fetchProductsStart,
+  setBestSellers,
 } from "./products.actions";
 import productsTypes from "./products.types";
 import productTypes from "./products.types";
@@ -14,6 +15,7 @@ import {
   handleDeleteProduct,
   handleEditProduct,
   handleFetchProduct,
+  handleFetchBestSellers,
 } from "./products.helpers";
 
 export function* addProduct({ payload }) {
@@ -99,6 +101,19 @@ export function* onFetchProductStart() {
   yield takeLatest(productTypes.FETCH_PRODUCT_START, fetchProduct);
 }
 
+export function* fetchBestSellers() {
+  try {
+    const bestSellers = yield handleFetchBestSellers();
+    yield put(setBestSellers(bestSellers));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* onFetchBestSellers() {
+  yield takeLatest(productsTypes.FETCH_BEST_SELLERS, fetchBestSellers);
+}
+
 export default function* productsSagas() {
   yield all([
     call(onAddProductStart),
@@ -106,5 +121,6 @@ export default function* productsSagas() {
     call(onDeleteProductStart),
     call(onEditProductStart),
     call(onFetchProductStart),
+    call(onFetchBestSellers),
   ]);
 }

@@ -133,3 +133,23 @@ export const handleFetchProduct = (Prod_Code) => {
       });
   });
 };
+
+export const handleFetchBestSellers = () => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("products")
+      .orderBy("Prod_Sales", "desc")
+      .get()
+      .then((snapshot) => {
+        const bestSellersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+          };
+        });
+        resolve(bestSellersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

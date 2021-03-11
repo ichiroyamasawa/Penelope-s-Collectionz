@@ -1153,3 +1153,87 @@ body {
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* PROFILE PAGE */
+.dashboard-bg {
+  margin: 1rem;
+  padding: 1.3rem 2rem;
+  background: #e8bdcf;
+  border-radius: 20px;
+}
+
+.dashboard-button {
+  /* height: 2rem; */
+  width: 100%;
+  filter: brightness(100%);
+  margin: 0.3rem 0;
+  border-radius: 1rem;
+  color: #8f4061;
+  font-size: 2.1rem;
+}
+
+.profile-page-button {
+  background-color: #e8bdcf;
+}
+
+.order-history-button {
+  background-color: #e8bdcf;
+}
+
+.receipt-button {
+  background-color: #e8bdcf;
+}
+
+.main-header {
+  color: #8f4061;
+  font-size: 3rem;
+}
+
+.row-container {
+  display: flex;
+  flex: 1 2 auto;
+  flex-direction: column;
+  width: 93%;
+  margin-bottom: 2rem;
+}
+
+.col-container {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  /* justify-content: center; */
+}
+
+.label-container {
+  flex: 1 1 35%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-container {
+  margin-left: 2rem;
+  flex: 2 1 70%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.profile-picture {
+  height: 40rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.reset-password {
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+}
+
+.sub-header {
+  color: #8f4061;
+  font-size: 2.5rem;
+}

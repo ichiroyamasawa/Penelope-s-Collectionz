@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <!-- Font - Poppins, Sacramento -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome - Icons -->
+    <script
+      src="https://kit.fontawesome.com/21d7603b0d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Penelope's Collectionz</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="mainHeader" class="row">
+      <div class="col-lg-4 col-sm-12 col-12 text-md-start">
+        <img
+          class="pc-logo-1"
+          src="/Images/pc-logo1.png"
+          alt="Penelope's Collectionz"
+        />
+      </div>
+      <div id="mainNav" class="col-lg-4 col-sm-6 col-6">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <button
+              class="navbar-toggler mt-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-center"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="aboutUs.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contactUs.html">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="mainNav" class="col-lg-4 col-sm-6 col-6 text-end">
+        <a href="index.html"
+          ><button class="btn btn-primary btn-signup">Login</button></a
+        >
+      </div>
+    </header>
+
+    <!-- CONTENTS -->
+    <div class="container-fluid">
+      <main>
+        <h4 class="manageUsers-Title">Profile Page</h4>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="dashboard-bg">
+              <div class="button-wrapper">
+                <button
+                  type="button"
+                  class="btn dashboard-button profile-page-button"
+                >
+                  <i class="fa fa-user-circle"></i> Profile Page
+                </button>
+                <button
+                  type="button"
+                  class="btn dashboard-button order-history-button"
+                >
+                  <i class="fa fa-shopping-basket"></i> Order History
+                </button>
+                <button
+                  type="button"
+                  class="btn dashboard-button receipt-button"
+                >
+                  <i class="fa fa-list-alt"></i> View Receipt
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="dashboard-bg">
+              <h2 class="main-header">Edit Information</h2>
+              <div class="row-container">
+                <div class="col-container">
+                  <div class="label-container">
+                    <img
+                      class="profile-picture img-fluid"
+                      src="/Images/Products/Sample1.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="input-container">
+                    <input type="file" multiple="false" text=" " />
+                    <span></span>
+                    <!-- INSERT THE MESSAGE HERE KUNG MAY FILE SIZE REQUIREMENT BOS ICH-->
+                  </div>
+                </div>
+              </div>
+              <div class="row-container">
+                <h3 class="sub-header">Account Information</h3>
+                <div class="col-container">
+                  <div class="label-container">
+                    <label for="input-fname">First Name:</label>
+                  </div>
+                  <div class="input-container">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="input-fname"
+                      placeholder="Juan"
+                    />
+                  </div>
+                </div>
+                <div class="col-container">
+                  <div class="label-container">
+                    <label for="input-lname">Last Name:</label>
+                  </div>
+                  <div class="input-container">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="input-lname"
+                      placeholder="Dela Cruz"
+                    />
+                  </div>
+                </div>
+                <div class="col-container">
+                  <div class="label-container">
+                    <label for="input-contactNo">Contact Number:</label>
+                  </div>
+                  <div class="input-container">
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="input-contactNo"
+                      placeholder="09171234567"
+                      regex="09[0-9]{9}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row-container">
+                <button class="dashboard-button">Save Changes</button>
+                <div class="col-container">
+                  <a href="#" class="reset-password">Reset Password</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Popper JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap - JS -->
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

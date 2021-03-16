@@ -12,13 +12,53 @@
 .receiptWrapper {
   background-color: #e8bdcf;
   border-radius: 10px;
-  height: 1000px;
+  height: 500px;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 0 20px;
-  padding-bottom: 60px;
+  padding-bottom: 40px;
 }
 
 .receiptHolder {
-  margin: 10px 0;
+  margin-bottom: 50px;
   display: inline-block;
+  /* border-top: 5px solid #8f4061; */
+}
+
+.receiptOrderIDHolder {
+  background-color: #8f4061;
+  color: #fff;
+  text-align: center;
+}
+
+.receiptOrderID {
+  margin: 20px 0;
+  font-weight: 700;
+}
+
+.receiptSolidHR {
+  border-top: 5px solid #8f4061;
+  margin: auto;
+}
+
+.dashboardNav {
+  padding: 20px;
+  background-color: #e8bdcf;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+
+.dashboardNavLinks {
+  color: #8f4061;
+  font-size: 1.6rem;
+}
+
+.dashboardNavLinks:active,
+.nav-link.active {
+  color: #fff !important;
+  background-color: #8f4061 !important;
+}
+
+.dashboardNavLinks:hover {
+  color: #fff;
 }

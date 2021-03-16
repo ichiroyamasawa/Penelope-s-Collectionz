@@ -4,6 +4,9 @@ const cartTypes = {
   ADD_CART_ITEM: "ADD_CART_ITEM",
   REDUCE_CART_ITEM: "REDUCE_CART_ITEM",
   CLEAR_CART: "CLEAR_CART",
+  SAVE_CART: "SAVE_CART",
+  RETRIEVE_CART: "RETRIEVE_CART",
+  SET_CART: "SET_CART",
 };
 
 export default cartTypes;

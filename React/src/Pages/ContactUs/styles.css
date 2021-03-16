@@ -76,3 +76,11 @@
   text-decoration: underline;
   color: #8f4061;
 }
+
+.contactUsDesc {
+  padding: 20px;
+  line-height: normal !important;
+  text-align: justify;
+
+  border: #8f4061 dashed 2px;
+}

@@ -1,0 +1,69 @@
+.profile-sectionTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.profileWrapper {
+  background-color: #e8bdcf;
+  border-radius: 20px;
+}
+
+.userImgPlaceholder {
+  margin: 20px 0 0 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.userImgPlaceholder:hover {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
+.profile-subTitle {
+  padding-top: 20px;
+  color: #8f4061;
+  font-weight: 700;
+}
+
+.profileImageInput {
+  margin: 10px 0;
+  margin-bottom: 30px;
+}
+.profileSave {
+  background-color: #8f4061 !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.profileSave:hover {
+  background-color: #682b44 !important;
+  color: #fff !important;
+}
+
+.profilePasswordReset {
+  margin-bottom: 10px;
+}
+
+.errorHolder ul {
+  margin: 0 !important;
+
+  padding-left: 0 !important;
+}
+
+.errorHolder {
+  margin-bottom: 15px !important;
+}
+
+.editEmailPass {
+  background-color: #e77b8a !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.editEmailPass:hover {
+  background-color: #be5563 !important;
+  color: #fff !important;
+}

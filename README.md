@@ -58,6 +58,9 @@ Technologies Used:
 14. to install ckeditor:npm i ckeditor4-react _or_ npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
 15. to install fit-text: npm install --save use-fit-text
 16. to install redux-persist: npm i redux-persist
+17. to install react-avatar: npm install react-avatar --save
+18. to install react-chat-widget: npm install --save react-chat-widget
+    19: to install easy-crop: npm install react-easy-crop --save
 
 **When cloning this repository from github**
 

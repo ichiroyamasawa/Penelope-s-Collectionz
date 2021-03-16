@@ -1,0 +1,33 @@
+.chatList {
+  background-color: #fff;
+  overflow-y: auto;
+  height: calc(100vh - 10rem);
+  padding: 20px;
+}
+
+.chatList-Title {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.list-group-item.active {
+  background-color: #8f4061 !important;
+  border-color: #8f4061 !important;
+}
+
+.messageBtn {
+  background-color: #e8bdcf !important;
+  border-color: #e8bdcf !important;
+  color: #8f4061 !important;
+  font-weight: 700;
+}
+
+.messageBtn:hover {
+  background-color: #8f4061 !important;
+  border-color: #8f4061 !important;
+  color: #fff !important;
+}

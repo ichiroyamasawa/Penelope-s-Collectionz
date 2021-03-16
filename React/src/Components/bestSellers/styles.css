@@ -9,4 +9,6 @@
 .bestSellerImg {
   border-radius: 10px;
   cursor: pointer;
+  width: 240px;
+  height: 240px;
 }

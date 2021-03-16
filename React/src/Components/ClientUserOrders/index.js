@@ -31,7 +31,7 @@ const ClientUserOrders = () => {
               key={index}
               orders={item}
               handleClick={() => {
-                history.push(`/client/orders/${item.orderID}`);
+                history.push(`/manageOrders/${item.orderID}`);
               }}
             />
           );

@@ -30,6 +30,7 @@ import { PaginationNext } from "./../../Components/Pagination";
 import { storage } from "./../../Firebase/utils";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Cropper from "react-easy-crop";
 
 // Media Imports
 import ImagePlaceholder from "./../../Assets/ImagePlaceholder.png";
@@ -61,6 +62,14 @@ const Client = (props) => {
   const { filterType, sorterType } = useParams();
 
   const { data, queryDoc, isLastPage } = products;
+
+  // For Image Crop
+  const [imageSrc, setImageSrc] = React.useState(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState(0);
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [croppedImage, setCroppedImage] = useState(null);
 
   const editItem = (item) => {
     setCurrentProduct({
@@ -506,13 +515,33 @@ const Client = (props) => {
                 accept="image/*"
                 handleChange={handleProductImage}
               />
-              <label htmlFor="uploadImg">
-                <img
-                  className="imgPlaceholder"
-                  src={Prod_Image || ImagePlaceholder}
-                  alt="Product Image"
-                />
-              </label>
+              <Row className="justify-content-center">
+                <Col md="auto">
+                  <label htmlFor="uploadImg">
+                    {/* {Prod_Image && (
+                  <div>
+                    <Cropper
+                      image={Prod_Image}
+                      crop={crop}
+                      rotation={rotation}
+                      zoom={zoom}
+                      aspect={1 / 1}
+                      onCropChange={setCrop}
+                      onRotationChange={setRotation}
+                      // onCropComplete={onCropComplete}
+                      onZoomChange={setZoom}
+                    />
+                  </div>
+                )} */}
+
+                    <img
+                      className="imgPlaceholder"
+                      src={Prod_Image || ImagePlaceholder}
+                      alt="Product Image"
+                    />
+                  </label>
+                </Col>
+              </Row>
             </div>
             <FormSelect
               label="Category"
@@ -677,16 +706,21 @@ const Client = (props) => {
                   handleProductImage(e);
                 }}
               />
-              <label htmlFor="uploadImg">
-                <img
-                  className="imgPlaceholder"
-                  name="Prod_Image"
-                  src={Prod_Image || Item.Prod_Image}
-                  alt="Product Image"
-                  value={Item.Prod_Image}
-                  onChange={onEdit}
-                />
-              </label>
+              <Row className="justify-content-center">
+                <Col md="auto">
+                  <label htmlFor="uploadImg">
+                    <img
+                      className="imgPlaceholder"
+                      name="Prod_Image"
+                      src={Prod_Image || Item.Prod_Image}
+                      alt="Product Image"
+                      value={Item.Prod_Image}
+                      onChange={onEdit}
+                    />
+                  </label>
+                </Col>
+              </Row>
+
               <div className="imgChanger">
                 {Prod_Image && (Item.Prod_Image = Prod_Image)}
               </div>

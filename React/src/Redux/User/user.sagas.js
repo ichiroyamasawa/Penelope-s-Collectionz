@@ -5,6 +5,7 @@ import {
   handleUserProfile,
   getCurrentUser,
   GoogleProvider,
+  authProvider,
 } from "./../../Firebase/utils";
 import userTypes from "./user.types";
 import {
@@ -22,7 +23,9 @@ import {
   handleFetchUsers,
   handleDeleteUser,
   handleDeleteUserAdmin,
+  handleEditUser,
 } from "./user.helpers";
+import { clearCart } from "./../Cart/cart.actions";
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
@@ -74,6 +77,7 @@ export function* onCheckUserSession() {
 export function* signOutUser() {
   try {
     yield auth.signOut();
+    yield put(clearCart());
     yield put(signOutUserSuccess());
   } catch (err) {
     console.log(err);
@@ -174,6 +178,123 @@ export function* onFetchUsersStart() {
   yield takeLatest(userTypes.FETCH_USERS_START, fetchUsers);
 }
 
+export function* editUser({ payload }) {
+  try {
+    yield handleEditUser(payload);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* onEditUserStart() {
+  yield takeLatest(userTypes.EDIT_USER_START, editUser);
+}
+
+export function* reauthenticate(currentPassword) {
+  try {
+    var user = yield auth.currentUser;
+    var cred = yield authProvider.credential(user.email, currentPassword);
+    return user.reauthenticateWithCredential(cred);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* changeEmail({ payload }) {
+  try {
+    var err = null;
+    var user = yield auth.currentUser;
+    var cred = yield authProvider.credential(
+      user.email,
+      payload.changes.currentPassword
+    );
+    console.log(user);
+    console.log(cred);
+    console.log(payload.changes.email);
+    yield user
+      .reauthenticateWithCredential(cred)
+      .then(() => {
+        var user = auth.currentUser;
+        user
+          .updateEmail(payload.changes.email)
+          .then(() => {
+            console.log("Email updated!");
+            handleEditUser({ email: payload.changes.email, userID: user.uid });
+            user.reload();
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.log(error);
+            err = error;
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        err = error;
+      });
+
+    if (err !== null) {
+      yield put(userError([err.message]));
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* onChangeUserEmail() {
+  yield takeLatest(userTypes.CHANGE_USER_EMAIL, changeEmail);
+}
+
+export function* changePassword({ payload }) {
+  if (payload.changes.newPassword !== payload.changes.newConPassword) {
+    const err = ["Password Don't match"];
+    yield put(userError(err));
+    return;
+  }
+
+  try {
+    var err = null;
+    var user = yield auth.currentUser;
+    var cred = yield authProvider.credential(
+      user.email,
+      payload.changes.currentPassword
+    );
+    console.log(user);
+    console.log(cred);
+    console.log(payload.changes.email);
+    yield user
+      .reauthenticateWithCredential(cred)
+      .then(() => {
+        var user = auth.currentUser;
+        user
+          .updatePassword(payload.changes.newPassword)
+          .then(() => {
+            console.log("Password updated!");
+            user.reload();
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.log(error);
+            err = error;
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        err = error;
+      });
+
+    if (err !== null) {
+      yield put(userError([err.message]));
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* onChangeUserPassword() {
+  yield takeLatest(userTypes.CHANGE_USER_PASSWORD, changePassword);
+}
+
 export function* deleteUser({ payload }) {
   try {
     yield handleDeleteUser(payload);
@@ -185,7 +306,6 @@ export function* deleteUser({ payload }) {
 
 export function* onDeleteUserStart() {
   yield takeLatest(userTypes.DELETE_USER_START, deleteUser);
-  console.log("hi");
 }
 
 export default function* userSagas() {
@@ -199,5 +319,8 @@ export default function* userSagas() {
     call(onEmailVerificationStart),
     call(onFetchUsersStart),
     call(onDeleteUserStart),
+    call(onEditUserStart),
+    call(onChangeUserEmail),
+    call(onChangeUserPassword),
   ]);
 }

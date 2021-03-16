@@ -35,3 +35,12 @@
 .tPrice {
   font-weight: 700;
 }
+.cartSettingsHolder {
+  padding-top: 20px;
+}
+.cartSettings {
+  width: 45px !important;
+  border-radius: 60px;
+  text-align: center !important;
+  margin: 0px !important;
+}

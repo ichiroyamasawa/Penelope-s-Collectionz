@@ -1,0 +1,23 @@
+.chatTextArea {
+  background-color: #ffff;
+}
+
+.chatTextArea .formRow .form-group,
+.chatTextArea .formRow .form-group input {
+  margin: 0 !important;
+  box-shadow: none;
+  background-color: #fcfcfc;
+  border: none;
+}
+
+.sendButton {
+  background-color: #8f4061 !important;
+  padding: 5px 20px;
+  display: inline-block;
+  margin-top: 0;
+  border: none;
+}
+
+.sendButton:hover {
+  background-color: #682b44 !important;
+}

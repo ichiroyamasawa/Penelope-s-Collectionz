@@ -34,6 +34,37 @@ const ContactUs = (props) => {
                   </h4>
                 </Col>
               </Row>
+              <br />
+              <Row className="align-items-center">
+                <Col>
+                  <h5 className="contactUsDetails contactUsDesc">
+                    O W N E D & M A D E by JeanJhenAce DTI Registered |
+                    Manila.PH | Parañaque.PH HANDMADE CREATIONS PRE-LOVED and
+                    UPCYCLED CLOTHES
+                  </h5>
+                </Col>
+              </Row>
+            </Container>
+          </Col>
+          {/* <Col>
+            <Container>
+              <Row>
+                <Col>
+                  <h4 className="contactUsDetails">
+                    <i class="fa fa-location-arrow" aria-hidden="true"></i>{" "}
+                    Location:
+                  </h4>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <img src={mapIMG} alt="Map" className="contactUsMap" />
+                </Col>
+              </Row>
+            </Container>
+          </Col> */}
+          <Col>
+            <Container>
               <Row>
                 <Col className="mt-2">
                   <h4 className="contactUsDetails">Follow us on:</h4>
@@ -79,23 +110,6 @@ const ContactUs = (props) => {
                     </a>
                     <br />
                   </div>
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-          <Col>
-            <Container>
-              <Row>
-                <Col>
-                  <h4 className="contactUsDetails">
-                    <i class="fa fa-location-arrow" aria-hidden="true"></i>{" "}
-                    Location:
-                  </h4>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <img src={mapIMG} alt="Map" className="contactUsMap" />
                 </Col>
               </Row>
             </Container>

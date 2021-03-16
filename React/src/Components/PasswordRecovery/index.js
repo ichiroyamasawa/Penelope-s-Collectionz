@@ -70,7 +70,7 @@ const PasswordRecovery = (props) => {
             name="email"
             value={email}
             placeholder="example@email.com"
-            subText="We will send an email to the Email Address above to recover your password"
+            subText="We will send an email to the Email Address above to reset your password"
             handleChange={(e) => setEmail(e.target.value)}
           />
           <Row>

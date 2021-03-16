@@ -4,6 +4,8 @@ import "firebase/auth";
 import "firebase/storage";
 import "firebase-admin";
 import { firebaseConfig } from "./config";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 // Initialize the default app
 export const admin = require("firebase-admin");
@@ -15,7 +17,9 @@ firebase.initializeApp(firebaseConfig);
 
 export const storage = firebase.storage();
 export const auth = firebase.auth();
+export const authProvider = firebase.auth.EmailAuthProvider;
 export const firestore = firebase.firestore();
+export const fieldVal = firebase.firestore.FieldValue;
 
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: "select_account" });

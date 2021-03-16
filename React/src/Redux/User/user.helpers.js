@@ -48,6 +48,21 @@ export const handleFetchUsers = () =>
     });
   };
 
+export const handleEditUser = (user) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(user.userID)
+      .update(user)
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 export const handleDeleteUser = (UserID) => {
   console.log(UserID, 1);
   return new Promise((resolve, reject) => {

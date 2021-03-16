@@ -23,3 +23,18 @@ export const reduceCartItem = (cartItem) => ({
 export const clearCart = () => ({
   type: cartTypes.CLEAR_CART,
 });
+
+export const saveCart = (cart) => ({
+  type: cartTypes.SAVE_CART,
+  payload: cart,
+});
+
+export const retrieveCart = (userID) => ({
+  type: cartTypes.RETRIEVE_CART,
+  payload: userID,
+});
+
+export const setCart = (cart) => ({
+  type: cartTypes.SET_CART,
+  payload: cart,
+});

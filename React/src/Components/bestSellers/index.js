@@ -64,7 +64,7 @@ const BestSellers = () => {
 
       {Array.isArray(bestSellers) &&
         bestSellers.length > 0 &&
-        bestSellers.map((item, index) => {
+        bestSellers.slice(0, 4).map((item, index) => {
           return (
             <div className="bestSellerImgWrapper" key={index}>
               <img

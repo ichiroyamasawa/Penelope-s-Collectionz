@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   selectCartItemsCount,
   selectCartItems,
@@ -12,22 +12,31 @@ import BtnCoral from "./../Forms/ButtonCoral";
 import CartItem from "./CartItem";
 import HR from "./../HR";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { retrieveCart, saveCart } from "./../../Redux/Cart/cart.actions";
 import "./styles.css";
 
-const mapState = createStructuredSelector({
+const cartState = createStructuredSelector({
   cartItems: selectCartItems,
   total: selectCartTotal,
 });
 
-const cartState = (state) => ({
+const mapState = (state) => ({
   totalNumCartItems: selectCartItemsCount(state),
+  currentUser: state.user.currentUser,
 });
 
 const CartStore = () => {
-  const { cartItems, total } = useSelector(mapState);
-  const { totalNumCartItems } = useSelector(cartState);
+  const dispatch = useDispatch();
+  const { cartItems, total } = useSelector(cartState);
+  const { totalNumCartItems, currentUser } = useSelector(mapState);
   const [btnDisable, setBtnDisable] = useState(true);
+  const [loadModal, setLoadModal] = useState(false);
+  const handleCloseLoadModal = () => setLoadModal(false);
+  const handleShowLoadModal = () => setLoadModal(true);
+  const [saveModal, setSaveModal] = useState(false);
+  const handleCloseSaveModal = () => setSaveModal(false);
+  const handleShowSaveModal = () => setSaveModal(true);
 
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -36,6 +45,22 @@ const CartStore = () => {
       setBtnDisable(true);
     }
   }, [cartItems]);
+
+  const loadPrevCart = () => {
+    dispatch(retrieveCart(currentUser.id));
+    handleCloseLoadModal();
+  };
+
+  const saveThisCart = () => {
+    if (cartItems.length > 0) {
+      const configCart = {
+        cartItems: cartItems,
+        userID: currentUser.id,
+      };
+      dispatch(saveCart(configCart));
+      handleCloseSaveModal();
+    }
+  };
 
   return (
     <div className="cartStore">
@@ -80,53 +105,166 @@ const CartStore = () => {
           </Col>
           {/* <!-- CHECKOUT HTML --> */}
           <Col md={4}>
-            <Container fluid className="checkoutSidebar">
-              {/* <!--FINAL QUANTITY --> */}
-              <Row>
-                <Col md={6}>
-                  <h4>No. of items ordered:</h4>
+            <Container fluid>
+              <Row className="justify-content-end cartSettingsHolder">
+                <Col md="auto" className="p-0">
+                  <Button
+                    className="buyBtn modalBtns cartSettings "
+                    onClick={handleShowLoadModal}
+                  >
+                    <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  </Button>
                 </Col>
                 <Col md="auto">
-                  <h4>{totalNumCartItems}</h4>
+                  <Button
+                    className="addToBtn modalBtns cartSettings"
+                    disabled={btnDisable}
+                    onClick={() => {
+                      handleShowSaveModal();
+                    }}
+                  >
+                    {" "}
+                    <i class="fas fa-save    "></i>
+                  </Button>
                 </Col>
               </Row>
+              <Row>
+                <Col>
+                  <Container fluid className="checkoutSidebar">
+                    {/* <!--FINAL QUANTITY --> */}
+                    <Row>
+                      <Col md={6}>
+                        <h4>No. of items ordered:</h4>
+                      </Col>
+                      <Col md="auto">
+                        <h4>{totalNumCartItems}</h4>
+                      </Col>
+                    </Row>
 
-              {/* <!--TOTAL PRICE --> */}
-              <Row>
-                <Col md={6}>
-                  <h2 className="tPrice">Total Price:</h2>
-                </Col>
-                <Col md="auto">
-                  <h2 className="tPrice">
-                    &#8369; {parseFloat(total).toFixed(2)}
-                  </h2>
-                </Col>
-              </Row>
-              <HR />
-              <Row className="text-center">
-                <Col>
-                  <Link to="/">
-                    <Button className="buyBtn modalBtns">
-                      Continue Shopping
-                    </Button>
-                  </Link>
-                </Col>
-                <Col>
-                  <Link to="/checkout">
-                    <Button
-                      className="addToBtn modalBtns"
-                      disabled={btnDisable}
-                    >
-                      {" "}
-                      <i class="fas fa-clipboard-check    "></i> CHECKOUT
-                    </Button>
-                  </Link>
+                    {/* <!--TOTAL PRICE --> */}
+                    <Row>
+                      <Col md={6}>
+                        <h2 className="tPrice">Total Price:</h2>
+                      </Col>
+                      <Col md="auto">
+                        <h2 className="tPrice">
+                          &#8369; {parseFloat(total).toFixed(2)}
+                        </h2>
+                      </Col>
+                    </Row>
+                    <HR />
+                    <Row className="text-center">
+                      <Col>
+                        <Link to="/">
+                          <Button className="buyBtn modalBtns">
+                            Continue Shopping
+                          </Button>
+                        </Link>
+                      </Col>
+                      <Col>
+                        <Link to="/checkout">
+                          <Button
+                            className="addToBtn modalBtns"
+                            disabled={btnDisable}
+                          >
+                            {" "}
+                            <i class="fas fa-clipboard-check    "></i> CHECKOUT
+                          </Button>
+                        </Link>
+                      </Col>
+                    </Row>
+                  </Container>
                 </Col>
               </Row>
             </Container>
           </Col>
         </Row>
       </Container>
+      {/* Modals */}
+      <Modal show={loadModal} onHide={handleCloseLoadModal} keyboard={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Load Previous Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Did you save your cart the last time you visited us? We can help you
+            to load your previously saved cart by clicking{" "}
+            <strong>"Load Previous Cart"</strong> button below.
+          </p>
+          <p>
+            {" "}
+            Don't worry as your current cart is safe and won't be replaced.
+            Instead, we'll just add the loaded cart to your current cart.
+          </p>
+          <p>
+            NOTE: If you haven't saved a cart yet, we would not be able to load
+            any saved cart.
+          </p>
+        </Modal.Body>
+        <Modal.Body>
+          <Row className="text-center">
+            <Col>
+              <Button
+                className="buyBtn modalBtns"
+                onClick={() => {
+                  handleCloseLoadModal();
+                }}
+              >
+                Cancel
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                className="addToBtn modalBtns"
+                onClick={() => loadPrevCart()}
+              >
+                <i class="fa fa-cloud-download" aria-hidden="true"></i> Load
+                Previous Cart
+              </Button>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
+      <Modal show={saveModal} onHide={handleCloseSaveModal} keyboard={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Save This Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Saving a cart would allow you to load it later if you decided to.
+          </p>
+          <p>
+            Your saved cart can also serve as your express cart to add your
+            favorite items from us in a jiffy!
+          </p>
+          <p>
+            NOTE: Saving this cart will overwrite your previously saved cart if
+            you have any.
+          </p>
+        </Modal.Body>
+        <Modal.Body>
+          <Row className="text-center">
+            <Col>
+              <Button
+                className="buyBtn modalBtns"
+                onClick={() => {
+                  handleCloseSaveModal();
+                }}
+              >
+                Cancel
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                className="addToBtn modalBtns"
+                onClick={() => saveThisCart()}
+              >
+                <i class="fas fa-save    "></i> Save This Cart
+              </Button>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

@@ -31,13 +31,13 @@
 }
 
 #receipt .zig-zag-bottom {
-  margin: 70px 0;
+  margin: 10px 0;
   margin-top: 0;
   background: #ffffff;
 }
 
 #receipt .zig-zag-top {
-  margin: 70px 0;
+  margin: 10px 0;
   margin-bottom: 0;
   background: #ffffff;
 }
@@ -65,7 +65,7 @@
 }
 
 .receiptHR {
-  margin: 20px 50px !important;
+  margin: 20px 10px !important;
 }
 
 .receiptDashedHR {
@@ -74,14 +74,10 @@
 }
 
 .receiptLogo {
-  height: 100px;
+  height: 90px;
+  margin: 0 10px;
   width: auto !important;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.receiptHolder {
-  margin: 10px 0;
-  display: inline-block;
 }

@@ -30,3 +30,39 @@ export const useAdminAuth = (props) => {
 
   return currentUser;
 };
+
+export const useAdminClientAuth = (props) => {
+  const { currentUser } = useSelector(mapState);
+  const history = useHistory();
+  useEffect(() => {
+    if (!checkUserIsAdmin(currentUser) && !checkUserIsClient(currentUser)) {
+      history.push("/login");
+    }
+  }, [currentUser]);
+
+  return currentUser;
+};
+
+export const useAdminRestriction = (props) => {
+  const { currentUser } = useSelector(mapState);
+  const history = useHistory();
+  useEffect(() => {
+    if (checkUserIsAdmin(currentUser)) {
+      history.push("/admin");
+    }
+  }, [currentUser]);
+
+  return currentUser;
+};
+
+export const useClientRestriction = (props) => {
+  const { currentUser } = useSelector(mapState);
+  const history = useHistory();
+  useEffect(() => {
+    if (checkUserIsClient(currentUser)) {
+      history.push("/client");
+    }
+  }, [currentUser]);
+
+  return currentUser;
+};

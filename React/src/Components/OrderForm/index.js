@@ -20,7 +20,6 @@ import BtnCoral from "../Forms/ButtonCoral";
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   product: state.productsData.product,
-  cart: state.cartData.cart,
 });
 
 const OrderForm = ({}) => {

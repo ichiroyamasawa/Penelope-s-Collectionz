@@ -58,9 +58,9 @@
 }
 
 .imgPlaceholder {
-  width: 75%;
-  height: auto;
-  margin: 15px auto;
+  margin-top: 10px;
+  width: 300px;
+  height: 300px;
   border-radius: 15px;
 }
 

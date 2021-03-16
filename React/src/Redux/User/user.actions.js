@@ -68,7 +68,22 @@ export const setUsers = (users) => ({
   payload: users,
 });
 
-export const deleteUserStart = (UserID) => ({
-  type: userTypes.DELETE_USER_START,
+export const editUserStart = (UserID) => ({
+  type: userTypes.EDIT_USER_START,
   payload: UserID,
+});
+
+export const changeUserEmail = (userCredentials) => ({
+  type: userTypes.CHANGE_USER_EMAIL,
+  payload: userCredentials,
+});
+
+export const changeUserPassword = (userCredentials) => ({
+  type: userTypes.CHANGE_USER_PASSWORD,
+  payload: userCredentials,
+});
+
+export const deleteUserStart = (userCredentials) => ({
+  type: userTypes.DELETE_USER_START,
+  payload: userCredentials,
 });

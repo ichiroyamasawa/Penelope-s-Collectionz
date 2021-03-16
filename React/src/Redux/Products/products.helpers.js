@@ -144,6 +144,7 @@ export const handleFetchBestSellers = () => {
         const bestSellersArray = snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
+            Prod_Code: doc.id,
           };
         });
         resolve(bestSellersArray);

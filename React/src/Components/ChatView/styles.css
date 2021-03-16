@@ -1,0 +1,47 @@
+.userSent {
+  float: right;
+  clear: both;
+  margin: 20px;
+  margin-right: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  width: fit-content;
+  background-color: #e8bdcf;
+  /* color: #8f4061; */
+  max-width: 50%;
+}
+
+.friendSent {
+  float: left;
+  clear: both;
+  margin: 20px;
+  margin-left: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  width: fit-content;
+  background-color: #8f4061;
+  color: #ffff;
+  max-width: 50%;
+}
+
+.chatHeader {
+  background-color: #f2acb6;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 10px;
+  text-align: center;
+}
+
+#messageContainer {
+  overflow-y: auto;
+  height: calc(100vh - 17.2rem);
+}
+
+.message p {
+  margin: 0 !important;
+  font-size: 1.1rem;
+}
+
+.chatAvatar {
+  display: inline-block;
+}

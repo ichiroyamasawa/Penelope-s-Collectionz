@@ -6,7 +6,13 @@ import React, { useEffect } from "react";
 
 //hoc
 import WithAuth from "./hoc/withAuth";
-import { WithClientAuth, WithAdminAuth } from "./hoc/withManageAuth";
+import {
+  WithClientAuth,
+  WithAdminAuth,
+  WithAdminRestriction,
+  WithClientRestriction,
+  WithAdminClientAuth,
+} from "./hoc/withManageAuth";
 
 //imports
 import { Switch, Route } from "react-router-dom";
@@ -34,6 +40,8 @@ import Checkout from "./Pages/Checkout";
 import ClientOrders from "./Pages/ClientOrders";
 import ClientOrderDetails from "./Pages/ClientOrderDetails";
 import CustomerOrderDetails from "./Pages/CustomerOrderDetails";
+import ClientEditContent from "./Pages/ClientEditContent";
+import ChatScreen from "./Pages/ChatScreen";
 
 //Components
 import { ClientToolbar, AdminToolbar } from "./Components/Toolbar";
@@ -54,48 +62,81 @@ const App = (props) => {
           exact
           path="/"
           render={() => (
-            <HomepageLayout>
-              <Homepage />
-            </HomepageLayout>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <HomepageLayout>
+                  <Homepage />
+                </HomepageLayout>
+              </WithAdminRestriction>
+            </WithClientRestriction>
           )}
         />
 
         <Route
           path="/products_:filterType"
           render={() => (
-            <HomepageLayout>
-              <Homepage />
-            </HomepageLayout>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <HomepageLayout>
+                  <Homepage />
+                </HomepageLayout>
+              </WithAdminRestriction>
+            </WithClientRestriction>
           )}
         />
         <Route
           path="/product/:Prod_Code"
           render={() => (
-            <HomepageLayout>
-              <ProductOrder />
-            </HomepageLayout>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <HomepageLayout>
+                  <ProductOrder />
+                </HomepageLayout>
+              </WithAdminRestriction>
+            </WithClientRestriction>
           )}
         />
         <Route
           path="/cart"
           exact
           render={() => (
-            <WithAuth>
-              <MainLayout>
-                <Cart />
-              </MainLayout>
-            </WithAuth>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <WithAuth>
+                  <MainLayout>
+                    <Cart />
+                  </MainLayout>
+                </WithAuth>
+              </WithAdminRestriction>
+            </WithClientRestriction>
+          )}
+        />
+        <Route
+          path="/chat"
+          exact
+          render={() => (
+            <WithAdminRestriction>
+              <WithAuth>
+                <MainLayout>
+                  <ChatScreen />
+                </MainLayout>
+              </WithAuth>
+            </WithAdminRestriction>
           )}
         />
         <Route
           path="/checkout"
           exact
           render={() => (
-            <WithAuth>
-              <MainLayout>
-                <Checkout />
-              </MainLayout>
-            </WithAuth>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <WithAuth>
+                  <MainLayout>
+                    <Checkout />
+                  </MainLayout>
+                </WithAuth>
+              </WithAdminRestriction>
+            </WithClientRestriction>
           )}
         />
         <Route
@@ -120,18 +161,26 @@ const App = (props) => {
           exact
           path="/aboutUs"
           render={() => (
-            <MainLayout>
-              <AboutUs />
-            </MainLayout>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <MainLayout>
+                  <AboutUs />
+                </MainLayout>
+              </WithAdminRestriction>
+            </WithClientRestriction>
           )}
         />
         <Route
           exact
           path="/contactUs"
           render={() => (
-            <MainLayout>
-              <ContactUs />
-            </MainLayout>
+            <WithClientRestriction>
+              <WithAdminRestriction>
+                <MainLayout>
+                  <ContactUs />
+                </MainLayout>
+              </WithAdminRestriction>
+            </WithClientRestriction>
           )}
         />
         <Route
@@ -178,24 +227,35 @@ const App = (props) => {
         />
         <Route
           exact
-          path="/client/orders"
+          path="/client/editContent"
           render={() => (
             <WithClientAuth>
               <AdminClientLayout>
-                <ClientOrders />
+                <ClientEditContent />
               </AdminClientLayout>
             </WithClientAuth>
           )}
         />
         <Route
           exact
-          path="/client/orders/:orderID"
+          path="/manageOrders"
           render={() => (
-            <WithClientAuth>
+            <WithAdminClientAuth>
+              <AdminClientLayout>
+                <ClientOrders />
+              </AdminClientLayout>
+            </WithAdminClientAuth>
+          )}
+        />
+        <Route
+          exact
+          path="/manageOrders/:orderID"
+          render={() => (
+            <WithAdminClientAuth>
               <AdminClientLayout>
                 <ClientOrderDetails />
               </AdminClientLayout>
-            </WithClientAuth>
+            </WithAdminClientAuth>
           )}
         />
         <Route
@@ -209,17 +269,6 @@ const App = (props) => {
             </WithClientAuth>
           )}
         />
-        {/* <Route
-          exact
-          path="/client/:filterType/:sorterType"
-          render={() => (
-            <WithClientAuth>
-              <AdminClientLayout>
-                <Client />
-              </AdminClientLayout>
-            </WithClientAuth>
-          )}
-        /> */}
         <Route
           exact
           path="/admin"

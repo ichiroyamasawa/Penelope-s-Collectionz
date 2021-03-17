@@ -58,7 +58,7 @@ const ClientOrderDetails = () => {
           <Button
             className="orderBtns buyBtn"
             onClick={() => {
-              history.push("/client/orders");
+              history.push("/manageOrders");
             }}
           >
             {" "}

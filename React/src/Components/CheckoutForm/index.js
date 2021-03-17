@@ -528,7 +528,7 @@ const CheckoutForm = () => {
                 billingAddress.city}
             </h5>
             <h5>
-              <strong>paymentMethod: </strong>
+              <strong>Payment Method: </strong>
               {paymentMethod}
             </h5>
             <br />

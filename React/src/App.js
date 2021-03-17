@@ -71,40 +71,28 @@ const App = (props) => {
         <Route
           path="/products_:filterType"
           render={() => (
-            <WithClientRestriction>
-              <WithAdminRestriction>
-                <HomepageLayout>
-                  <Homepage />
-                </HomepageLayout>
-              </WithAdminRestriction>
-            </WithClientRestriction>
+            <HomepageLayout>
+              <Homepage />
+            </HomepageLayout>
           )}
         />
         <Route
           path="/product/:Prod_Code"
           render={() => (
-            <WithClientRestriction>
-              <WithAdminRestriction>
-                <HomepageLayout>
-                  <ProductOrder />
-                </HomepageLayout>
-              </WithAdminRestriction>
-            </WithClientRestriction>
+            <HomepageLayout>
+              <ProductOrder />
+            </HomepageLayout>
           )}
         />
         <Route
           path="/cart"
           exact
           render={() => (
-            <WithClientRestriction>
-              <WithAdminRestriction>
-                <WithAuth>
-                  <MainLayout>
-                    <Cart />
-                  </MainLayout>
-                </WithAuth>
-              </WithAdminRestriction>
-            </WithClientRestriction>
+            <WithAuth>
+              <MainLayout>
+                <Cart />
+              </MainLayout>
+            </WithAuth>
           )}
         />
         <Route
@@ -157,26 +145,18 @@ const App = (props) => {
           exact
           path="/aboutUs"
           render={() => (
-            <WithClientRestriction>
-              <WithAdminRestriction>
-                <MainLayout>
-                  <AboutUs />
-                </MainLayout>
-              </WithAdminRestriction>
-            </WithClientRestriction>
+            <MainLayout>
+              <AboutUs />
+            </MainLayout>
           )}
         />
         <Route
           exact
           path="/contactUs"
           render={() => (
-            <WithClientRestriction>
-              <WithAdminRestriction>
-                <MainLayout>
-                  <ContactUs />
-                </MainLayout>
-              </WithAdminRestriction>
-            </WithClientRestriction>
+            <MainLayout>
+              <ContactUs />
+            </MainLayout>
           )}
         />
         <Route

@@ -98,3 +98,8 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.successImg {
+  width: 25%;
+  margin: 20px auto;
+}

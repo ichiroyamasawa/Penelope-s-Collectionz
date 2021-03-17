@@ -23,6 +23,7 @@ import { saveOrderHistory } from "./../../Redux/Orders/orders.actions";
 import { createStructuredSelector } from "reselect";
 
 // Media Imports
+import Success from "./../../Assets/checked.png";
 import BPI from "./../../Assets/ModesOfPayment/bpi.png";
 import BDO from "./../../Assets/ModesOfPayment/bdo.png";
 import SecurityBank from "./../../Assets/ModesOfPayment/securitybank.png";
@@ -86,8 +87,15 @@ const CheckoutForm = () => {
   const handleCloseConfirm = () => {
     setShowConfirm(false);
   };
-
   const handleShowConfirm = () => setShowConfirm(true);
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
+    history.push("/");
+  };
+  const handleShowSuccess = () => setShowSuccess(true);
+
   const submitOrder = () => {
     const configOrder = {
       orderTotal: total,
@@ -104,7 +112,7 @@ const CheckoutForm = () => {
   };
   useEffect(() => {
     if (itemCount < 1) {
-      history.push("/");
+      handleShowSuccess();
     }
   }, [itemCount]);
 
@@ -580,6 +588,98 @@ const CheckoutForm = () => {
                 <BtnPink onClick={submitOrder}>
                   I Understand & I am ready to submit my order.
                 </BtnPink>
+              </Col>
+            </Row>
+          </Modal.Body>
+        </Modal>
+        <Modal show={showSuccess} onHide={handleCloseSuccess} backdrop="static">
+          <Modal.Header closeButton>
+            <Modal.Title>Order Success!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img className="successImg" src={Success} alt="Order Success!" />
+            <h5>
+              Yipee! Your order has been successfully submitted. Please keep in
+              touch with us by chatting us here or in any of our social media
+              accounts!
+            </h5>
+            <br />
+            <h5>
+              You can also check and review your billing details through the
+              order history tab in your dashboard.
+            </h5>
+            <br />
+            <h5>
+              Please settle your billing and we will deliver the ordered items
+              to you right away!.
+            </h5>
+            <br />
+            <p>
+              <em>
+                NOTE: An <strong>E-Receipt</strong> will be sent to you through
+                your dashboard once the billing has been settled and the order
+                has been delivered successfully.
+              </em>
+            </p>
+          </Modal.Body>
+          <Modal.Body>
+            <Row className="justify-content-center mb-2">
+              <Col md={6}>
+                <Button
+                  block
+                  className="profileSave"
+                  onClick={() => {
+                    history.push("/chat");
+                    handleCloseSuccess();
+                  }}
+                >
+                  <i class="fa fa-comments" aria-hidden="true"></i> Chat with
+                  Penelope's Collectionz
+                </Button>
+              </Col>
+            </Row>
+            <Row className="justify-content-center mb-2">
+              <Col md={6}>
+                <Button
+                  block
+                  className="profileSave"
+                  onClick={() => {
+                    history.push("/contactUs");
+                    handleCloseSuccess();
+                  }}
+                >
+                  <i class="fa fa-facebook-square" aria-hidden="true"></i>{" "}
+                  Social Media Accounts
+                </Button>
+              </Col>
+            </Row>
+            <Row className="justify-content-center mb-2">
+              <Col md={6}>
+                <Button
+                  block
+                  className="profileSave"
+                  onClick={() => {
+                    history.push("/dashboard");
+                    handleCloseSuccess();
+                  }}
+                >
+                  <i class="fa fa-user" aria-hidden="true"></i> Go to my
+                  Dashboard
+                </Button>
+              </Col>
+            </Row>
+            <Row className="justify-content-center mb-2">
+              <Col md={6}>
+                <Button
+                  block
+                  className="profileSave"
+                  onClick={() => {
+                    history.push("/");
+                    handleCloseSuccess();
+                  }}
+                >
+                  <i class="fa fa-home" aria-hidden="true"></i> Homepage
+                </Button>
               </Col>
             </Row>
           </Modal.Body>

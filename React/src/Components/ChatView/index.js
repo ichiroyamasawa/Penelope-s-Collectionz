@@ -15,7 +15,8 @@ const ChatView = ({ chat, email, onMessageSubmit, chatSeen, roles }) => {
   });
   return (
     <div className="chatView">
-      {roles.includes("client") &&
+      {roles !== null &&
+        roles.includes("client") &&
         Array.isArray(chat.messages) &&
         chat.messages.length > 0 && (
           <div className="chatHeader">
@@ -25,7 +26,8 @@ const ChatView = ({ chat, email, onMessageSubmit, chatSeen, roles }) => {
             </strong>
           </div>
         )}
-      {!roles.includes("client") &&
+      {roles !== null &&
+        !roles.includes("client") &&
         Array.isArray(chat.messages) &&
         chat.messages.length > 0 && (
           <div className="chatHeader">

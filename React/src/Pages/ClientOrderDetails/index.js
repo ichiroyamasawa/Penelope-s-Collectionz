@@ -101,7 +101,7 @@ const ClientOrderDetails = () => {
                 onClick={() => {
                   handleCloseConfirm();
                   dispatch(setOrderComplete(orderID));
-                  history.push("/client/orders");
+                  history.push("/manageOrders");
                 }}
               >
                 Complete Order

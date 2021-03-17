@@ -347,9 +347,20 @@ const ChatScreen = () => {
                 {chatWith === "PCz" && (
                   <>
                     {currentUser.userRoles.includes("client") && (
-                      <Button onClick={() => setChatWith("others")}>
-                        Chat Customers
-                      </Button>
+                      <>
+                        <h3 className="text-center">Chat with Customers</h3>
+                        <Row className="justify-content-center">
+                          <Col md="auto" className="mb-5 ">
+                            <Button
+                              className="profileSave"
+                              onClick={() => setChatWith("others")}
+                            >
+                              <i class="fa fa-comments" aria-hidden="true"></i>{" "}
+                              Chat with Customers
+                            </Button>
+                          </Col>
+                        </Row>
+                      </>
                     )}
                     <h3 className="text-center">
                       Chat with Penelope's Collectionz

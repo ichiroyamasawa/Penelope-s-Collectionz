@@ -62,13 +62,9 @@ const App = (props) => {
           exact
           path="/"
           render={() => (
-            <WithClientRestriction>
-              <WithAdminRestriction>
-                <HomepageLayout>
-                  <Homepage />
-                </HomepageLayout>
-              </WithAdminRestriction>
-            </WithClientRestriction>
+            <HomepageLayout>
+              <Homepage />
+            </HomepageLayout>
           )}
         />
 

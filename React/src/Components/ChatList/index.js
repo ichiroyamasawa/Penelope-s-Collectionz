@@ -17,16 +17,32 @@ const ChatList = ({
     <div className="chatList">
       <h1 className="chatList-Title">Chat List</h1>
       <div className="messageBtnHolder">
-        <Button
-          className="messageBtn btn-lg shadow-none"
-          size="lg"
-          block
-          onClick={() => {
-            newChatBtn();
-          }}
-        >
-          New Message
-        </Button>
+        {!roles.includes("client") &&
+          Array.isArray(chats) &&
+          chats.length === 0 && (
+            <Button
+              className="messageBtn btn-lg shadow-none"
+              size="lg"
+              block
+              onClick={() => {
+                newChatBtn();
+              }}
+            >
+              New Message
+            </Button>
+          )}
+        {roles.includes("client") && (
+          <Button
+            className="messageBtn btn-lg shadow-none"
+            size="lg"
+            block
+            onClick={() => {
+              newChatBtn();
+            }}
+          >
+            New Message
+          </Button>
+        )}
       </div>
       <div>
         <ListGroup className="mt-3">

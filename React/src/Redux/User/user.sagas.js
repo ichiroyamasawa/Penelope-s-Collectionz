@@ -208,7 +208,7 @@ export function* changeEmail({ payload }) {
     yield handleUserEmailReset(payload);
   } catch (err) {
     console.log(err);
-    yield put(userError([err.message]));
+    yield put(userError(err));
   }
 }
 
@@ -227,7 +227,7 @@ export function* changePassword({ payload }) {
     yield handleUserPasswordReset(payload);
   } catch (err) {
     console.log(err);
-    yield put(userError([err.message]));
+    yield put(userError(err));
   }
 }
 
@@ -240,7 +240,7 @@ export function* changeUserContact({ payload }) {
     yield handleUserContactReset(payload);
   } catch (err) {
     console.log(err);
-    yield put(userError([err.message]));
+    yield put(userError(err));
   }
 }
 

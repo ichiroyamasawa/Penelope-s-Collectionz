@@ -100,10 +100,8 @@ const ChatBubble = () => {
     clickedMessageWhereNotSender(docKey);
   };
   const clickedMessageWhereNotSender = (docKey) => {
-    console.log(
-      chat[0].messages[chat[0].messages.length - 1].sender !== currentUser.email
-    );
     if (
+      chat[0] !== undefined &&
       chat[0].messages[chat[0].messages.length - 1].sender !== currentUser.email
     ) {
       dispatch(seenMessage(docKey));

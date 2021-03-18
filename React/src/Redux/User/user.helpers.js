@@ -42,7 +42,8 @@ export const handleUserEmailReset = (email) => {
           });
       })
       .catch((error) => {
-        reject(error);
+        const err = ["The password is invalid."];
+        reject(err);
       });
   });
 };
@@ -71,8 +72,8 @@ export const handleUserPasswordReset = (password) => {
             resolve();
           })
           .catch((error) => {
-            console.log(error);
-            reject(error);
+            const err = ["The current password is invalid."];
+            reject(err);
           });
       })
       .catch((error) => {
@@ -109,8 +110,8 @@ export const handleUserContactReset = (contact) => {
           });
       })
       .catch((error) => {
-        console.log(error);
-        reject(error);
+        const err = ["The password is invalid."];
+        reject(err);
       });
   });
 };

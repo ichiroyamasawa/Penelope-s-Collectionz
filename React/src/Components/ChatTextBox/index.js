@@ -22,7 +22,6 @@ const ChatTextBox = ({ onMessageSubmit, chatSeen }) => {
 
   const messageValid = (txt) => txt && txt.replace(/\s/g, "").length;
 
-  const userClickedInput = () => {};
   return (
     <Row className="mr-0 chatTextArea">
       <Col>

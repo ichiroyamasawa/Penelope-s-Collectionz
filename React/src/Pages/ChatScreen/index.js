@@ -29,7 +29,6 @@ const ChatScreen = () => {
   const [chat, setChat] = useState([]);
   const [chatListLength, setChatListLength] = useState(0);
   const [selectedChat, setSelectedChat] = useState(null);
-  const [newChatFormVisible, setNewChatFormVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [userDoesExists, setUserDoesExists] = useState(null);
   const [chatDoesExists, setChatDoesExists] = useState(null);

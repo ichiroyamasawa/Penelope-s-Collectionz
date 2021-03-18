@@ -19,7 +19,7 @@ import { selectCartItemsCount } from "./../../Redux/Cart/cart.selectors";
 import { Link, useHistory } from "react-router-dom";
 
 import Overlay from "./../Overlay";
-
+import ChatBubble from "./../ChatBubble";
 // Bootstrap Imports
 import {
   Container,
@@ -49,6 +49,7 @@ const Header = (props) => {
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   const { currentUser, totalNumCartItems, cartItems } = useSelector(mapState);
+  const [showChatboxHeader, setShowChatboxHeader] = useState(false);
   const [cartModal, setCartModal] = useState(false);
   const handleCloseCartModal = () => setCartModal(false);
   const handleShowCartModal = () => setCartModal(true);
@@ -200,36 +201,37 @@ const Header = (props) => {
                     </>
                   )}
 
-                  <li>
-                    <OverlayTrigger
-                      trigger={["hover", "focus"]}
-                      placement="bottom"
-                      overlay={
-                        <Popover>
-                          <Popover.Title as="h3">Chat with Us!</Popover.Title>
-                          <Popover.Content>
-                            Click here and let's talk about your inquiries!
-                          </Popover.Content>
-                        </Popover>
-                      }
-                    >
-                      <Nav.Item>
-                        <BtnIcons
-                          type="submit"
-                          onClick={() => {
-                            if (currentUser.emailVerified) {
-                              history.push("/chat");
-                            } else {
-                              handleShowVerifyModal();
-                            }
-                          }}
-                        >
-                          <i class="fa fa-comments" aria-hidden="true"></i>
-                        </BtnIcons>
-                      </Nav.Item>
-                    </OverlayTrigger>
-                  </li>
-
+                  {currentUser.userRoles.includes("client") && (
+                    <li>
+                      <OverlayTrigger
+                        trigger={["hover", "focus"]}
+                        placement="bottom"
+                        overlay={
+                          <Popover>
+                            <Popover.Title as="h3">Chat with Us!</Popover.Title>
+                            <Popover.Content>
+                              Click here and let's talk about your inquiries!
+                            </Popover.Content>
+                          </Popover>
+                        }
+                      >
+                        <Nav.Item>
+                          <BtnIcons
+                            type="submit"
+                            onClick={() => {
+                              if (currentUser.emailVerified) {
+                                history.push("/chat");
+                              } else {
+                                handleShowVerifyModal();
+                              }
+                            }}
+                          >
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                          </BtnIcons>
+                        </Nav.Item>
+                      </OverlayTrigger>
+                    </li>
+                  )}
                   <li>
                     <OverlayTrigger
                       trigger={["hover", "focus"]}

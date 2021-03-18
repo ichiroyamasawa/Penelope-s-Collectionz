@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./../Components/Header";
-import Chat from "./../Components/Chat";
+import ChatBubble from "./../Components/ChatBubble";
 import Footer from "./../Components/Footer";
 
 const MainLayout = (props) => {
@@ -8,7 +8,7 @@ const MainLayout = (props) => {
     <div className="fullHeight">
       <Header {...props} />
       <div className="main">{props.children}</div>
-      {/* <Chat /> */}
+      <ChatBubble />
       <Footer />
     </div>
   );

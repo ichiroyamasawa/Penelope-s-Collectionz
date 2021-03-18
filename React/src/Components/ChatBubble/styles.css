@@ -1,0 +1,25 @@
+.chatPopupButton {
+  position: fixed;
+  z-index: 5000;
+  width: 50px;
+  height: 50px;
+  background-color: #8f4061;
+  right: 25px;
+  bottom: 50px;
+  border-radius: 100px;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popover-body {
+  font-size: 1rem;
+}
+
+.chatNotif {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 20000;
+}

@@ -87,3 +87,8 @@ export const deleteUserStart = (userCredentials) => ({
   type: userTypes.DELETE_USER_START,
   payload: userCredentials,
 });
+
+export const changeUserContact = (userCredentials) => ({
+  type: userTypes.CHANGE_USER_CONTACT,
+  payload: userCredentials,
+});

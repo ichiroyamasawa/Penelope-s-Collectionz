@@ -12,6 +12,7 @@ import "./styles.css";
 const OrderDetails = ({ order }) => {
   const dispatch = useDispatch();
   const {
+    orderUserEmail,
     orderUserFirstName,
     orderUserLastName,
     orderUserContactNum,
@@ -135,6 +136,19 @@ const OrderDetails = ({ order }) => {
                           defaultValue={
                             orderUserFirstName + " " + orderUserLastName
                           }
+                        />
+                      </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="custName">
+                      <Form.Label column sm="2">
+                        Email:
+                      </Form.Label>
+                      <Col sm="10">
+                        <Form.Control
+                          className="checkoutInput"
+                          //   plaintext
+                          readOnly
+                          defaultValue={orderUserEmail}
                         />
                       </Col>
                     </Form.Group>

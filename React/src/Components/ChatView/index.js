@@ -20,10 +20,9 @@ const ChatView = ({ chat, email, onMessageSubmit, chatSeen, roles }) => {
         Array.isArray(chat.messages) &&
         chat.messages.length > 0 && (
           <div className="chatHeader">
-            Your conversation with{" "}
-            <strong>
-              {chat.users.filter((usr) => usr !== "Penelope's Collectionz")[0]}
-            </strong>
+            Your conversation with <strong>{chat.custFullName}</strong> {"("}
+            {chat.users.filter((usr) => usr !== "Penelope's Collectionz")[0]}
+            {")"}
           </div>
         )}
       {roles !== null &&

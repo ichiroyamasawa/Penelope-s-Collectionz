@@ -24,6 +24,9 @@ import {
   handleDeleteUser,
   handleDeleteUserAdmin,
   handleEditUser,
+  handleUserEmailReset,
+  handleUserPasswordReset,
+  handleUserContactReset,
 } from "./user.helpers";
 import { clearCart } from "./../Cart/cart.actions";
 
@@ -202,42 +205,10 @@ export function* reauthenticate(currentPassword) {
 
 export function* changeEmail({ payload }) {
   try {
-    var err = null;
-    var user = yield auth.currentUser;
-    var cred = yield authProvider.credential(
-      user.email,
-      payload.changes.currentPassword
-    );
-    console.log(user);
-    console.log(cred);
-    console.log(payload.changes.email);
-    yield user
-      .reauthenticateWithCredential(cred)
-      .then(() => {
-        var user = auth.currentUser;
-        user
-          .updateEmail(payload.changes.email)
-          .then(() => {
-            console.log("Email updated!");
-            handleEditUser({ email: payload.changes.email, userID: user.uid });
-            user.reload();
-            window.location.reload();
-          })
-          .catch((error) => {
-            console.log(error);
-            err = error;
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-        err = error;
-      });
-
-    if (err !== null) {
-      yield put(userError([err.message]));
-    }
+    yield handleUserEmailReset(payload);
   } catch (err) {
     console.log(err);
+    yield put(userError([err.message]));
   }
 }
 
@@ -253,46 +224,28 @@ export function* changePassword({ payload }) {
   }
 
   try {
-    var err = null;
-    var user = yield auth.currentUser;
-    var cred = yield authProvider.credential(
-      user.email,
-      payload.changes.currentPassword
-    );
-    console.log(user);
-    console.log(cred);
-    console.log(payload.changes.email);
-    yield user
-      .reauthenticateWithCredential(cred)
-      .then(() => {
-        var user = auth.currentUser;
-        user
-          .updatePassword(payload.changes.newPassword)
-          .then(() => {
-            console.log("Password updated!");
-            user.reload();
-            window.location.reload();
-          })
-          .catch((error) => {
-            console.log(error);
-            err = error;
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-        err = error;
-      });
-
-    if (err !== null) {
-      yield put(userError([err.message]));
-    }
+    yield handleUserPasswordReset(payload);
   } catch (err) {
     console.log(err);
+    yield put(userError([err.message]));
   }
 }
 
 export function* onChangeUserPassword() {
   yield takeLatest(userTypes.CHANGE_USER_PASSWORD, changePassword);
+}
+
+export function* changeUserContact({ payload }) {
+  try {
+    yield handleUserContactReset(payload);
+  } catch (err) {
+    console.log(err);
+    yield put(userError([err.message]));
+  }
+}
+
+export function* onChangeUserContact() {
+  yield takeLatest(userTypes.CHANGE_USER_CONTACT, changeUserContact);
 }
 
 export function* deleteUser({ payload }) {
@@ -322,5 +275,6 @@ export default function* userSagas() {
     call(onEditUserStart),
     call(onChangeUserEmail),
     call(onChangeUserPassword),
+    call(onChangeUserContact),
   ]);
 }

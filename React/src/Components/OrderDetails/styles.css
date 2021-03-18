@@ -1,11 +1,12 @@
 .orderDetailsPaymentMethodImg {
-  width: 125px;
-  height: 125px;
+  width: 175px;
+  height: 175px;
 }
 
 .orderPaymentMethodDetails {
-  margin: 13px 0px;
+  margin: 20px 0px;
   padding: 0;
+  height: 60px;
 }
 
 .orderDetails,
@@ -15,7 +16,4 @@
   margin: 10px 0;
   padding: 20px;
   border-radius: 10px;
-}
-
-.orderDetailsCheckoutForm {
 }

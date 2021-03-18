@@ -27,6 +27,7 @@ import {
   signOutUserStart,
   changeUserEmail,
   changeUserPassword,
+  changeUserContact,
 } from "./../../Redux/User/user.actions";
 
 const mapState = (state) => ({
@@ -44,9 +45,21 @@ const Profile = () => {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newConPassword, setNewConPassword] = useState("");
+  const [contactNo, setContactNo] = useState("");
+  const [newContactNo, setNewContactNo] = useState("");
   const [errors, setErrors] = useState([]);
 
   // Modals
+  const [warningShow, setWarningShow] = useState(false);
+
+  const handleWarningClose = () => setWarningShow(false);
+  const handleWarningShow = () => setWarningShow(true);
+  const [newContactShow, setNewContactShow] = useState(false);
+  const handleNewContactClose = () => {
+    setNewContactShow(false);
+    clearForm();
+  };
+  const handleNewContactShow = () => setNewContactShow(true);
   const [emailPassShow, setEmailPassShow] = useState(false);
   const handleEmailPassClose = () => setEmailPassShow(false);
   const handleEmailPassShow = () => setEmailPassShow(true);
@@ -69,6 +82,8 @@ const Profile = () => {
     setNewPassword("");
     setNewConPassword("");
     setErrors([]);
+    setContactNo("");
+    setNewContactNo("");
   };
 
   const editItem = (item) => {
@@ -135,6 +150,20 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editUserStart(Item));
+    window.location.reload();
+  };
+
+  const onContactChange = (e) => {
+    e.preventDefault();
+    if (contactNo === currentUser.contactNo) {
+      const changes = {
+        contactNo: newContactNo,
+        currentPassword: currentPassword,
+      };
+      dispatch(changeUserContact({ changes }));
+    } else {
+      setErrors(["You typed the wrong current phone number."]);
+    }
   };
 
   const onEmailChange = (e) => {
@@ -283,16 +312,28 @@ const Profile = () => {
                 <Form.Label column sm="3" className="text-right">
                   Contact Number:
                 </Form.Label>
-                <Col sm="8">
+                <Col sm="6">
                   <FormInput
                     type="tel"
-                    subText="Format: 09XXXXXXXXX"
                     name="contactNo"
-                    value={Item.contactNo}
+                    readOnly
+                    value={
+                      Item.contactNo !== undefined &&
+                      Item.contactNo.replace(/\d(?=\d{4})/g, "*")
+                    }
                     pattern="[0-9]{11}"
                     placeholder="Contact Number"
                     handleChange={onEdit}
                   />
+                </Col>
+                <Col sm={2}>
+                  <Button
+                    block
+                    className="profileSave editContactNum"
+                    onClick={() => handleNewContactShow()}
+                  >
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                  </Button>
                 </Col>
               </Form.Group>
               <Row className="justify-content-center">
@@ -305,192 +346,326 @@ const Profile = () => {
                   </Button>
                 </Col>
               </Row>
-              <Modal show={emailPassShow} onHide={handleEmailPassClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Changing Email & Password</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <p>
-                    Changing Email & Password requires you to re-authenticate as
-                    you will modify sensitive credentials. Selecting buttons
-                    below will require you to enter your current password.
-                  </p>
-                  <Row className="justify-content-center">
-                    <Col md={4}>
-                      <Button
-                        block
-                        className="editEmailPass"
-                        onClick={() => {
-                          handleEmailPassClose();
-                          handleNewEmailShow();
-                        }}
-                      >
-                        Change Email
-                      </Button>
-                    </Col>
-                    <Col md={4}>
-                      <Button
-                        block
-                        className="profileSave"
-                        onClick={() => {
-                          handleEmailPassClose();
-                          handleNewPasswordShow();
-                        }}
-                      >
-                        Change Password
-                      </Button>
-                    </Col>
-                  </Row>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleEmailPassClose}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-              <Modal show={newEmailShow} onHide={handleNewEmailClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Change User Email</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Row>
-                    <Col className="errorHolder">
-                      {errors.length > 0 && (
-                        <ul>
-                          {errors.map((e, index) => {
-                            return <AlertError keyIndex={index} error={e} />;
-                          })}
-                        </ul>
-                      )}
-                    </Col>
-                  </Row>
 
-                  <Form onSubmit={onEmailChange}>
-                    <FormInput
-                      label="Please enter your current password."
-                      type="password"
-                      name="currentPassword"
-                      value={currentPassword}
-                      subText="Password must be at least 6 characters"
-                      pattern=".{6,}"
-                      title="Must be at least 6 characters"
-                      placeholder="Current Password"
-                      handleChange={(e) => setCurrentPassword(e.target.value)}
-                    />
-                    <FormInput
-                      label="Enter your new Email"
-                      type="email"
-                      name="newEmail"
-                      value={newEmail}
-                      placeholder="New Email"
-                      handleChange={(e) => setNewEmail(e.target.value)}
-                    />
-                    {/* <p>
-                      <em>
-                        Note: We will inform you that your email has been
-                        changed by sending an email to{" "}
-                        <strong>{currentUser.email}</strong>
-                      </em>
-                    </p> */}
-                    <Row className="justify-content-center">
-                      <Col md={4}>
-                        <Button block className="profileSave" type="submit">
-                          Submit
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleNewEmailClose}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-              <Modal show={newPasswordShow} onHide={handleNewPasswordClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Change User Password</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Row>
-                    <Col className="errorHolder">
-                      {errors.length > 0 && (
-                        <ul>
-                          {errors.map((e, index) => {
-                            return <AlertError keyIndex={index} error={e} />;
-                          })}
-                        </ul>
-                      )}
-                    </Col>
-                  </Row>
-
-                  <Form onSubmit={onPasswordChange}>
-                    <FormInput
-                      label="Please enter your current password."
-                      type="password"
-                      name="currentPassword"
-                      value={currentPassword}
-                      pattern=".{6,}"
-                      title="Must be at least 6 characters"
-                      placeholder="Current Password"
-                      handleChange={(e) => setCurrentPassword(e.target.value)}
-                    />
-                    <FormInput
-                      label="Enter your New Password"
-                      type="password"
-                      name="newPassword"
-                      value={newPassword}
-                      subText="Password must be at least 6 characters"
-                      pattern=".{6,}"
-                      title="Must be at least 6 characters"
-                      placeholder="New Password"
-                      handleChange={(e) => setNewPassword(e.target.value)}
-                    />
-                    <FormInput
-                      label="Confirm your New Password"
-                      type="password"
-                      name="newConPassword"
-                      value={newConPassword}
-                      subText="Password must be at least 6 characters"
-                      pattern=".{6,}"
-                      title="Must be at least 6 characters"
-                      placeholder="Confirm New Password"
-                      handleChange={(e) => setNewConPassword(e.target.value)}
-                    />
-                    <Row className="justify-content-center">
-                      <Col md={4}>
-                        <Button
-                          block
-                          variant="primary"
-                          className="profileSave"
-                          type="submit"
-                        >
-                          Submit
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleNewPasswordClose}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal>
               <Row className="justify-content-center">
                 <Col md={4}>
                   <Button
                     block
                     type="submit"
                     size="lg"
-                    className="profileSave shadow-none mb-5"
+                    className="profileSave shadow-none"
                   >
                     Save Changes
                   </Button>
                 </Col>
               </Row>
+              <Row className="justify-content-center">
+                <Col className="text-center mb-5" md={6}>
+                  <em className="profileSaveNote">
+                    NOTE: The page will reload after you successfully updated
+                    your profile.
+                  </em>
+                </Col>
+              </Row>
             </Container>
           </Form>
+          <Modal show={newContactShow} onHide={handleNewContactClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Change User Contact Number</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Row>
+                <Col className="errorHolder">
+                  {errors.length > 0 && (
+                    <ul>
+                      {errors.map((e, index) => {
+                        return <AlertError keyIndex={index} error={e} />;
+                      })}
+                    </ul>
+                  )}
+                </Col>
+              </Row>
+
+              <Form onSubmit={onContactChange}>
+                <FormInput
+                  label="Please enter your current password."
+                  type="password"
+                  name="currentPassword"
+                  value={currentPassword}
+                  pattern=".{6,}"
+                  title="Must be at least 6 characters"
+                  placeholder="Current Password"
+                  handleChange={(e) => setCurrentPassword(e.target.value)}
+                />
+                <FormInput
+                  label="Enter your CURRENT phone number."
+                  type="tel"
+                  name="contactNo"
+                  value={contactNo}
+                  subText={
+                    Item.contactNo !== undefined &&
+                    "Hint: " + Item.contactNo.replace(/\d(?=\d{4})/g, "*")
+                  }
+                  pattern="[0-9]{11}"
+                  placeholder="Current Phone Number"
+                  handleChange={(e) => setContactNo(e.target.value)}
+                />
+                <FormInput
+                  label="Enter your NEW phone number."
+                  type="tel"
+                  name="newContactNo"
+                  value={newContactNo}
+                  subText="Format: 09XXXXXXXXX"
+                  pattern="[0-9]{11}"
+                  placeholder="New Phone Number"
+                  handleChange={(e) => setNewContactNo(e.target.value)}
+                />
+                <Row className="justify-content-center m-3">
+                  <Col className="text-center" md={10}>
+                    <em className="profileSaveNote">
+                      NOTE: The page will reload after you successfully updated
+                      your contact number.
+                    </em>
+                  </Col>
+                </Row>
+                <Row className="justify-content-center">
+                  <Col md={4}>
+                    <Button
+                      block
+                      variant="primary"
+                      className="profileSave"
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleNewContactClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={emailPassShow} onHide={handleEmailPassClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Changing Email & Password</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>
+                Changing Email & Password requires you to re-authenticate as you
+                will modify sensitive credentials. Selecting buttons below will
+                require you to enter your current password.
+              </p>
+              <Row className="justify-content-center">
+                <Col md={4}>
+                  <Button
+                    block
+                    className="editEmailPass"
+                    onClick={() => {
+                      handleEmailPassClose();
+                      handleNewEmailShow();
+                    }}
+                  >
+                    Change Email
+                  </Button>
+                </Col>
+                <Col md={4}>
+                  <Button
+                    block
+                    className="profileSave"
+                    onClick={() => {
+                      handleEmailPassClose();
+                      handleNewPasswordShow();
+                    }}
+                  >
+                    Change Password
+                  </Button>
+                </Col>
+              </Row>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleEmailPassClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={newEmailShow} onHide={handleNewEmailClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Change User Email</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Row>
+                <Col className="errorHolder">
+                  {errors.length > 0 && (
+                    <ul>
+                      {errors.map((e, index) => {
+                        return <AlertError keyIndex={index} error={e} />;
+                      })}
+                    </ul>
+                  )}
+                </Col>
+              </Row>
+
+              <Form onSubmit={onEmailChange}>
+                <FormInput
+                  label="Please enter your current password."
+                  type="password"
+                  name="currentPassword"
+                  value={currentPassword}
+                  subText="Password must be at least 6 characters"
+                  pattern=".{6,}"
+                  title="Must be at least 6 characters"
+                  placeholder="Current Password"
+                  handleChange={(e) => setCurrentPassword(e.target.value)}
+                />
+                <FormInput
+                  label="Enter your new Email"
+                  type="email"
+                  name="newEmail"
+                  value={newEmail}
+                  placeholder="New Email"
+                  handleChange={(e) => setNewEmail(e.target.value)}
+                />
+                <p className="text-center">
+                  <em>
+                    NOTE: Changing your current Email will{" "}
+                    <strong>reset</strong> your chat with us. However, you can
+                    still retrieve your current chat by reverting to this
+                    current Email address. Please continue if you agree to this.
+                  </em>
+                </p>
+                {/* <p>
+                      <em>
+                        Note: We will inform you that your email has been
+                        changed by sending an email to{" "}
+                        <strong>{currentUser.email}</strong>
+                      </em>
+                    </p> */}
+                <Row className="justify-content-center">
+                  <Col md={4}>
+                    <Button block className="profileSave" type="submit">
+                      Submit
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleNewEmailClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          {/* <Modal
+            show={warningShow}
+            onHide={handleWarningClose}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Warning</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <h5>Changing email will reset your current chat with us.</h5>
+              <h5>Would you still like to continue your email update?</h5>
+            </Modal.Body>
+            <Modal.Footer>
+              <Row className="justify-content-center">
+                <Col md={4}>
+                  <Button
+                    block
+                    className="editEmailPass"
+                    onClick={() => {
+                      handleWarningClose();
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </Col>
+                <Col md={4}>
+                  <Button
+                    block
+                    className="profileSave"
+                    type="submit"
+                  >
+                    Yes, update email.
+                  </Button>
+                </Col>
+              </Row>
+            </Modal.Footer>
+          </Modal> */}
+          <Modal show={newPasswordShow} onHide={handleNewPasswordClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Change User Password</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Row>
+                <Col className="errorHolder">
+                  {errors.length > 0 && (
+                    <ul>
+                      {errors.map((e, index) => {
+                        return <AlertError keyIndex={index} error={e} />;
+                      })}
+                    </ul>
+                  )}
+                </Col>
+              </Row>
+
+              <Form onSubmit={onPasswordChange}>
+                <FormInput
+                  label="Please enter your current password."
+                  type="password"
+                  name="currentPassword"
+                  value={currentPassword}
+                  pattern=".{6,}"
+                  title="Must be at least 6 characters"
+                  placeholder="Current Password"
+                  handleChange={(e) => setCurrentPassword(e.target.value)}
+                />
+                <FormInput
+                  label="Enter your New Password"
+                  type="password"
+                  name="newPassword"
+                  value={newPassword}
+                  subText="Password must be at least 6 characters"
+                  pattern=".{6,}"
+                  title="Must be at least 6 characters"
+                  placeholder="New Password"
+                  handleChange={(e) => setNewPassword(e.target.value)}
+                />
+                <FormInput
+                  label="Confirm your New Password"
+                  type="password"
+                  name="newConPassword"
+                  value={newConPassword}
+                  subText="Password must be at least 6 characters"
+                  pattern=".{6,}"
+                  title="Must be at least 6 characters"
+                  placeholder="Confirm New Password"
+                  handleChange={(e) => setNewConPassword(e.target.value)}
+                />
+                <Row className="justify-content-center">
+                  <Col md={4}>
+                    <Button
+                      block
+                      variant="primary"
+                      className="profileSave"
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleNewPasswordClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Col>
       </Row>
     </Container>

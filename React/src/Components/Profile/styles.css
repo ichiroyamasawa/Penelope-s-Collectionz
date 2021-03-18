@@ -67,3 +67,11 @@
   background-color: #be5563 !important;
   color: #fff !important;
 }
+
+.profileSaveNote {
+  font-size: 1.2rem;
+}
+
+.editContactNum {
+  margin-bottom: 10px;
+}

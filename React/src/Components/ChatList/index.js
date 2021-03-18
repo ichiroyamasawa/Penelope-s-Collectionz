@@ -12,6 +12,7 @@ const ChatList = ({
   newChatBtn,
   selectedChat,
   roles,
+  fullName,
 }) => {
   return (
     <div className="chatList">
@@ -83,22 +84,27 @@ const ChatList = ({
                         <Row>
                           <Col className="p-0">
                             {roles.includes("client") && (
-                              <h5>
-                                {item.users.filter(
-                                  (user) => user !== "Penelope's Collectionz"
-                                )[0].length > 18
-                                  ? item.users
-                                      .filter(
+                              <>
+                                <h5>
+                                  <strong>{item.custFullName}</strong>
+                                </h5>
+                                <p>
+                                  {item.users.filter(
+                                    (user) => user !== "Penelope's Collectionz"
+                                  )[0].length > 18
+                                    ? item.users
+                                        .filter(
+                                          (user) =>
+                                            user !== "Penelope's Collectionz"
+                                        )[0]
+                                        .substring(0, 18)
+                                        .concat("...")
+                                    : item.users.filter(
                                         (user) =>
                                           user !== "Penelope's Collectionz"
-                                      )[0]
-                                      .substring(0, 18)
-                                      .concat("...")
-                                  : item.users.filter(
-                                      (user) =>
-                                        user !== "Penelope's Collectionz"
-                                    )[0]}
-                              </h5>
+                                      )[0]}
+                                </p>
+                              </>
                             )}
                             {!roles.includes("client") && (
                               <h5>
@@ -110,11 +116,12 @@ const ChatList = ({
                         <Row>
                           <Col className="p-0">
                             <p>
-                              {item.messages.length > 30
+                              {item.messages[item.messages.length - 1].message
+                                .length > 25
                                 ? item.messages[
                                     item.messages.length - 1
                                   ].message
-                                    .substring(0, 30)
+                                    .substring(0, 25)
                                     .concat("...")
                                 : item.messages[item.messages.length - 1]
                                     .message}

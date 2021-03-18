@@ -72,6 +72,7 @@ const CheckoutForm = () => {
   const { total, itemCount, myCartItems } = useSelector(totalState);
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
+  const [email, setEmail] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [refNum, setRefNum] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -92,7 +93,6 @@ const CheckoutForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const handleCloseSuccess = () => {
     setShowSuccess(false);
-    history.push("/");
   };
   const handleShowSuccess = () => setShowSuccess(true);
 
@@ -104,6 +104,7 @@ const CheckoutForm = () => {
       orderUserBillingAddress: billingAddress,
       orderUserFirstName: fName,
       orderUserLastName: lName,
+      orderUserEmail: email,
       orderUserContactNum: contactNo,
       orderCompleted: false,
     };
@@ -121,6 +122,7 @@ const CheckoutForm = () => {
       setFName(currentUser.fName);
       setLName(currentUser.lName);
       setContactNo(currentUser.contactNo);
+      setEmail(currentUser.email);
     }
   }, [currentUser]);
 
@@ -248,6 +250,19 @@ const CheckoutForm = () => {
                           //   plaintext
                           readOnly
                           defaultValue={lName}
+                        />
+                      </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="userEmail">
+                      <Form.Label column sm="4">
+                        Email:
+                      </Form.Label>
+                      <Col sm="8">
+                        <Form.Control
+                          className="checkoutInput"
+                          //   plaintext
+                          readOnly
+                          defaultValue={email}
                         />
                       </Col>
                     </Form.Group>
@@ -514,6 +529,9 @@ const CheckoutForm = () => {
               {fName + " " + lName}
             </h5>
             <h5>
+              <strong>Email:</strong> {email}
+            </h5>
+            <h5>
               <strong>Contact Number: </strong>
               {contactNo}
             </h5>
@@ -593,7 +611,7 @@ const CheckoutForm = () => {
           </Modal.Body>
         </Modal>
         <Modal show={showSuccess} onHide={handleCloseSuccess} backdrop="static">
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Order Success!</Modal.Title>
           </Modal.Header>
           <Modal.Body>

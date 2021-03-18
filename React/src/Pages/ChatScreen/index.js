@@ -36,6 +36,7 @@ const ChatScreen = () => {
   const [chatWith, setChatWith] = useState("PCz");
   const [newMessage, setNewMessage] = useState("");
   const [newChatEmail, setNewChatEmail] = useState("");
+  const [newChatFullName, setNewChatFullName] = useState("");
   const [newChatShow, setNewChatShow] = useState(false);
   const handleNewChatShow = () => setNewChatShow(true);
   const handleNewChatClose = () => {
@@ -54,6 +55,7 @@ const ChatScreen = () => {
     setChatWith("PCz");
     setUserDoesExists(null);
     setChatDoesExists(null);
+    setNewChatFullName("");
   };
 
   const selectChat = (chatIndex) => {
@@ -119,6 +121,7 @@ const ChatScreen = () => {
     if (!currentUser.userRoles.includes("client")) {
       firestore
         .collection("chats")
+        //.where("email", "==", currentUser.id)
         .where("users", "array-contains", currentUser.email)
         .onSnapshot(
           (res) => {
@@ -216,6 +219,7 @@ const ChatScreen = () => {
           snapshot.docs.forEach((doc) => {
             if (doc.get("email") === newChatEmail) {
               console.log("exists", doc.data());
+              setNewChatFullName(doc.data().fName + " " + doc.data().lName);
               resolve(setUserDoesExists(true));
             } else {
               console.log("USER DOE NOT EXIST");
@@ -235,6 +239,7 @@ const ChatScreen = () => {
       console.log("user exist!!!!");
       setUserDoesExists(null);
       chatExists();
+    } else if (userDoesExists === false) {
     }
   }, [userDoesExists]);
 
@@ -272,6 +277,7 @@ const ChatScreen = () => {
       const newChat = {
         users: [email, "Penelope's Collectionz"],
         seen: false,
+        custFullName: currentUser.fName + " " + currentUser.lName,
         messages: [
           {
             message: newMessage,
@@ -286,6 +292,7 @@ const ChatScreen = () => {
       const newChat = {
         users: ["Penelope's Collectionz", newChatEmail],
         seen: false,
+        custFullName: newChatFullName,
         messages: [
           {
             message: newMessage,
@@ -305,7 +312,7 @@ const ChatScreen = () => {
     }
   }, [selectedChat]);
 
-  const buildDocKey = (friend) => [email, friend].sort().join(":");
+  const buildDocKey = () => [email, "Penelope's Collectionz"].sort().join(":");
   // const buildNewDocKey = () => [email, newChatEmail].sort().join(":");
 
   return (
@@ -321,6 +328,7 @@ const ChatScreen = () => {
               selectedChat={selectedChat}
               selectChat={selectChat}
               newChatBtn={newChatBtnClicked}
+              // uid={currentUser.id}
             />
           </Col>
           <Modal centered show={newChatShow} onHide={handleNewChatClose}>

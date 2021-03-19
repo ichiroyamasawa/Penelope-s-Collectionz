@@ -59,7 +59,9 @@ const ChatWindow = ({ roles, chats, email, onMessageSubmit, chatSeen }) => {
               <div
                 key={index}
                 className={
-                  item.sender === email ? "userSent messageFlex" : "friendSent"
+                  item.sender === email
+                    ? "userSent userSentBubble  "
+                    : "friendSent friendSentBubble"
                 }
               >
                 <div className="message">

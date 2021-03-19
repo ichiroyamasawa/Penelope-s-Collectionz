@@ -17,6 +17,7 @@ const ChatView = ({ chat, email, onMessageSubmit, chatSeen, roles }) => {
     <div className="chatView">
       {roles !== null &&
         roles.includes("client") &&
+        chat !== undefined &&
         Array.isArray(chat.messages) &&
         chat.messages.length > 0 && (
           <div className="chatHeader">
@@ -36,15 +37,14 @@ const ChatView = ({ chat, email, onMessageSubmit, chatSeen, roles }) => {
         )}
 
       <div id="messageContainer">
-        {Array.isArray(chat.messages) &&
+        {chat !== undefined &&
+          Array.isArray(chat.messages) &&
           chat.messages.length > 0 &&
           chat.messages.map((item, index) => {
             return (
               <div
                 key={index}
-                className={
-                  item.sender === email ? "userSent messageFlex" : "friendSent"
-                }
+                className={item.sender === email ? "userSent" : "friendSent"}
               >
                 {/* <Avatar
                   name={item.sender}

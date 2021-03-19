@@ -8,10 +8,12 @@
   width: fit-content;
   background-color: #e8bdcf;
   /* color: #8f4061; */
-  max-width: 50%;
+  max-width: 500px;
+  word-wrap: break-word;
 }
 
 .friendSent {
+  word-wrap: break-word;
   float: left;
   clear: both;
   margin: 20px;
@@ -21,7 +23,7 @@
   width: fit-content;
   background-color: #8f4061;
   color: #ffff;
-  max-width: 50%;
+  max-width: 500px;
 }
 
 .chatHeader {

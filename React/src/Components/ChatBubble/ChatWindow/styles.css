@@ -27,6 +27,7 @@
 
 #messageBoxContainer {
   overflow-y: auto;
+  overflow-x: hidden;
   height: calc(400px - 30px);
   border-bottom: rgb(187, 185, 185) 0.2px solid;
 }
@@ -48,4 +49,16 @@
 .noChatYet {
   margin: 50px 20px;
   text-align: center;
+}
+
+.friendSentBubble {
+  max-width: 50% !important;
+  margin: 10px !important;
+  margin-left: 20px !important;
+}
+
+.userSentBubble {
+  max-width: 50% !important;
+  margin: 10px !important;
+  margin-right: 20px !important;
 }

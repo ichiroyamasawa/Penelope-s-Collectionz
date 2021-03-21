@@ -120,8 +120,11 @@ export const updateStock = (Prod_Code) => {
           if (!doc.exists) {
             throw "Product does not exist!";
           }
-          if (doc.data().Prod_Stock >= Prod_Code.quantity) {
+          if (doc.data().Prod_Stock >= 1) {
             var newStock = doc.data().Prod_Stock - Prod_Code.quantity;
+            if (newStock < 1) {
+              newStock = 0;
+            }
             transaction.update(ref, { Prod_Stock: newStock });
           }
         });

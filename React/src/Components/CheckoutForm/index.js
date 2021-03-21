@@ -647,21 +647,6 @@ const CheckoutForm = () => {
                   block
                   className="profileSave"
                   onClick={() => {
-                    history.push("/chat");
-                    handleCloseSuccess();
-                  }}
-                >
-                  <i class="fa fa-comments" aria-hidden="true"></i> Chat with
-                  Penelope's Collectionz
-                </Button>
-              </Col>
-            </Row>
-            <Row className="justify-content-center mb-2">
-              <Col md={6}>
-                <Button
-                  block
-                  className="profileSave"
-                  onClick={() => {
                     history.push("/contactUs");
                     handleCloseSuccess();
                   }}

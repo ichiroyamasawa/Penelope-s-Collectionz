@@ -2,8 +2,9 @@
   height: 3rem;
   bottom: 0;
   width: 100%;
-  position: absolute;
+  /*position: absolute;*/
   z-index: 10000;
+  margin-top: auto;
 }
 
 .footer .wrap {

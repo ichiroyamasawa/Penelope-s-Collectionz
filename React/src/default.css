@@ -57,6 +57,10 @@ a:hover {
   background: #ffe6f0;
   overflow: auto;
   overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .adminClientLayout {

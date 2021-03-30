@@ -316,7 +316,7 @@ const ChatScreen = () => {
 
   return (
     <div className="maxHeight">
-      <Container fluid className="maxHeight">
+      <Container fluid className="chatScreen">
         <Row>
           <Col md={3} className="p-0">
             <ChatList
@@ -357,7 +357,7 @@ const ChatScreen = () => {
                       <>
                         <h3 className="text-center">Chat with Customers</h3>
                         <Row className="justify-content-center">
-                          <Col md="auto" className="mb-5 ">
+                          <Col md="auto" xs="auto" className="mb-5 ">
                             <Button
                               className="profileSave"
                               onClick={() => setChatWith("others")}

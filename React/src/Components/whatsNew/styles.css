@@ -25,6 +25,7 @@
 
 .whatsNewImg {
   max-height: 500px;
+  width: auto;
 }
 
 .site-slider .slider-btn .prev,
@@ -77,4 +78,15 @@
   transform: scale(2.5);
   border-color: white;
   box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.205);
+}
+
+@media screen and (max-width: 767px) {
+  .awssld__content img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .slider {
+    height: 125px;
+  }
 }

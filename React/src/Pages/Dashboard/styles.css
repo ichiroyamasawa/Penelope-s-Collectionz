@@ -9,6 +9,13 @@
   text-align: center;
 }
 
+.dashboardTitle {
+  font-family: "Sacramento", cursive;
+  color: #8f4061;
+  font-size: 4rem;
+  text-align: center;
+}
+
 .receiptWrapper {
   background-color: #e8bdcf;
   border-radius: 10px;
@@ -61,4 +68,18 @@
 
 .dashboardNavLinks:hover {
   color: #fff;
+}
+
+@media (max-width: 767px) {
+  .dashboard {
+    padding-top: 2rem;
+  }
+
+  .dashboardNav {
+    margin: 0 20px 40px;
+  }
+
+  .tab-content > .active {
+    margin: 0 20px;
+  }
 }

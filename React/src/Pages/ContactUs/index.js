@@ -17,7 +17,7 @@ const ContactUs = (props) => {
                 <Col>
                   <h4 className="contactUsDetails">
                     <i class="fa fa-phone" aria-hidden="true"></i> Contact
-                    Number: 0997 063 2962
+                    Number: 0997&nbsp;063&nbsp;2962
                   </h4>
                 </Col>
               </Row>

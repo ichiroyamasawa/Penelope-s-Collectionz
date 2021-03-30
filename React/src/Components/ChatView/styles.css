@@ -47,3 +47,16 @@
 .chatAvatar {
   display: inline-block;
 }
+
+@media screen and (max-width: 767px) {
+  .userSent {
+    max-width: 200px;
+  }
+
+  .friendSent {
+    max-width: 200px;
+  }
+  #messageContainer {
+    height: calc(100vh - 18.5rem);
+  }
+}

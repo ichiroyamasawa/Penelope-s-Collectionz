@@ -51,23 +51,29 @@ const CartItem = ({
                 </Row>
                 {/* <!-- COLOR --> */}
                 <Row className="align-items-center">
-                  <Col md={3}>Color:</Col>
+                  <Col md={3} xs={5}>
+                    Color:
+                  </Col>
                   <Col>{Color}</Col>
                 </Row>
                 {/* <!-- SIZE --> */}
                 <Row className="align-items-center">
-                  <Col md={3}>Size:</Col>
+                  <Col md={3} xs={5}>
+                    Size:
+                  </Col>
                   <Col>{Size}</Col>
                 </Row>
                 {/* <!-- PRICE --> */}
                 <Row className="align-items-center">
-                  <Col md={3}>Price:</Col>
+                  <Col md={3} xs={5}>
+                    Price:
+                  </Col>
                   <Col>&#8369; {Price}</Col>
                 </Row>
                 {/* <!-- QUANTITY --> */}
                 <Row>
                   <Col md={3}>Quantity:</Col>
-                  <Col>
+                  <Col xs="auto">
                     <span
                       className="cartQuanti"
                       onClick={() => {
@@ -122,16 +128,21 @@ const CartItem = ({
               </Media.Body>
             </Media>
           </Col>
-          <Col md="auto">
+          <Col md="auto" xs={12}>
             <Button
               variant="danger"
-              className="m-0"
+              className="m-0 delItm"
               onClick={() => {
                 handleRemoveCartItem({ Prod_Code, Color, Size, itemKey });
               }}
             >
               <i class="fa fa-trash" aria-hidden="true"></i> Delete
             </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <hr />
           </Col>
         </Row>
       </Container>

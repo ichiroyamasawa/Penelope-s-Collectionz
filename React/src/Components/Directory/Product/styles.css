@@ -17,9 +17,16 @@
   float: left;
 }
 
-@media screen and (max-width: 638px) {
+@media screen and (max-width: 767px) {
   .product {
     width: 30rem;
+  }
+
+  .product .card {
+    margin: 20px 0;
+    margin-left: 60px;
+    margin-right: 40px;
+    right: 0;
   }
 }
 

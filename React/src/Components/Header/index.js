@@ -86,7 +86,7 @@ const Header = (props) => {
   };
 
   return (
-    <Container fluid className="p-0">
+    <Container fluid className="p-0 headerHolder">
       <Navbar collapseOnSelect expand="lg" className="p-0 mainNav">
         <Col
           md={{ span: 4, offset: 0 }}

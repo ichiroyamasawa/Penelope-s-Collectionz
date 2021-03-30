@@ -107,3 +107,35 @@
 .modal-open .modal {
   padding: 50px 0;
 }
+
+@media screen and (max-width: 767px) {
+  .checkoutFormLeft,
+  .checkoutFormRight {
+    margin: 10px 0 !important;
+  }
+
+  .photos-arrange .col-auto {
+    margin: 5px auto;
+  }
+
+  .checkoutCancel a button {
+    font-size: 10px;
+  }
+
+  .checkoutSubmit button {
+    font-size: 10px;
+  }
+
+  .orderSummaryWrapper table {
+    width: 600px;
+  }
+
+  .checkoutSubmit {
+    padding: 20px 0px;
+    margin-right: 50px;
+  }
+
+  .checkoutCancel {
+    margin: 0 auto;
+  }
+}

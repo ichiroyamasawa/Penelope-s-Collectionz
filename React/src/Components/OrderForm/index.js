@@ -138,7 +138,7 @@ const OrderForm = ({}) => {
                   Prod_Color.map((colorVal, index) => {
                     const { color } = colorVal;
                     return (
-                      <Col md="auto" key={index}>
+                      <Col md="auto" xs="auto" key={index}>
                         <ButtonColor
                           name="color"
                           btnColor={color}
@@ -161,7 +161,7 @@ const OrderForm = ({}) => {
                   Prod_Size.map((sizeVal, index) => {
                     const { size } = sizeVal;
                     return (
-                      <Col md="auto" key={index}>
+                      <Col md="auto" xs="auto" key={index}>
                         <Form.Check
                           className="productSize"
                           style={{ fontSize: 16 }}

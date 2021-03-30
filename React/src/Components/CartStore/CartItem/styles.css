@@ -29,3 +29,21 @@
 .cartQuanti:active {
   color: #fff;
 }
+
+@media screen and (max-width: 767px) {
+  .cartImage {
+    margin: auto 0;
+    height: 120px;
+    width: 120px;
+  }
+
+  .delItm {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+  }
+
+  .cartItemDetails {
+    margin-bottom: 20px;
+  }
+}

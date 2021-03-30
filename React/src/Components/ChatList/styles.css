@@ -1,7 +1,7 @@
 .chatList {
   background-color: #fff;
   overflow-y: auto;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 11rem);
   padding: 20px;
 }
 
@@ -30,4 +30,10 @@
   background-color: #8f4061 !important;
   border-color: #8f4061 !important;
   color: #fff !important;
+}
+
+@media screen and (max-width: 767px) {
+  .chatList {
+    height: calc(100vh - 30rem);
+  }
 }

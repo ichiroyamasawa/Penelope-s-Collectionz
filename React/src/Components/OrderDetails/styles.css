@@ -17,3 +17,10 @@
   padding: 20px;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 767px) {
+  .orderDetailsPaymentMethodImg {
+    width: 125px;
+    height: 125px;
+  }
+}

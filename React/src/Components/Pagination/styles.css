@@ -3,3 +3,9 @@
   margin: 0 auto;
   height: 50px;
 }
+
+@media screen and (max-width: 767px) {
+  .paginationBtn {
+    width: 50%;
+  }
+}

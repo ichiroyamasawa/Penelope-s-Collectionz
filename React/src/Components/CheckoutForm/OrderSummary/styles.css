@@ -7,3 +7,9 @@
 .orderSumSubtotal {
   font-weight: 700;
 }
+
+@media screen and (max-width: 767px) {
+  .orderSumSubtotal {
+    width: 100% !important;
+  }
+}

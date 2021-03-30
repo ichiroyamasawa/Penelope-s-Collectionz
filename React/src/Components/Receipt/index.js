@@ -95,7 +95,7 @@ const Receipt = ({ orders }) => {
                   <Col className="text-left">
                     {item.product.Prod_Name.substring(0, 5).concat("...")}
                   </Col>
-                  <Col md={3} className="text-left">
+                  <Col md={3} xs={3} className="text-left">
                     {item.selectedColor}
                   </Col>
                   <Col></Col>

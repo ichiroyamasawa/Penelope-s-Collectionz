@@ -44,3 +44,20 @@
   text-align: center !important;
   margin: 0px !important;
 }
+
+@media screen and (max-width: 767px) {
+  .chckoutbtn .addToBtn {
+    padding: 23px 0 !important;
+  }
+
+  .tPrice {
+    text-align: center;
+  }
+  .cartSettingsHolder {
+    justify-content: center !important;
+  }
+
+  .cartItemWrapper {
+    margin-left: 10px;
+  }
+}

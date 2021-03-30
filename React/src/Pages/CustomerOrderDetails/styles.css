@@ -21,3 +21,22 @@
 .orderID {
   font-weight: 700;
 }
+
+.custBackBtn {
+  max-height: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .orderDetailsOrderID {
+    margin-left: 5px;
+  }
+
+  .orderID {
+    font-size: 2rem;
+  }
+
+  .orderDetailsTotal {
+    margin: 0;
+    text-align: center;
+  }
+}

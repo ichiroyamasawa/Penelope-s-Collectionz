@@ -158,8 +158,22 @@
   color: #ffc104;
 }
 
-@media screen and (max-width: 638px) {
+@media screen and (max-width: 767px) {
   .orderForm {
     padding: 2rem;
+  }
+
+  .productImage {
+    width: 300px;
+  }
+
+  .counter {
+    margin: 0 auto;
+  }
+
+  .orderBtns {
+    width: 100%;
+    padding: 1rem 0.2rem;
+    font-size: 1.3rem;
   }
 }

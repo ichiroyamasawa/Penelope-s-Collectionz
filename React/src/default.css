@@ -51,20 +51,33 @@ a:hover {
 
 .main {
   width: 100%;
-  height: calc(100vh - 6.5rem - 1.4rem);
+  height: calc(100vh - 6.5rem - 1.7rem);
   padding: 0;
   margin: 0;
   background: #ffe6f0;
   overflow: auto;
   overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .adminClientLayout {
-  height: calc(100vh - 6.5rem - 1.4rem - 2.8rem);
+  height: calc(100vh - 6.5rem - 1.4rem - 2.9rem);
   background: #ffe6f0;
   overflow: auto;
 }
 
 .ck-editor__editable_inline {
   min-height: 300px !important;
+}
+body > #root > div {
+  height: 100vh !important;
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    height: calc(100vh - 6.5rem - 2rem);
+  }
 }

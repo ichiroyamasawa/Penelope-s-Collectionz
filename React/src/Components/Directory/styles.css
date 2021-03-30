@@ -42,16 +42,6 @@
   padding: 0 18.7rem;
 }
 
-@media screen and (max-width: 638px) {
-  .products {
-    padding: 2rem 0;
-  }
-
-  .products row {
-    padding: 0 10px;
-  }
-}
-
 .searchFilters {
   display: inline-block;
   vertical-align: center;
@@ -74,4 +64,22 @@ li .formRow select {
 
 span {
   margin: auto 0;
+}
+
+.bm-burger-button {
+  position: fixed !important;
+}
+
+@media screen and (max-width: 767px) {
+  .products {
+    padding: 2rem 0;
+  }
+
+  .products row {
+    padding: 0 10px;
+  }
+
+  .bm-burger-button {
+    display: none;
+  }
 }

@@ -76,7 +76,7 @@ const CartStore = () => {
           </Col>
         </Row>
         <Row>
-          <Col md={{ offset: 1, span: 6 }} sm={12}>
+          <Col md={{ offset: 1, span: 6 }} xs={12}>
             <div className="cartItemWrapper">
               {cartItems.length > 0 ? (
                 cartItems.map((item, index) => {
@@ -107,7 +107,7 @@ const CartStore = () => {
           <Col md={4}>
             <Container fluid>
               <Row className="justify-content-end cartSettingsHolder">
-                <Col md="auto" className="p-0">
+                <Col md="auto" xs="auto" className="p-0">
                   <Button
                     className="buyBtn modalBtns cartSettings "
                     onClick={handleShowLoadModal}
@@ -115,7 +115,7 @@ const CartStore = () => {
                     <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   </Button>
                 </Col>
-                <Col md="auto">
+                <Col md="auto" xs="auto">
                   <Button
                     className="addToBtn modalBtns cartSettings"
                     disabled={btnDisable}
@@ -161,7 +161,7 @@ const CartStore = () => {
                           </Button>
                         </Link>
                       </Col>
-                      <Col>
+                      <Col className="chckoutbtn">
                         <Link to="/checkout">
                           <Button
                             className="addToBtn modalBtns"

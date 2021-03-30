@@ -233,7 +233,7 @@ const Profile = () => {
                 </Col>
               </Row>
               <Row className="justify-content-center">
-                <Col md="auto">
+                <Col md="auto" xs="auto">
                   {/* {!userImage ? ( */}
                   <input
                     type="file"
@@ -277,7 +277,7 @@ const Profile = () => {
                 </Col>
               </Form.Group> */}
               <Form.Group as={Row} controlId="fName">
-                <Form.Label column sm="3" className="text-right">
+                <Form.Label column sm="3" className="profileInputLabel">
                   First Name:
                 </Form.Label>
                 <Col sm="8">
@@ -293,7 +293,7 @@ const Profile = () => {
                 </Col>
               </Form.Group>
               <Form.Group as={Row} controlId="lName">
-                <Form.Label column sm="3" className="text-right">
+                <Form.Label column sm="3" className="profileInputLabel">
                   Last Name:
                 </Form.Label>
                 <Col sm="8">
@@ -309,7 +309,7 @@ const Profile = () => {
                 </Col>
               </Form.Group>
               <Form.Group as={Row} controlId="contactNo">
-                <Form.Label column sm="3" className="text-right">
+                <Form.Label column sm="3" className="profileInputLabel">
                   Contact Number:
                 </Form.Label>
                 <Col sm="6">
@@ -337,7 +337,7 @@ const Profile = () => {
                 </Col>
               </Form.Group>
               <Row className="justify-content-center">
-                <Col md="auto">
+                <Col md="auto" xs="auto">
                   <Button
                     className="editEmailPass shadow-none mb-3"
                     onClick={handleEmailPassShow}

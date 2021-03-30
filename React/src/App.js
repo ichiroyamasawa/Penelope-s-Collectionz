@@ -101,9 +101,9 @@ const App = (props) => {
           render={() => (
             <WithAdminRestriction>
               <WithAuth>
-                <MainLayout>
+                <AdminClientLayout>
                   <ChatScreen />
-                </MainLayout>
+                </AdminClientLayout>
               </WithAuth>
             </WithAdminRestriction>
           )}

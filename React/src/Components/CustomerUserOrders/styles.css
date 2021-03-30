@@ -1,4 +1,4 @@
-.clientUserOrders-sectionTitle {
+.custUserOrders-sectionTitle {
   font-family: "Sacramento", cursive;
   color: #8f4061;
   font-size: 6rem;
@@ -7,4 +7,11 @@
 
 .ordersNote {
   margin: 0 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .custOrderHistoryWrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
 }

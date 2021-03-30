@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import moment from "moment";
 import "./styles.css";
 
@@ -10,7 +10,7 @@ const CustomerUserOrdersHolder = ({ index, orders, handleClick }) => {
   return (
     <div
       key={index}
-      className="clientUserOrdersHolder"
+      className="customerUserOrdersHolder"
       onClick={handleClick}
       // style={orderCompleted ? { filter: "brightness(60%)" } : {}}
     >
@@ -26,7 +26,7 @@ const CustomerUserOrdersHolder = ({ index, orders, handleClick }) => {
             <h5>Total Amount:</h5>
           </Col>
         </Row>
-        <Row className="clientUserOrdersHolderDetails">
+        <Row className="customerUserOrdersHolderDetails">
           <Col>
             <h4>{moment(date).format("MM/DD/YYYY, h:mm:ss a")}</h4>
           </Col>

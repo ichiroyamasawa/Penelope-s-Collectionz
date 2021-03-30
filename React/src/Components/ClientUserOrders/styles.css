@@ -8,3 +8,10 @@
 .ordersNote {
   margin: 0 50px;
 }
+
+@media screen and (max-width: 767px) {
+  .clientOrderHistoryWrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

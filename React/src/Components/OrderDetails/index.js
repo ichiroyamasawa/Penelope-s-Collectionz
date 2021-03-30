@@ -197,7 +197,7 @@ const OrderDetails = ({ order }) => {
                   Method
                 </h2>
                 <Row className="align-items-center ">
-                  <Col md="auto">
+                  <Col md="auto" xs="auto">
                     <img
                       className="orderDetailsPaymentMethodImg"
                       src={paymentMethodImg}

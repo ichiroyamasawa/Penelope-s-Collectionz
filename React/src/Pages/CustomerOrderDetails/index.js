@@ -15,7 +15,7 @@ const mapState = ({ ordersData }) => ({
   orderDetails: ordersData.orderDetails,
 });
 
-const ClientOrderDetails = () => {
+const CustomerOrderDetails = () => {
   const { orderID } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -41,7 +41,7 @@ const ClientOrderDetails = () => {
           {parseFloat(orderTotal).toFixed(2)}
         </h1>
       </div>
-      <Row className="text-center  m-0">
+      <Row className="text-center m-0 custBackBtn">
         <Col>
           <Button
             className="orderBtns buyBtn"
@@ -58,4 +58,4 @@ const ClientOrderDetails = () => {
   );
 };
 
-export default ClientOrderDetails;
+export default CustomerOrderDetails;

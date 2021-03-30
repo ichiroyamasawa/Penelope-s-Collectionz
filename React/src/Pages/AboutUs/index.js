@@ -13,17 +13,11 @@ const AboutUs = (props) => {
     <div className="aboutUs">
       <h1 className="aboutUs-sectiontitle">About Us</h1>
       <p className="aboutUs-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-        voluptatem, sit suscipit amet quisquam, consequatur a aperiam iusto
-        similique saepe dignissimos facere cupiditate unde! Voluptatem deserunt
-        quae tempore nesciunt, tenetur cumque, quidem dolorem adipisci saepe
-        dolor eveniet, dolores delectus. Nulla nisi earum nesciunt eaque quo
-        natus velit dolorum eum minima eos quas repudiandae et error laudantium,
-        soluta fugiat necessitatibus consequatur consequuntur non, magni odio
-        suscipit iste, iusto assumenda. Id, maxime incidunt unde fugiat est
-        consequuntur iure accusantium, praesentium deleniti sint ipsa quam rem
-        ratione fuga commodi voluptatem quaerat quas ullam quasi ipsam alias
-        nemo laborum eaque hic. Odio, molestiae velit.
+        At Penelope’s Collectionz, we assure that every locally handmade and
+        handcrafted creations we deliver to you is made with passion and with
+        utmost quality since 2019. We believe that our products should not only
+        make you look pretty and sassy but also feel confident and good about
+        yourself as well.
       </p>
 
       <h1 className="aboutUs-sectiontitle">Meet the Team</h1>
@@ -31,20 +25,20 @@ const AboutUs = (props) => {
       <Container>
         <Row className="justify-content-md-center">
           <ClientProfileCards
-            name="Ms. Jean Jhen Ace B. Ferrer"
+            name="Ms. JeanJhen Ace B. Ferrer"
             img={clientExampleA}
             desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae rem ad voluptas natus! Esse, eligendi."
-            fb="https://www.facebook.com/"
-            twitter="https://www.twitter.com/"
-            insta="https://www.instagram.com/"
+            fb="https://www.facebook.com/gingeraceee"
+            // twitter="https://www.twitter.com/"
+            insta="https://www.instagram.com/gingeraceee"
           />
           <ClientProfileCards
             name="Mr. Marc Aldwin R. Cortez"
             img={clientExampleB}
             desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae rem ad voluptas natus! Esse, eligendi."
-            fb="https://www.facebook.com/"
-            twitter="https://www.twitter.com/"
-            insta="https://www.instagram.com/"
+            // fb="https://www.facebook.com/"
+            // twitter="https://www.twitter.com/"
+            // insta="https://www.instagram.com/"
           />
         </Row>
       </Container>

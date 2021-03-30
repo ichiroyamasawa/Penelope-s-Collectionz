@@ -28,9 +28,9 @@
 .card-body p {
   font-size: 1.3rem;
 }
-
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .profileCard {
     width: 75%;
+    margin: 20px auto;
   }
 }

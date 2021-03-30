@@ -289,7 +289,7 @@ const CheckoutForm = () => {
                     Method
                   </h2>
                   <div className="photos-arrange">
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"
@@ -302,7 +302,7 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"
@@ -313,7 +313,7 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"
@@ -326,7 +326,7 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"
@@ -337,7 +337,7 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"
@@ -350,7 +350,7 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"
@@ -361,7 +361,7 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" xs="auto">
                       <div>
                         <ButtonImg
                           name="paymentMethod"

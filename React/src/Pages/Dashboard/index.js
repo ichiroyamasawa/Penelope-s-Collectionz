@@ -25,6 +25,7 @@ const Dashboard = () => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="profilePage">
         <Row>
           <Col sm={3}>
+            <h2 className="dashboardTitle">Dashboard</h2>
             <Nav variant="pills" className="flex-column dashboardNav">
               <Nav.Item>
                 <Nav.Link eventKey="profilePage" className="dashboardNavLinks">

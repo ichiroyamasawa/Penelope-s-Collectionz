@@ -21,3 +21,10 @@
 .orderID {
   font-weight: 700;
 }
+
+@media screen and (max-width: 767px) {
+  .orderDetailsTotal {
+    margin: 0;
+    text-align: center;
+  }
+}

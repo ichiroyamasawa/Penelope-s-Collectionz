@@ -14,6 +14,8 @@
   background-color: #e8bdcf;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 9vh;
+  margin-bottom: 50px;
 }
 
 .contactUsDetails {
@@ -83,4 +85,10 @@
   text-align: justify;
 
   border: #8f4061 dashed 2px;
+}
+
+@media screen and (max-width: 767px) {
+  .contactUsWrapper {
+    margin-top: auto;
+  }
 }

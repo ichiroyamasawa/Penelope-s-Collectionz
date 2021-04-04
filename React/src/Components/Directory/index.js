@@ -57,10 +57,10 @@ const Directory = ({}) => {
         name: "Hairclips",
         value: "hairclips",
       },
-      {
-        name: "Category 3",
-        value: "category3",
-      },
+      // {
+      //   name: "Category 3",
+      //   value: "category3",
+      // },
     ],
     handleChange: handleFilter,
   };
@@ -99,7 +99,7 @@ const Directory = ({}) => {
         <h1 className="products-sectionTitle">Our Products</h1>
 
         <div id="whatsNewSection">
-          <h2 className="products-subtitle">What's New?</h2>
+          <h2 className="products-subtitle">Featured Products</h2>
           <WhatsNew />
         </div>
 
@@ -110,16 +110,16 @@ const Directory = ({}) => {
           <BestSellers />
         </div>
 
-        <HR />
+        {/* <HR /> */}
 
-        <div id="hotDealsSection">
+        {/* <div id="hotDealsSection">
           <h2 className="products-subtitle">Hot Deals</h2>
           <HotDeals />
-        </div>
+        </div> */}
 
         <HR />
 
-        <Row>
+        <Row className="emptyProd">
           <Col>
             <h2 className="products-subtitle">Products</h2>
           </Col>
@@ -134,7 +134,7 @@ const Directory = ({}) => {
         </Row>
         <AlertError
           error={[
-            "We cannot find that product. ",
+            "We cannot find product for this category. ",
             <i class="fas fa-sad-tear    "></i>,
           ]}
         />
@@ -147,7 +147,7 @@ const Directory = ({}) => {
       <h1 className="products-sectionTitle">Our Products</h1>
 
       <div id="whatsNewSection">
-        <h2 className="products-subtitle">What's New?</h2>
+        <h2 className="products-subtitle">Featured Products</h2>
         <WhatsNew />
       </div>
 
@@ -158,12 +158,12 @@ const Directory = ({}) => {
         <BestSellers />
       </div>
 
-      <HR />
+      {/* <HR /> */}
 
-      <div id="hotDealsSection">
+      {/* <div id="hotDealsSection">
         <h2 className="products-subtitle">Hot Deals</h2>
         <HotDeals />
-      </div>
+      </div> */}
 
       <HR />
 

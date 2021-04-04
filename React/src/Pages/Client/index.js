@@ -299,10 +299,10 @@ const Client = (props) => {
         name: "Hairclips",
         value: "hairclips",
       },
-      {
-        name: "Category 3",
-        value: "category3",
-      },
+      // {
+      //   name: "Category 3",
+      //   value: "category3",
+      // },
     ],
     handleChange: handleFilter,
   };

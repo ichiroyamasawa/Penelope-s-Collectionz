@@ -8,6 +8,11 @@
   display: inline-block;
 }
 
+.emptyProd {
+  height: 100px !important;
+  padding-bottom: 100px;
+}
+
 @media screen and (max-width: 638px) {
   .products {
     padding: 1rem;

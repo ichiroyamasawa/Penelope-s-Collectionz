@@ -57,21 +57,29 @@ const Signup = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(
-      signUpUserStart({
-        fName,
-        lName,
-        contactNo,
-        email,
-        password,
-        confirmPassword,
-      })
-    );
+
+    if (nameValid(fName) && nameValid(lName)) {
+      dispatch(
+        signUpUserStart({
+          fName,
+          lName,
+          contactNo,
+          email,
+          password,
+          confirmPassword,
+        })
+      );
+    } else {
+      setFName("");
+      setLName("");
+    }
   };
 
   const configAuthWrapper = {
     headline: "Getting Started",
   };
+
+  const nameValid = (txt) => txt && txt.replace(/\s/g, "").length;
 
   return (
     <Container fluid className="signup">
@@ -97,7 +105,7 @@ const Signup = (props) => {
                       ]}
                       type="text"
                       placeholder="Enter first name"
-                      pattern="[a-zA-Z]*"
+                      pattern="[a-zA-Z ]*"
                       title="Names should not contain numbers and special characters."
                       name="fName"
                       value={fName}
@@ -109,7 +117,7 @@ const Signup = (props) => {
                     <FormInput
                       label="Last Name"
                       type="text"
-                      pattern="[a-zA-Z]*"
+                      pattern="[a-zA-Z ]*"
                       title="Names should not contain numbers and special characters."
                       placeholder="Enter last name"
                       name="lName"

@@ -149,8 +149,14 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editUserStart(Item));
-    window.location.reload();
+
+    if (nameValid(Item.fName) && nameValid(Item.lName)) {
+      dispatch(editUserStart(Item));
+      window.location.reload();
+    } else {
+      setItem({ ...Item, fName: currentUser.fName });
+      setItem({ ...Item, lName: currentUser.lName });
+    }
   };
 
   const onContactChange = (e) => {
@@ -184,6 +190,8 @@ const Profile = () => {
     };
     dispatch(changeUserPassword({ changes }));
   };
+
+  const nameValid = (txt) => txt && txt.replace(/\s/g, "").length;
 
   return (
     <Container fluid>
@@ -283,7 +291,7 @@ const Profile = () => {
                 <Col sm="8">
                   <FormInput
                     type="text"
-                    pattern="[a-zA-Z]*"
+                    pattern="[a-zA-Z ]*"
                     title="Names should not contain numbers and special characters."
                     name="fName"
                     value={Item.fName}
@@ -300,7 +308,7 @@ const Profile = () => {
                   <FormInput
                     type="text"
                     name="lName"
-                    pattern="[a-zA-Z]*"
+                    pattern="[a-zA-Z ]*"
                     title="Names should not contain numbers and special characters."
                     value={Item.lName}
                     placeholder="Last Name"

@@ -32,7 +32,7 @@ const ChatScreen = () => {
   const [email, setEmail] = useState("");
   const [userDoesExists, setUserDoesExists] = useState(null);
   const [chatDoesExists, setChatDoesExists] = useState(null);
-  const [chatWith, setChatWith] = useState("PCz");
+  const [chatWith, setChatWith] = useState("others");
   const [newMessage, setNewMessage] = useState("");
   const [newChatEmail, setNewChatEmail] = useState("");
   const [newChatFullName, setNewChatFullName] = useState("");
@@ -51,7 +51,7 @@ const ChatScreen = () => {
   const newChatReset = () => {
     setNewMessage("");
     setNewChatEmail("");
-    setChatWith("PCz");
+    setChatWith("others");
     setUserDoesExists(null);
     setChatDoesExists(null);
     setNewChatFullName("");

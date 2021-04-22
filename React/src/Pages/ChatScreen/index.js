@@ -270,38 +270,39 @@ const ChatScreen = () => {
   };
 
   const createChat = () => {
-    if (chatWith === "PCz") {
-      const docKey = "Penelope's Collectionz:".concat(email);
-      console.log("chatting with client");
-      const newChat = {
-        users: [email, "Penelope's Collectionz"],
-        seen: false,
-        custFullName: currentUser.fName + " " + currentUser.lName,
-        messages: [
-          {
-            message: newMessage,
-            sender: email,
-          },
-        ],
-      };
-      dispatch(sendNewMessage({ newChat, docKey }));
-      handleNewChatClose();
-    } else {
-      const docKey = "Penelope's Collectionz:".concat(newChatEmail);
-      const newChat = {
-        users: ["Penelope's Collectionz", newChatEmail],
-        seen: false,
-        custFullName: newChatFullName,
-        messages: [
-          {
-            message: newMessage,
-            sender: email,
-          },
-        ],
-      };
-      dispatch(sendNewMessage({ newChat, docKey }));
-      handleNewChatClose();
-    }
+    // if (chatWith === "PCz") {
+    //   const docKey = "Penelope's Collectionz:".concat(email);
+    //   console.log("chatting with client");
+    //   const newChat = {
+    //     users: [email, "Penelope's Collectionz"],
+    //     seen: false,
+    //     custFullName: currentUser.fName + " " + currentUser.lName,
+    //     messages: [
+    //       {
+    //         message: newMessage,
+    //         sender: email,
+    //       },
+    //     ],
+    //   };
+    //   dispatch(sendNewMessage({ newChat, docKey }));
+    //   handleNewChatClose();
+    // } else {
+    const docKey = "Penelope's Collectionz:".concat(newChatEmail);
+    const newChat = {
+      users: ["Penelope's Collectionz", newChatEmail],
+      seen: false,
+      custFullName: newChatFullName,
+      messages: [
+        {
+          message: newMessage,
+          sender: email,
+        },
+      ],
+    };
+    dispatch(sendNewMessage({ newChat, docKey }));
+    // goToChat();
+    handleNewChatClose();
+    // }
   };
 
   useEffect(() => {
@@ -351,7 +352,7 @@ const ChatScreen = () => {
                   </>
                 )}*/}
 
-                {chatWith === "PCz" && (
+                {/* {chatWith === "PCz" && (
                   <>
                     {currentUser.userRoles.includes("client") && (
                       <>
@@ -389,52 +390,49 @@ const ChatScreen = () => {
                       </Col>
                     </Row>
                   </>
-                )}
-                {chatWith !== "PCz" && (
+                )} */}
+                {/* {chatWith !== "PCz" && (
                   //  userDoesExists !== false &&
+                  <> */}
+                {userDoesExists === false && (
+                  <AlertError error="This user doesn't exist." />
+                )}
+                {userDoesExists !== false && (
                   <>
-                    {userDoesExists === false && (
-                      <AlertError error="This user doesn't exist." />
-                    )}
-                    {userDoesExists !== false && (
-                      <>
-                        <FormInput
-                          label="Chat with other users by entering his/her email."
-                          type="email"
-                          name="newChatEmail"
-                          value={newChatEmail}
-                          placeholder="User's email"
-                          handleChange={(e) => setNewChatEmail(e.target.value)}
-                        />
-                        <FormInput
-                          label="Message:"
-                          as="textarea"
-                          name="newMessage"
-                          value={newMessage}
-                          placeholder="Enter your message here..."
-                          handleChange={(e) => setNewMessage(e.target.value)}
-                        />
-                        <h5 className="text-center">
-                          <em>
-                            NOTE: Message wouldn't be created if the user
-                            doesn't exists.
-                          </em>
-                        </h5>
-                        <Row className="justify-content-center">
-                          <Col md={4}>
-                            <Button block className="profileSave" type="submit">
-                              <i
-                                class="fa fa-paper-plane"
-                                aria-hidden="true"
-                              ></i>{" "}
-                              Send Chat
-                            </Button>
-                          </Col>
-                        </Row>
-                      </>
-                    )}
+                    <FormInput
+                      label="Chat with other users by entering his/her email."
+                      type="email"
+                      name="newChatEmail"
+                      value={newChatEmail}
+                      placeholder="User's email"
+                      handleChange={(e) => setNewChatEmail(e.target.value)}
+                    />
+                    <FormInput
+                      label="Message:"
+                      as="textarea"
+                      name="newMessage"
+                      value={newMessage}
+                      placeholder="Enter your message here..."
+                      handleChange={(e) => setNewMessage(e.target.value)}
+                    />
+                    <h5 className="text-center">
+                      <em>
+                        NOTE: Message wouldn't be created if the user doesn't
+                        exists.
+                      </em>
+                    </h5>
+                    <Row className="justify-content-center">
+                      <Col md={4}>
+                        <Button block className="profileSave" type="submit">
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>{" "}
+                          Send Chat
+                        </Button>
+                      </Col>
+                    </Row>
                   </>
                 )}
+                {/* </>
+                )} */}
               </Form>
             </Modal.Body>
             <Modal.Footer>

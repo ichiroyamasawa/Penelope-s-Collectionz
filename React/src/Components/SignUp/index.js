@@ -4,7 +4,7 @@ import BtnCoral from "../Forms/ButtonCoral";
 
 //bootstrap imports
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Row, Container, Form, Alert } from "react-bootstrap";
+import { Col, Row, Container, Form, Modal } from "react-bootstrap";
 
 import BtnPink from "../Forms/ButtonPink";
 import FormInput from "./../Forms/FormInput";
@@ -31,6 +31,9 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (currentUser) {
@@ -83,6 +86,28 @@ const Signup = (props) => {
 
   return (
     <Container fluid className="signup">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Privacy Notice</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Hi! Your trust and security is important to us. We promise you, our
+          dear Ka'Pretty, that any information you will provide for us will
+          never be disclosed to anyone. Your personal information such as{" "}
+          <strong>name</strong>, <strong>email</strong>, and{" "}
+          <strong>contact number</strong> will only be used for faster and
+          easier transaction as well as to contact you. After ordering your
+          favorite product/s, we will also ask for your <strong>address</strong>{" "}
+          for a speedy delivery.{" "}
+        </Modal.Body>
+        <Modal.Body>
+          By signing up, you agree to the collection and use of information in
+          accordance with this policy. Cheers!
+        </Modal.Body>
+        <Modal.Footer>
+          <BtnPink onClick={handleClose}>Continue</BtnPink>
+        </Modal.Footer>
+      </Modal>
       <div className="wrap">
         <Row>
           <Col>

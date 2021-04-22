@@ -44,6 +44,19 @@ const Client = (props) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [editProdShow, setEditProdShow] = useState(false);
+  const [delProdName, setDelProdName] = useState("");
+  const [delProdCode, setDelProdCode] = useState("");
+  const [showDelete, setShowDelete] = useState(false);
+  const handleCloseDelete = () => {
+    setShowDelete(false);
+    resetForm();
+  };
+  const handleShowDelete = (prodName, prodCode) => {
+    setDelProdName(prodName);
+    setDelProdCode(prodCode);
+    setShowDelete(true);
+    console.log(prodName);
+  };
   const [Prod_CurrentProduct, setCurrentProduct] = useState([]);
   const [Item, setItem] = useState(Prod_CurrentProduct);
   const [Prod_Category, setProd_Category] = useState("earrings");
@@ -214,6 +227,8 @@ const Client = (props) => {
     setProd_Stock(0);
     setProd_Size([{ size: "" }]);
     setProd_Description("");
+    setDelProdName("");
+    setDelProdCode("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -464,9 +479,9 @@ const Client = (props) => {
                           <td>
                             <Button
                               variant="danger"
-                              onClick={() =>
-                                dispatch(deleteProductStart(Prod_Code))
-                              }
+                              onClick={() => {
+                                handleShowDelete(Prod_Name, Prod_Code);
+                              }}
                             >
                               <i class="fa fa-trash" aria-hidden="true"></i>{" "}
                               Delete
@@ -577,6 +592,17 @@ const Client = (props) => {
                 </Button>
               </Col>
             </Row>
+            <Row>
+              <Col>
+                <a
+                  href="https://www.rapidtables.com/web/color/html-color-codes.html"
+                  target="_blank"
+                >
+                  Color Guide
+                </a>
+              </Col>
+            </Row>
+            <br />
             {Prod_Color.map((colorVal, index) => {
               return (
                 <Row key={index}>
@@ -746,6 +772,17 @@ const Client = (props) => {
                 </Button>
               </Col>
             </Row>
+            <Row>
+              <Col>
+                <a
+                  href="https://www.rapidtables.com/web/color/html-color-codes.html"
+                  target="_blank"
+                >
+                  Color Guide
+                </a>
+              </Col>
+            </Row>
+            <br />
             {Item.Prod_Color &&
               Item.Prod_Color.map((colorVal, index) => {
                 return (
@@ -849,6 +886,31 @@ const Client = (props) => {
             </div>
           </form>
         </Modal.Body>
+      </Modal>
+      <Modal show={showDelete} onHide={handleCloseDelete}>
+        <Modal.Header closeButton>
+          <Modal.Title>Deleting Product</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>
+            Once the product has been deleted, it can't be retrieved anymore.
+          </h4>
+        </Modal.Body>
+        <Modal.Body>
+          <h4>Are you sure to delete {delProdName}?</h4>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="danger"
+            block
+            onClick={() => {
+              dispatch(deleteProductStart(delProdCode));
+              handleCloseDelete();
+            }}
+          >
+            Delete this product
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

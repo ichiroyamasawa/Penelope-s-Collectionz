@@ -92,17 +92,17 @@ const Signup = (props) => {
         </Modal.Header>
         <Modal.Body>
           Hi! Your trust and security is important to us. We promise you, our
-          dear Ka'Pretty, that any information you will provide for us will
-          never be disclosed to anyone. Your personal information such as{" "}
+          dear Ka'Pretty, that any information you provide us will never be
+          disclosed to anyone. Personal information such as your{" "}
           <strong>name</strong>, <strong>email</strong>, and{" "}
-          <strong>contact number</strong> will only be used for faster and
-          easier transaction as well as to contact you. After ordering your
-          favorite product/s, we will also ask for your <strong>address</strong>{" "}
-          for a speedy delivery.{" "}
+          <strong>contact number</strong> will only be used to help facilitate
+          transactions and communication with you. After ordering your favorite
+          product/s, you will also be asked for your <strong>address</strong>{" "}
+          for a speedy delivery.
         </Modal.Body>
         <Modal.Body>
-          By signing up, you agree to the collection and use of information in
-          accordance with this policy. Cheers!
+          By signing up, you agree to the collection and use of your information
+          in accordance with this policy. Cheers!
         </Modal.Body>
         <Modal.Footer>
           <BtnPink onClick={handleClose}>Continue</BtnPink>

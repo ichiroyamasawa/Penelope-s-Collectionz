@@ -56,6 +56,9 @@ const Header = (props) => {
   const [verifyModal, setVerifyModal] = useState(false);
   const handleCloseVerifyModal = () => setVerifyModal(false);
   const handleShowVerifyModal = () => setVerifyModal(true);
+  const [showReport, setShowReport] = useState(false);
+  const handleCloseReport = () => setShowReport(false);
+  const handleShowReport = () => setShowReport(true);
 
   const saveThisCart = () => {
     if (cartItems.length > 0) {
@@ -200,6 +203,62 @@ const Header = (props) => {
                       </Modal>
                     </>
                   )}
+
+                  {/* for BETA only - Report Button */}
+                  {
+                    <>
+                      <li>
+                        <OverlayTrigger
+                          trigger={["hover", "focus"]}
+                          placement="bottom"
+                          overlay={
+                            <Popover>
+                              <Popover.Title as="h3">
+                                Report a bug
+                              </Popover.Title>
+                              <Popover.Content>
+                                Please click me if you encounter any bugs or
+                                errors.
+                              </Popover.Content>
+                            </Popover>
+                          }
+                        >
+                          <Nav.Item>
+                            <BtnIcons type="submit" onClick={handleShowReport}>
+                              <i class="fas fa-bug    "></i>
+                            </BtnIcons>
+                          </Nav.Item>
+                        </OverlayTrigger>
+                      </li>
+
+                      <Modal show={showReport} onHide={handleCloseReport}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Report a bug</Modal.Title>
+                        </Modal.Header>
+                        <center>
+                          <Modal.Body>
+                            <h5>
+                              Hi! We apologize for any inconvenience you may
+                              have experienced while using our website. Please
+                              understand, the website is still under beta
+                              testing. Thank you.
+                            </h5>
+                          </Modal.Body>
+                          <Modal.Body>
+                            <h5>
+                              Please help us improve the website by send us an
+                              email at
+                              <strong>
+                                <a href="mailto: penelopescollectionz@ust.edu.ph">
+                                  penelopescollectionz@ust.edu.ph
+                                </a>
+                              </strong>
+                            </h5>
+                          </Modal.Body>
+                        </center>
+                      </Modal>
+                    </>
+                  }
 
                   {currentUser.userRoles.includes("client") && (
                     <li>

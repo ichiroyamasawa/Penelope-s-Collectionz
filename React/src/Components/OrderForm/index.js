@@ -43,7 +43,7 @@ const OrderForm = ({}) => {
   const [showEmpty, setShowEmpty] = useState(false);
   const [showConstraint, setShowConstraint] = useState(true);
   const [selectedColor, setSelectedColor] = useState("");
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState(0);
   const [btnDisable, setBtnDisable] = useState(false);
 
   const handleClose = () => setShow(false);

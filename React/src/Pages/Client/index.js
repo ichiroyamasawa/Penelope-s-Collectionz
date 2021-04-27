@@ -646,16 +646,16 @@ const Client = (props) => {
                       handleChange={(e) => handleSizeChange(e, index)}
                     />
                   </Col>
-                  {Prod_Size.length !== 1 && (
-                    <Col md="auto">
-                      <Button
-                        variety="danger"
-                        onClick={() => handleRemoveSizeInput(index)}
-                      >
-                        Remove
-                      </Button>
-                    </Col>
-                  )}
+                  {/* {Prod_Size.length !== 1 && ( */}
+                  <Col md="auto">
+                    <Button
+                      variety="danger"
+                      onClick={() => handleRemoveSizeInput(index)}
+                    >
+                      Remove
+                    </Button>
+                  </Col>
+                  {/* )} */}
                 </Row>
               );
             })}

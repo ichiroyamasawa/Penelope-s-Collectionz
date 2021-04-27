@@ -247,7 +247,7 @@ const Header = (props) => {
                           <Modal.Body>
                             <h5>
                               Please help us improve the website by send us an
-                              email at
+                              email at &nbsp;
                               <strong>
                                 <a href="mailto: penelopescollectionz@ust.edu.ph">
                                   penelopescollectionz@ust.edu.ph

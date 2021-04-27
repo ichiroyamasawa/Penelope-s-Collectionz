@@ -593,10 +593,20 @@ const CheckoutForm = () => {
               className="checkoutGIF"
             />
           </Modal.Body> */}
-          <Modal.Body className="text-center">
-            <h3>NOTE: Strictly no cancellation of orders once confirmed. </h3>
-            <br />
+          <Modal.Body className="text-left">
             <h3>
+              <p className="text-center">NOTE:</p>
+              Strictly no cancellation of orders once confirmed.
+              <br />
+              <br />
+              <p>
+                For the <strong>SHIPMENT</strong> information and details,
+                please contact us through our provided chat system, email
+                address, or contact number once the order has been submitted.
+              </p>
+            </h3>
+            <br />
+            <h3 className="text-center">
               <strong>Items are made to order.</strong>
             </h3>
           </Modal.Body>

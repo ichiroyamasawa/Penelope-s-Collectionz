@@ -462,7 +462,27 @@ const Client = (props) => {
                             return <td key={sizeIndex}>{size}</td>;
                           })} */}
                           <td>{Prod_Sales}</td>
-                          <td>{Prod_Stock}</td>
+                          <td>
+                            {Prod_Stock}
+                            {Prod_Stock <= 10 && Prod_Stock >= 6 && (
+                              <>
+                                &nbsp;
+                                <i
+                                  class="fa fa-exclamation-triangle stockCriticalMid"
+                                  aria-hidden="true"
+                                ></i>
+                              </>
+                            )}
+                            {Prod_Stock <= 5 && (
+                              <>
+                                &nbsp;
+                                <i
+                                  class="fa fa-exclamation-triangle stockCriticalHigh"
+                                  aria-hidden="true"
+                                ></i>
+                              </>
+                            )}
+                          </td>
                           <td>&#8369; {Prod_Price}</td>
                           <td>
                             <Button

@@ -127,3 +127,11 @@ tr .row {
 .colorWrapper {
   padding-bottom: 10px;
 }
+
+.stockCriticalMid {
+  color: orange;
+}
+
+.stockCriticalHigh {
+  color: red;
+}

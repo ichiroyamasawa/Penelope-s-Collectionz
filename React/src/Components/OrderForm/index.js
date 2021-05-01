@@ -9,7 +9,15 @@ import { addProduct } from "./../../Redux/Cart/cart.actions";
 import "./styles.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Container, Form, Button, Modal } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Container,
+  Form,
+  Button,
+  Modal,
+  Carousel,
+} from "react-bootstrap";
 import ButtonColor from "./../Forms/ButtonColor";
 import HR from "./../HR";
 
@@ -53,6 +61,10 @@ const OrderForm = ({}) => {
   const handleCloseConstraint = () => setShowConstraint(false);
   const handleShowConstraint = () => setShowConstraint(true);
 
+  const [carouselIdx, setCarouselIdx] = useState(0);
+  const handleSelect = (selectedIndex, e) => {
+    setCarouselIdx(selectedIndex);
+  };
   const add = () => {
     setQuantity(quantity + 1);
   };
@@ -114,7 +126,25 @@ const OrderForm = ({}) => {
       <Container fluid className="p-0">
         <Row className="p-0 mb-5 align-items-center">
           <Col className="productImageContainer text-center">
-            <img className="productImage" src={Prod_Image} alt={Prod_Name} />
+            {Prod_Image !== undefined && Prod_Image.length > 0 && (
+              <Carousel
+                activeIndex={carouselIdx}
+                onSelect={handleSelect}
+                controls={Prod_Image.length == 1 ? false : true}
+              >
+                {Prod_Image.map((img, index) => {
+                  return (
+                    <Carousel.Item>
+                      <img
+                        className="productImage"
+                        src={Prod_Image !== undefined && img.image}
+                        alt={Prod_Name}
+                      />
+                    </Carousel.Item>
+                  );
+                })}
+              </Carousel>
+            )}
           </Col>
           <Col>
             <Container>

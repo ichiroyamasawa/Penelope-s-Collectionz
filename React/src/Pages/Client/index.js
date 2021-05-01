@@ -63,7 +63,7 @@ const Client = (props) => {
   const [Prod_Name, setProd_Name] = useState("");
   const [Prod_Color, setProd_Color] = useState([{ color: "" }]);
   const [Prod_EditColor, setProd_EditColor] = useState([{ color: "" }]);
-  const [Prod_Image, setProd_Image] = useState(null);
+  const [Prod_Image, setProd_Image] = useState([{ image: "" }]);
   const [Prod_Sales, setProd_Sales] = useState(0);
   const [Prod_Price, setProd_Price] = useState(0);
   const [Prod_Size, setProd_Size] = useState([{ size: "" }]);
@@ -107,6 +107,21 @@ const Client = (props) => {
     if (name == "Prod_Stock") {
       setItem({ ...Item, [name]: parseInt(value) });
     } else setItem({ ...Item, [name]: value });
+  };
+
+  const handleAddImageInput = () => {
+    setProd_Image([...Prod_Image, { image: "" }]);
+  };
+
+  const handleAddImageEditInput = () => {
+    Item.Prod_Image = [...Item.Prod_Image, { image: "" }];
+    setProd_Image(Item.Prod_Image);
+  };
+
+  const handleRemoveImageInput = (index) => {
+    const list = [...Prod_Image];
+    list.splice(index, 1);
+    setProd_Image(list);
   };
 
   const handleColorChange = (e, index) => {
@@ -188,8 +203,9 @@ const Client = (props) => {
     setProd_Size(list);
   };
 
-  const handleProductImage = (e) => {
+  const handleProductImage = (e, index) => {
     const imgFile = e.target.files[0];
+    const imgList = [...Prod_Image];
     const fileStorage = storage.ref(`Prod_Images/${imgFile.name}`).put(imgFile);
     fileStorage.then(() => {
       console.log("File uploaded successfully");
@@ -198,9 +214,10 @@ const Client = (props) => {
         .child(imgFile.name)
         .getDownloadURL()
         .then((url) => {
-          setProd_Image(url);
+          imgList[index]["image"] = url;
+          setProd_Image(imgList);
 
-          console.log(url);
+          console.log(imgList);
         });
     });
   };
@@ -222,7 +239,7 @@ const Client = (props) => {
     setProd_Category("earrings");
     setProd_Name("");
     setProd_Color([{ color: "" }]);
-    setProd_Image(null);
+    setProd_Image([{ image: "" }]);
     setProd_Price(0);
     setProd_Stock(0);
     setProd_Size([{ size: "" }]);
@@ -450,7 +467,10 @@ const Client = (props) => {
                       return (
                         <tr key={index}>
                           <td>
-                            <img src={Prod_Image} className="productImg" />
+                            <img
+                              src={Prod_Image[0].image}
+                              className="productImg"
+                            />
                           </td>
                           <td>{Prod_Name}</td>
                           {/* {Prod_Color.map((colorVal, colorIndex) => {
@@ -537,15 +557,64 @@ const Client = (props) => {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
-            <div className="imgUpload">
+            <Row className="align-items-center colorWrapper">
+              <Col md="auto">Product Image:</Col>
+              <Col>
+                <Button onClick={handleAddImageInput}>
+                  <i class="fa fa-plus" aria-hidden="true"></i> Add New Image
+                </Button>
+              </Col>
+            </Row>
+            {Prod_Image.map((img, index) => {
+              return (
+                <Row key={index} className="imgHolder">
+                  <div className="imgUpload">
+                    <FormInput
+                      type="file"
+                      id={"uploadImg" + index}
+                      name="Prod_Image"
+                      placeholder="Product Image URL"
+                      accept="image/*"
+                      handleChange={(e) => {
+                        handleProductImage(e, index);
+                      }}
+                    />
+                    <Row className="justify-content-center imgHolder">
+                      <Col md="auto">
+                        <label htmlFor={"uploadImg" + index}>
+                          <img
+                            className="imgPlaceholder"
+                            src={
+                              (img !== undefined && img.image) ||
+                              ImagePlaceholder
+                            }
+                            alt={"Product Image"}
+                          />
+                        </label>
+                      </Col>
+                      <Col>
+                        {Prod_Image.length !== 1 && (
+                          <Button
+                            variant="danger"
+                            onClick={() => {
+                              handleRemoveImageInput(index);
+                            }}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </Col>
+                    </Row>
+                  </div>
+                </Row>
+              );
+            })}
+            {/* <div className="imgUpload">
               <FormInput
                 type="file"
                 id="uploadImg"
                 name="Prod_Image"
-                label={[
-                  "Upload product image here ",
-                  <i class="far fa-hand-point-down    "></i>,
-                ]}
+                label="Product Image:"
                 placeholder="Product Image URL"
                 accept="image/*"
                 handleChange={handleProductImage}
@@ -553,22 +622,6 @@ const Client = (props) => {
               <Row className="justify-content-center">
                 <Col md="auto">
                   <label htmlFor="uploadImg">
-                    {/* {Prod_Image && (
-                  <div>
-                    <Cropper
-                      image={Prod_Image}
-                      crop={crop}
-                      rotation={rotation}
-                      zoom={zoom}
-                      aspect={1 / 1}
-                      onCropChange={setCrop}
-                      onRotationChange={setRotation}
-                      // onCropComplete={onCropComplete}
-                      onZoomChange={setZoom}
-                    />
-                  </div>
-                )} */}
-
                     <img
                       className="imgPlaceholder"
                       src={Prod_Image || ImagePlaceholder}
@@ -577,7 +630,7 @@ const Client = (props) => {
                   </label>
                 </Col>
               </Row>
-            </div>
+            </div> */}
             <FormSelect
               label="Category"
               options={[
@@ -637,7 +690,10 @@ const Client = (props) => {
                   </Col>
                   {Prod_Color.length !== 1 && (
                     <Col md="auto">
-                      <Button onClick={() => handleRemoveColorInput(index)}>
+                      <Button
+                        variant="danger"
+                        onClick={() => handleRemoveColorInput(index)}
+                      >
                         Remove
                       </Button>
                     </Col>
@@ -669,7 +725,7 @@ const Client = (props) => {
                   {/* {Prod_Size.length !== 1 && ( */}
                   <Col md="auto">
                     <Button
-                      variety="danger"
+                      variant="danger"
                       onClick={() => handleRemoveSizeInput(index)}
                     >
                       Remove

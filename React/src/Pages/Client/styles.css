@@ -135,3 +135,12 @@ tr .row {
 .stockCriticalHigh {
   color: red;
 }
+
+.imgUpload {
+  margin: 15px;
+}
+
+.imgHolder {
+  justify-content: center;
+  align-items: center;
+}

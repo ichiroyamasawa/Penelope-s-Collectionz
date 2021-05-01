@@ -25,7 +25,11 @@ const Product = (product) => {
     <div className="product">
       <Link to={`/product/${Prod_Code}`}>
         <Card className="">
-          <Card.Img className="prodImg" variant="top" src={Prod_Image} />
+          <Card.Img
+            className="prodImg"
+            variant="top"
+            src={Prod_Image[0].image}
+          />
           <Card.Body>
             <Card.Title
               ref={ref}

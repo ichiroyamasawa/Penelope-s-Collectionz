@@ -124,6 +124,13 @@ const Client = (props) => {
     setProd_Image(list);
   };
 
+  const handleRemoveImageEditInput = (index) => {
+    const list = [...Item.Prod_Image];
+    list.splice(index, 1);
+    Item.Prod_Image = list;
+    setProd_Image(list);
+  };
+
   const handleColorChange = (e, index) => {
     const { name, value } = e.target;
 
@@ -234,8 +241,11 @@ const Client = (props) => {
   }, [Prod_CurrentProduct]);
 
   const resetForm = () => {
+    setCurrentProduct([]);
+
     setShow(false);
     setEditProdShow(false);
+
     setProd_Category("earrings");
     setProd_Name("");
     setProd_Color([{ color: "" }]);
@@ -246,6 +256,8 @@ const Client = (props) => {
     setProd_Description("");
     setDelProdName("");
     setDelProdCode("");
+
+    console.log(Prod_Image, 9999);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -270,6 +282,12 @@ const Client = (props) => {
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
   }, [filterType]);
+
+  useEffect(() => {
+    if (Prod_Image[0].image !== "") {
+      Item.Prod_Image = Prod_Image;
+    }
+  }, [Prod_Image]);
 
   // useEffect(() => {
   //   dispatch(fetchProductsStart({ sorterType }));
@@ -364,7 +382,9 @@ const Client = (props) => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
+    console.log(Item, 8989);
 
+    console.log(Item, 4343);
     dispatch(editProductStart(Item));
     resetForm();
   };
@@ -375,7 +395,6 @@ const Client = (props) => {
   };
   const handleShow = () => setShow(true);
   const handleEditProdClose = () => {
-    setEditProdShow(false);
     resetForm();
   };
   const handleEditProdShow = (props) => {
@@ -791,7 +810,108 @@ const Client = (props) => {
         <Modal.Body>
           <form onSubmit={handleEditSubmit}>
             <div className="imgUpload">
-              <label>
+              <Row className="align-items-center colorWrapper">
+                <Col md="auto">Product Image:</Col>
+                <Col>
+                  <Button onClick={handleAddImageEditInput}>
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add New Image
+                  </Button>
+                </Col>
+              </Row>
+              {Item.Prod_Image &&
+                Item.Prod_Image.map((img, index) => {
+                  return (
+                    <Row key={index} className="imgHolder">
+                      <div className="imgUpload">
+                        <input
+                          type="file"
+                          id={"uploadImg" + index}
+                          name="Prod_Image"
+                          placeholder="Product Image URL"
+                          accept="image/*"
+                          onChange={(e) => {
+                            handleProductImage(e, index);
+                          }}
+                        />
+                        <Row className="justify-content-center imgHolder">
+                          <Col md="auto">
+                            <label htmlFor={"uploadImg" + index}>
+                              <img
+                                className="imgPlaceholder"
+                                src={
+                                  (Prod_Image[index] !== undefined &&
+                                    Prod_Image[index].image) ||
+                                  (img !== undefined && img.image) ||
+                                  ImagePlaceholder
+                                }
+                                alt={"Product Image"}
+                                onChange={onEdit}
+                              />
+                            </label>
+                          </Col>
+                          <Col>
+                            {Item.Prod_Image.length !== 1 && (
+                              <Button
+                                variant="danger"
+                                onClick={() => {
+                                  handleRemoveImageEditInput(index);
+                                }}
+                              >
+                                Remove
+                              </Button>
+                            )}
+                          </Col>
+                          {console.log(Prod_Image)}
+                        </Row>
+                        {/* <FormInput
+                          type="file"
+                          id={"uploadImg" + index}
+                          name="Prod_Image"
+                          placeholder="Product Image URL"
+                          accept="image/*"
+                          handleChange={(e) => {
+                            handleProductImage(e, index);
+                          }}
+                        />
+                        <Row className="justify-content-center imgHolder">
+                          <Col md="auto">
+                            <label htmlFor={"uploadImg" + index}>
+                              <img
+                                className="imgPlaceholder"
+                                src={
+                                  (Prod_Image !== undefined &&
+                                    Prod_Image.length > 0 &&
+                                    Prod_Image[index].image) ||
+                                  (img !== undefined && img.image)
+                                }
+                                value={img.image}
+                                onChange={onEdit}
+                              />
+                            </label>
+                          </Col>
+                          <Col>
+                            {Item.Prod_Image.length !== 1 && (
+                              <Button
+                                variant="danger"
+                                onClick={() => {
+                                  handleRemoveImageEditInput(index);
+                                }}
+                              >
+                                Remove
+                              </Button>
+                            )}
+                          </Col>
+                        </Row> */}
+                      </div>
+                      {/* <div className="imgChanger">
+                          {Prod_Image !== undefined &&
+                            Prod_Image.length > 0 &&
+                            (img.image = Prod_Image[index].image)}
+                        </div> */}
+                    </Row>
+                  );
+                })}
+              {/* <label>
                 "Upload product image here "
                 <i class="far fa-hand-point-down    "></i>
               </label>
@@ -825,7 +945,7 @@ const Client = (props) => {
 
               <div className="imgChanger">
                 {Prod_Image && (Item.Prod_Image = Prod_Image)}
-              </div>
+              </div> */}
             </div>
             <div className="categoryDisp"> Category: {Item.Prod_Category}</div>
             <FormInput
@@ -875,6 +995,7 @@ const Client = (props) => {
                     {Item.Prod_Color.length !== 1 && (
                       <Col md="auto">
                         <Button
+                          variant="danger"
                           onClick={() => handleRemoveColorEditInput(index)}
                         >
                           Remove
@@ -909,7 +1030,7 @@ const Client = (props) => {
                     {Item.Prod_Size.length !== 1 && (
                       <Col md="auto">
                         <Button
-                          variety="danger"
+                          variant="danger"
                           onClick={() => handleRemoveSizeEditInput(index)}
                         >
                           Remove

@@ -241,11 +241,6 @@ const Client = (props) => {
   }, [Prod_CurrentProduct]);
 
   const resetForm = () => {
-    setCurrentProduct([]);
-
-    setShow(false);
-    setEditProdShow(false);
-
     setProd_Category("earrings");
     setProd_Name("");
     setProd_Color([{ color: "" }]);
@@ -256,8 +251,10 @@ const Client = (props) => {
     setProd_Description("");
     setDelProdName("");
     setDelProdCode("");
-
+    setShow(false);
+    setEditProdShow(false);
     console.log(Prod_Image, 9999);
+    console.log(Prod_Color, 1010);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -395,6 +392,9 @@ const Client = (props) => {
   };
   const handleShow = () => setShow(true);
   const handleEditProdClose = () => {
+    console.log(Prod_Color, 123);
+    console.log(Item.Prod_Color, 345);
+    console.log(Item.Prod_Color, 555);
     resetForm();
   };
   const handleEditProdShow = (props) => {

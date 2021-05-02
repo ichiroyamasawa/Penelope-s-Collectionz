@@ -69,7 +69,7 @@ const BestSellers = () => {
             <div className="bestSellerImgWrapper" key={index}>
               <img
                 className="bestSellerImg"
-                src={item.Prod_Image}
+                src={item.Prod_Image[0].image}
                 alt={item.Prod_Name}
                 onClick={() => {
                   history.push(`./product/${item.Prod_Code}`);

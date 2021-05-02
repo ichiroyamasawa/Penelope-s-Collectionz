@@ -5,7 +5,17 @@ import Product from "./Product";
 import "./styles.css";
 import { useHistory, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Row, Container } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Container,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
 import FormSelect from "./../Forms/FormSelect";
 import AlertError from "./../AlertError";
 import { PaginationNext } from "./../Pagination";
@@ -42,6 +52,25 @@ const Directory = ({}) => {
     }
   };
 
+  // const earringsFilters = {
+  //   title: "Earrings",
+  //   options: [
+  //     {
+  //       value: "earrings-drop",
+  //       name: "Earrings - Drop",
+  //     },
+  //     {
+  //       value: "earrings-hook",
+  //       name: "Earrings - Hook",
+  //     },
+  //     {
+  //       value: "earrings-stud",
+  //       name: "Earrings - Stud",
+  //     },
+  //   ],
+  //   handleSelect: handleFilter,
+  // };
+
   const configFilters = {
     defaultValue: filterType,
     options: [
@@ -50,12 +79,42 @@ const Directory = ({}) => {
         value: "",
       },
       {
-        name: "Earrings",
-        value: "earrings",
+        value: "earrings-drop",
+        name: "Earrings - Drop",
       },
       {
-        name: "Hairclips",
-        value: "hairclips",
+        value: "earrings-hook",
+        name: "Earrings - Hook",
+      },
+      {
+        value: "earrings-stud",
+        name: "Earrings - Stud",
+      },
+
+      {
+        value: "hair-snapclips",
+        name: "Hair Accessories - Snap Clips",
+      },
+      {
+        value: "hair-turban",
+        name: "Hair Accessories - Turban",
+      },
+      {
+        value: "baby-beanie_diaper_set",
+        name: "Baby - Beanie & Diaper Set",
+      },
+      {
+        value: "home_personal-alcoholders",
+        name: "Home & Personal Accessories - Alcoholders/Alcopouch",
+      },
+      {
+        value: "home_personal-coasters",
+        name: "Home & Personal Accessories - Coasters",
+      },
+
+      {
+        value: "home_personal-penholder",
+        name: "Home & Personal Accessories - Pen Holder",
       },
       // {
       //   name: "Category 3",
@@ -181,6 +240,11 @@ const Directory = ({}) => {
             </ul>
           </Col>
         </Row>
+        {/* <Row>
+          <Col>
+            <ProductDropdown {...earringsFilters} />
+          </Col>
+        </Row> */}
 
         <div className="prds">
           {data.map((product, pos) => {

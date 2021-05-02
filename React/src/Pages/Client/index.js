@@ -59,7 +59,7 @@ const Client = (props) => {
   };
   const [Prod_CurrentProduct, setCurrentProduct] = useState([]);
   const [Item, setItem] = useState(Prod_CurrentProduct);
-  const [Prod_Category, setProd_Category] = useState("earrings");
+  const [Prod_Category, setProd_Category] = useState("");
   const [Prod_Name, setProd_Name] = useState("");
   const [Prod_Color, setProd_Color] = useState([{ color: "" }]);
   const [Prod_EditColor, setProd_EditColor] = useState([{ color: "" }]);
@@ -339,12 +339,42 @@ const Client = (props) => {
         value: "",
       },
       {
-        name: "Earrings",
-        value: "earrings",
+        value: "earrings-drop",
+        name: "Earrings - Drop",
       },
       {
-        name: "Hairclips",
-        value: "hairclips",
+        value: "earrings-hook",
+        name: "Earrings - Hook",
+      },
+      {
+        value: "earrings-stud",
+        name: "Earrings - Stud",
+      },
+
+      {
+        value: "hair-snapclips",
+        name: "Hair Accessories - Snap Clips",
+      },
+      {
+        value: "hair-turban",
+        name: "Hair Accessories - Turban",
+      },
+      {
+        value: "baby-beanie_diaper_set",
+        name: "Baby - Beanie & Diaper Set",
+      },
+      {
+        value: "home_personal-alcoholders",
+        name: "Home & Personal Accessories - Alcoholders/Alcopouch",
+      },
+      {
+        value: "home_personal-coasters",
+        name: "Home & Personal Accessories - Coasters",
+      },
+
+      {
+        value: "home_personal-penholder",
+        name: "Home & Personal Accessories - Pen Holder",
       },
       // {
       //   name: "Category 3",
@@ -654,16 +684,46 @@ const Client = (props) => {
               label="Category"
               options={[
                 {
-                  value: "earrings",
-                  name: "Earrings",
+                  value: "",
+                  name: "Select a Category...",
                 },
                 {
-                  value: "hairclips",
-                  name: "Hairclips",
+                  value: "earrings-drop",
+                  name: "Earrings - Drop",
                 },
                 {
-                  value: "category3",
-                  name: "Category 3",
+                  value: "earrings-hook",
+                  name: "Earrings - Hook",
+                },
+                {
+                  value: "earrings-stud",
+                  name: "Earrings - Stud",
+                },
+
+                {
+                  value: "hair-snapclips",
+                  name: "Hair Accessories - Snap Clips",
+                },
+                {
+                  value: "hair-turban",
+                  name: "Hair Accessories - Turban",
+                },
+                {
+                  value: "baby-beanie_diaper_set",
+                  name: "Baby - Beanie & Diaper Set",
+                },
+                {
+                  value: "home_personal-alcoholders",
+                  name: "Home & Personal Accessories - Alcoholders/Alcopouch",
+                },
+                {
+                  value: "home_personal-coasters",
+                  name: "Home & Personal Accessories - Coasters",
+                },
+
+                {
+                  value: "home_personal-penholder",
+                  name: "Home & Personal Accessories - Pen Holder",
                 },
               ]}
               handleChange={(e) => setProd_Category(e.target.value)}

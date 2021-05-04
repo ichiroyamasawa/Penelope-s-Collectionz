@@ -8,6 +8,8 @@
   width: 75%;
   height: auto;
   margin: 0 auto;
+  margin-top: 15px;
+  border-radius: 50%;
 }
 
 .clientName {

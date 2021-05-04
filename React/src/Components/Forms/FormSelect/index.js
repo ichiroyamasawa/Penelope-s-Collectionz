@@ -5,6 +5,7 @@ const FormSelect = ({
   options,
   defaultValue,
   handleChange,
+  optgroup,
   label,
   ...otherProps
 }) => {
@@ -15,6 +16,19 @@ const FormSelect = ({
       {label && <label>{label}</label>}
 
       <select value={defaultValue} onChange={handleChange} {...otherProps}>
+        {optgroup && (
+          <optgroup label={optgroup}>
+            {options.map((option, index) => {
+              const { value, name } = option;
+
+              return (
+                <option key={index} value={value}>
+                  {name}
+                </option>
+              );
+            })}
+          </optgroup>
+        )}
         {options.map((option, index) => {
           const { value, name } = option;
 

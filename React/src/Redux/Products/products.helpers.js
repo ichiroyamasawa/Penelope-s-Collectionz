@@ -48,7 +48,30 @@ export const handleFetchProducts = ({
     //   //   ref = ref.orderBy("Prod_CreatedDate", "desc");
     // }
 
-    if (filterType) ref = ref.where("Prod_Category", "==", filterType);
+    if (filterType) {
+      if (filterType == "earrings") {
+        ref = ref.where("Prod_Category", "in", [
+          "earrings-drop",
+          "earrings-hook",
+          "earrings-stud",
+        ]);
+      } else if (filterType == "hair") {
+        ref = ref.where("Prod_Category", "in", [
+          "hair-snapclips",
+          "hair-turban",
+        ]);
+      } else if (filterType == "baby") {
+        ref = ref.where("Prod_Category", "in", ["baby-beanie_diaper_set"]);
+      } else if (filterType == "home_personal") {
+        ref = ref.where("Prod_Category", "in", [
+          "home_personal-alcoholders",
+          "home_personal-coasters",
+          "home_personal-penholder",
+        ]);
+      } else {
+        ref = ref.where("Prod_Category", "==", filterType);
+      }
+    }
     if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
     // if (startBeforeDoc)
     //   ref = ref.limitToLast(pageSize).endBefore(startBeforeDoc);

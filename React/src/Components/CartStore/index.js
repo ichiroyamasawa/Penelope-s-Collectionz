@@ -83,7 +83,7 @@ const CartStore = () => {
                   return (
                     <CartItem
                       itemKey={index}
-                      Image={item.product.Prod_Image}
+                      Image={item.product.Prod_Image[0].image}
                       Name={item.product.Prod_Name}
                       Color={item.selectedColor}
                       Size={item.selectedSize}

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsStart } from "../../Redux/Products/products.actions";
 import Product from "./Product";
 import "./styles.css";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Col,
@@ -12,6 +12,8 @@ import {
   Nav,
   Navbar,
   NavDropdown,
+  Dropdown,
+  ButtonGroup,
   Form,
   FormControl,
   Button,
@@ -180,15 +182,232 @@ const Directory = ({}) => {
 
         <Row className="emptyProd">
           <Col>
-            <h2 className="products-subtitle">Products</h2>
-          </Col>
-          <Col className="searchFilters text-right">
-            <ul>
-              <li>Shop by Category:</li>
-              <li>
-                <FormSelect {...configFilters} />
-              </li>
-            </ul>
+            <Navbar
+              collapseOnSelect
+              expand="lg"
+              bg="dark"
+              variant="dark"
+              className="prodNavbar"
+            >
+              <Navbar.Brand className="products-subtitleProducts">
+                <Link
+                  to="/#prodSection"
+                  style={{
+                    textDecoration: "none",
+                    color: "#8f4061",
+                  }}
+                >
+                  Products
+                </Link>
+              </Navbar.Brand>
+              <Navbar.Toggle
+                aria-controls="responsive-navbar-nav"
+                style={{ color: "#8f4061" }}
+              >
+                <i class="fas fa-bars    "></i>
+              </Navbar.Toggle>
+              <Navbar.Collapse id="responsive-navbar-nav ">
+                <Nav className="mr-auto text-center">
+                  <Row>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Earrings"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Earrings
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings-drop#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Drops
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings-hook#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Hooks
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings-stud#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Studs
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Hair Accessories"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_hair#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Hair Accessories
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_hair-snapclips#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Snap Clips
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_hair-turban#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Turbans
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Baby Clothes"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_baby#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Baby Clothes
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_baby-beanie_diaper_set#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Beanies & Diaper Sets
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Home & Personal Accessories"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Home & Personal Accessories
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal-alcoholders#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Alcoholders / Alcopouches
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal-coasters#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Coasters
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal-penholder#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Pen Holders
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                  </Row>
+                </Nav>
+                <Nav>
+                  <Link
+                    to="/#prodSection"
+                    style={{
+                      textDecoration: "none",
+                      color: "#8f4061",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    Show all Products
+                  </Link>
+                </Nav>
+                <Form inline>
+                  <FormControl
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                  />
+                  <Button variant="outline-primary">Search</Button>
+                </Form>
+              </Navbar.Collapse>
+            </Navbar>
           </Col>
         </Row>
         <AlertError
@@ -229,15 +448,232 @@ const Directory = ({}) => {
       <div id="prodSection">
         <Row>
           <Col>
-            <h2 className="products-subtitle">Products</h2>
-          </Col>
-          <Col className="searchFilters text-right ">
-            <ul>
-              <li>Shop by Category:</li>
-              <li>
-                <FormSelect {...configFilters} />
-              </li>
-            </ul>
+            <Navbar
+              collapseOnSelect
+              expand="lg"
+              bg="dark"
+              variant="dark"
+              className="prodNavbar"
+            >
+              <Navbar.Brand className="products-subtitleProducts">
+                <Link
+                  to="/#prodSection"
+                  style={{
+                    textDecoration: "none",
+                    color: "#8f4061",
+                  }}
+                >
+                  Products
+                </Link>
+              </Navbar.Brand>
+              <Navbar.Toggle
+                aria-controls="responsive-navbar-nav"
+                style={{ color: "#8f4061" }}
+              >
+                <i class="fas fa-bars    "></i>
+              </Navbar.Toggle>
+              <Navbar.Collapse id="responsive-navbar-nav ">
+                <Nav className="mr-auto text-center">
+                  <Row>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Earrings"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Earrings
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings-drop#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Drops
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings-hook#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Hooks
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_earrings-stud#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Studs
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Hair Accessories"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_hair#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Hair Accessories
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_hair-snapclips#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Snap Clips
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_hair-turban#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Turbans
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Baby Clothes"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_baby#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Baby Clothes
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_baby-beanie_diaper_set#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Beanies & Diaper Sets
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                    <Col xs={12} md={"auto"}>
+                      <NavDropdown
+                        title="Home & Personal Accessories"
+                        id="collasible-nav-dropdown"
+                      >
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Show All Home & Personal Accessories
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal-alcoholders#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Alcoholders / Alcopouches
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal-coasters#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Coasters
+                          </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link
+                            to="/products_home_personal-penholder#prodSection"
+                            style={{
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            Pen Holders
+                          </Link>
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                  </Row>
+                </Nav>
+                <Nav>
+                  <Link
+                    to="/#prodSection"
+                    style={{
+                      textDecoration: "none",
+                      color: "#8f4061",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    Show all Products
+                  </Link>
+                </Nav>
+                <Form inline>
+                  <FormControl
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                  />
+                  <Button variant="outline-primary">Search</Button>
+                </Form>
+              </Navbar.Collapse>
+            </Navbar>
           </Col>
         </Row>
         {/* <Row>

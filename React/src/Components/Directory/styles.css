@@ -41,6 +41,24 @@
   margin-top: 20px;
 }
 
+.products-subtitleProducts {
+  font-family: "Sacramento", cursive;
+  color: #8f4061 !important;
+  font-size: 3em;
+  text-align: start;
+  margin-top: -5px;
+  margin-bottom: -10px;
+  margin-right: 20px;
+}
+
+#collasible-nav-dropdown {
+  color: #8f4061 !important;
+}
+
+.prodNavbar {
+  background-color: #ffe6f0 !important;
+}
+
 .decker {
   margin: auto;
 

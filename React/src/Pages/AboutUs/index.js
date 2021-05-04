@@ -2,8 +2,8 @@ import React from "react";
 import "./styles.css";
 import ClientProfileCards from "./../../Components/clientProfileCards";
 
-import clientExampleA from "./../../Assets/woman.png";
-import clientExampleB from "./../../Assets/man.png";
+import clientA from "./../../Assets/Clients/JeanJhenAceBFerrer.jpg";
+import clientB from "./../../Assets/Clients/MarcAldwinRCortez.jpg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
@@ -26,7 +26,7 @@ const AboutUs = (props) => {
         <Row className="justify-content-md-center">
           <ClientProfileCards
             name="Ms. JeanJhen Ace B. Ferrer"
-            img={clientExampleA}
+            img={clientA}
             desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae rem ad voluptas natus! Esse, eligendi."
             fb="https://www.facebook.com/gingeraceee"
             // twitter="https://www.twitter.com/"
@@ -34,7 +34,7 @@ const AboutUs = (props) => {
           />
           <ClientProfileCards
             name="Mr. Marc Aldwin R. Cortez"
-            img={clientExampleB}
+            img={clientB}
             desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae rem ad voluptas natus! Esse, eligendi."
             // fb="https://www.facebook.com/"
             // twitter="https://www.twitter.com/"

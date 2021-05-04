@@ -21,13 +21,13 @@ const OrderSummary = ({
             <img src={Prod_Image} alt={Prod_Name} className="orderSummaryImg" />
           </td>
           <td ref={ref} style={{ fontSize, height: 20, width: "14.2857%" }}>
-            {Prod_Name.substring(0, 5).concat("...")}
+            {Prod_Name}
           </td>
           <td ref={ref} style={{ fontSize, height: 20, width: "14.2857%" }}>
             &#8369; {Prod_Price}
           </td>
           <td ref={ref} style={{ fontSize, height: 20, width: "14.2857%" }}>
-            {Prod_Color.substring(0, 5).concat("...")}
+            {Prod_Color}
           </td>
           <td ref={ref} style={{ fontSize, height: 20, width: "14.2857%" }}>
             {Prod_Size}

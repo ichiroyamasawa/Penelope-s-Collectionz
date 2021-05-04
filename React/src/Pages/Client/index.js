@@ -241,7 +241,7 @@ const Client = (props) => {
   }, [Prod_CurrentProduct]);
 
   const resetForm = () => {
-    setProd_Category("earrings");
+    setProd_Category("");
     setProd_Name("");
     setProd_Color([{ color: "" }]);
     setProd_Image([{ image: "" }]);
@@ -361,7 +361,7 @@ const Client = (props) => {
       },
       {
         value: "baby-beanie_diaper_set",
-        name: "Baby - Beanie & Diaper Set",
+        name: "Baby Clothes - Beanie & Diaper Set",
       },
       {
         value: "home_personal-alcoholders",
@@ -710,7 +710,7 @@ const Client = (props) => {
                 },
                 {
                   value: "baby-beanie_diaper_set",
-                  name: "Baby - Beanie & Diaper Set",
+                  name: "Baby Clothes - Beanie & Diaper Set",
                 },
                 {
                   value: "home_personal-alcoholders",

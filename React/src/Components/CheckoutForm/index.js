@@ -462,7 +462,9 @@ const CheckoutForm = () => {
                                   <tr key={index}>
                                     <td>
                                       <OrderSummary
-                                        Prod_Image={item.product.Prod_Image}
+                                        Prod_Image={
+                                          item.product.Prod_Image[0].image
+                                        }
                                         Prod_Name={item.product.Prod_Name}
                                         Prod_Color={item.selectedColor}
                                         Prod_Size={item.selectedSize}

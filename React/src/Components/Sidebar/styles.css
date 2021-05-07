@@ -91,3 +91,19 @@
   color: #8f4061;
   font-weight: 700;
 }
+
+.accordionBtn {
+  margin: 0;
+  padding: 10px;
+  color: white !important;
+  border: none;
+  background-color: #8f4061 !important;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.accordionBtn:hover {
+  color: #8f4061 !important;
+  background-color: #fff !important;
+  border: none;
+}

@@ -144,3 +144,7 @@ tr .row {
   justify-content: center;
   align-items: center;
 }
+
+.errorHandler {
+  padding: 0 !important;
+}

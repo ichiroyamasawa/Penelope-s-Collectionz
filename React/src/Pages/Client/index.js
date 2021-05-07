@@ -30,7 +30,8 @@ import { PaginationNext } from "./../../Components/Pagination";
 import { storage } from "./../../Firebase/utils";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Cropper from "react-easy-crop";
+
+import AlertError from "./../../Components/AlertError";
 
 // Media Imports
 import ImagePlaceholder from "./../../Assets/ImagePlaceholder.png";
@@ -47,6 +48,7 @@ const Client = (props) => {
   const [delProdName, setDelProdName] = useState("");
   const [delProdCode, setDelProdCode] = useState("");
   const [showDelete, setShowDelete] = useState(false);
+  const [errors, setErrors] = useState([]);
   const handleCloseDelete = () => {
     setShowDelete(false);
     resetForm();
@@ -312,28 +314,34 @@ const Client = (props) => {
     setDelProdCode("");
     setShow(false);
     setEditProdShow(false);
+    setErrors([]);
     console.log(Prod_Image, 9999);
     console.log(Prod_Color, 1010);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      addProductStart({
-        Prod_Category,
-        Prod_Name,
-        Prod_Color,
-        Prod_Tags,
-        Prod_Image,
-        Prod_Price,
-        Prod_Size,
-        Prod_Price,
-        Prod_Sales,
-        Prod_Stock,
-        Prod_Description,
-      })
-    );
-    resetForm();
+    if (Prod_Category !== "") {
+      dispatch(
+        addProductStart({
+          Prod_Category,
+          Prod_Name,
+          Prod_Color,
+          Prod_Tags,
+          Prod_Image,
+          Prod_Price,
+          Prod_Size,
+          Prod_Price,
+          Prod_Sales,
+          Prod_Stock,
+          Prod_Description,
+        })
+      );
+
+      resetForm();
+    } else {
+      setErrors(["Please select a category of the product"]);
+    }
   };
 
   useEffect(() => {
@@ -740,6 +748,13 @@ const Client = (props) => {
                 </Col>
               </Row>
             </div> */}
+            {errors.length > 0 && (
+              <ul className="errorHandler">
+                {errors.map((e, index) => {
+                  return <AlertError keyIndex={index} error={e} />;
+                })}
+              </ul>
+            )}
             <FormSelect
               label="Category"
               options={[
@@ -967,7 +982,15 @@ const Client = (props) => {
                 console.log({ event, editor, data });
               }}
             />
+            {errors.length > 0 && (
+              <ul className="errorHandler">
+                {errors.map((e, index) => {
+                  return <AlertError keyIndex={index} error={e} />;
+                })}
+              </ul>
+            )}
             <br />
+
             <div className="modalButtons">
               <div className="addBtnContainer">
                 <BtnSec onClick={handleClose}>Cancel</BtnSec>

@@ -67,6 +67,7 @@ const Client = (props) => {
   const [Prod_Sales, setProd_Sales] = useState(0);
   const [Prod_Price, setProd_Price] = useState(0);
   const [Prod_Size, setProd_Size] = useState([{ size: "" }]);
+  const [Prod_Tags, setProd_Tags] = useState([""]);
   const [Prod_Stock, setProd_Stock] = useState(0);
   const [Prod_Description, setProd_Description] = useState("");
   const history = useHistory();
@@ -94,6 +95,7 @@ const Client = (props) => {
       Prod_Price: item.Prod_Price,
       Prod_Size: item.Prod_Size,
       Prod_Stock: item.Prod_Stock,
+      Prod_Tags: item.Prod_Tags,
       Prod_Description: item.Prod_Description,
     });
   };
@@ -106,6 +108,9 @@ const Client = (props) => {
     const { name, value } = e.target;
     if (name == "Prod_Stock") {
       setItem({ ...Item, [name]: parseInt(value) });
+    } else if (name == "Prod_Name") {
+      setItem({ ...Item, [name]: value });
+      handleTagEdit(e, 0);
     } else setItem({ ...Item, [name]: value });
   };
 
@@ -131,6 +136,59 @@ const Client = (props) => {
     setProd_Image(list);
   };
 
+  const handleAddTagInput = () => {
+    setProd_Tags([...Prod_Tags, ""]);
+  };
+
+  const handleAddTagEditInput = () => {
+    Item.Prod_Tags = [...Item.Prod_Tags, ""];
+    setProd_Tags(Item.Prod_Tags);
+  };
+
+  const handleTagProd_Name = (Prod_Name) => {
+    const tagList = [...Prod_Tags];
+    tagList[0] = Prod_Name.toLowerCase();
+
+    setProd_Tags(tagList);
+    console.log(tagList, "tag");
+  };
+
+  const handleTagChange = (e, index) => {
+    const { value } = e.target;
+
+    const tagList = [...Prod_Tags];
+    tagList[index] = value.toLowerCase();
+
+    setProd_Tags(tagList);
+    console.log(index + " " + value.toLowerCase());
+    console.log(tagList, "tag");
+  };
+
+  const handleTagEdit = (e, index) => {
+    const { value } = e.target;
+
+    const tagList = [...Item.Prod_Tags];
+    tagList[index] = value.toLowerCase();
+    Item.Prod_Tags = tagList;
+    setProd_Tags(Item.Prod_Tags);
+    console.log(tagList, index);
+
+    console.log(Prod_Tags);
+  };
+
+  const handleRemoveTagInput = (index) => {
+    const list = [...Prod_Tags];
+    list.splice(index, 1);
+    setProd_Tags(list);
+  };
+
+  const handleRemoveTagEditInput = (index) => {
+    const list = [...Item.Prod_Tags];
+    list.splice(index, 1);
+    Item.Prod_Tags = list;
+    setProd_Tags(list);
+  };
+
   const handleColorChange = (e, index) => {
     const { name, value } = e.target;
 
@@ -145,8 +203,8 @@ const Client = (props) => {
 
     const colorList = [...Item.Prod_Color];
     colorList[index][name] = value;
-
-    setProd_Color(colorList);
+    Item.Prod_Color = colorList;
+    setProd_Color(Item.Prod_Color);
   };
 
   const handleAddColorInput = () => {
@@ -184,8 +242,8 @@ const Client = (props) => {
 
     const sizeList = [...Item.Prod_Size];
     sizeList[index][name] = value;
-
-    setProd_Size(sizeList);
+    Item.Prod_Size = sizeList;
+    setProd_Size(Item.Prod_Size);
   };
 
   const handleAddSizeInput = () => {
@@ -248,6 +306,7 @@ const Client = (props) => {
     setProd_Price(0);
     setProd_Stock(0);
     setProd_Size([{ size: "" }]);
+    setProd_Tags([""]);
     setProd_Description("");
     setDelProdName("");
     setDelProdCode("");
@@ -264,6 +323,7 @@ const Client = (props) => {
         Prod_Category,
         Prod_Name,
         Prod_Color,
+        Prod_Tags,
         Prod_Image,
         Prod_Price,
         Prod_Size,
@@ -734,7 +794,10 @@ const Client = (props) => {
               name="Prod_Name"
               value={Prod_Name}
               placeholder="Product Name"
-              handleChange={(e) => setProd_Name(e.target.value)}
+              handleChange={(e) => {
+                setProd_Name(e.target.value);
+                handleTagProd_Name(e.target.value);
+              }}
             />
             <Row className="align-items-center colorWrapper">
               <Col md="auto">Color:</Col>
@@ -836,6 +899,66 @@ const Client = (props) => {
               placeholder="Price"
               handleChange={(e) => setProd_Price(e.target.value)}
             />
+
+            <Row className="align-items-center colorWrapper">
+              <Col md="auto">Search Tags:</Col>
+              <Col>
+                <Button onClick={handleAddTagInput}>
+                  <i class="fa fa-plus" aria-hidden="true"></i> Add New Search
+                  Tag
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>This product will appear when customers search for...</Col>
+            </Row>
+            <Row>
+              <Col>
+                <em>
+                  (The product's name will be set on the first input box.)
+                </em>
+              </Col>
+            </Row>
+            <br />
+            {Prod_Tags.map((tagVal, index) => {
+              return (
+                <Row key={index}>
+                  {index == 0 ? (
+                    <Col>
+                      <FormInput
+                        type="text"
+                        name="tag"
+                        value={(tagVal = Prod_Name)}
+                        placeholder="Search Tag"
+                        handleChange={(e) => handleTagChange(e, index)}
+                        readOnly
+                      />
+                    </Col>
+                  ) : (
+                    <Col>
+                      <FormInput
+                        type="text"
+                        name="tag"
+                        value={tagVal}
+                        placeholder="Search Tag"
+                        handleChange={(e) => handleTagChange(e, index)}
+                      />
+                    </Col>
+                  )}
+
+                  {Prod_Tags.length !== 1 && (
+                    <Col md="auto">
+                      <Button
+                        variant="danger"
+                        onClick={() => handleRemoveTagInput(index)}
+                      >
+                        Remove
+                      </Button>
+                    </Col>
+                  )}
+                </Row>
+              );
+            })}
             <p>Product Description:</p>
             <CKEditor
               editor={ClassicEditor}
@@ -1122,6 +1245,66 @@ const Client = (props) => {
               placeholder="Price"
               handleChange={onEdit}
             />
+            <Row className="align-items-center colorWrapper">
+              <Col md="auto">Search Tags:</Col>
+              <Col>
+                <Button onClick={handleAddTagEditInput}>
+                  <i class="fa fa-plus" aria-hidden="true"></i> Add New Search
+                  Tag
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>This product will appear when customers search for...</Col>
+            </Row>
+            <Row>
+              <Col>
+                <em>
+                  (The product's name will be set on the first input box.)
+                </em>
+              </Col>
+            </Row>
+            <br />
+            {Item.Prod_Tags &&
+              Item.Prod_Tags.map((tagVal, index) => {
+                return (
+                  <Row key={index}>
+                    {index == 0 ? (
+                      <Col>
+                        <FormInput
+                          type="text"
+                          name="tag"
+                          value={(tagVal = Item.Prod_Name)}
+                          placeholder="Search Tag"
+                          handleChange={(e) => handleTagEdit(e, index)}
+                          readOnly
+                        />
+                      </Col>
+                    ) : (
+                      <Col>
+                        <FormInput
+                          type="text"
+                          name="tag"
+                          value={tagVal}
+                          placeholder="Search Tag"
+                          handleChange={(e) => handleTagEdit(e, index)}
+                        />
+                      </Col>
+                    )}
+
+                    {Item.Prod_Tags && Item.Prod_Tags.length !== 1 && (
+                      <Col md="auto">
+                        <Button
+                          variant="danger"
+                          onClick={() => handleRemoveTagEditInput(index)}
+                        >
+                          Remove
+                        </Button>
+                      </Col>
+                    )}
+                  </Row>
+                );
+              })}
             <p>Product Description:</p>
             <FormInput
               as="textarea"

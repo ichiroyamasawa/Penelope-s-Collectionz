@@ -53,7 +53,7 @@ export function* fetchProducts({ payload }) {
     const products = yield handleFetchProducts(payload);
     yield put(setProducts(products));
   } catch (err) {
-    // console.log(err);
+    console.log(err);
   }
 }
 

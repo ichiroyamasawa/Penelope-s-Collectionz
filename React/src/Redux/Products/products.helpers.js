@@ -26,7 +26,7 @@ export const handleAddProduct = (product) => {
 
 export const handleFetchProducts = ({
   filterType,
-  sorterType,
+  search,
   startAfterDoc,
   persistProducts = [], //infinite Scroll
   //startBeforeDoc,
@@ -37,16 +37,6 @@ export const handleFetchProducts = ({
       .collection("products")
       .limit(pageSize)
       .orderBy("Prod_CreatedDate", "desc");
-
-    // console.log(ref);
-    // if (sorterType) {
-    //   console.log("sorterType:" + sorterType);
-    //   ref = ref.orderBy(sorterType);
-    //   console.log(ref);
-    //   // } else if (!sorterType) {
-    //   //   console.log("sorterType: latest");
-    //   //   ref = ref.orderBy("Prod_CreatedDate", "desc");
-    // }
 
     if (filterType) {
       if (filterType == "earrings") {
@@ -75,7 +65,14 @@ export const handleFetchProducts = ({
     if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
     // if (startBeforeDoc)
     //   ref = ref.limitToLast(pageSize).endBefore(startBeforeDoc);
+    if (search) {
+      const searchLC = search.toLowerCase();
+      ref = ref.where("Prod_Tags", "array-contains", searchLC);
+      console.log(searchLC, "search1");
+    }
 
+    console.log("search2");
+    console.log(ref, "ref");
     ref
       .get()
       .then((snapshot) => {

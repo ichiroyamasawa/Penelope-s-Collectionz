@@ -93,6 +93,18 @@ span {
   position: fixed !important;
 }
 
+.searchBtn {
+  border: #8f4061 1px solid !important;
+  color: #8f4061 !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.searchBtn:hover,
+.searchBtn:active {
+  color: #fff !important;
+  background-color: #8f4061 !important;
+}
+
 @media screen and (max-width: 767px) {
   .products {
     padding: 2rem 0;

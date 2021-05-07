@@ -420,7 +420,7 @@ const Directory = ({}) => {
                     className="mr-sm-2"
                     onChange={(e) => setSearch(e.target.value)}
                   />
-                  <Button type="submit" variant="outline-primary">
+                  <Button type="submit" className="searchBtn mt-0">
                     Search
                   </Button>
                 </Form>
@@ -697,7 +697,7 @@ const Directory = ({}) => {
                     className="mr-sm-2"
                     onChange={(e) => setSearch(e.target.value)}
                   />
-                  <Button type="submit" variant="outline-primary">
+                  <Button type="submit" className="searchBtn mt-0">
                     Search
                   </Button>
                 </Form>

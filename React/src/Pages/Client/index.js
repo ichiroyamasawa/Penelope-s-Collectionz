@@ -682,6 +682,11 @@ const Client = (props) => {
                 </Button>
               </Col>
             </Row>
+            <Row>
+              <Col>
+                <em>(Works best with square images)</em>
+              </Col>
+            </Row>
             {Prod_Image.map((img, index) => {
               return (
                 <Row key={index} className="imgHolder">

@@ -27,6 +27,19 @@ const OrderSummary = ({
             &#8369; {Prod_Price}
           </td>
           <td ref={ref} style={{ fontSize, height: 20, width: "14.2857%" }}>
+            <span
+              style={{
+                color: Prod_Color,
+                border: "2px solid #8f40618e",
+                borderRadius: "5px",
+                backgroundColor: "#fff",
+                padding: "3px",
+                fontSize: "1.5rem",
+              }}
+            >
+              <i class="fa fa-circle" aria-hidden="true"></i>
+            </span>
+            &nbsp;
             {Prod_Color}
           </td>
           <td ref={ref} style={{ fontSize, height: 20, width: "14.2857%" }}>

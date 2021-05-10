@@ -10,6 +10,7 @@ const ButtonColor = ({ btnColor, id, name, handleChange, ...otherProps }) => {
         id={id}
         class="input-hidden"
         onChange={handleChange}
+        {...otherProps}
       />
       <label for={id}>
         <div style={{ backgroundColor: btnColor }} className="colorDisp"></div>

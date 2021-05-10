@@ -123,6 +123,7 @@ const OrderForm = ({}) => {
   return (
     <div className="orderForm">
       <h1 className="productName">{Prod_Name}</h1>
+
       <Container fluid className="p-0">
         <Row className="p-0 mb-5 align-items-center">
           <Col className="productImageContainer text-center">
@@ -156,10 +157,17 @@ const OrderForm = ({}) => {
                   <div className="productLabels"> &#8369; {Prod_Price}</div>
                 </Col>
               </Row>
-
+              <Row>
+                <Col>
+                  <hr />
+                </Col>
+              </Row>
               <Row>
                 <Col md="auto">
-                  <div className="productLabels">Color:</div>
+                  <div className="productLabels">
+                    Color: (Please refer to the <em>topmost</em> or{" "}
+                    <em>most dominant</em> color)
+                  </div>
                 </Col>
               </Row>
               <Row className="d-flex justify-content-center orderFormSelect">
@@ -174,10 +182,15 @@ const OrderForm = ({}) => {
                           btnColor={color}
                           id={color}
                           handleChange={() => setSelectedColor(color)}
-                        />
+                        />{" "}
                       </Col>
                     );
                   })}
+              </Row>
+              <Row>
+                <Col>
+                  <hr />
+                </Col>
               </Row>
               <Row className="align-items-center">
                 <Col md="auto">
@@ -206,6 +219,11 @@ const OrderForm = ({}) => {
                     );
                   })}
               </Row>
+              <Row>
+                <Col>
+                  <hr />
+                </Col>
+              </Row>
               <Row className="align-items-center mt-5">
                 <Col md="auto">
                   <div className="productLabels">Quantity:</div>
@@ -230,6 +248,11 @@ const OrderForm = ({}) => {
                       </Row>
                     </Container>
                   </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <hr />
                 </Col>
               </Row>
               <Row>

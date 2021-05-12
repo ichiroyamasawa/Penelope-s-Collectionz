@@ -16,6 +16,7 @@ const FormInput = ({ handleChange, label, subText, ...otherProps }) => {
           className="formInput"
           onChange={handleChange}
           {...otherProps}
+          
         />
         {subText && <Form.Text className="text-muted">{subText}</Form.Text>}
       </Form.Group>

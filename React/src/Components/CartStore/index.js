@@ -12,7 +12,7 @@ import BtnCoral from "./../Forms/ButtonCoral";
 import CartItem from "./CartItem";
 import HR from "./../HR";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Popover, OverlayTrigger } from "react-bootstrap";
 import { retrieveCart, saveCart } from "./../../Redux/Cart/cart.actions";
 import "./styles.css";
 
@@ -108,24 +108,53 @@ const CartStore = () => {
             <Container fluid>
               <Row className="justify-content-end cartSettingsHolder">
                 <Col md="auto" xs="auto" className="p-0">
+                <OverlayTrigger
+                          trigger={["hover", "focus"]}
+                          placement="top"
+                          overlay={
+                            <Popover>
+                              <Popover.Title as="h3">
+                                Load previous cart
+                              </Popover.Title>
+                              <Popover.Content>
+                                Click me to load your previous cart.
+                              </Popover.Content>
+                            </Popover>
+                          }
+                        >
                   <Button
                     className="buyBtn modalBtns cartSettings "
                     onClick={handleShowLoadModal}
                   >
                     <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   </Button>
+                  </OverlayTrigger>
                 </Col>
                 <Col md="auto" xs="auto">
-                  <Button
-                    className="addToBtn modalBtns cartSettings"
-                    disabled={btnDisable}
-                    onClick={() => {
-                      handleShowSaveModal();
-                    }}
-                  >
-                    {" "}
-                    <i class="fas fa-save    "></i>
-                  </Button>
+                <OverlayTrigger
+                          trigger={["hover", "focus"]}
+                          placement="top"
+                          overlay={
+                            <Popover>
+                              <Popover.Title as="h3">
+                                Save this cart
+                              </Popover.Title>
+                              <Popover.Content>
+                                Click me to save your current cart.
+                              </Popover.Content>
+                            </Popover>
+                          }
+                        ><Button
+                        className="addToBtn modalBtns cartSettings"
+                        disabled={btnDisable}
+                        onClick={() => {
+                          handleShowSaveModal();
+                        }}
+                      >
+                        {" "}
+                        <i class="fas fa-save    "></i>
+                      </Button></OverlayTrigger>
+                  
                 </Col>
               </Row>
               <Row>

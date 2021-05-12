@@ -197,7 +197,7 @@ const Profile = () => {
     <Container fluid>
       <Row>
         <Col>
-          <h1 className="profile-sectionTitle">My profile</h1>
+          <h1 className="profile-sectionTitle">My Profile</h1>
         </Col>
       </Row>
       <br />

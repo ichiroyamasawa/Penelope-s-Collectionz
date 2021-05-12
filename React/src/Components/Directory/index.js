@@ -12,16 +12,12 @@ import {
   Nav,
   Navbar,
   NavDropdown,
-  Dropdown,
-  ButtonGroup,
   Form,
   FormControl,
   Button,
 } from "react-bootstrap";
-import FormSelect from "./../Forms/FormSelect";
 import AlertError from "./../AlertError";
 import { PaginationNext } from "./../Pagination";
-//import { PaginationBack, PaginationNext } from "./../Pagination";
 
 import FeaturedProducts from "./../FeaturedProducts";
 import BestSellers from "./../bestSellers";
@@ -43,94 +39,16 @@ const Directory = ({}) => {
     dispatch(fetchProductsStart({ filterType }));
   }, [filterType]);
 
-  const handleFilter = (e) => {
-    const nextFilter = e.target.value;
-    console.log(nextFilter);
-    if (nextFilter != "" || nextFilter != undefined) {
-      const newFilter = "products_" + nextFilter;
-      history.push(`/${newFilter}`);
-    } else {
-      history.push(`/${nextFilter}`);
-    }
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(fetchProductsStart({ search }));
+      if (messageValid(search)) {
+        dispatch(fetchProductsStart({ search }));
+      }
+    
     setSearch("");
   };
 
-  // const earringsFilters = {
-  //   title: "Earrings",
-  //   options: [
-  //     {
-  //       value: "earrings-drop",
-  //       name: "Earrings - Drop",
-  //     },
-  //     {
-  //       value: "earrings-hook",
-  //       name: "Earrings - Hook",
-  //     },
-  //     {
-  //       value: "earrings-stud",
-  //       name: "Earrings - Stud",
-  //     },
-  //   ],
-  //   handleSelect: handleFilter,
-  // };
-
-  const configFilters = {
-    defaultValue: filterType,
-    options: [
-      {
-        name: "Show All",
-        value: "",
-      },
-      {
-        value: "earrings-drop",
-        name: "Earrings - Drop",
-      },
-      {
-        value: "earrings-hook",
-        name: "Earrings - Hook",
-      },
-      {
-        value: "earrings-stud",
-        name: "Earrings - Stud",
-      },
-
-      {
-        value: "hair-snapclips",
-        name: "Hair Accessories - Snap Clips",
-      },
-      {
-        value: "hair-turban",
-        name: "Hair Accessories - Turban",
-      },
-      {
-        value: "baby-beanie_diaper_set",
-        name: "Baby - Beanie & Diaper Set",
-      },
-      {
-        value: "home_personal-alcoholders",
-        name: "Home & Personal Accessories - Alcoholders/Alcopouch",
-      },
-      {
-        value: "home_personal-coasters",
-        name: "Home & Personal Accessories - Coasters",
-      },
-
-      {
-        value: "home_personal-penholder",
-        name: "Home & Personal Accessories - Pen Holder",
-      },
-      // {
-      //   name: "Category 3",
-      //   value: "category3",
-      // },
-    ],
-    handleChange: handleFilter,
-  };
+  const messageValid = (txt) => txt && txt.replace(/\s/g, "").length;
 
   const handleLoadMore = () => {
     dispatch(
@@ -141,23 +59,9 @@ const Directory = ({}) => {
       })
     );
   };
-
-  // const handleLoadLess = () => {
-  //   dispatch(
-  //     fetchProductsStart({
-  //       filterType,
-  //       startBeforeDoc: queryBeforeDoc,
-  //     })
-  //   );
-  // };
-
   const configLoadMore = {
     onLoadMoreEvt: handleLoadMore,
   };
-
-  // const configLoadLess = {
-  //   onLoadBackEvt: handleLoadLess,
-  // };
 
   if (!Array.isArray(data)) return null;
   if (data.length < 1) {
@@ -176,13 +80,6 @@ const Directory = ({}) => {
           <h2 className="products-subtitle">Best Sellers</h2>
           <BestSellers />
         </div>
-
-        {/* <HR /> */}
-
-        {/* <div id="hotDealsSection">
-          <h2 className="products-subtitle">Hot Deals</h2>
-          <HotDeals />
-        </div> */}
 
         <HR />
 
@@ -453,13 +350,6 @@ const Directory = ({}) => {
         <BestSellers />
       </div>
 
-      {/* <HR /> */}
-
-      {/* <div id="hotDealsSection">
-        <h2 className="products-subtitle">Hot Deals</h2>
-        <HotDeals />
-      </div> */}
-
       <HR />
 
       <div id="prodSection">
@@ -704,11 +594,6 @@ const Directory = ({}) => {
             </Navbar>
           </Col>
         </Row>
-        {/* <Row>
-          <Col>
-            <ProductDropdown {...earringsFilters} />
-          </Col>
-        </Row> */}
 
         <div className="prds">
           {data.map((product, pos) => {
@@ -724,12 +609,6 @@ const Directory = ({}) => {
           })}
         </div>
         <Row>
-          {/* <Col>
-            <PaginationBack {...configLoadLess} />
-          </Col>
-          <Col>
-            <h1>{pageNum}</h1>
-          </Col> */}
           <Col>{!isLastPage && <PaginationNext {...configLoadMore} />}</Col>
         </Row>
       </div>

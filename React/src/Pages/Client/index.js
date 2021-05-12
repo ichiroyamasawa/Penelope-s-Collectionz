@@ -315,6 +315,7 @@ const Client = (props) => {
     setShow(false);
     setEditProdShow(false);
     setErrors([]);
+    setCurrentProduct([]);
     console.log(Prod_Image, 9999);
     console.log(Prod_Color, 1010);
   };
@@ -534,14 +535,6 @@ const Client = (props) => {
                 </li>
               </ul>
             </Col>
-            {/* <Col className="clientSearchFilters text-start" md={3}>
-                <ul>
-                  <li>Sort by:</li>
-                  <li>
-                    <FormSelect {...configSorters} />
-                  </li>
-                </ul>
-              </Col> */}
           </Row>
         </Container>
       </div>
@@ -559,8 +552,6 @@ const Client = (props) => {
                   <tr>
                     <th>Product</th>
                     <th>Name</th>
-                    {/* <th>Color</th>
-                    <th>Size</th> */}
                     <th>Sales</th>
                     <th>Stocks left</th>
                     <th>Price</th>
@@ -574,10 +565,8 @@ const Client = (props) => {
                     data.map((product, index) => {
                       const {
                         Prod_Name,
-                        // Prod_Color,
                         Prod_Image,
                         Prod_Price,
-                        // Prod_Size,
                         Prod_Stock,
                         Prod_Sales,
                         Prod_Code,
@@ -591,14 +580,7 @@ const Client = (props) => {
                             />
                           </td>
                           <td>{Prod_Name}</td>
-                          {/* {Prod_Color.map((colorVal, colorIndex) => {
-                            const { color } = colorVal;
-                            return <td key={colorIndex}>{color}</td>;
-                          })}
-                          {Prod_Size.map((sizeVal, sizeIndex) => {
-                            const { size } = sizeVal;
-                            return <td key={sizeIndex}>{size}</td>;
-                          })} */}
+                        
                           <td>{Prod_Sales}</td>
                           <td>
                             {Prod_Stock}
@@ -732,28 +714,7 @@ const Client = (props) => {
                 </Row>
               );
             })}
-            {/* <div className="imgUpload">
-              <FormInput
-                type="file"
-                id="uploadImg"
-                name="Prod_Image"
-                label="Product Image:"
-                placeholder="Product Image URL"
-                accept="image/*"
-                handleChange={handleProductImage}
-              />
-              <Row className="justify-content-center">
-                <Col md="auto">
-                  <label htmlFor="uploadImg">
-                    <img
-                      className="imgPlaceholder"
-                      src={Prod_Image || ImagePlaceholder}
-                      alt="Product Image"
-                    />
-                  </label>
-                </Col>
-              </Row>
-            </div> */}
+           
             {errors.length > 0 && (
               <ul className="errorHandler">
                 {errors.map((e, index) => {
@@ -1075,89 +1036,12 @@ const Client = (props) => {
                           </Col>
                           {console.log(Prod_Image)}
                         </Row>
-                        {/* <FormInput
-                          type="file"
-                          id={"uploadImg" + index}
-                          name="Prod_Image"
-                          placeholder="Product Image URL"
-                          accept="image/*"
-                          handleChange={(e) => {
-                            handleProductImage(e, index);
-                          }}
-                        />
-                        <Row className="justify-content-center imgHolder">
-                          <Col md="auto">
-                            <label htmlFor={"uploadImg" + index}>
-                              <img
-                                className="imgPlaceholder"
-                                src={
-                                  (Prod_Image !== undefined &&
-                                    Prod_Image.length > 0 &&
-                                    Prod_Image[index].image) ||
-                                  (img !== undefined && img.image)
-                                }
-                                value={img.image}
-                                onChange={onEdit}
-                              />
-                            </label>
-                          </Col>
-                          <Col>
-                            {Item.Prod_Image.length !== 1 && (
-                              <Button
-                                variant="danger"
-                                onClick={() => {
-                                  handleRemoveImageEditInput(index);
-                                }}
-                              >
-                                Remove
-                              </Button>
-                            )}
-                          </Col>
-                        </Row> */}
+                      
                       </div>
-                      {/* <div className="imgChanger">
-                          {Prod_Image !== undefined &&
-                            Prod_Image.length > 0 &&
-                            (img.image = Prod_Image[index].image)}
-                        </div> */}
                     </Row>
                   );
                 })}
-              {/* <label>
-                "Upload product image here "
-                <i class="far fa-hand-point-down    "></i>
-              </label>
-              <input
-                type="file"
-                id="uploadImg"
-                name="Prod_Image"
-                label={[]}
-                size="lg"
-                className="formInput"
-                placeholder="Product Image URL"
-                accept="image/*"
-                onChange={(e) => {
-                  handleProductImage(e);
-                }}
-              />
-              <Row className="justify-content-center">
-                <Col md="auto">
-                  <label htmlFor="uploadImg">
-                    <img
-                      className="imgPlaceholder"
-                      name="Prod_Image"
-                      src={Prod_Image || Item.Prod_Image}
-                      alt="Product Image"
-                      value={Item.Prod_Image}
-                      onChange={onEdit}
-                    />
-                  </label>
-                </Col>
-              </Row>
-
-              <div className="imgChanger">
-                {Prod_Image && (Item.Prod_Image = Prod_Image)}
-              </div> */}
+              
             </div>
             <div className="categoryDisp"> Category: {Item.Prod_Category}</div>
             <FormInput
@@ -1335,7 +1219,18 @@ const Client = (props) => {
                 );
               })}
             <p>Product Description:</p>
-            <FormInput
+            {Item.Prod_Description !== undefined && <CKEditor
+              editor={ClassicEditor}
+              data={Item.Prod_Description}
+              onChange={(event, editor) => {
+                Item.Prod_Description = editor.getData();
+               setProd_Description(Item.Prod_Description);
+                console.log({ event, editor, data });
+                
+              }}
+            />}
+            
+            {/* <FormInput
               as="textarea"
               type="text"
               Label="Description"
@@ -1343,8 +1238,10 @@ const Client = (props) => {
               placeholder="Type the product description here..."
               name="Prod_Description"
               value={Item.Prod_Description}
+              style={{whiteSpace:"pre"}}
               handleChange={onEdit}
-            />
+            /> */}
+            
             <div className="modalButtons">
               <div className="addBtnContainer">
                 <BtnSec onClick={handleEditProdClose}>Cancel</BtnSec>

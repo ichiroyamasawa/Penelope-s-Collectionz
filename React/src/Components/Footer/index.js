@@ -5,7 +5,7 @@ const Footer = (props) => {
   return (
     <footer className="footer">
       <div className="wrap">
-        &copy; Penelope's Collectionz 2021. All Rights Reserved.
+        <p>&copy; Penelope's Collectionz 2021. All Rights Reserved.</p>
       </div>
     </footer>
   );

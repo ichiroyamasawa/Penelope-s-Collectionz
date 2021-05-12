@@ -22,6 +22,7 @@
 .clientDesc {
   font-size: 1.3rem;
   text-align: center;
+  font-style: italic;
 }
 
 .followClient {

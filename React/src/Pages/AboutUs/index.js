@@ -27,7 +27,7 @@ const AboutUs = (props) => {
           <ClientProfileCards
             name="Ms. JeanJhen Ace B. Ferrer"
             img={clientA}
-            desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae rem ad voluptas natus! Esse, eligendi."
+            desc="Owner"
             fb="https://www.facebook.com/gingeraceee"
             // twitter="https://www.twitter.com/"
             insta="https://www.instagram.com/gingeraceee"
@@ -35,7 +35,7 @@ const AboutUs = (props) => {
           <ClientProfileCards
             name="Mr. Marc Aldwin R. Cortez"
             img={clientB}
-            desc="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae rem ad voluptas natus! Esse, eligendi."
+            desc="Coowner"
             // fb="https://www.facebook.com/"
             // twitter="https://www.twitter.com/"
             // insta="https://www.instagram.com/"

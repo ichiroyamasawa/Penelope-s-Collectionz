@@ -504,6 +504,7 @@ const Client = (props) => {
   const handleLoadMore = () => {
     dispatch(
       fetchProductsStart({
+        filterType,
         startAfterDoc: queryDoc,
         persistProducts: data,
       })

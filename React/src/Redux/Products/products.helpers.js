@@ -60,6 +60,7 @@ export const handleFetchProducts = ({
         ]);
       } else {
         ref = ref.where("Prod_Category", "==", filterType);
+        console.log("prod");
       }
     }
     if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
@@ -71,8 +72,6 @@ export const handleFetchProducts = ({
       console.log(searchLC, "search1");
     }
 
-    console.log("search2");
-    console.log(ref, "ref");
     ref
       .get()
       .then((snapshot) => {

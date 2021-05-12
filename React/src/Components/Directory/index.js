@@ -23,9 +23,8 @@ import AlertError from "./../AlertError";
 import { PaginationNext } from "./../Pagination";
 //import { PaginationBack, PaginationNext } from "./../Pagination";
 
-import WhatsNew from "./../whatsNew";
+import FeaturedProducts from "./../FeaturedProducts";
 import BestSellers from "./../bestSellers";
-import HotDeals from "./../hotDeals";
 import HR from "./../HR";
 
 const mapState = ({ productsData }) => ({
@@ -168,7 +167,7 @@ const Directory = ({}) => {
 
         <div id="whatsNewSection">
           <h2 className="products-subtitle">Featured Products</h2>
-          <WhatsNew />
+          <FeaturedProducts />
         </div>
 
         <HR />
@@ -444,7 +443,7 @@ const Directory = ({}) => {
 
       <div id="whatsNewSection">
         <h2 className="products-subtitle">Featured Products</h2>
-        <WhatsNew />
+        <FeaturedProducts />
       </div>
 
       <HR />
